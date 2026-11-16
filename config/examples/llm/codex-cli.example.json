@@ -1,0 +1,9 @@
+{
+  "backend": "codex_cli",
+  "enabled": false,
+  "model": "REPLACE_WITH_CODEX_MODEL_ID",
+  "executable": "/REPLACE/WITH/ABSOLUTE/PATH/TO/codex",
+  "timeout": 120,
+  "max_input_bytes": 262144,
+  "budget_mode": "post_usage"
+}

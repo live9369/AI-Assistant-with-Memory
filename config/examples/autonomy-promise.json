@@ -1,0 +1,7 @@
+{
+  "content": "在截止前创建 notes/result.txt，写入 delivered",
+  "start_at": "2030-01-01T00:00:00.000Z",
+  "due_at": "2030-01-02T00:00:00.000Z",
+  "verification": {"kind": "file_contains", "path": "notes/result.txt", "text": "delivered"},
+  "max_rounds": 3
+}

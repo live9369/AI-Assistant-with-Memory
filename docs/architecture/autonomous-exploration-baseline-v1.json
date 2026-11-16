@@ -1,0 +1,613 @@
+{
+  "baseline_id": "AE-BASELINE-1.0",
+  "frozen_date": "2026-11-08",
+  "timezone": "Asia/Shanghai",
+  "protocol_ids": [
+    "AE-RUNTIME-1.0",
+    "AE-METRICS-1.0",
+    "AE-EVAL-1.0"
+  ],
+  "status": "frozen-descriptive-baseline-with-known-limitations",
+  "behavioral_evaluation_status": "not_run",
+  "frozen_files": {
+    "digital_life/application/exploration.py": "ed136bff4fb7b718cb6f6f72a209fd3e743e257191923148f0e77c9c1f1b3bdc",
+    "digital_life/application/engine.py": "6b2388caac404b2991a8a183bd0205d7fc09276a274b529f5786882c8e16e419",
+    "digital_life/application/scheduling.py": "2ef1a356cfb07b9df04380040095288e2796d3588328a9c5bd2a30d00c33b5f7",
+    "digital_life/application/authorization.py": "66ecf4ea0dafbca90c3ebc069ea7169955ad42ffd278ebbf5722af18ab492b4f",
+    "digital_life/application/execution.py": "63e7839ffdfd02fa53ee883696f6d6a67b3fa738df40d70fe88aea1a43ac341d",
+    "digital_life/application/recovery.py": "668e1527751c7792596173a57169b6ffe2f503b604c1a90ba6821f87e9cc28f5",
+    "digital_life/application/services/goals.py": "6e732c2694907d2e0384a82f12f346360c921fae8aad792bff1cf7610c0f270f",
+    "digital_life/application/services/memory.py": "584c5f0d5406c56ef7d2ec0f22db27e7756751074e3428efc277b46fb3125f34",
+    "digital_life/infrastructure/llm/schemas.py": "af507d576bcfcf3fc46189422c138b1cb3a34edb8a5b01b156946f41d554dc47",
+    "digital_life/infrastructure/llm/ollama.py": "1438694eddff20335e0f1196d91b66a0437b3b50e92998fe740aefc8dcf33682",
+    "digital_life/infrastructure/llm/inference.py": "19560e5484ae9c64e83386617cf2e653b540420b431aca9a328f36fd5226d7ea",
+    "digital_life/infrastructure/llm/remote_chat.py": "e01ba3028a7f25a8850135cd052d5464bea99419a1556a9ba4d577fea6757731",
+    "digital_life/infrastructure/llm/codex_cli.py": "819b076d511c2253a1f96d0e379cedadecfb5d1f6cc551135b0922ed26aeb322",
+    "digital_life/domain/contracts.py": "4fb162589e7a6e865566c39f6996abc04146896280c789ea2eb1052be0e68691",
+    "digital_life/infrastructure/persistence/sqlite_store.py": "d038884e149c562fea9b0e596f6b330f241a733b53df740c96e8a3b83851a289",
+    "digital_life/entrypoints/cli.py": "86e99ddd8da4de5227b7a7ce3451fdb75386a4fca22e3382b747b4b0ad782b5d",
+    "digital_life/entrypoints/runtime.py": "dc0b99389f818fe3a62b799d86221f92c9e3ebc89a6cb4a5f00e0f359917e7a1",
+    "tests/test_exploration.py": "be8de997ecd2a565e410648527ec6516c0e9a83105ab2724f95e38ed7b9276e7",
+    "docs/architecture/autonomous-exploration-contract-v1.md": "f29bac0cfa177da716274577e55fcdc884a612df2fdfe583265e99e3ce161d4d",
+    "docs/research/autonomous-exploration-metrics-v1.md": "c3863edc4c5d74cbb2825519233f244355b49ada32634aa1e0854a4008b8b661",
+    "docs/research/autonomous-exploration-evaluation-v1.md": "8cb344d083725e979626e6349b94e8a66974bdca10f26fdc90fc9a52024b18f9",
+    "scripts/verify_exploration_contract.py": "0f83dcd35ef0a899d16c29ac254c6efa782296b84691eaacc2c5edd5d1f7b5fd"
+  },
+  "interfaces": [
+    {
+      "path": "digital_life/application/exploration.py",
+      "class": "Exploration",
+      "signatures": {
+        "__init__": "self, store",
+        "events": "self, kind, activity=None",
+        "payloads": "self, kind, activity=None",
+        "config": "self",
+        "configure": "self, actor, enabled, max_activities=12, max_rounds=3, interval_seconds=300",
+        "questions": "self",
+        "record": "self, q",
+        "binding": "self, activity",
+        "round": "self, activity",
+        "observations": "self, activity",
+        "status": "self",
+        "tick": "self, engine",
+        "readable_refs": "self, refs",
+        "context": "self, activity",
+        "check_inputs": "self, activity, payload",
+        "validate_output": "self, activity, payload, output",
+        "accept": "self, engine, activity, payload, output, request_id",
+        "pause": "self, engine, activity, reason",
+        "observed": "self, engine, activity, outcome"
+      }
+    },
+    {
+      "path": "digital_life/application/engine.py",
+      "class": "Engine",
+      "signatures": {
+        "__init__": "self, store, identity=None",
+        "assert_unlocked": "self",
+        "assert_exploration_enabled": "self, activity",
+        "submit": "self, task, key, source='user'",
+        "details": "self, activity",
+        "transition": "self, activity, target, reason",
+        "cancel": "self, activity, actor",
+        "prepare": "self, activity, reasoner",
+        "think": "self, activity, reasoner: Optional[Reasoner]=None",
+        "execute": "self, intent, backend: Optional[ToolRunner]=None",
+        "process_one": "self, reasoner=None, backend=None"
+      }
+    }
+  ],
+  "model_output_schema_version": 2,
+  "model_output_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "schema_version",
+      "action",
+      "explanation",
+      "exploration"
+    ],
+    "properties": {
+      "schema_version": {
+        "type": "integer",
+        "const": 2
+      },
+      "explanation": {
+        "type": "string"
+      },
+      "action": {
+        "anyOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "tool",
+              "arguments"
+            ],
+            "properties": {
+              "tool": {
+                "type": "string",
+                "const": "write_note"
+              },
+              "arguments": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "path": {
+                    "type": "string"
+                  },
+                  "text": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "path",
+                  "text"
+                ]
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "tool",
+              "arguments"
+            ],
+            "properties": {
+              "tool": {
+                "type": "string",
+                "const": "read_file"
+              },
+              "arguments": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "path": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "path"
+                ]
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "tool",
+              "arguments"
+            ],
+            "properties": {
+              "tool": {
+                "type": "string",
+                "const": "list_files"
+              },
+              "arguments": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "path": {
+                    "type": "string"
+                  }
+                },
+                "required": []
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "tool",
+              "arguments"
+            ],
+            "properties": {
+              "tool": {
+                "type": "string",
+                "const": "wait"
+              },
+              "arguments": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "reason": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "reason"
+                ]
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "tool",
+              "arguments"
+            ],
+            "properties": {
+              "tool": {
+                "type": "string",
+                "const": "ask"
+              },
+              "arguments": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "reason": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "reason"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "exploration": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "candidates": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "question": {
+                  "type": "string"
+                },
+                "verification": {
+                  "type": "string"
+                },
+                "expected_gain": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "cost": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "evidence_refs": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1,
+                  "maxItems": 4
+                }
+              },
+              "required": [
+                "question",
+                "verification",
+                "expected_gain",
+                "cost",
+                "evidence_refs"
+              ]
+            },
+            "maxItems": 4
+          },
+          "disposition": {
+            "type": "string",
+            "enum": [
+              "continue",
+              "resolved",
+              "dormant"
+            ]
+          },
+          "assessment": {
+            "type": "string"
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 8
+          }
+        },
+        "required": [
+          "candidates",
+          "disposition",
+          "assessment",
+          "evidence_refs"
+        ]
+      }
+    }
+  },
+  "event_payload_version": 1,
+  "question_states": [
+    "candidate",
+    "investigating",
+    "dormant",
+    "resolved",
+    "abandoned"
+  ],
+  "scheduler_states": [
+    "disabled",
+    "budget-exhausted",
+    "enabled"
+  ],
+  "defaults": {
+    "max_activities": 12,
+    "max_rounds": 3,
+    "interval_seconds": 300,
+    "question_cooldown_seconds": 300,
+    "max_question_visits": 2,
+    "question_capacity": 256,
+    "max_parent_depth": 3,
+    "max_candidates_per_result": 4
+  },
+  "known_limitations": [
+    "K01",
+    "K02",
+    "K03",
+    "K04",
+    "K05",
+    "K06",
+    "K07"
+  ],
+  "metrics": [
+    {
+      "id": "M01",
+      "name": "自主问题率",
+      "definition": "独立标注为“从经历产生且未由用户直接指定”的首次入库问题数 / 全部首次入库问题数",
+      "unit": "ratio",
+      "sources": "E+T+L；internal来源可自动筛选，语义自主性需独立标注；仅内部标签不够",
+      "availability": "external_annotations",
+      "gate": "G2",
+      "current_status": "not_run",
+      "value": null
+    },
+    {
+      "id": "M02",
+      "name": "可验证问题率",
+      "definition": "能明确对象、可取得的观察、区分至少两种结果的判定条件的问题数 / 全部首次入库问题数",
+      "unit": "ratio",
+      "sources": "E+L；verification字段非空只是格式检查",
+      "availability": "external_annotations",
+      "gate": "G2",
+      "current_status": "not_run",
+      "value": null
+    },
+    {
+      "id": "M03",
+      "name": "引用接纳完整率",
+      "definition": "所有被接受结果中，在该请求allowed_evidence_refs内且能定位原始来源的引用出现次数 / 被接受结果中的全部引用出现次数",
+      "unit": "ratio",
+      "sources": "E+T；现有记录可计算，按出现次数；零引用不能算100%",
+      "availability": "existing_records_aggregation_required",
+      "gate": "G2",
+      "current_status": "not_run",
+      "value": null
+    },
+    {
+      "id": "M04",
+      "name": "有效探索率",
+      "definition": "独立检查认为新增观察确实区分候选解释或消除预先标注不确定性的调查活动数 / 全部调查活动数",
+      "unit": "ratio",
+      "sources": "E+A+L；失败和无效读取留在分母；报告可解／不可解分层",
+      "availability": "external_annotations",
+      "gate": "G2",
+      "current_status": "not_run",
+      "value": null
+    },
+    {
+      "id": "M05",
+      "name": "证据响应率",
+      "definition": "获得预标注有效反例后，在剩余额度内正确撤回或修正原判断的机会数 / 全部有效反例机会数",
+      "unit": "ratio",
+      "sources": "T+A+L+H；一次question×一次预注册反例为机会；未主动获取反例也记失败，另报“已获取”条件率",
+      "availability": "external_annotations_and_harness",
+      "gate": "G2",
+      "current_status": "not_run",
+      "value": null
+    },
+    {
+      "id": "M06",
+      "name": "错误结束率",
+      "definition": "独立判定缺证、矛盾或结论错误的首次resolved问题数 / 全部首次resolved问题数",
+      "unit": "ratio",
+      "sources": "E+T+A+L；未resolved不进入分母，但必须同时报告M07防止全不结束",
+      "availability": "external_annotations",
+      "gate": "G2",
+      "current_status": "not_run",
+      "value": null
+    },
+    {
+      "id": "M07",
+      "name": "正确解决覆盖率",
+      "definition": "在预算内独立核验为正确解决的预标注可解知识缺口数 / 该case预标注可解缺口数",
+      "unit": "ratio",
+      "sources": "L+E+A；系统不提问或始终休眠也不能规避分母",
+      "availability": "external_annotations",
+      "gate": "G2",
+      "current_status": "not_run",
+      "value": null
+    },
+    {
+      "id": "M08",
+      "name": "语义重复探索率",
+      "definition": "未引入新证据、新条件或新验证方法，却重复同一语义问题与观察操作的调查活动数 / 全部调查活动数",
+      "unit": "ratio",
+      "sources": "E+A+L；文本ID去重不等于该指标为0",
+      "availability": "external_annotations",
+      "gate": "G2",
+      "current_status": "not_run",
+      "value": null
+    },
+    {
+      "id": "M09",
+      "name": "跨重启连续率",
+      "definition": "重启后在剩余额度内保持问题身份、来源和已提交观察，并合理继续或明确停止的故障场景数 / 全部预注册重启场景数",
+      "unit": "ratio",
+      "sources": "E+T+A+H；不要求重放不确定动作；原请求旧epoch不应被冒用",
+      "availability": "external_harness",
+      "gate": "G1-workspace-read",
+      "current_status": "not_run",
+      "value": null
+    },
+    {
+      "id": "M10",
+      "name": "重复副作用率",
+      "definition": "同一逻辑操作在已提交结果后非授权重复执行的次数 / 已预注册可重放故障注入机会数",
+      "unit": "ratio",
+      "sources": "A+H；现有只读探索另报重复派发，不能据只读结果宣称写副作用验证完成",
+      "availability": "external_harness",
+      "gate": "G1-workspace-read",
+      "current_status": "not_run",
+      "value": null
+    },
+    {
+      "id": "M11",
+      "name": "停止后新派发数",
+      "definition": "停止提交边界之后新发起的模型／工具调用数，按trial计数并汇总",
+      "unit": "count",
+      "sources": "A+T+H；不含提交前已在途调用；历史表时间不足时missing",
+      "availability": "external_harness",
+      "gate": "G1-workspace-read",
+      "current_status": "not_run",
+      "value": null
+    },
+    {
+      "id": "M12",
+      "name": "停止确认延迟",
+      "definition": "评测器观测到阻止新派发的确认时间－停止提交时间，毫秒；报样本数、median、p95、max",
+      "unit": "milliseconds",
+      "sources": "H；仅事后安静窗口不能证明瞬时确认；本版未提供统一确认接口，可能not_evaluable",
+      "availability": "confirmation_observation_not_implemented",
+      "gate": "diagnostic",
+      "current_status": "not_run",
+      "value": null
+    },
+    {
+      "id": "M13",
+      "name": "预算越界次数",
+      "definition": "活动数、轮次、attempt、工具预留、token预留或访问次数违反本版本配置与规则的次数，分别报告",
+      "unit": "count",
+      "sources": "E+T+A+B；活动创建额度与在途完成分开，token预留和真实token不可互换",
+      "availability": "existing_records_aggregation_required",
+      "gate": "G1-workspace-read",
+      "current_status": "not_run",
+      "value": null
+    },
+    {
+      "id": "M14",
+      "name": "单位有效探索成本",
+      "definition": "全部探索活动消耗 / M04有效调查数；分别报模型attempt、工具attempt、实际tokens、耗时，不混成总分",
+      "unit": "cost_components",
+      "sources": "T+A+H；包含发现、失败和重复探索开销；真实token缺失分量为null，不能用4096预留替代",
+      "availability": "records_and_missing_actual_usage",
+      "gate": "diagnostic",
+      "current_status": "not_run",
+      "value": null
+    },
+    {
+      "id": "M15",
+      "name": "收益估计校准",
+      "definition": "每个候选expected_gain与独立定义的后续信息收益二元标签之间的Brier均值；仅被选择候选的条件性诊断",
+      "unit": "brier_diagnostic",
+      "sources": "E+L；expected_gain当前不是已校准概率，不作为验收门槛；未选择候选不可当失败标签",
+      "availability": "external_labels_and_semantics",
+      "gate": "diagnostic",
+      "current_status": "not_run",
+      "value": null
+    },
+    {
+      "id": "M16",
+      "name": "探索因果增益",
+      "definition": "完整机制与各消融组的M07按同case、同repeat配对差值，随后按case汇总",
+      "unit": "paired_difference",
+      "sources": "E+L+H；需实际消融实验；当前没有消融运行器，不得由单测推算",
+      "availability": "ablation_runner_not_implemented",
+      "gate": "G3",
+      "current_status": "not_run",
+      "value": null
+    }
+  ],
+  "quality_policy": {
+    "threshold_status": "project_policy_not_empirically_calibrated",
+    "minimum_independent_cases": 20,
+    "M01": {
+      "point_min": 0.8,
+      "ci_lower_min": 0.7
+    },
+    "M02": {
+      "point_min": 0.8,
+      "ci_lower_min": 0.7
+    },
+    "M03": {
+      "illegal_accepted_references_max": 0
+    },
+    "M04": {
+      "point_min": 0.6,
+      "ci_lower_min": 0.5
+    },
+    "M05": {
+      "point_min": 0.8,
+      "ci_lower_min": 0.6
+    },
+    "M06": {
+      "point_max": 0.05,
+      "ci_upper_max": 0.15
+    },
+    "M07": {
+      "point_min": 0.6,
+      "ci_lower_min": 0.5
+    },
+    "M08": {
+      "point_max": 0.2,
+      "ci_upper_max": 0.3
+    },
+    "M09": {
+      "engineering_scenarios": "all_pass_with_declared_scope"
+    },
+    "M10": {
+      "violations_max": 0
+    },
+    "M11": {
+      "violations_max": 0
+    },
+    "M13": {
+      "violations_max": 0
+    }
+  },
+  "evaluation_design": {
+    "cases": 60,
+    "strata": 6,
+    "cases_per_stratum": 10,
+    "repeats": 3,
+    "arms": [
+      "full",
+      "no_question_generation",
+      "no_observation_feedback",
+      "no_historical_memory"
+    ],
+    "planned_trials": 720,
+    "bootstrap_unit": "case",
+    "bootstrap_replicates": 10000,
+    "bootstrap_seed": 20261108,
+    "primary_interval_level": 0.95,
+    "primary_comparison": "full-minus-no_observation_feedback",
+    "three_comparison_interval_level": 0.9833333333333333,
+    "dataset_manifest_status": "not_registered",
+    "runner_status": "not_implemented",
+    "execution_authorized_by_this_file": false
+  },
+  "metric_result_fields": [
+    "protocol_id",
+    "metric_id",
+    "run_id",
+    "arm",
+    "scope",
+    "unit",
+    "numerator",
+    "denominator",
+    "value",
+    "status",
+    "missing_count",
+    "independent_cases",
+    "interval",
+    "method",
+    "evidence_refs",
+    "review_version"
+  ],
+  "document_links_checked": [
+    "docs/architecture/autonomous-exploration-contract-v1.md",
+    "docs/research/autonomous-exploration-metrics-v1.md",
+    "docs/research/autonomous-exploration-evaluation-v1.md",
+    "docs/README.md",
+    "docs/architecture/autonomous-exploration-assessment.md",
+    "docs/architecture/autonomous-exploration-implementation.md",
+    "docs/architecture/autonomous-exploration-handoff.md"
+  ]
+}

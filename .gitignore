@@ -1,0 +1,44 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+build/
+dist/
+work/
+outputs/
+.DS_Store
+*.sqlite-wal
+*.sqlite-shm
+controller.token
+config/local/
+.env
+.env.*
+!.env.example
+
+# Generated code index; keep the portable codegraph.json configuration.
+/.codegraph/
+
+# Test, lint and coverage caches.
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# Private root-level runtime artifacts; maintained examples remain tracked.
+/runtime.sqlite*
+/control.sqlite*
+/accounts.sqlite*
+/auth.json
+/credentials.json
+/tokens.json
+/token.json
+/logs/
+/sessions/
+/launches/
+/inbound/
+/workspace/
+
+codegraph.json

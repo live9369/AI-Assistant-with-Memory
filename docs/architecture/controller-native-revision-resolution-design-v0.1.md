@@ -1,0 +1,40 @@
+# 控制器历史读取：原生修订ID解析修复 V0.1
+
+状态：实现前设计。仅修复ControllerSourceAuthority版本解析，不改变历史读取、审核用途、Memory ACL、外部输入作者限制及来源屏障。
+
+## 问题
+
+连续chat第二轮在读取首轮回应的来源链时拒绝。首轮完整输入含identity_anchors、personality_profiles、value_profiles等token，它们的object.id本身是object_revision_registry.id；原resolver只查object_id，误认为没有原生版本。首轮真实模型替身已返回，第二次调用尚未发生；并非预算问题。
+
+## 解析规则
+
+1. 先验证认证session、完整VersionToken和同实例Ref登记kind，再读取实际来源行。
+2. 明确区分两种绑定：root对象经object_id找到指定revision_no；原生修订对象经registry.id找到该修订本身。两者不能互相猜测或只查任意registry.id。
+3. 原生表使用固定映射：memory_revisions／perception_observation_revisions／cognition_*_revisions的owner与revision_no；人格、价值、身份profile的root字段与version；tl_content_revision与tl_representation的owner及修订号。核对实际native行、registry.instance/kind/id/object_id/revision_no、正确owner行或root登记kind。
+4. 复用ToolLearningStore.validate_ref的known revision映射核验，再补实际native行与owner核验。缺行、错kind、错owner或错number均拒绝。
+5. root的已知稳定修订按原表映射选择实际native行；可变观察来源仍由原snapshot桥验证真实事件、内容摘要及source owner，不把当前状态冒充历史。
+6. 原IMMUTABLE白名单不扩大，静态零版本路径仅用于原支持的真实静态来源；版本解析成功不授予用途资格。人格等内部状态只允许既有history_audit控制器规则，accept等authoring review仍拒绝；Memory及外部actor限制继续逐项执行。
+
+## 验证
+
+新建隔离实例，构造真实native profiles及memory revision；直接认证端口验证同实例历史版本，并通过原ControllerMaterialReader.chat读取机械构造的accepted回应及真实native来源链，不调用完整think。反例包括错kind／owner／number、跨实例、缺真实行、缺registry、review purpose、Memory私有ACL、外部作者、撤回屏障。机械回应只证明reader的来源资格，不冒充完整8模块生成或真实模型能力。
+
+新测试与必要旧reader／source回归定向运行，保存结果；不执行PF06统一全套或真实实例。
+
+## 实施与定向验证结果
+
+状态：修复完成、必要定向验证通过；等待其它并行产品变更完成后的统一PF06及连续chat复验。本次未运行完整think。
+
+产品修改仅在ControllerSourceAuthority：增加固定原生修订表的owner／number列映射，复用known Ref版本核验，并检查实际native行和owner；root稳定修订另按指定kind选实际版本；观察桥继续核验真实snapshot事件与摘要。IMMUTABLE未扩充，verify用途、Memory ACL、外部作者及session限制未放宽。可复用的ToolLearningStore只缓存DDL适配元数据，未缓存source允许结论。
+
+新测试tests/test_tool_learning_controller_native.py共22项通过。九类映射全部有正例：identity_anchors、personality_profiles、value_profiles、memory_revisions、perception_observation_revisions、cognition_belief_revisions、cognition_concept_revisions、tl_content_revision、tl_representation；后六类相应root对象也验证指定修订。反例覆盖错kind／owner／number、跨实例、缺真实native行或registry、任意registry.id冒充静态来源、审核用途越权、Memory私有ACL、外部输入作者、认证session、history_audit撤回屏障和被篡改snapshot桥。旧profile在新版本出现后仍能作为原历史读取。
+
+真实ControllerMaterialReader.chat正例：机械构造一条accepted回应，来源挂接真实人格、价值、身份锚点及Memory修订；reader成功返回回应且数据库写入数不变。此正例未生成完整8模块包，不被描述为完整连续think验收；实际首轮完整包的第二轮读取需要后续连续夹具复验。
+
+必要旧回归覆盖ControllerReviewHttp、StrictActualUse、SourceSnapshot以及原生TL修订隔离。共39项唯一条件最终通过。首次39项中36通过，3项HTTP测试在绑定127.0.0.1随机端口时被执行权限拒绝，未进入业务代码；保留日志，获准回环端口执行后仅重跑3项，全部通过（2.630秒），未重复其余36项。新测试首轮亦保留：夹具绕过reader.boundary导致认证入口未绑定，以及破坏注入后未恢复FK开关；修正夹具后19项通过，扩充映射后22项通过。没有削弱产品断言取得通过。
+
+证据目录：outputs/acceptance/performance-round2/controller-native/。result.json记录分组结果、日志摘要及五个明确列出的变更／相邻文件前后摘要一致；此为局部定向证据，不声称并行期间全项目源码冻结。
+
+产品runtime.py摘要：13b921515fd77d6ea74980b95d51ff6ffe538ac545de12844de1e2be6a3507aa。
+
+统一冻结增量验证：targeted-frozen-07将本模块22项与控制材料17项、此前139项一起执行，共178项全部通过、源码稳定；进程已退出。连续chat完整复验仍留PF07，见统一故障报告当前最新小节。

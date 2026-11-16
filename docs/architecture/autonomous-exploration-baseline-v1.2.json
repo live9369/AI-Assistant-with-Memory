@@ -1,0 +1,793 @@
+{
+  "baseline_id": "AE-BASELINE-1.2",
+  "frozen_date": "2026-11-08",
+  "timezone": "Asia/Shanghai",
+  "protocol_ids": [
+    "AE-RUNTIME-1.2",
+    "AE-METRICS-1.0",
+    "AE-EVAL-1.0"
+  ],
+  "status": "frozen; validation results in separate run evidence",
+  "behavioral_evaluation_status": "not_run",
+  "frozen_files": {
+    "digital_life/__init__.py": "d4ff3b91a60661a87ee7f2437f4fb41bace2144cbbfa0240d2525bf292bb7936",
+    "digital_life/__main__.py": "9f07aa00993adfc7c80015bfa2138d570169e37cf37cbfe8caf4fdb7de4ec0c0",
+    "digital_life/application/__init__.py": "2b7f7913b0353b258d8e92d9f9c50b8120474439f58ed877dfa18c2cefb1c31e",
+    "digital_life/application/authorization.py": "ed507bef7eb8e6c142fd3d39b5a2f5c3b7c89a893c726fd68f6887c9e1229e61",
+    "digital_life/application/chat.py": "c5d74fa1d62acc0f916d55b40833d44ba2aabe68e32f5b0a27472a53ef6dcfbe",
+    "digital_life/application/codex_management.py": "6f90da1ccf5beaab96f5bf6f18fb58798ec7ec3765fae747735ffdeae792d75a",
+    "digital_life/application/configuration.py": "8aafd057e5853e881378a9ed8d7072dedaa4b5ef18d0f965878beed69f62ad18",
+    "digital_life/application/control_plane.py": "f1ecce70486baf48ce470fd6fd987760ec71da10af37bd3b274ce2a22ae32b21",
+    "digital_life/application/data_management.py": "d5a4c682e4f06627db826d0ce434b91120711153e6580cdfdab9045435f6e609",
+    "digital_life/application/deployment.py": "1cfc7613f9858774c86458a578957285e9d3fa973caa090b6c67bda0540b4250",
+    "digital_life/application/engine.py": "57800b1f9660d23ea5a259b7fd0d85abd26a884bd7fb1c4205458c1d4dad696a",
+    "digital_life/application/execution.py": "776d8ad68103709551fc04ebf7ebd067b773bceccd08a996f7e19a48b21fd541",
+    "digital_life/application/exploration.py": "e9147f0a1f2dffa537183c8acd659ac29852f5d8dede72461e147d488561a616",
+    "digital_life/application/exploration_evidence.py": "91c45918d9afa9052b89fe78c7e5298d5d1faa349cba5c54c42c0b6d202b1df6",
+    "digital_life/application/health_monitor.py": "48f3453a8287afe532a094b0d9ad580222d403d76c0d58867ca1b0e570d147ab",
+    "digital_life/application/management.py": "51245990e24fec16abd4dd21253f32fbcffdc5170387790606221a2f99bf1f38",
+    "digital_life/application/privacy.py": "961404425072e66994ad61ad46f75292fc526525261202a750eddf7b848c998e",
+    "digital_life/application/recovery.py": "668e1527751c7792596173a57169b6ffe2f503b604c1a90ba6821f87e9cc28f5",
+    "digital_life/application/release_inspection.py": "07451bcfa2cae7657f36ed4b7117d9a29d57e04b53d117523d737c491dc981d3",
+    "digital_life/application/scheduling.py": "2ef1a356cfb07b9df04380040095288e2796d3588328a9c5bd2a30d00c33b5f7",
+    "digital_life/application/schema_migration.py": "9ae49f50ed7212a5e49e906f511824d1383513199833ac3d71d70f8a14a1f4ab",
+    "digital_life/application/services/__init__.py": "e302623dd0cd57f9cea6abad888e0d146cc1ce3337d6aff3325ddc679cbeb475",
+    "digital_life/application/services/cognition.py": "7471c3597ecb2832464c4f6193d56a7a1f3dd4376a54c003c006cfb9542e759e",
+    "digital_life/application/services/commitments.py": "fd1652770ae4cf2cac4af178bc70da47ccd7069098181122513832b8043c822d",
+    "digital_life/application/services/decisions.py": "2a26bc86c8746c7dac44eab39b4cf6478d7cc1b55a944bcafcb1c35f4ebc4495",
+    "digital_life/application/services/goals.py": "6e732c2694907d2e0384a82f12f346360c921fae8aad792bff1cf7610c0f270f",
+    "digital_life/application/services/habits.py": "39393a82052a52f92d02c5bcf6427c3cce8f1c671ab195e2578a7777f092a308",
+    "digital_life/application/services/health.py": "e49cfa701d9e12210c1bbb066a895f9298aedf38a750445271684053b2eaa083",
+    "digital_life/application/services/identity.py": "5337a65351b14b9afbfb9a520cc13175d80837e5fb132e95d13e80f37b39b497",
+    "digital_life/application/services/learning.py": "e4a713d62405f55004bb0fdfd09b0d9e834b4d8cc1010b147cadb3807d2534b8",
+    "digital_life/application/services/memory.py": "fecb089e364012c0160efbe7c734c10436613bff7ef93e3b496436fe053b2fb9",
+    "digital_life/application/services/personality.py": "31a83428af38632ba8d4cf9196f612c4bf4722110fa2a77e1cc451e88eed7703",
+    "digital_life/application/services/relationships.py": "717ede5e02c634fd3fcaa05153eb2b741b74c5894c5218957d99ccedf9cdedb3",
+    "digital_life/application/services/states.py": "4c01f046c8d3c0230cc981cdac18771406cfd66da2dd1e6c2fd26813bdaacdab",
+    "digital_life/application/services/values.py": "61f5ad7efea46bbbdb0212b3ed072e7bb00d7458041fe288a8d8277baecb5d7a",
+    "digital_life/application/telemetry/__init__.py": "af564041ef9cefac49d5b082c8bc9b42e95d5e3f6eee3ac307bf829fabd93f1a",
+    "digital_life/application/telemetry/metrics.py": "b56a5d75b008db40d89134791851322604a7bd122e6c8043031acbf3cc8d1738",
+    "digital_life/application/telemetry/states.py": "d20420dbbe7f9a41f164668b8ed05e8c7426c2eaa39db576eca27384a8529d87",
+    "digital_life/application/thought_inspection.py": "2b1f9d212d0c5ce44e42821e13ee4cee9b7306537ffb7a97915f877d5a7a8fbb",
+    "digital_life/contracts.py": "44f93a285d7bf6fea5373d3e5b1845b4759f948233235a4685a7481bb1e5fadb",
+    "digital_life/domain/__init__.py": "f59e79be14e98d2efc1c0935a81b0972fc6dd55f00558ad2b1aa53e6022214c6",
+    "digital_life/domain/contracts.py": "4fb162589e7a6e865566c39f6996abc04146896280c789ea2eb1052be0e68691",
+    "digital_life/domain/ports.py": "c3f75d493fd7a2b7f6159274bbca23e8e27be808832af8dc53dc5986a60b7288",
+    "digital_life/domain/rules.py": "83d0239895acdbf63a1efc6021c94e99d5ac5d1f5f5e555a0e01a224fdd88e2c",
+    "digital_life/entrypoints/__init__.py": "719b3a5d650e763b41beebf9f5bd2f807d594386476a0651a0077e3250b4272e",
+    "digital_life/entrypoints/cli.py": "eb2c939438ceb17f00e76e3c90bb9616f81c0f6358751dc72f83dff699c9dd48",
+    "digital_life/entrypoints/http.py": "33d6e04445db9ad6c91a2c5067ed636edd213067ff965f754c9079f7aebfc90b",
+    "digital_life/entrypoints/manage.py": "259996ddadb2c317f2e42274fa0cf66d30f781d7efe4f0301488a59af74e7a9a",
+    "digital_life/entrypoints/runtime.py": "dc0b99389f818fe3a62b799d86221f92c9e3ebc89a6cb4a5f00e0f359917e7a1",
+    "digital_life/entrypoints/worker.py": "f4fed250059bac8478d7113573182800d0ebdfe37610dc023dfa4ac8d79b1322",
+    "digital_life/inference.py": "c203504ed1fde93a38d8dd07365dcb63ba058cf5c28aa4a290f9c8102301396a",
+    "digital_life/infrastructure/__init__.py": "a25f1ccdef5ae60a181b63bc3009fdbd0bdb1b7496586ac7888da8ea72948367",
+    "digital_life/infrastructure/llm/__init__.py": "4487e5420dc80116abaadc3afa9185335626d52bbfc4f9d0fc9c2fd3423e90ca",
+    "digital_life/infrastructure/llm/codex_auth.py": "6dd07dcee725daabd785139c78da911167c52d167c56342945146cc4f87caf19",
+    "digital_life/infrastructure/llm/codex_cli.py": "819b076d511c2253a1f96d0e379cedadecfb5d1f6cc551135b0922ed26aeb322",
+    "digital_life/infrastructure/llm/inference.py": "19560e5484ae9c64e83386617cf2e653b540420b431aca9a328f36fd5226d7ea",
+    "digital_life/infrastructure/llm/model_service.py": "fb3c001b38568d99e6ece589bfca4c95c418cb90c058c8f322ba5c5cb38ba0c8",
+    "digital_life/infrastructure/llm/ollama.py": "1438694eddff20335e0f1196d91b66a0437b3b50e92998fe740aefc8dcf33682",
+    "digital_life/infrastructure/llm/remote_chat.py": "e01ba3028a7f25a8850135cd052d5464bea99419a1556a9ba4d577fea6757731",
+    "digital_life/infrastructure/llm/schemas.py": "af507d576bcfcf3fc46189422c138b1cb3a34edb8a5b01b156946f41d554dc47",
+    "digital_life/infrastructure/persistence/__init__.py": "9e6fd9aedb237cd9603c449815362c9799c9e9e44b16fa29117375a8d5af79f2",
+    "digital_life/infrastructure/persistence/sqlite_store.py": "d038884e149c562fea9b0e596f6b330f241a733b53df740c96e8a3b83851a289",
+    "digital_life/infrastructure/processes/__init__.py": "7cf169c21d7e21c1b609bebb3793b8d91acc175afe3cb8feca762fb58a2f1ca6",
+    "digital_life/infrastructure/processes/dispatch_gate.py": "1b10341f6e789b22d8d9a42b568c57be7150ae4218f96e0b9f1ab0c1266f1abb",
+    "digital_life/infrastructure/processes/locks.py": "e6439117608cff08f612be8ea86022402135bc35d0b5320977797a98f72ed664",
+    "digital_life/infrastructure/tools/__init__.py": "353540e2e192d0bedd6e313b5a38bf6329d52cb290b5392999d7f6ed03e85fdc",
+    "digital_life/infrastructure/tools/workspace.py": "f942530fec2ac85d1a91e19635e167de6a1cffa7ce258d92fdf20fe7017fd287",
+    "digital_life/resources/metrics.json": "1419051a17f86d79cec4277828f0da16e5fe8907b267a0689fa3027d2e049103",
+    "digital_life/resources/model-templates.json": "05af9297f56013168751b98f96b6d6a573e66c7405e030e5c920e736d095fc24",
+    "digital_life/resources/release.json": "bb8ef27a9da3cf25cf899f01d1b1b0131ba7746778f32c96de1cd202a691f1fe",
+    "digital_life/resources/runtime.sql": "edcf2786e6f3d3b8c2d4b5218365da41df3289cc6451034aa400e1c404ee2399",
+    "digital_life/resources/supervisor.sql": "56272eec07934750c30589a89f7b1cce4fe43454a0725b2ba93073256d03b5a0",
+    "digital_life/runtime.py": "2e5d7f66b253b4fb3aa276542c1294c2b51a4381cb2847719f1dc3a5b623c275",
+    "digital_life/services.py": "a60e420d8ce17a86faaaee80147ec8b1a2cd04e4c081fb917939061a5d2f02db",
+    "digital_life/store.py": "e29aab5fbda295b39ca7684f087d72973277ca69bce8eaf9343a191156e82465",
+    "digital_life/tools.py": "3d01aab70fe2d12c059008c3aa591689593a4cc47cf9cbcdfe7f7f7f11aa9032",
+    "digital_life/worker.py": "b1a35a5a28d118c6818cfa7e01ddf50dd7a5021f5b5f234b5b7920d1023be3c1",
+    "docs/architecture/autonomous-exploration-baseline-v1.1.json": "8f7beeaaa93eb555500764d33dbd788aafa2e4bd9eb2e8cafb257b32f4ae6151",
+    "docs/architecture/autonomous-exploration-baseline-v1.json": "720597714b5e2dd2ca198fc2db7ad7e1864bbc2b03b4eec5f04dc11004b2b6fe",
+    "docs/architecture/autonomous-exploration-contract-v1.1.md": "194997dc848f121ed3a59eb873eacb7676b7820bb60032a7e3d9368d2f8cfb97",
+    "docs/architecture/autonomous-exploration-contract-v1.2.md": "48c0382640f8fc806eab3922fab3edb309383c1176162ccab2fb4cecec623fca",
+    "docs/architecture/autonomous-exploration-contract-v1.md": "f29bac0cfa177da716274577e55fcdc884a612df2fdfe583265e99e3ce161d4d",
+    "docs/research/autonomous-exploration-evaluation-v1.md": "8cb344d083725e979626e6349b94e8a66974bdca10f26fdc90fc9a52024b18f9",
+    "docs/research/autonomous-exploration-g2-review-rubric.md": "b51eb96fe35a3202a50fc3b3a3ffb420ecae4edd3962769c6124b4215531d36c",
+    "docs/research/autonomous-exploration-metrics-v1.md": "c3863edc4c5d74cbb2825519233f244355b49ada32634aa1e0854a4008b8b661",
+    "evaluation/exploration/aggregate.py": "27746c9b04d08d6cde642be8257bc7b8faf4d84f1b34499cc207da328070c8b2",
+    "evaluation/exploration/g2/__init__.py": "29d3693cfc6c28dfe31c0056280f8670b1cd06fd801ca169dff4891e30f93d3a",
+    "evaluation/exploration/g2/aggregate.py": "0bb3c8e5ffeeb306e0d51b69b8f6fb2d47d97d1a8d1b43d87fb768e0d704ffb1",
+    "evaluation/exploration/g2/build_materials.py": "8f7b01df08d56ea0132430aedb0e7f61b89829846b3d3070decf938bbfca7e6e",
+    "evaluation/exploration/g2/materials/development-oracle.json": "5636b8a79c08498c96c67ce6a1295d160a50886e3783486cddfc46b250915a9c",
+    "evaluation/exploration/g2/materials/development-public.json": "5d6f2ef1d43bffb3f44f07c71e4f916bf41dffbfd31b356328e38ac0d4a11b0a",
+    "evaluation/exploration/g2/materials/formal-candidate-oracle.json": "b39523b8668b084bf5997bce34f4090ba0e11c629d8b6bb4b48516d3a77458ba",
+    "evaluation/exploration/g2/materials/formal-candidate-public.json": "250dae4cd08f5c28f7a6fc4cdc70ec0fc9645648f057799b7551a1878a469967",
+    "evaluation/exploration/g2/review.py": "e4a421e1d2a57b6627f6367a882a6329da7f2650cd73b7dcd2552baa3a996628",
+    "evaluation/exploration/g2/runtime.py": "5396b4f8518b9000a05e4a98f42ba9307ea2f691f7595429943179973776075a",
+    "evaluation/exploration/harness.py": "51ad21bd53c105fb542c72f4bd1f3373df982c24a1bd7ba7f34453f709f059ac",
+    "evaluation/exploration/materials/cases-v1.json": "f5415ecd1ce50b33d1d41309641d58b9f4400048fdf8f1441e020abc35626558",
+    "evaluation/exploration/materials/scenarios-v1.1.json": "47316f8344171c4cbf13afda62f1c99e96775a16fdf2e313367f0c4d9c361f07",
+    "evaluation/exploration/materials/scenarios-v1.2.json": "c8a69cd1c8b5dc39587c5ae6a0dabc863c3f3ffbb9073d85074d2534c4110459",
+    "evaluation/exploration/reuse_scenarios.py": "4d14eb5147c1100f655b1a3ab58208cb9b924bd35565eeb5dd11fa029f73a825",
+    "evaluation/exploration/scenarios.py": "5c1e794880e98251c5cc8fb492e62cdbc5193586e784396ddbfaa490080214b6",
+    "outputs/acceptance/autonomous-exploration-v1.1-prior-evidence.json": "63ce2d9026f1fa2440e8a611d81ba5ee039514fc5db281642b512eba5b73a942",
+    "outputs/acceptance/autonomous-exploration-v1.2-prior-evidence.json": "b02ee8f1e5936e1f5ef9613c1ec80e75a67326ca3649342cc5dcd662b29b474c",
+    "scripts/aggregate_exploration_g1.py": "bd68eee610916c623ae626f224b3f7f7717af1b524c9ce8f9cb1e6274d06f212",
+    "scripts/aggregate_exploration_g2.py": "29f1503ec9d2e0e10d38792ea3460e1d779eec5901aa50f8bb1ff843d1b916f2",
+    "scripts/review_exploration_g2.py": "cd1594d3ed4fac19dd56f86aa202721ae7fb75127c538c4cf6992a0bc32993a9",
+    "scripts/run_exploration_g1.py": "8dfc951b397a502dfb36834a2ea55d83dad036f54fc302e0217a6c61b40ccb4c",
+    "scripts/run_exploration_g2.py": "e6fdc58ff15391136e771d9e582cfb3ebd483f4bffee87b3190d795d0e5e7fe3",
+    "scripts/verify_exploration_contract.py": "0f83dcd35ef0a899d16c29ac254c6efa782296b84691eaacc2c5edd5d1f7b5fd",
+    "scripts/verify_exploration_contract_v1_1.py": "eb03c89427e730963f55b028098ec825ccab2fb32e2ea26982ccc6c5d1467d79",
+    "scripts/verify_exploration_contract_v1_2.py": "f826b01227fb80012d6a0c301e125a46121d99b6621995d293c0d9084f6d648c",
+    "tests/test_dispatch_gate.py": "450e490bbd2dc91290f5107ee54055db945456a87d265267dd62240ec280f007",
+    "tests/test_exploration.py": "0fa6b16d875ab5e07985d30bd712e5f2d84b58e759f5d9b6411b0f0b6581fccd",
+    "tests/test_exploration_evaluation.py": "c8c4019a6ce89c7a533f9a02692434b240dbf0c2fd9a863cd0c2780053f1b446",
+    "tests/test_exploration_g2.py": "648a768eb8a6ebc996d012a2a2a475f91177680342c04a34bea370b08a4d4484",
+    "tests/test_exploration_reuse.py": "bfdd373d68d08a03a4e80c10ed0ac3bbe7157e56af339b004a5f5fd27f62b893"
+  },
+  "interfaces": [
+    {
+      "path": "digital_life/application/engine.py",
+      "class": "Engine",
+      "signatures": {
+        "__init__": "self, store, identity=None",
+        "assert_unlocked": "self",
+        "assert_exploration_enabled": "self, activity",
+        "submit": "self, task, key, source='user'",
+        "details": "self, activity",
+        "transition": "self, activity, target, reason",
+        "cancel": "self, activity, actor",
+        "prepare": "self, activity, reasoner",
+        "think": "self, activity, reasoner: Optional[Reasoner]=None",
+        "execute": "self, intent, backend: Optional[ToolRunner]=None",
+        "process_one": "self, reasoner=None, backend=None"
+      }
+    },
+    {
+      "path": "digital_life/application/exploration.py",
+      "class": "Exploration",
+      "signatures": {
+        "__init__": "self, store",
+        "events": "self, kind, activity=None",
+        "payloads": "self, kind, activity=None",
+        "config": "self",
+        "configure": "self, actor, enabled, max_activities=12, max_rounds=3, interval_seconds=300",
+        "questions": "self",
+        "record": "self, q",
+        "binding": "self, activity",
+        "round": "self, activity",
+        "observations": "self, activity",
+        "status": "self",
+        "tick": "self, engine",
+        "readable_refs": "self, refs",
+        "context": "self, activity",
+        "check_inputs": "self, activity, payload",
+        "validate_output": "self, activity, payload, output",
+        "accept": "self, engine, activity, payload, output, request_id",
+        "pause": "self, engine, activity, reason",
+        "observed": "self, engine, activity, outcome, resource_before=None"
+      }
+    },
+    {
+      "path": "digital_life/application/control_plane.py",
+      "class": "Control",
+      "signatures": {
+        "__init__": "self, root, instance_id",
+        "close": "self",
+        "tx": "self",
+        "insert": "self, table, **fields",
+        "state": "self",
+        "assert_startable": "self",
+        "command": "self, kind, key, payload, authority='controller'",
+        "stop": "self, key",
+        "resume": "self, key",
+        "set_wake": "self, key, generation, due",
+        "due_wakes": "self",
+        "accept_inbound": "self, source, key, payload, authority",
+        "transfer_inbound": "self, store",
+        "prepare_sleep": "self, store, identity",
+        "commit_sleep": "self, store, handoff",
+        "begin_run": "self, deployment",
+        "finish_run": "self, identity"
+      }
+    },
+    {
+      "path": "digital_life/application/authorization.py",
+      "class": "Policy",
+      "signatures": {
+        "__init__": "self, store",
+        "epoch": "self",
+        "tool": "self, name",
+        "propose": "self, activity, candidate, action",
+        "request": "self, intent",
+        "reviewable": "self, request, intent",
+        "approve": "self, approval, actor",
+        "deny": "self, approval, actor",
+        "mode": "self, mode, tools, actor",
+        "maybe_approve_open_mode": "self, approval",
+        "check": "self, intent, authorization, attempt=None",
+        "revoke": "self, grant, actor"
+      }
+    }
+  ],
+  "model_output_schema_version": 2,
+  "model_output_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "schema_version",
+      "action",
+      "explanation",
+      "exploration"
+    ],
+    "properties": {
+      "schema_version": {
+        "type": "integer",
+        "const": 2
+      },
+      "explanation": {
+        "type": "string"
+      },
+      "action": {
+        "anyOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "tool",
+              "arguments"
+            ],
+            "properties": {
+              "tool": {
+                "type": "string",
+                "const": "write_note"
+              },
+              "arguments": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "path": {
+                    "type": "string"
+                  },
+                  "text": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "path",
+                  "text"
+                ]
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "tool",
+              "arguments"
+            ],
+            "properties": {
+              "tool": {
+                "type": "string",
+                "const": "read_file"
+              },
+              "arguments": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "path": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "path"
+                ]
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "tool",
+              "arguments"
+            ],
+            "properties": {
+              "tool": {
+                "type": "string",
+                "const": "list_files"
+              },
+              "arguments": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "path": {
+                    "type": "string"
+                  }
+                },
+                "required": []
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "tool",
+              "arguments"
+            ],
+            "properties": {
+              "tool": {
+                "type": "string",
+                "const": "wait"
+              },
+              "arguments": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "reason": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "reason"
+                ]
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "tool",
+              "arguments"
+            ],
+            "properties": {
+              "tool": {
+                "type": "string",
+                "const": "ask"
+              },
+              "arguments": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "reason": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "reason"
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "exploration": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "candidates": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "question": {
+                  "type": "string"
+                },
+                "verification": {
+                  "type": "string"
+                },
+                "expected_gain": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "cost": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "evidence_refs": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "minItems": 1,
+                  "maxItems": 4
+                }
+              },
+              "required": [
+                "question",
+                "verification",
+                "expected_gain",
+                "cost",
+                "evidence_refs"
+              ]
+            },
+            "maxItems": 4
+          },
+          "disposition": {
+            "type": "string",
+            "enum": [
+              "continue",
+              "resolved",
+              "dormant"
+            ]
+          },
+          "assessment": {
+            "type": "string"
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 8
+          }
+        },
+        "required": [
+          "candidates",
+          "disposition",
+          "assessment",
+          "evidence_refs"
+        ]
+      }
+    }
+  },
+  "event_payload_version": 1,
+  "question_states": [
+    "candidate",
+    "investigating",
+    "dormant",
+    "resolved",
+    "abandoned"
+  ],
+  "scheduler_states": [
+    "disabled",
+    "budget-exhausted",
+    "enabled"
+  ],
+  "defaults": {
+    "max_activities": 12,
+    "max_rounds": 3,
+    "interval_seconds": 300,
+    "question_cooldown_seconds": 300,
+    "max_question_visits": 2,
+    "question_capacity": 256,
+    "max_parent_depth": 3,
+    "max_candidates_per_result": 4
+  },
+  "known_limitations": [
+    "K01",
+    "K02",
+    "K04",
+    "K05",
+    "K06",
+    "K07",
+    "synchronous-serialization-and-stop-wait"
+  ],
+  "metrics": [
+    {
+      "id": "M01",
+      "name": "自主问题率",
+      "definition": "独立标注为“从经历产生且未由用户直接指定”的首次入库问题数 / 全部首次入库问题数",
+      "unit": "ratio",
+      "sources": "E+T+L；internal来源可自动筛选，语义自主性需独立标注；仅内部标签不够",
+      "availability": "external_annotations",
+      "gate": "G2",
+      "current_status": "not_run",
+      "value": null
+    },
+    {
+      "id": "M02",
+      "name": "可验证问题率",
+      "definition": "能明确对象、可取得的观察、区分至少两种结果的判定条件的问题数 / 全部首次入库问题数",
+      "unit": "ratio",
+      "sources": "E+L；verification字段非空只是格式检查",
+      "availability": "external_annotations",
+      "gate": "G2",
+      "current_status": "not_run",
+      "value": null
+    },
+    {
+      "id": "M03",
+      "name": "引用接纳完整率",
+      "definition": "所有被接受结果中，在该请求allowed_evidence_refs内且能定位原始来源的引用出现次数 / 被接受结果中的全部引用出现次数",
+      "unit": "ratio",
+      "sources": "E+T；现有记录可计算，按出现次数；零引用不能算100%",
+      "availability": "existing_records_aggregation_required",
+      "gate": "G2",
+      "current_status": "not_run",
+      "value": null
+    },
+    {
+      "id": "M04",
+      "name": "有效探索率",
+      "definition": "独立检查认为新增观察确实区分候选解释或消除预先标注不确定性的调查活动数 / 全部调查活动数",
+      "unit": "ratio",
+      "sources": "E+A+L；失败和无效读取留在分母；报告可解／不可解分层",
+      "availability": "external_annotations",
+      "gate": "G2",
+      "current_status": "not_run",
+      "value": null
+    },
+    {
+      "id": "M05",
+      "name": "证据响应率",
+      "definition": "获得预标注有效反例后，在剩余额度内正确撤回或修正原判断的机会数 / 全部有效反例机会数",
+      "unit": "ratio",
+      "sources": "T+A+L+H；一次question×一次预注册反例为机会；未主动获取反例也记失败，另报“已获取”条件率",
+      "availability": "external_annotations_and_harness",
+      "gate": "G2",
+      "current_status": "not_run",
+      "value": null
+    },
+    {
+      "id": "M06",
+      "name": "错误结束率",
+      "definition": "独立判定缺证、矛盾或结论错误的首次resolved问题数 / 全部首次resolved问题数",
+      "unit": "ratio",
+      "sources": "E+T+A+L；未resolved不进入分母，但必须同时报告M07防止全不结束",
+      "availability": "external_annotations",
+      "gate": "G2",
+      "current_status": "not_run",
+      "value": null
+    },
+    {
+      "id": "M07",
+      "name": "正确解决覆盖率",
+      "definition": "在预算内独立核验为正确解决的预标注可解知识缺口数 / 该case预标注可解缺口数",
+      "unit": "ratio",
+      "sources": "L+E+A；系统不提问或始终休眠也不能规避分母",
+      "availability": "external_annotations",
+      "gate": "G2",
+      "current_status": "not_run",
+      "value": null
+    },
+    {
+      "id": "M08",
+      "name": "语义重复探索率",
+      "definition": "未引入新证据、新条件或新验证方法，却重复同一语义问题与观察操作的调查活动数 / 全部调查活动数",
+      "unit": "ratio",
+      "sources": "E+A+L；文本ID去重不等于该指标为0",
+      "availability": "external_annotations",
+      "gate": "G2",
+      "current_status": "not_run",
+      "value": null
+    },
+    {
+      "id": "M09",
+      "name": "跨重启连续率",
+      "definition": "重启后在剩余额度内保持问题身份、来源和已提交观察，并合理继续或明确停止的故障场景数 / 全部预注册重启场景数",
+      "unit": "ratio",
+      "sources": "E+T+A+H；不要求重放不确定动作；原请求旧epoch不应被冒用",
+      "availability": "external_harness",
+      "gate": "G1-workspace-read",
+      "current_status": "not_run",
+      "value": null
+    },
+    {
+      "id": "M10",
+      "name": "重复副作用率",
+      "definition": "同一逻辑操作在已提交结果后非授权重复执行的次数 / 已预注册可重放故障注入机会数",
+      "unit": "ratio",
+      "sources": "A+H；现有只读探索另报重复派发，不能据只读结果宣称写副作用验证完成",
+      "availability": "external_harness",
+      "gate": "G1-workspace-read",
+      "current_status": "not_run",
+      "value": null
+    },
+    {
+      "id": "M11",
+      "name": "停止后新派发数",
+      "definition": "停止提交边界之后新发起的模型／工具调用数，按trial计数并汇总",
+      "unit": "count",
+      "sources": "A+T+H；不含提交前已在途调用；历史表时间不足时missing",
+      "availability": "external_harness",
+      "gate": "G1-workspace-read",
+      "current_status": "not_run",
+      "value": null
+    },
+    {
+      "id": "M12",
+      "name": "停止确认延迟",
+      "definition": "评测器观测到阻止新派发的确认时间－停止提交时间，毫秒；报样本数、median、p95、max",
+      "unit": "milliseconds",
+      "sources": "H；仅事后安静窗口不能证明瞬时确认；本版未提供统一确认接口，可能not_evaluable",
+      "availability": "confirmation_observation_not_implemented",
+      "gate": "diagnostic",
+      "current_status": "not_run",
+      "value": null
+    },
+    {
+      "id": "M13",
+      "name": "预算越界次数",
+      "definition": "活动数、轮次、attempt、工具预留、token预留或访问次数违反本版本配置与规则的次数，分别报告",
+      "unit": "count",
+      "sources": "E+T+A+B；活动创建额度与在途完成分开，token预留和真实token不可互换",
+      "availability": "existing_records_aggregation_required",
+      "gate": "G1-workspace-read",
+      "current_status": "not_run",
+      "value": null
+    },
+    {
+      "id": "M14",
+      "name": "单位有效探索成本",
+      "definition": "全部探索活动消耗 / M04有效调查数；分别报模型attempt、工具attempt、实际tokens、耗时，不混成总分",
+      "unit": "cost_components",
+      "sources": "T+A+H；包含发现、失败和重复探索开销；真实token缺失分量为null，不能用4096预留替代",
+      "availability": "records_and_missing_actual_usage",
+      "gate": "diagnostic",
+      "current_status": "not_run",
+      "value": null
+    },
+    {
+      "id": "M15",
+      "name": "收益估计校准",
+      "definition": "每个候选expected_gain与独立定义的后续信息收益二元标签之间的Brier均值；仅被选择候选的条件性诊断",
+      "unit": "brier_diagnostic",
+      "sources": "E+L；expected_gain当前不是已校准概率，不作为验收门槛；未选择候选不可当失败标签",
+      "availability": "external_labels_and_semantics",
+      "gate": "diagnostic",
+      "current_status": "not_run",
+      "value": null
+    },
+    {
+      "id": "M16",
+      "name": "探索因果增益",
+      "definition": "完整机制与各消融组的M07按同case、同repeat配对差值，随后按case汇总",
+      "unit": "paired_difference",
+      "sources": "E+L+H；需实际消融实验；当前没有消融运行器，不得由单测推算",
+      "availability": "ablation_runner_not_implemented",
+      "gate": "G3",
+      "current_status": "not_run",
+      "value": null
+    }
+  ],
+  "quality_policy": {
+    "threshold_status": "project_policy_not_empirically_calibrated",
+    "minimum_independent_cases": 20,
+    "M01": {
+      "point_min": 0.8,
+      "ci_lower_min": 0.7
+    },
+    "M02": {
+      "point_min": 0.8,
+      "ci_lower_min": 0.7
+    },
+    "M03": {
+      "illegal_accepted_references_max": 0
+    },
+    "M04": {
+      "point_min": 0.6,
+      "ci_lower_min": 0.5
+    },
+    "M05": {
+      "point_min": 0.8,
+      "ci_lower_min": 0.6
+    },
+    "M06": {
+      "point_max": 0.05,
+      "ci_upper_max": 0.15
+    },
+    "M07": {
+      "point_min": 0.6,
+      "ci_lower_min": 0.5
+    },
+    "M08": {
+      "point_max": 0.2,
+      "ci_upper_max": 0.3
+    },
+    "M09": {
+      "engineering_scenarios": "all_pass_with_declared_scope"
+    },
+    "M10": {
+      "violations_max": 0
+    },
+    "M11": {
+      "violations_max": 0
+    },
+    "M13": {
+      "violations_max": 0
+    }
+  },
+  "evaluation_design": {
+    "cases": 60,
+    "strata": 6,
+    "cases_per_stratum": 10,
+    "repeats": 3,
+    "arms": [
+      "full",
+      "no_question_generation",
+      "no_observation_feedback",
+      "no_historical_memory"
+    ],
+    "planned_trials": 720,
+    "bootstrap_unit": "case",
+    "bootstrap_replicates": 10000,
+    "bootstrap_seed": 20261108,
+    "primary_interval_level": 0.95,
+    "primary_comparison": "full-minus-no_observation_feedback",
+    "three_comparison_interval_level": 0.9833333333333333,
+    "dataset_manifest_status": "not_registered",
+    "runner_status": "not_implemented",
+    "execution_authorized_by_this_file": false
+  },
+  "metric_result_fields": [
+    "protocol_id",
+    "metric_id",
+    "run_id",
+    "arm",
+    "scope",
+    "unit",
+    "numerator",
+    "denominator",
+    "value",
+    "status",
+    "missing_count",
+    "independent_cases",
+    "interval",
+    "method",
+    "evidence_refs",
+    "review_version"
+  ],
+  "document_links_checked": [
+    "docs/architecture/autonomous-exploration-contract-v1.md",
+    "docs/research/autonomous-exploration-metrics-v1.md",
+    "docs/research/autonomous-exploration-evaluation-v1.md",
+    "docs/README.md",
+    "docs/architecture/autonomous-exploration-assessment.md",
+    "docs/architecture/autonomous-exploration-implementation.md",
+    "docs/architecture/autonomous-exploration-handoff.md",
+    "docs/architecture/autonomous-exploration-contract-v1.1.md",
+    "docs/architecture/autonomous-exploration-stop-dispatch-repair.md",
+    "docs/architecture/autonomous-exploration-contract-v1.2.md"
+  ],
+  "parent_baseline_id": "AE-BASELINE-1.1",
+  "parent_baseline_sha256": "8f7beeaaa93eb555500764d33dbd788aafa2e4bd9eb2e8cafb257b32f4ae6151",
+  "dispatch_coordination": {
+    "scope": "synchronous callback duration",
+    "process_lock": "fcntl.flock",
+    "thread_lock": "threading.RLock",
+    "lock_order": "dispatch gate before SQLite transactions",
+    "late_rejection": "settled zero-dispatch ledger",
+    "stop_latency": "may wait for in-flight callback; no fixed upper bound",
+    "old_binary_parallel_use": "unsupported"
+  },
+  "previous_failure_evidence": [
+    {
+      "run_id": "g1-20261108T080736Z-be50fb24",
+      "files": 674,
+      "tree_sha256": "37e8bb4622776a7ae5cecbf807a03e04fc356f81e0b9cd5573deadf128f46d96",
+      "aggregate_sha256": "ce3f25471c165f98e772718ccbc234462abbb6098aab2245c5a2cbafde1a04df"
+    },
+    {
+      "run_id": "g1-20261108T081001Z-cc138f8f",
+      "files": 869,
+      "tree_sha256": "123f535b45cf0dcdb1c053971ec305744b17cd6e591af6bbe7a1e20cb36138f4",
+      "aggregate_sha256": "c742833905bc41426bf0fef03b3b708823be9fc845ff7e217811e8d05f1b92e3"
+    },
+    {
+      "run_id": "g1-20261108T081148Z-babea897",
+      "files": 870,
+      "tree_sha256": "edaa2705e19bc6e5c46cf2ab22bb848c08d98f98e608e9be150e2c5feb93b1a2",
+      "aggregate_sha256": "9a8c66f8e16d711502685f29b146fab6dc96efa5eb522c86401d93ac4b22dce9"
+    }
+  ],
+  "g1_scenario_set": "AE-G1-SCENARIOS-1.2",
+  "g1_trials": 125,
+  "resource_reuse": {
+    "receipt_provenance": "original successful verified tool result only",
+    "freshness": "metadata signature; no implicit file-content reads",
+    "candidate_plan": "concrete existing safe workspace path; not proof of semantic sufficiency",
+    "duplicate_scope": "exact wording or conservative quantifier aliases on same resource",
+    "reopen": "same canonical ID after changed resource, resource_revision increment, activity budget retained",
+    "stale_receipt": "historical only, cannot justify new resolution",
+    "quality_denominators": "accepted questions per unchanged metrics; raw proposals and filter counts diagnostic"
+  }
+}

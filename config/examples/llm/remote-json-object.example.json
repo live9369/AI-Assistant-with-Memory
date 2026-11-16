@@ -1,0 +1,13 @@
+{
+  "backend": "remote_chat",
+  "enabled": false,
+  "model": "REPLACE_WITH_MODEL_ID",
+  "base_url": "https://llm.example.com/v1",
+  "api_key_env": "DIGITAL_LIFE_LLM_API_KEY",
+  "timeout": 120,
+  "max_output_tokens": 2048,
+  "context_window": 8192,
+  "temperature": 0,
+  "response_format": "json_object",
+  "token_parameter": "max_tokens"
+}

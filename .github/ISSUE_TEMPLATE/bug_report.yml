@@ -1,0 +1,31 @@
+name: Bug report / 问题反馈
+description: Report a reproducible problem using synthetic data.
+body:
+  - type: markdown
+    attributes:
+      value: Do not include passwords, tokens, databases, private conversations or full model inputs. Use the private security reporting route for sensitive vulnerabilities.
+  - type: input
+    id: version
+    attributes:
+      label: Revision and environment / 版本与环境
+      description: Commit or release, OS, Python, SQLite and model backend. No credentials.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal reproduction / 最小复现
+      description: Commands and synthetic input; say whether a fresh instance reproduces it.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual behavior / 预期与实际结果
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Sanitized error and timing / 脱敏错误与耗时
+      description: Error code and stage duration, not complete private logs.

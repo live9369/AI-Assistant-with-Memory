@@ -1,0 +1,23 @@
+# PF04 按需共享事实读取：实施记录
+
+状态：局部实现与37项针对性检查通过，等待PF05与全量统一验收；不是完整优化完成结论。
+
+实施位置：`tool_learning_readset.py`、`tool_learning_eligibility.py`、`tool_learning_runtime_owners.py`。新增内部PhaseReadSet只在准确本地LocalEligibility的verification_boundary安装，未知子类不自动启用。固定查询目录覆盖来源kind、scope epoch、barrier原行、指定修订、修订owner、snapshot bridge、consumer依赖行与artifact位置。它们仅是事实，不生成资格许可；所有原逐消费者判断、逻辑节点与行上限继续执行。
+
+读取按需合并相同完整查询参数；有序结果保持sqlite.Row不可变对象。首次物理读取仍由原meter逐行计量；后续同阶段命中不伪造物理读取。与设计里的64行分批不同，实际采用逐行yield：预取64行会在原逻辑预算耗尽前额外读取，可能改变失败位置和计量，所以保留原迭代行为。只有完整消费成功的行集可登记缓存，部分结果不保存。
+
+最多512个查询键、4MiB编码键和结果；超出不保存，走原查询。工件跟踪上限512，溢出禁用本阶段后续复用并清材料缓存，下一合法clear／新阶段重新建立。该限制不提高业务cap，也不以删除输入换性能。
+
+独立只读SQLite连接监视data_version，以发现调用连接旧事务看不见的其它连接提交。另检查主库／WAL与控制库／WAL文件状态、数据库路径dev/ino，以及跟踪工件的文件状态。其它连接变化与控制变化终止阶段，本连接写入清空事实；阶段进入／退出清理原meter的artifact及metadata缓存，避免先前阶段材料被当作本阶段首次完整性读取。_check入口／出口全检查；本地owner memo命中也检查数据库与控制新鲜度，工件全集核验保留在_check和阶段边界。
+
+阶段退出关闭观察连接、清空所有事实。复制ContextVar不能复活关闭阶段。实际模型与通用回调原边界未删除；阶段共享不跨调用。
+
+## 已运行局部检查
+
+`python3 -m unittest tests.test_tool_learning_readset tests.test_tool_learning_eligibility tests.test_tool_learning_runtime.ImmutableReferenceBoundaryTests`：37项通过，0失败／错误。另旧性能与引用测试14项通过、新readset+性能21项通过。
+
+新10项覆盖同需求只读取一次、参数不混用、未知查询拒绝、本连接写入失效、其它连接在旧事务提交、真正子进程提交、主库路径替换、控制文件变化、同inode工件改写与symlink、异常／嵌套／复制context，以及缓存容量与真实meter命中不重复收费。
+
+早期三项测试尝试UPDATE immutable registry，被既有trigger正确阻止；随后改为独立合成probe表注入提交，失败日志不作为产品失败或通过依据。最终37项使用修正夹具。
+
+完整Engine局部中间版本在54.707秒失败：phase内本连接写入时已更新total_changes，但提交后observer才看到版本变化，下一次检查被误判为外部变化。该结果不纳入速度验收，也不构成PF04完整通过。必须在合法写事务结束时重建共享阶段／清除旧memo，或采用等价安全方案，再重新执行完整Engine。该运行载入了较重的全工件逐authority检查，不代表最后优化计时。PF05后需要最终冻结源码重新验证。仍需关注blobs父目录替换、更多跨边界失效与完整内容对照，交由PF05／PF06与统一验收补齐。

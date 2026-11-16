@@ -1,0 +1,63 @@
+# 计算阶段来源事实共享设计 V0.1
+
+状态：实施前详细设计。只修改Engine、contexts、meter及新增测试；readset由并行agent接入约定接口。不改变caps、.5份额、状态或历史数量，不执行完整think。
+
+## 问题与范围
+
+真实连续第二轮已进入calculate，但States.snapshot多次读取不同state observation时，多个Evidence指向同一首轮thought_result，重复准备巨大上游图，原calculated-contexts扫描限额耗尽。不能按来源ID跳过后续observation：它们的selector、版本和真实使用都可能不同。
+
+只在collector.installed(meter)内部包住固定calculate函数，安装exact LocalEligibility的verification_boundary。calculate调用本地激活、配置和上下文计算；SelfMaintenance.context不调用tick/repair/工具，TaskLoop/Exploration.context不调用外部模型或工具。前置before_context_calculation守卫与最终before_calculated_material_retention均在此共享阶段外。每个collector.observe仍执行原snapshot capture及原资格检查，末尾全部unique-source再检不删。
+
+安装期间临时令source._verified=None，禁用本地owner已有的许可／版本判定memo；退出恢复原值。共享的只有物料／映射／图准备事实，不共享source允许结论。
+
+## 逻辑使用与物理读取
+
+固定SQL事实命中时仍须通知row_observer，逐消费行懒通知，不额外扣物理SQL行／字节。新meter.notify_logical_row只回调，不consume或伪计实际读取；真实Cursor仍先按原方式consume再通知。readset并行接入此接口，保留partial与LIMIT行为。
+
+真实domain查询期间DomainReadCollector.busy=False；此时Reference映射、prepared node和整图shortcut若跳过原SQL，会遗漏应捕获的来源，必须禁用或完整重放。前置守卫阶段的缓存不能冒充稍后计算的使用记录。
+
+原DomainReadCollector在技术性来源检查期间busy=True，原row_observer本来立即return。这段区间可以复用纯映射／prepared metadata／图事实，但不能减少每次资格判断。通过明确ContextVar作用域声明该事实，而不猜任意observer的busy字段：
+
+- 仅exact DomainReadCollector、busy=True、当前meter.row_observer确实为该实例原on_row回调时允许受信suppression。
+- ContextVar绑定当前meter、确切observer身份和collector；未知／替换observer一律视为需要逻辑捕获。
+- 异常／嵌套恢复；关闭状态会使复制context不能复活suppression。
+- logical_observer_required()为True时禁纯Reference memo；readset同时禁prepared／graph shortcut。fixed facts命中继续逐行通知。
+- 有任何observer时metadata投影仍保留原完整行，此轮不扩大字段投影优化。
+
+## 接口分工
+
+本agent：meter.notify_logical_row(row)、logical_observer_required()和受信suppression作用域；contexts在原busy=True区间接入；Engine仅calculate外围共享boundary。
+
+并行readset agent：exact／complete-prefix facts命中逐行logical通知，prepared／graph admission与命中按logical_observer_required禁shortcut；不改Engine/contexts/meter。两方接入前不运行依赖尚未存在接口的代码。
+
+## 差分与故障验证
+
+1. exact collector的原busy=False查询、共享facts命中保留真实来源；未知observer不获得suppression；复制context、异常、嵌套清理。
+2. busy=True技术核验可复用纯Ref事实，但真实SQL计量只对实际行收费，逻辑通知不重复计物理。
+3. 所有原per-use source/version权限方法仍执行；同连接写、其它连接提交、控制停止不得沿用旧事实。
+4. 全八模块calculate旧路径和新路径差分：来自相同新合成基线的独立临时库，固定合成UUID／时钟，真实monotonic计量，比较全部计算内容、来源tokens集合、snapshot selector/value/native_revision/version及原状态／历史保留。仅允许实际metadata查询／读取减少，不能删来源或掩盖差异。
+5. Engine真实_contexts入口验证前守卫、calculate共享和末尾再检阶段分离；不在模型／工具调用周围持有共享phase。新阶段限额仍取原机会，不提高预算或重置未知消耗。
+
+后续continuous完整验收由统一冻结后的PF07执行，本设计的局部测试不替代真实连续第二轮。
+
+## 实施与独立验证结果
+
+状态：产品及新测试完成，等待统一PF06冻结与真实continuous复验。未执行完整think，未改任何cap或.5份额。
+
+本agent修改Engine、contexts、meter：仅calculate阶段安装共享事实boundary；source._verified在该范围为None，每次source与version判断仍执行；busy技术校验使用受信ContextVar，未知／替换observer不受信；纯Ref memo按logical_observer_required决策；实际Cursor计量后通知与缓存逻辑通知分离。并行agent修改readset、runtime_owners、store：固定facts命中懒逻辑通知，prepared／graph按同接口限制，关闭phase后旧iterator拒绝，presence查询复用但真实domain需要id的路径保留原行。共同代码已整合测试，未并发编辑彼此独占文件。
+
+新增tests/test_tool_learning_calculation_sharing.py共12项：11项边界／逻辑通知／per-use／selector与native CAS／故障用例，加1项全八模块差分。与collection4、projection13、cached logical及配置reader和旧snapshot／meter／预算相关回归合计59项唯一条件通过。一个错误猜测的测试模块名造成loader error，保留targeted-core.log，随后实际test_tool_learning_cached_logical_rows已在compatible组通过；没有隐藏或删除产品断言。
+
+全八模块差分从相同新合成基线复制为两个独立临时SQLite及工件库，固定合成clock、UUID和磁盘输入，真实monotonic与原账户计量。先真实_features，再真实_contexts；旧路径只关闭新的calculate共享boundary。全部values、features、fields、live、new_fields、bundle依赖、使用序列、snapshot与caps严格相等，无业务字段删除或宽松normalizer。
+
+- 实际calculated阶段扫描35743到22388，字节11216353到7060262。
+- 后续live阶段扫描150597保持不变；不能把阶段改善当作整次思考改善。
+- 两阶段扫描合计186340到172985，约减少7.2%；calculated阶段约减少37.4%。
+- 384次有效UUID使用尝试序列相同（技术root仍按原规则不作为独立事实），4614次权限使用序列相同，73个snapshot及258条read/delete来源绑定完全相同，UUID调用2086次相同。
+- snapshot完整selector、value、native_revision与snapshot_revision均比较；前guard和末尾unique-source retention保持原检查，最终retention不在calculate共享phase内。
+
+full-diff-01严格失败记录保留：唯一业务差异来自最初未固定的真实磁盘free输入；随机entry在固定UUID前创建导致技术nonce不同；原observe立即忽略的PRAGMA整数被夹具计入尝试。修正环境输入／确定性入口，并只计原collector会接收的合法非created UUID后，full-diff-02严格通过。没有修改产品以掩盖真实来源或字段差异。首unit对identity_instances错误期待native CAS，后改用CAS_FIELDS实际声明的activities检验native版本，原selector与版本断言仍保留。
+
+证据目录outputs/acceptance/performance-round2/calculation-sharing/包含所有失败、核心及兼容测试日志和完整旧／新差分JSON。result.json为交接时源码摘要及结果，不声称并行期间全项目冻结。真实continuous03的原974543扫描失败仍保留；本局部结果不证明完整第二轮已经通过，须统一冻结后实测。
+
+统一复验结果：第一次named11保留发现4处受信F1事务边界回归，未放宽原assert；并行负责人修复明确commit／rollback通知及旧证明清理后，named12原247加新14项共261个唯一测试全部通过，源码稳定。全八模块严格差分包含在该统一运行；原continuous03失败及stage-vs-whole测量限制保留，真实连续结论以PF07为准。

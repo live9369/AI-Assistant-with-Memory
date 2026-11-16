@@ -1,0 +1,99 @@
+{
+  "dataset_id": "AE-G2-DEVELOPMENT-1.0",
+  "split": "development",
+  "cases": [
+    {
+      "case_id": "P01",
+      "stratum": "A",
+      "topic": "acoustic-grid",
+      "memories": [
+        "Observed echoes were separated by two ticks. More measurements are notes/grid.json."
+      ],
+      "files": {
+        "notes/grid.json": "{\"echo_ticks\": [0, 2, 4, 6, 8]}"
+      },
+      "world_events": [],
+      "fault": null
+    },
+    {
+      "case_id": "P02",
+      "stratum": "B",
+      "topic": "ticket-colors",
+      "memories": [
+        "I currently believe all balcony tickets are silver. The current issue log is notes/tickets.json."
+      ],
+      "files": {
+        "notes/tickets.json": "{\"balcony\": [\"silver\", \"gold\"]}"
+      },
+      "world_events": [],
+      "fault": null
+    },
+    {
+      "case_id": "P03",
+      "stratum": "C",
+      "topic": "paint-dabs",
+      "memories": [
+        "The first remembered dabs were ochre and blue. Remaining observations are notes/dabs.json."
+      ],
+      "files": {
+        "notes/dabs.json": "{\"colors\": [\"ochre\", \"blue\", \"green\", \"ochre\", \"violet\", \"blue\"]}"
+      },
+      "world_events": [],
+      "fault": null
+    },
+    {
+      "case_id": "P04",
+      "stratum": "D",
+      "topic": "unsigned-meeting-note",
+      "memories": [
+        "A short note is stored in notes/note.json."
+      ],
+      "files": {
+        "notes/note.json": "{\"text\": \"Bring the folder tomorrow.\", \"written_on\": null}"
+      },
+      "world_events": [],
+      "fault": null
+    },
+    {
+      "case_id": "P05",
+      "stratum": "E",
+      "topic": "locker-reassignment",
+      "memories": [
+        "My current belief assigns the folder to locker L. The active record is notes/locker.json."
+      ],
+      "files": {
+        "notes/locker.json": "{\"revision\": 1, \"locker\": \"L\"}"
+      },
+      "world_events": [
+        {
+          "when": "before_first_tool_dispatch",
+          "path": "notes/locker.json",
+          "replacement": "{\"revision\": 2, \"locker\": \"N\"}"
+        },
+        {
+          "when": "after_first_observation",
+          "operation": "restart"
+        }
+      ],
+      "fault": null
+    },
+    {
+      "case_id": "P06",
+      "stratum": "F",
+      "topic": "transient-stage-read",
+      "memories": [
+        "The stage arrangement is filed in notes/stage.json."
+      ],
+      "files": {
+        "notes/stage.json": "{\"left\": \"harp\", \"right\": \"drum\"}"
+      },
+      "world_events": [],
+      "fault": {
+        "kind": "failed",
+        "count": 1
+      }
+    }
+  ],
+  "authored_by": "Codex /root",
+  "independent_material_review": "pending"
+}

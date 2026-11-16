@@ -1,0 +1,2604 @@
+{
+  "manifest_id": "TL-IM01-TRACEABILITY-0.1",
+  "date": "2026-11-09",
+  "contract_id": "TL-LOOP-0.1",
+  "scope": "IM01 static traceability and historical source comparison only",
+  "freeze_record": "docs/architecture/tool-observation-learning-freeze-v0.1.json",
+  "freeze_record_sha256": "770961cb52f9ce8af2534089c7d190781c51f5217d307d9fdae6ea4e771c2f09",
+  "implementation_plan": "docs/plan/tool-observation-learning-implementation-status-v0.1.json",
+  "source_verification": [
+    {
+      "group": "normative_documents",
+      "path": "docs/architecture/tool-observation-learning-contract-v0.1.md",
+      "expected_sha256": "b3a0b58af3c20936558ca509482aa2df3d2c08f2de81b840a6b03c469dc52c6a",
+      "actual_sha256": "b3a0b58af3c20936558ca509482aa2df3d2c08f2de81b840a6b03c469dc52c6a",
+      "matches": true,
+      "interpretation": "normative_binding"
+    },
+    {
+      "group": "normative_documents",
+      "path": "docs/architecture/tool-observation-learning-storage-v0.1.md",
+      "expected_sha256": "d43e1a2619360518daefff502b5dd5b1a3a05023c66cd9a7e0eceb4078ef2088",
+      "actual_sha256": "d43e1a2619360518daefff502b5dd5b1a3a05023c66cd9a7e0eceb4078ef2088",
+      "matches": true,
+      "interpretation": "normative_binding"
+    },
+    {
+      "group": "normative_documents",
+      "path": "docs/architecture/tool-observation-learning-q12-freeze-review-v0.1.md",
+      "expected_sha256": "b7e4a88c2bd76487d6b77c05e00957b176217c8d286eb3201fc144d272e3ba19",
+      "actual_sha256": "b7e4a88c2bd76487d6b77c05e00957b176217c8d286eb3201fc144d272e3ba19",
+      "matches": true,
+      "interpretation": "normative_binding"
+    },
+    {
+      "group": "decision_sources",
+      "path": "docs/architecture/tool-observation-learning-q01-decision-v0.1.md",
+      "expected_sha256": "a0e7b0f45e6b88decc6e7c6cabbfcd86ae966fff7f6e8d191e6059d3b8ab75c7",
+      "actual_sha256": "a0e7b0f45e6b88decc6e7c6cabbfcd86ae966fff7f6e8d191e6059d3b8ab75c7",
+      "matches": true,
+      "interpretation": "normative_binding"
+    },
+    {
+      "group": "decision_sources",
+      "path": "docs/architecture/tool-observation-learning-q02-decision-v0.1.md",
+      "expected_sha256": "28be38edf40aeb3ebbe6c93a9feaa09b4968f0b670a943989b11616ca4f8e28d",
+      "actual_sha256": "28be38edf40aeb3ebbe6c93a9feaa09b4968f0b670a943989b11616ca4f8e28d",
+      "matches": true,
+      "interpretation": "normative_binding"
+    },
+    {
+      "group": "decision_sources",
+      "path": "docs/architecture/tool-observation-learning-q03-decision-v0.1.md",
+      "expected_sha256": "01d58ca453ac081157c051eac9c1d0404699da03725df470494dcf05dd1691c2",
+      "actual_sha256": "01d58ca453ac081157c051eac9c1d0404699da03725df470494dcf05dd1691c2",
+      "matches": true,
+      "interpretation": "normative_binding"
+    },
+    {
+      "group": "decision_sources",
+      "path": "docs/architecture/tool-observation-learning-q04-decision-v0.1.md",
+      "expected_sha256": "7a75c085fefbdb6ff4c2b7bb15ea93226cac9f299203740b18e4853909684db1",
+      "actual_sha256": "7a75c085fefbdb6ff4c2b7bb15ea93226cac9f299203740b18e4853909684db1",
+      "matches": true,
+      "interpretation": "normative_binding"
+    },
+    {
+      "group": "decision_sources",
+      "path": "docs/architecture/tool-observation-learning-q05-decision-v0.1.md",
+      "expected_sha256": "1a60d2eab274b6cec89aa1ea5178775ce4fd09dcad5fad554ec83c328cfd6bdf",
+      "actual_sha256": "1a60d2eab274b6cec89aa1ea5178775ce4fd09dcad5fad554ec83c328cfd6bdf",
+      "matches": true,
+      "interpretation": "normative_binding"
+    },
+    {
+      "group": "decision_sources",
+      "path": "docs/architecture/tool-observation-learning-q06-decision-v0.1.md",
+      "expected_sha256": "93532d18bd02c184d8c9cb1c839808519ad74cf08881628350c14a09d7c7f75e",
+      "actual_sha256": "93532d18bd02c184d8c9cb1c839808519ad74cf08881628350c14a09d7c7f75e",
+      "matches": true,
+      "interpretation": "normative_binding"
+    },
+    {
+      "group": "decision_sources",
+      "path": "docs/architecture/tool-observation-learning-q07-decision-v0.1.md",
+      "expected_sha256": "7049fcd25a019a854d68642e4fb9732963517831560ecbba0762c4a94170be8d",
+      "actual_sha256": "7049fcd25a019a854d68642e4fb9732963517831560ecbba0762c4a94170be8d",
+      "matches": true,
+      "interpretation": "normative_binding"
+    },
+    {
+      "group": "decision_sources",
+      "path": "docs/architecture/tool-observation-learning-q08-decision-v0.1.md",
+      "expected_sha256": "e5ad923928cffd60f987adb83384f1a04e3247a9f7eccf15a52e5857bc31b0b9",
+      "actual_sha256": "e5ad923928cffd60f987adb83384f1a04e3247a9f7eccf15a52e5857bc31b0b9",
+      "matches": true,
+      "interpretation": "normative_binding"
+    },
+    {
+      "group": "decision_sources",
+      "path": "docs/architecture/tool-observation-learning-q09-decision-v0.1.md",
+      "expected_sha256": "4f9661a490da80c8d959a453a5acb630fb39e0ff5dac4e1a30491046726422ad",
+      "actual_sha256": "4f9661a490da80c8d959a453a5acb630fb39e0ff5dac4e1a30491046726422ad",
+      "matches": true,
+      "interpretation": "normative_binding"
+    },
+    {
+      "group": "decision_sources",
+      "path": "docs/architecture/tool-observation-learning-q10-decision-v0.1.md",
+      "expected_sha256": "71d767c5e350add9ad8c5eca769ed68c9886cf6ca8da73053ac3d702906a33b4",
+      "actual_sha256": "71d767c5e350add9ad8c5eca769ed68c9886cf6ca8da73053ac3d702906a33b4",
+      "matches": true,
+      "interpretation": "normative_binding"
+    },
+    {
+      "group": "decision_sources",
+      "path": "docs/architecture/tool-observation-learning-q11-decision-v0.1.md",
+      "expected_sha256": "cef0e2618648c47c0f03608ed8147105bb9948bb798de6a51bf735635234d074",
+      "actual_sha256": "cef0e2618648c47c0f03608ed8147105bb9948bb798de6a51bf735635234d074",
+      "matches": true,
+      "interpretation": "normative_binding"
+    },
+    {
+      "group": "code_snapshot",
+      "path": "digital_life/application/engine.py",
+      "expected_sha256": "6827122a828fe79b2286bf8ba7386c7464205f1fc77b518ef2f26ee91f680df5",
+      "actual_sha256": "6827122a828fe79b2286bf8ba7386c7464205f1fc77b518ef2f26ee91f680df5",
+      "matches": true,
+      "interpretation": "historical_code_snapshot_not_automatic_blocker"
+    },
+    {
+      "group": "code_snapshot",
+      "path": "digital_life/application/cognition_experience.py",
+      "expected_sha256": "edb115aff350b16b6b5562c991ba65a84227e09f3d28424cf4631a88ce45d23a",
+      "actual_sha256": "edb115aff350b16b6b5562c991ba65a84227e09f3d28424cf4631a88ce45d23a",
+      "matches": true,
+      "interpretation": "historical_code_snapshot_not_automatic_blocker"
+    },
+    {
+      "group": "code_snapshot",
+      "path": "digital_life/application/cognitive_updates.py",
+      "expected_sha256": "c70b49a6cc7096b4e4d136e25adf72f5b9572c607d70644026ed645773899437",
+      "actual_sha256": "c70b49a6cc7096b4e4d136e25adf72f5b9572c607d70644026ed645773899437",
+      "matches": true,
+      "interpretation": "historical_code_snapshot_not_automatic_blocker"
+    },
+    {
+      "group": "code_snapshot",
+      "path": "digital_life/application/services/cognition.py",
+      "expected_sha256": "1e072ff32352ce66ec867b1ce08aaa2906d9d8c7512c99479f2a1d23aa1a40bc",
+      "actual_sha256": "1e072ff32352ce66ec867b1ce08aaa2906d9d8c7512c99479f2a1d23aa1a40bc",
+      "matches": true,
+      "interpretation": "historical_code_snapshot_not_automatic_blocker"
+    },
+    {
+      "group": "code_snapshot",
+      "path": "digital_life/application/services/learning.py",
+      "expected_sha256": "b253ea6c66c93732e42a83966fdafdb9ce58c2e24005f26ff6469048f2677e81",
+      "actual_sha256": "b253ea6c66c93732e42a83966fdafdb9ce58c2e24005f26ff6469048f2677e81",
+      "matches": true,
+      "interpretation": "historical_code_snapshot_not_automatic_blocker"
+    },
+    {
+      "group": "code_snapshot",
+      "path": "digital_life/application/services/memory.py",
+      "expected_sha256": "08baabc02b7fd0e65bfdfc56b698f4e476e2858c7134fe89f841f80e49c7d374",
+      "actual_sha256": "08baabc02b7fd0e65bfdfc56b698f4e476e2858c7134fe89f841f80e49c7d374",
+      "matches": true,
+      "interpretation": "historical_code_snapshot_not_automatic_blocker"
+    },
+    {
+      "group": "code_snapshot",
+      "path": "digital_life/application/self_feedback.py",
+      "expected_sha256": "aa566d29595a957d0add38006a2337cf5800ed40a647a07c75753433f95d876c",
+      "actual_sha256": "aa566d29595a957d0add38006a2337cf5800ed40a647a07c75753433f95d876c",
+      "matches": true,
+      "interpretation": "historical_code_snapshot_not_automatic_blocker"
+    },
+    {
+      "group": "code_snapshot",
+      "path": "digital_life/application/experience_measurement.py",
+      "expected_sha256": "c8b203bc53ab337ada8b02e280ce7f188ed70fd933ed776591e0b96a4310f2e0",
+      "actual_sha256": "c8b203bc53ab337ada8b02e280ce7f188ed70fd933ed776591e0b96a4310f2e0",
+      "matches": true,
+      "interpretation": "historical_code_snapshot_not_automatic_blocker"
+    },
+    {
+      "group": "code_snapshot",
+      "path": "digital_life/application/exploration_evidence.py",
+      "expected_sha256": "91c45918d9afa9052b89fe78c7e5298d5d1faa349cba5c54c42c0b6d202b1df6",
+      "actual_sha256": "91c45918d9afa9052b89fe78c7e5298d5d1faa349cba5c54c42c0b6d202b1df6",
+      "matches": true,
+      "interpretation": "historical_code_snapshot_not_automatic_blocker"
+    },
+    {
+      "group": "code_snapshot",
+      "path": "digital_life/application/learning_pipeline.py",
+      "expected_sha256": "bcce59a3b297fee6369bb50d6af6deb68a356a3917d1e86b0696198aa51626ed",
+      "actual_sha256": "bcce59a3b297fee6369bb50d6af6deb68a356a3917d1e86b0696198aa51626ed",
+      "matches": true,
+      "interpretation": "historical_code_snapshot_not_automatic_blocker"
+    },
+    {
+      "group": "code_snapshot",
+      "path": "digital_life/application/memory_quality.py",
+      "expected_sha256": "03ef0a0a7edecdd2570473de2439f6411c60a152059d83f226beebe363412551",
+      "actual_sha256": "03ef0a0a7edecdd2570473de2439f6411c60a152059d83f226beebe363412551",
+      "matches": true,
+      "interpretation": "historical_code_snapshot_not_automatic_blocker"
+    },
+    {
+      "group": "code_snapshot",
+      "path": "digital_life/application/privacy.py",
+      "expected_sha256": "0a7e9cbead6397169f612b4cd58a91314cd2242eb0440a90091a7ef164459aad",
+      "actual_sha256": "0a7e9cbead6397169f612b4cd58a91314cd2242eb0440a90091a7ef164459aad",
+      "matches": true,
+      "interpretation": "historical_code_snapshot_not_automatic_blocker"
+    },
+    {
+      "group": "code_snapshot",
+      "path": "digital_life/application/recovery.py",
+      "expected_sha256": "668e1527751c7792596173a57169b6ffe2f503b604c1a90ba6821f87e9cc28f5",
+      "actual_sha256": "668e1527751c7792596173a57169b6ffe2f503b604c1a90ba6821f87e9cc28f5",
+      "matches": true,
+      "interpretation": "historical_code_snapshot_not_automatic_blocker"
+    },
+    {
+      "group": "code_snapshot",
+      "path": "digital_life/application/scheduling.py",
+      "expected_sha256": "6a937ac0345c4a25a3523228eba4ad16b5146bcf184ede2726dc3be9006f8e1a",
+      "actual_sha256": "6a937ac0345c4a25a3523228eba4ad16b5146bcf184ede2726dc3be9006f8e1a",
+      "matches": true,
+      "interpretation": "historical_code_snapshot_not_automatic_blocker"
+    },
+    {
+      "group": "code_snapshot",
+      "path": "digital_life/infrastructure/processes/dispatch_gate.py",
+      "expected_sha256": "1b10341f6e789b22d8d9a42b568c57be7150ae4218f96e0b9f1ab0c1266f1abb",
+      "actual_sha256": "1b10341f6e789b22d8d9a42b568c57be7150ae4218f96e0b9f1ab0c1266f1abb",
+      "matches": true,
+      "interpretation": "historical_code_snapshot_not_automatic_blocker"
+    },
+    {
+      "group": "code_snapshot",
+      "path": "digital_life/infrastructure/persistence/sqlite_store.py",
+      "expected_sha256": "d038884e149c562fea9b0e596f6b330f241a733b53df740c96e8a3b83851a289",
+      "actual_sha256": "d038884e149c562fea9b0e596f6b330f241a733b53df740c96e8a3b83851a289",
+      "matches": true,
+      "interpretation": "historical_code_snapshot_not_automatic_blocker"
+    },
+    {
+      "group": "code_snapshot",
+      "path": "digital_life/resources/runtime.sql",
+      "expected_sha256": "edcf2786e6f3d3b8c2d4b5218365da41df3289cc6451034aa400e1c404ee2399",
+      "actual_sha256": "edcf2786e6f3d3b8c2d4b5218365da41df3289cc6451034aa400e1c404ee2399",
+      "matches": true,
+      "interpretation": "historical_code_snapshot_not_automatic_blocker"
+    }
+  ],
+  "summary": {
+    "normative_document_count": 3,
+    "decision_source_count": 11,
+    "historical_code_file_count": 17,
+    "normative_and_decision_hashes_match": true,
+    "historical_code_drift": [],
+    "tables": 19,
+    "operations": 10,
+    "state_axes": 9,
+    "planned_acceptance_scenarios": 76,
+    "current_tl_table_declarations_in_runtime_sql": [],
+    "all_future_acceptance_not_run": true,
+    "formal_instance_accessed": false,
+    "model_or_service_called": false
+  },
+  "table_mappings": [
+    {
+      "id": "IM01-TRACE-T01",
+      "name": "tl_command",
+      "owner": "操作接收所有者",
+      "implementation_tasks": [
+        "IM03",
+        "IM04"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-storage-v0.1.md",
+          "section": "§3 / §8",
+          "term": "tl_command"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/infrastructure/persistence/sqlite_store.py"
+      ],
+      "future_component": "类型化命令/幂等账本",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-T01-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-T01-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-T02",
+      "name": "tl_work",
+      "owner": "M14/协调器",
+      "implementation_tasks": [
+        "IM03",
+        "IM04",
+        "IM05"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-storage-v0.1.md",
+          "section": "§3 / §8",
+          "term": "tl_work"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/scheduling.py",
+        "digital_life/application/engine.py"
+      ],
+      "future_component": "有限学习工作及C0活动/预算绑定",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-T02-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-T02-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-T03",
+      "name": "tl_product",
+      "owner": "M14",
+      "implementation_tasks": [
+        "IM03",
+        "IM04",
+        "IM07"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-storage-v0.1.md",
+          "section": "§3 / §8",
+          "term": "tl_product"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/services/learning.py"
+      ],
+      "future_component": "四类类型化学习产物",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-T03-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-T03-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-T04",
+      "name": "tl_content",
+      "owner": "M03",
+      "implementation_tasks": [
+        "IM03",
+        "IM04",
+        "IM08"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-storage-v0.1.md",
+          "section": "§3 / §8",
+          "term": "tl_content"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/services/cognition.py",
+        "digital_life/application/cognition_experience.py",
+        "digital_life/application/cognitive_updates.py"
+      ],
+      "future_component": "内容对象及当前版本头",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-T04-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-T04-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-T05",
+      "name": "tl_content_revision",
+      "owner": "M03",
+      "implementation_tasks": [
+        "IM03",
+        "IM04",
+        "IM08"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-storage-v0.1.md",
+          "section": "§3 / §8",
+          "term": "tl_content_revision"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/cognition_experience.py",
+        "digital_life/infrastructure/persistence/sqlite_store.py"
+      ],
+      "future_component": "不可变内容修订与版本注册",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-T05-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-T05-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-T06",
+      "name": "tl_decision",
+      "owner": "M03",
+      "implementation_tasks": [
+        "IM03",
+        "IM04",
+        "IM08"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-storage-v0.1.md",
+          "section": "§3 / §8",
+          "term": "tl_decision"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/services/cognition.py",
+        "digital_life/application/cognitive_updates.py"
+      ],
+      "future_component": "八层检查与分轮认知决定",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-T06-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-T06-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-T07",
+      "name": "tl_group",
+      "owner": "M03创建/M04就绪",
+      "implementation_tasks": [
+        "IM03",
+        "IM04",
+        "IM08",
+        "IM09"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-storage-v0.1.md",
+          "section": "§3 / §8",
+          "term": "tl_group"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/infrastructure/persistence/sqlite_store.py"
+      ],
+      "future_component": "互依赖内容/表示组",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-T07-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-T07-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-T08",
+      "name": "tl_handoff",
+      "owner": "M03创建/M04处理",
+      "implementation_tasks": [
+        "IM03",
+        "IM04",
+        "IM09",
+        "IM13"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-storage-v0.1.md",
+          "section": "§3 / §8",
+          "term": "tl_handoff"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/scheduling.py",
+        "digital_life/application/recovery.py"
+      ],
+      "future_component": "持久表示义务、租约与消费确认",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-T08-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-T08-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-T09",
+      "name": "tl_representation",
+      "owner": "M04",
+      "implementation_tasks": [
+        "IM03",
+        "IM04",
+        "IM09"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-storage-v0.1.md",
+          "section": "§3 / §8",
+          "term": "tl_representation"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/services/memory.py",
+        "digital_life/application/memory_quality.py"
+      ],
+      "future_component": "固定内容版本的纯召回表示",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-T09-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-T09-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-T10",
+      "name": "tl_representation_head",
+      "owner": "M04",
+      "implementation_tasks": [
+        "IM03",
+        "IM04",
+        "IM09"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-storage-v0.1.md",
+          "section": "§3 / §8",
+          "term": "tl_representation_head"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/services/memory.py",
+        "digital_life/application/memory_quality.py"
+      ],
+      "future_component": "稳定表示系列及当前映射",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-T10-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-T10-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-T11",
+      "name": "tl_dependency",
+      "owner": "登记消费者/原所有者核对",
+      "implementation_tasks": [
+        "IM03",
+        "IM04",
+        "IM06",
+        "IM11",
+        "IM12"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-storage-v0.1.md",
+          "section": "§3 / §8",
+          "term": "tl_dependency"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/memory_quality.py",
+        "digital_life/application/privacy.py"
+      ],
+      "future_component": "支持/读取/删除依赖图",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-T11-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-T11-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-T12",
+      "name": "tl_source_epoch",
+      "owner": "变更权威域/M12",
+      "implementation_tasks": [
+        "IM03",
+        "IM04",
+        "IM06"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-storage-v0.1.md",
+          "section": "§3 / §8",
+          "term": "tl_source_epoch"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/authorization.py",
+        "digital_life/application/memory_quality.py"
+      ],
+      "future_component": "源scope资格代次",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-T12-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-T12-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-T13",
+      "name": "tl_barrier",
+      "owner": "变更权威域/M12",
+      "implementation_tasks": [
+        "IM03",
+        "IM04",
+        "IM06",
+        "IM12"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-storage-v0.1.md",
+          "section": "§3 / §8",
+          "term": "tl_barrier"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/authorization.py",
+        "digital_life/infrastructure/processes/dispatch_gate.py"
+      ],
+      "future_component": "分原因持久资格屏障",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-T13-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-T13-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-T14",
+      "name": "tl_change",
+      "owner": "合法源生产者/M12",
+      "implementation_tasks": [
+        "IM03",
+        "IM04",
+        "IM06"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-storage-v0.1.md",
+          "section": "§3 / §8",
+          "term": "tl_change"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/authorization.py",
+        "digital_life/application/memory_quality.py"
+      ],
+      "future_component": "合法变更身份及F1原子结果",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-T14-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-T14-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-T15",
+      "name": "tl_propagation",
+      "owner": "各目标业务所有者",
+      "implementation_tasks": [
+        "IM03",
+        "IM04",
+        "IM06",
+        "IM12",
+        "IM13"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-storage-v0.1.md",
+          "section": "§3 / §8",
+          "term": "tl_propagation"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/privacy.py",
+        "digital_life/application/recovery.py"
+      ],
+      "future_component": "F2分域确认/F3核验",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-T15-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-T15-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-T16",
+      "name": "tl_erasure_target",
+      "owner": "M12计划/目标所有者执行",
+      "implementation_tasks": [
+        "IM03",
+        "IM04",
+        "IM12"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-storage-v0.1.md",
+          "section": "§3 / §8",
+          "term": "tl_erasure_target"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/privacy.py",
+        "digital_life/application/memory_quality.py"
+      ],
+      "future_component": "逐目标受管清理及效果验证",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-T16-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-T16-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-T17",
+      "name": "tl_input_dependency",
+      "owner": "请求装配者/当前资格所有者",
+      "implementation_tasks": [
+        "IM03",
+        "IM04",
+        "IM11",
+        "IM12"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-storage-v0.1.md",
+          "section": "§3 / §8",
+          "term": "tl_input_dependency"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/engine.py",
+        "digital_life/infrastructure/processes/dispatch_gate.py",
+        "digital_life/application/privacy.py"
+      ],
+      "future_component": "全输入/输出派生门禁清单",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-T17-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-T17-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-T18",
+      "name": "tl_effect",
+      "owner": "M14",
+      "implementation_tasks": [
+        "IM03",
+        "IM04",
+        "IM14"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-storage-v0.1.md",
+          "section": "§3 / §8",
+          "term": "tl_effect"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/experience_measurement.py",
+        "digital_life/application/services/learning.py",
+        "digital_life/application/cognition_experience.py"
+      ],
+      "future_component": "效果评估及独立测量引用",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-T18-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-T18-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-T19",
+      "name": "tl_recall_item",
+      "owner": "M04",
+      "implementation_tasks": [
+        "IM03",
+        "IM04",
+        "IM10",
+        "IM11"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-storage-v0.1.md",
+          "section": "§3 / §8",
+          "term": "tl_recall_item"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/services/memory.py",
+        "digital_life/application/memory_quality.py"
+      ],
+      "future_component": "新表示与旧文字兼容的检索结果",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-T19-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-T19-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    }
+  ],
+  "operation_mappings": [
+    {
+      "id": "IM01-TRACE-O01",
+      "name": "admit_observation",
+      "owner": "M14",
+      "implementation_tasks": [
+        "IM02",
+        "IM07"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-contract-v0.1.md",
+          "section": "§5",
+          "term": "admit_observation"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/services/learning.py",
+        "digital_life/application/scheduling.py"
+      ],
+      "future_component": "观察准入与分层去重",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-O01-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-O01-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-O02",
+      "name": "assess_observation",
+      "owner": "M14",
+      "implementation_tasks": [
+        "IM02",
+        "IM07"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-contract-v0.1.md",
+          "section": "§5",
+          "term": "assess_observation"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/services/learning.py",
+        "digital_life/application/cognition_experience.py"
+      ],
+      "future_component": "类型化提取/比较/评估",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-O02-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-O02-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-O03",
+      "name": "decide_proposal",
+      "owner": "M03",
+      "implementation_tasks": [
+        "IM02",
+        "IM08"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-contract-v0.1.md",
+          "section": "§5",
+          "term": "decide_proposal"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/services/cognition.py",
+        "digital_life/application/cognitive_updates.py"
+      ],
+      "future_component": "G01—G08及C1接纳",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-O03-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-O03-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-O04",
+      "name": "claim_representation",
+      "owner": "M04",
+      "implementation_tasks": [
+        "IM02",
+        "IM09"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-contract-v0.1.md",
+          "section": "§5",
+          "term": "claim_representation"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/scheduling.py"
+      ],
+      "future_component": "短租约领取固定表示输入",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-O04-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-O04-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-O05",
+      "name": "publish_representation",
+      "owner": "M04",
+      "implementation_tasks": [
+        "IM02",
+        "IM09"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-contract-v0.1.md",
+          "section": "§5",
+          "term": "publish_representation"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/services/memory.py",
+        "digital_life/infrastructure/persistence/sqlite_store.py"
+      ],
+      "future_component": "C2纯表示发布",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-O05-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-O05-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-O06",
+      "name": "recall",
+      "owner": "M04",
+      "implementation_tasks": [
+        "IM02",
+        "IM10"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-contract-v0.1.md",
+          "section": "§5",
+          "term": "recall"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/services/memory.py",
+        "digital_life/application/memory_quality.py"
+      ],
+      "future_component": "有用途的返回与有界回退",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-O06-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-O06-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-O07",
+      "name": "apply_invalidation",
+      "owner": "变更权威域/M12",
+      "implementation_tasks": [
+        "IM02",
+        "IM06"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-contract-v0.1.md",
+          "section": "§5",
+          "term": "apply_invalidation"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/authorization.py",
+        "digital_life/infrastructure/processes/dispatch_gate.py"
+      ],
+      "future_component": "F1屏障和义务",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-O07-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-O07-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-O08",
+      "name": "acknowledge_propagation",
+      "owner": "目标业务所有者",
+      "implementation_tasks": [
+        "IM02",
+        "IM12"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-contract-v0.1.md",
+          "section": "§5",
+          "term": "acknowledge_propagation"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/privacy.py"
+      ],
+      "future_component": "F2/F3分域确认",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-O08-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-O08-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-O09",
+      "name": "resume_work",
+      "owner": "原业务所有者/授权恢复入口",
+      "implementation_tasks": [
+        "IM02",
+        "IM13"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-contract-v0.1.md",
+          "section": "§5",
+          "term": "resume_work"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/recovery.py",
+        "digital_life/application/scheduling.py"
+      ],
+      "future_component": "原工作有限恢复",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-O09-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-O09-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-O10",
+      "name": "record_effect",
+      "owner": "M14",
+      "implementation_tasks": [
+        "IM02",
+        "IM14"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-contract-v0.1.md",
+          "section": "§5",
+          "term": "record_effect"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/experience_measurement.py",
+        "digital_life/application/services/learning.py",
+        "digital_life/application/cognition_experience.py"
+      ],
+      "future_component": "独立效果产物与shadow兼容",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-O10-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-O10-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    }
+  ],
+  "state_mappings": [
+    {
+      "id": "IM01-TRACE-S01",
+      "name": "Work",
+      "owner": "M14/协调器",
+      "implementation_tasks": [
+        "IM02",
+        "IM05",
+        "IM07",
+        "IM08",
+        "IM09",
+        "IM13"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-contract-v0.1.md",
+          "section": "§7 / 规范补充",
+          "term": "Work"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/scheduling.py",
+        "digital_life/application/engine.py"
+      ],
+      "future_component": "逻辑工作阶段/终点",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-S01-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-S01-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-S02",
+      "name": "Handoff",
+      "owner": "M04",
+      "implementation_tasks": [
+        "IM02",
+        "IM09",
+        "IM13"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-contract-v0.1.md",
+          "section": "§7 / 规范补充",
+          "term": "Handoff"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/scheduling.py",
+        "digital_life/application/recovery.py"
+      ],
+      "future_component": "租约表示工作",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-S02-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-S02-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-S03",
+      "name": "Decision",
+      "owner": "M03",
+      "implementation_tasks": [
+        "IM02",
+        "IM08"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-contract-v0.1.md",
+          "section": "§7 / 规范补充",
+          "term": "Decision"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/services/cognition.py",
+        "digital_life/application/cognitive_updates.py"
+      ],
+      "future_component": "分轮不可变认知决定",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-S03-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-S03-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-S04",
+      "name": "Content",
+      "owner": "M03",
+      "implementation_tasks": [
+        "IM02",
+        "IM08",
+        "IM12"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-contract-v0.1.md",
+          "section": "§7 / 规范补充",
+          "term": "Content"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/cognition_experience.py",
+        "digital_life/application/cognitive_updates.py"
+      ],
+      "future_component": "不可变内容与独立使用资格",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-S04-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-S04-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-S05",
+      "name": "Representation",
+      "owner": "M04",
+      "implementation_tasks": [
+        "IM02",
+        "IM09",
+        "IM10",
+        "IM12"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-contract-v0.1.md",
+          "section": "§7 / 规范补充",
+          "term": "Representation"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/services/memory.py",
+        "digital_life/application/memory_quality.py"
+      ],
+      "future_component": "固定版本表示及当前头",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-S05-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-S05-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-S06",
+      "name": "Group",
+      "owner": "M03创建/M04就绪",
+      "implementation_tasks": [
+        "IM02",
+        "IM08",
+        "IM09",
+        "IM12"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-contract-v0.1.md",
+          "section": "§7 / 规范补充",
+          "term": "Group"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/infrastructure/persistence/sqlite_store.py"
+      ],
+      "future_component": "互依赖组完整性",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-S06-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-S06-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-S07",
+      "name": "Barrier",
+      "owner": "变更权威域/M12",
+      "implementation_tasks": [
+        "IM02",
+        "IM06",
+        "IM12",
+        "IM13"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-contract-v0.1.md",
+          "section": "§7 / 规范补充",
+          "term": "Barrier"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/authorization.py",
+        "digital_life/infrastructure/processes/dispatch_gate.py"
+      ],
+      "future_component": "分原因持久阻断",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-S07-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-S07-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-S08",
+      "name": "Propagation",
+      "owner": "目标业务所有者",
+      "implementation_tasks": [
+        "IM02",
+        "IM12",
+        "IM13"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-contract-v0.1.md",
+          "section": "§7 / 规范补充",
+          "term": "Propagation"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/privacy.py",
+        "digital_life/application/recovery.py"
+      ],
+      "future_component": "有限分域传播",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-S08-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-S08-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    },
+    {
+      "id": "IM01-TRACE-S09",
+      "name": "Erasure",
+      "owner": "M12计划/对象所有者",
+      "implementation_tasks": [
+        "IM02",
+        "IM12",
+        "IM13"
+      ],
+      "normative_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-contract-v0.1.md",
+          "section": "§7 / 规范补充",
+          "term": "Erasure"
+        }
+      ],
+      "existing_modules": [
+        "digital_life/application/privacy.py",
+        "digital_life/application/memory_quality.py"
+      ],
+      "future_component": "逐目标清理/恢复核对",
+      "implementation_status": "not_implemented_in_TL_LOOP_0_1",
+      "reuse_status": "existing_local_capabilities_only",
+      "positive_acceptance_ids": [
+        "IM01-TRACE-S09-P"
+      ],
+      "negative_acceptance_ids": [
+        "IM01-TRACE-S09-N"
+      ],
+      "metrics_or_legacy_results_are_not_proof_of_new_chain": true
+    }
+  ],
+  "acceptance_catalog": [
+    {
+      "id": "IM01-TRACE-T01-P",
+      "item_kind": "table",
+      "item": "tl_command",
+      "polarity": "positive",
+      "scenario": "同键同指纹复用同一持久结果",
+      "intended_tasks": [
+        "IM04",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T01-N",
+      "item_kind": "table",
+      "item": "tl_command",
+      "polarity": "negative",
+      "scenario": "同键异指纹拒绝；未明提交不盲重放",
+      "intended_tasks": [
+        "IM04",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T02-P",
+      "item_kind": "table",
+      "item": "tl_work",
+      "polarity": "positive",
+      "scenario": "工作/活动/预算/命令结果C0同时持久化",
+      "intended_tasks": [
+        "IM05",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T02-N",
+      "item_kind": "table",
+      "item": "tl_work",
+      "polarity": "negative",
+      "scenario": "换请求/恢复不得重置预算；学习触发不得冒充控制者话语",
+      "intended_tasks": [
+        "IM05",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T03-P",
+      "item_kind": "table",
+      "item": "tl_product",
+      "polarity": "positive",
+      "scenario": "产物保留来源/范围/未知及加工身份",
+      "intended_tasks": [
+        "IM07",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T03-N",
+      "item_kind": "table",
+      "item": "tl_product",
+      "polarity": "negative",
+      "scenario": "缺字段/缺源拒绝，不能让ready代替认知接纳",
+      "intended_tasks": [
+        "IM07",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T04-P",
+      "item_kind": "table",
+      "item": "tl_content",
+      "polarity": "positive",
+      "scenario": "只由M03建立/切换内容头",
+      "intended_tasks": [
+        "IM08",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T04-N",
+      "item_kind": "table",
+      "item": "tl_content",
+      "polarity": "negative",
+      "scenario": "M14/M04或旧shadow不得自行写当前世界事实",
+      "intended_tasks": [
+        "IM08",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T05-P",
+      "item_kind": "table",
+      "item": "tl_content_revision",
+      "polarity": "positive",
+      "scenario": "内容/决定/修订注册C1同时提交",
+      "intended_tasks": [
+        "IM08",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T05-N",
+      "item_kind": "table",
+      "item": "tl_content_revision",
+      "polarity": "negative",
+      "scenario": "修订号冲突或跨内容previous拒绝；不覆盖旧正文",
+      "intended_tasks": [
+        "IM08",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T06-P",
+      "item_kind": "table",
+      "item": "tl_decision",
+      "polarity": "positive",
+      "scenario": "同一proposal/review_round只有一个权威决定",
+      "intended_tasks": [
+        "IM08",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T06-N",
+      "item_kind": "table",
+      "item": "tl_decision",
+      "polarity": "negative",
+      "scenario": "旧轮次不可覆盖新决定；缺复核/支持不得accept",
+      "intended_tasks": [
+        "IM08",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T07-P",
+      "item_kind": "table",
+      "item": "tl_group",
+      "polarity": "positive",
+      "scenario": "C1全组接纳且C2所有必需表示齐后才ready",
+      "intended_tasks": [
+        "IM08",
+        "IM09",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T07-N",
+      "item_kind": "table",
+      "item": "tl_group",
+      "polarity": "negative",
+      "scenario": "任一必需项失败不得出现半组当前视图",
+      "intended_tasks": [
+        "IM08",
+        "IM09",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T08-P",
+      "item_kind": "table",
+      "item": "tl_handoff",
+      "polarity": "positive",
+      "scenario": "C1完成后可按同一义务继续C2",
+      "intended_tasks": [
+        "IM09",
+        "IM13",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T08-N",
+      "item_kind": "table",
+      "item": "tl_handoff",
+      "polarity": "negative",
+      "scenario": "过期租约/旧代次/未知提交不可覆写或重做原动作",
+      "intended_tasks": [
+        "IM09",
+        "IM13",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T09-P",
+      "item_kind": "table",
+      "item": "tl_representation",
+      "polarity": "positive",
+      "scenario": "正文/来源/Scope/未知与表示版本共同发布",
+      "intended_tasks": [
+        "IM09",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T09-N",
+      "item_kind": "table",
+      "item": "tl_representation",
+      "polarity": "negative",
+      "scenario": "纯表示不得添判断；缺blob或错摘要禁止发布",
+      "intended_tasks": [
+        "IM09",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T10-P",
+      "item_kind": "table",
+      "item": "tl_representation_head",
+      "polarity": "positive",
+      "scenario": "表示修订以series独立注册并CAS切换头",
+      "intended_tasks": [
+        "IM09",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T10-N",
+      "item_kind": "table",
+      "item": "tl_representation_head",
+      "polarity": "negative",
+      "scenario": "不能与内容修订号碰撞或由旧工作器回退head",
+      "intended_tasks": [
+        "IM09",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T11-P",
+      "item_kind": "table",
+      "item": "tl_dependency",
+      "polarity": "positive",
+      "scenario": "消费者及具体field_path/用途/源代次可追溯",
+      "intended_tasks": [
+        "IM06",
+        "IM11",
+        "IM12",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T11-N",
+      "item_kind": "table",
+      "item": "tl_dependency",
+      "polarity": "negative",
+      "scenario": "缺边/环/超限明示覆盖不足，不以支持关系替代删除范围",
+      "intended_tasks": [
+        "IM06",
+        "IM11",
+        "IM12",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T12-P",
+      "item_kind": "table",
+      "item": "tl_source_epoch",
+      "polarity": "positive",
+      "scenario": "合法源变更使当前scope epoch加一",
+      "intended_tasks": [
+        "IM06",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T12-N",
+      "item_kind": "table",
+      "item": "tl_source_epoch",
+      "polarity": "negative",
+      "scenario": "旧epoch或换scope hash绕过已有屏障时拒绝",
+      "intended_tasks": [
+        "IM06",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T13-P",
+      "item_kind": "table",
+      "item": "tl_barrier",
+      "polarity": "positive",
+      "scenario": "F1提交后通知丢失仍能阻断新使用",
+      "intended_tasks": [
+        "IM06",
+        "IM12",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T13-N",
+      "item_kind": "table",
+      "item": "tl_barrier",
+      "polarity": "negative",
+      "scenario": "解除一个原因不得清掉其他屏障或复活已删除正文",
+      "intended_tasks": [
+        "IM06",
+        "IM12",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T14-P",
+      "item_kind": "table",
+      "item": "tl_change",
+      "polarity": "positive",
+      "scenario": "change/epoch/barrier/传播义务同事务持久化",
+      "intended_tasks": [
+        "IM06",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T14-N",
+      "item_kind": "table",
+      "item": "tl_change",
+      "polarity": "negative",
+      "scenario": "同键不同含义、未经授权删除或预期代次不符时拒绝",
+      "intended_tasks": [
+        "IM06",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T15-P",
+      "item_kind": "table",
+      "item": "tl_propagation",
+      "polarity": "positive",
+      "scenario": "仅完整覆盖及未决零的本域结果标verified",
+      "intended_tasks": [
+        "IM06",
+        "IM12",
+        "IM13",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T15-N",
+      "item_kind": "table",
+      "item": "tl_propagation",
+      "polarity": "negative",
+      "scenario": "本域verified不得冒充权限恢复或全球清理完成",
+      "intended_tasks": [
+        "IM06",
+        "IM12",
+        "IM13",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T16-P",
+      "item_kind": "table",
+      "item": "tl_erasure_target",
+      "polarity": "positive",
+      "scenario": "合成授权目标逐项执行并验证",
+      "intended_tasks": [
+        "IM12",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T16-N",
+      "item_kind": "table",
+      "item": "tl_erasure_target",
+      "polarity": "negative",
+      "scenario": "remote未知、部分清理或无破坏许可不能算已删",
+      "intended_tasks": [
+        "IM12",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T17-P",
+      "item_kind": "table",
+      "item": "tl_input_dependency",
+      "polarity": "positive",
+      "scenario": "逐字段登记来源/用途/接收者及保留状态",
+      "intended_tasks": [
+        "IM11",
+        "IM12",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T17-N",
+      "item_kind": "table",
+      "item": "tl_input_dependency",
+      "polarity": "negative",
+      "scenario": "不能仅检查selected_memories；晚到正文不可重存秘密",
+      "intended_tasks": [
+        "IM11",
+        "IM12",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T18-P",
+      "item_kind": "table",
+      "item": "tl_effect",
+      "polarity": "positive",
+      "scenario": "合格测量可保留零/负gain并关联原报告",
+      "intended_tasks": [
+        "IM14",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T18-N",
+      "item_kind": "table",
+      "item": "tl_effect",
+      "polarity": "negative",
+      "scenario": "未测/失效/未知不填零，分类gain不等于内容忠实",
+      "intended_tasks": [
+        "IM14",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T19-P",
+      "item_kind": "table",
+      "item": "tl_recall_item",
+      "polarity": "positive",
+      "scenario": "逻辑query按新统一结果计算一次命中",
+      "intended_tasks": [
+        "IM10",
+        "IM11",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-T19-N",
+      "item_kind": "table",
+      "item": "tl_recall_item",
+      "polarity": "negative",
+      "scenario": "表示ID不得硬塞旧memory_revision外键或双计命中",
+      "intended_tasks": [
+        "IM10",
+        "IM11",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-O01-P",
+      "item_kind": "operation",
+      "item": "admit_observation",
+      "polarity": "positive",
+      "scenario": "受许可/材料/预算约束创建或复用原work",
+      "intended_tasks": [
+        "IM07",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-O01-N",
+      "item_kind": "operation",
+      "item": "admit_observation",
+      "polarity": "negative",
+      "scenario": "停止/伪造源/同键异义不得派发或重做工具",
+      "intended_tasks": [
+        "IM07",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-O02-P",
+      "item_kind": "operation",
+      "item": "assess_observation",
+      "polarity": "positive",
+      "scenario": "原文、解释、核验及未知分开且模型在主事务外",
+      "intended_tasks": [
+        "IM07",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-O02-N",
+      "item_kind": "operation",
+      "item": "assess_observation",
+      "polarity": "negative",
+      "scenario": "来源报告10不能直接成为现实确定10，旧认识不可补成原观察",
+      "intended_tasks": [
+        "IM07",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-O03-P",
+      "item_kind": "operation",
+      "item": "decide_proposal",
+      "polarity": "positive",
+      "scenario": "限定范围决定和新版本/义务C1同事务提交",
+      "intended_tasks": [
+        "IM08",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-O03-N",
+      "item_kind": "operation",
+      "item": "decide_proposal",
+      "polarity": "negative",
+      "scenario": "无政策/无复核/无支持不得accept，候选不产生当前表示义务",
+      "intended_tasks": [
+        "IM08",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-O04-P",
+      "item_kind": "operation",
+      "item": "claim_representation",
+      "polarity": "positive",
+      "scenario": "新有效租约及generation对应原工作/版本",
+      "intended_tasks": [
+        "IM09",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-O04-N",
+      "item_kind": "operation",
+      "item": "claim_representation",
+      "polarity": "negative",
+      "scenario": "旧代次、已超deadline或预算耗尽不能续租",
+      "intended_tasks": [
+        "IM09",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-O05-P",
+      "item_kind": "operation",
+      "item": "publish_representation",
+      "polarity": "positive",
+      "scenario": "正文/映射/确认/组ready一起提交",
+      "intended_tasks": [
+        "IM09",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-O05-N",
+      "item_kind": "operation",
+      "item": "publish_representation",
+      "polarity": "negative",
+      "scenario": "晚到旧工作、缺blob或半组不能发布当前视图",
+      "intended_tasks": [
+        "IM09",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-O06-P",
+      "item_kind": "operation",
+      "item": "recall",
+      "polarity": "positive",
+      "scenario": "合法正文与来源/范围/未知整条返回",
+      "intended_tasks": [
+        "IM10",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-O06-N",
+      "item_kind": "operation",
+      "item": "recall",
+      "polarity": "negative",
+      "scenario": "C2未就绪不能临时直读，audit入口不可生成调用或修复索引",
+      "intended_tasks": [
+        "IM10",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-O07-P",
+      "item_kind": "operation",
+      "item": "apply_invalidation",
+      "polarity": "positive",
+      "scenario": "合法变化按当前epoch串行提交屏障",
+      "intended_tasks": [
+        "IM06",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-O07-N",
+      "item_kind": "operation",
+      "item": "apply_invalidation",
+      "polarity": "negative",
+      "scenario": "预留不冒充真实派发；旧许可不越过屏障",
+      "intended_tasks": [
+        "IM06",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-O08-P",
+      "item_kind": "operation",
+      "item": "acknowledge_propagation",
+      "polarity": "positive",
+      "scenario": "实际动作/覆盖/验证支撑本域完成",
+      "intended_tasks": [
+        "IM12",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-O08-N",
+      "item_kind": "operation",
+      "item": "acknowledge_propagation",
+      "polarity": "negative",
+      "scenario": "未决/部分/远端unknown不得报全部verified",
+      "intended_tasks": [
+        "IM12",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-O09-P",
+      "item_kind": "operation",
+      "item": "resume_work",
+      "polarity": "positive",
+      "scenario": "先核对持久结果，续未完成阶段和原预算",
+      "intended_tasks": [
+        "IM13",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-O09-N",
+      "item_kind": "operation",
+      "item": "resume_work",
+      "polarity": "negative",
+      "scenario": "failed工作不自动领取，不换ID或重新执行外部动作猜提交",
+      "intended_tasks": [
+        "IM13",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-O10-P",
+      "item_kind": "operation",
+      "item": "record_effect",
+      "polarity": "positive",
+      "scenario": "效果报告经既有独立测量入口校验",
+      "intended_tasks": [
+        "IM14",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-O10-N",
+      "item_kind": "operation",
+      "item": "record_effect",
+      "polarity": "negative",
+      "scenario": "gain/模型信心不能升级内容资格或直接改实际选择",
+      "intended_tasks": [
+        "IM14",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-S01-P",
+      "item_kind": "state",
+      "item": "Work",
+      "polarity": "positive",
+      "scenario": "纯评估和候选仅在预指定合法终点completed，接受且需表示必须C2",
+      "intended_tasks": [
+        "IM05",
+        "IM07",
+        "IM08",
+        "IM09",
+        "IM13",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-S01-N",
+      "item_kind": "state",
+      "item": "Work",
+      "polarity": "negative",
+      "scenario": "已完成阶段不盲重放，等待/恢复不新增机会或预算",
+      "intended_tasks": [
+        "IM05",
+        "IM07",
+        "IM08",
+        "IM09",
+        "IM13",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-S02-P",
+      "item_kind": "state",
+      "item": "Handoff",
+      "polarity": "positive",
+      "scenario": "仅原义务和有效generation发布或恢复",
+      "intended_tasks": [
+        "IM09",
+        "IM13",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-S02-N",
+      "item_kind": "state",
+      "item": "Handoff",
+      "polarity": "negative",
+      "scenario": "过期/停止/撤权/耗尽不自动续期",
+      "intended_tasks": [
+        "IM09",
+        "IM13",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-S03-P",
+      "item_kind": "state",
+      "item": "Decision",
+      "polarity": "positive",
+      "scenario": "解除条件后合法新round，旧决定保留",
+      "intended_tasks": [
+        "IM08",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-S03-N",
+      "item_kind": "state",
+      "item": "Decision",
+      "polarity": "negative",
+      "scenario": "旧round不得回写accepted，部分处理不冒充整体接纳",
+      "intended_tasks": [
+        "IM08",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-S04-P",
+      "item_kind": "state",
+      "item": "Content",
+      "polarity": "positive",
+      "scenario": "新修订保留更正链和当前源/用途屏障",
+      "intended_tasks": [
+        "IM08",
+        "IM12",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-S04-N",
+      "item_kind": "state",
+      "item": "Content",
+      "polarity": "negative",
+      "scenario": "不按最大revision选真，恢复不复活已删除正文",
+      "intended_tasks": [
+        "IM08",
+        "IM12",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-S05-P",
+      "item_kind": "state",
+      "item": "Representation",
+      "polarity": "positive",
+      "scenario": "新表示修订/系列/head一致且当前资格可重查",
+      "intended_tasks": [
+        "IM09",
+        "IM10",
+        "IM12",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-S05-N",
+      "item_kind": "state",
+      "item": "Representation",
+      "polarity": "negative",
+      "scenario": "已发布不等于永远可用，旧租约不得改新映射",
+      "intended_tasks": [
+        "IM09",
+        "IM10",
+        "IM12",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-S06-P",
+      "item_kind": "state",
+      "item": "Group",
+      "polarity": "positive",
+      "scenario": "C1/C2相应必需成员同事务完成",
+      "intended_tasks": [
+        "IM08",
+        "IM09",
+        "IM12",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-S06-N",
+      "item_kind": "state",
+      "item": "Group",
+      "polarity": "negative",
+      "scenario": "任一缺失/obsolete不得伪装ready",
+      "intended_tasks": [
+        "IM08",
+        "IM09",
+        "IM12",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-S07-P",
+      "item_kind": "state",
+      "item": "Barrier",
+      "polarity": "positive",
+      "scenario": "明确原因解除后仅resolve对应屏障",
+      "intended_tasks": [
+        "IM06",
+        "IM12",
+        "IM13",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-S07-N",
+      "item_kind": "state",
+      "item": "Barrier",
+      "polarity": "negative",
+      "scenario": "权限重授不得清其他原因或自动恢复执行",
+      "intended_tasks": [
+        "IM06",
+        "IM12",
+        "IM13",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-S08-P",
+      "item_kind": "state",
+      "item": "Propagation",
+      "polarity": "positive",
+      "scenario": "按原计划/当前代次/预算验证全部声明目标",
+      "intended_tasks": [
+        "IM12",
+        "IM13",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-S08-N",
+      "item_kind": "state",
+      "item": "Propagation",
+      "polarity": "negative",
+      "scenario": "verified不得消除独立屏障，失败不得刷新身份续命",
+      "intended_tasks": [
+        "IM12",
+        "IM13",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-S09-P",
+      "item_kind": "state",
+      "item": "Erasure",
+      "polarity": "positive",
+      "scenario": "授权合成受管范围全部验证后才范围内verified",
+      "intended_tasks": [
+        "IM12",
+        "IM13",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    },
+    {
+      "id": "IM01-TRACE-S09-N",
+      "item_kind": "state",
+      "item": "Erasure",
+      "polarity": "negative",
+      "scenario": "缺覆盖/外部unknown不可说全球删除，不用恢复旧备份复活内容",
+      "intended_tasks": [
+        "IM12",
+        "IM13",
+        "IM19"
+      ],
+      "execution_status": "not_run",
+      "evidence": null,
+      "not_a_claim_of_current_test_coverage": true
+    }
+  ],
+  "boundaries": [
+    "Frozen normative/decision digest mismatch requires explicit design revision; historical code drift is recorded and reviewed, not treated as universal failure.",
+    "Existing modules are potential reuse points, not proof that new TL operations or schema-4 tables exist.",
+    "Acceptance IDs are future test obligations. IM01 static checks do not mark them passed or replace Q11 material/labels.",
+    "No production instance, database, model, or service was opened. No frozen specification or task state was edited."
+  ],
+  "legacy_capability_notes": [
+    {
+      "module": "digital_life/application/cognition_experience.py",
+      "capability": "single Cognition-owned shadow version writer and read-only projection",
+      "gap": "not a content-world-fact acceptance policy or M04 C1/C2 handoff"
+    },
+    {
+      "module": "digital_life/application/experience_measurement.py",
+      "capability": "sealed controlled classification measurement and adopt_shadow",
+      "gap": "not TL content fidelity, new-question improvement, or formal Q11 evaluation evidence"
+    },
+    {
+      "module": "digital_life/application/services/memory.py",
+      "capability": "existing episodic/text retrieval and memory revision linkage",
+      "gap": "new representation IDs cannot be inserted into old memory_revision foreign keys"
+    },
+    {
+      "module": "digital_life/application/scheduling.py",
+      "capability": "queued/expired-lease claims with lease generation and bounded reservations",
+      "gap": "failed TL work is not automatically claimable and needs owner recovery"
+    },
+    {
+      "module": "digital_life/application/privacy.py",
+      "capability": "existing bounded managed erasure",
+      "gap": "not proof of new all-input dependency closure, late response prevention, or external erasure"
+    }
+  ]
+}

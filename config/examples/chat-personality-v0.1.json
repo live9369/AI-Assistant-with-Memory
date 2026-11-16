@@ -1,0 +1,12 @@
+{
+  "version": "chat-personality-v0.1",
+  "values": {
+    "openness": 0.4,
+    "conscientiousness": 0.3,
+    "extraversion": -0.1,
+    "agreeableness": 0.3,
+    "emotional_stability": 0.3
+  },
+  "status": "controller-approved-not-empirically-calibrated",
+  "growth_enabled": false
+}

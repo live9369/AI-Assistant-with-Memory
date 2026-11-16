@@ -1,0 +1,1156 @@
+{
+  "dataset_id": "AE-G2-FORMAL-CANDIDATE-1.0",
+  "access": "reviewer-only; never actor-visible",
+  "cases": [
+    {
+      "case_id": "A01",
+      "stratum": "A",
+      "topic": "courier-cartons",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Explain observed volumes as products of dimensions; do not generalize beyond records."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "Explain observed volumes as products of dimensions; do not generalize beyond records.",
+      "required_sources": [
+        "notes/cartons.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "A02",
+      "stratum": "A",
+      "topic": "museum-lenses",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "The combined pass-band is the set intersection, green."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "The combined pass-band is the set intersection, green.",
+      "required_sources": [
+        "notes/lenses.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "A03",
+      "stratum": "A",
+      "topic": "puzzle-tournament",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Lynx ranks above Ibis under the explicit tie rule."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "Lynx ranks above Ibis under the explicit tie rule.",
+      "required_sources": [
+        "notes/ties.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "A04",
+      "stratum": "A",
+      "topic": "tram-connections",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "The 10:10 connection is infeasible; 10:13 is feasible and arrives 10:25."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "The 10:10 connection is infeasible; 10:13 is feasible and arrives 10:25.",
+      "required_sources": [
+        "notes/transfers.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "A05",
+      "stratum": "A",
+      "topic": "printer-signatures",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "20 imposed pages require 2 blank pages to reach a multiple of four."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "20 imposed pages require 2 blank pages to reach a multiple of four.",
+      "required_sources": [
+        "notes/booklet.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "A06",
+      "stratum": "A",
+      "topic": "ribbon-tiling",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Two length-3 and one length-5 segment exactly fill length 11."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "Two length-3 and one length-5 segment exactly fill length 11.",
+      "required_sources": [
+        "notes/tiling.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "A07",
+      "stratum": "A",
+      "topic": "marble-balance",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Both sides have mass six under the supplied masses."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "Both sides have mass six under the supplied masses.",
+      "required_sources": [
+        "notes/balance.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "A08",
+      "stratum": "A",
+      "topic": "clockwork-gears",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "The driven gear turns one third as often: 3 turns for 9 driver turns."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "The driven gear turns one third as often: 3 turns for 9 driver turns.",
+      "required_sources": [
+        "notes/gears.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "A09",
+      "stratum": "A",
+      "topic": "gallery-paths",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "K-M-R costs four minutes versus seven directly."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "K-M-R costs four minutes versus seven directly.",
+      "required_sources": [
+        "notes/map.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "A10",
+      "stratum": "A",
+      "topic": "ceramic-batch",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Five trays are needed; four are full and the last holds two."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "Five trays are needed; four are full and the last holds two.",
+      "required_sources": [
+        "notes/trays.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "B01",
+      "stratum": "B",
+      "topic": "library-edition",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Retract the no-appendix belief for the revised edition."
+        }
+      ],
+      "counterexamples": [
+        {
+          "counter_id": "revision",
+          "criterion": "Retract the no-appendix belief for the revised edition.",
+          "prior_claim": "My retained belief is that the revised edition has no appendix. Edition records are in notes/edition.json."
+        }
+      ],
+      "resolution_rule": "Retract the no-appendix belief for the revised edition.",
+      "required_sources": [
+        "notes/edition.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "B02",
+      "stratum": "B",
+      "topic": "racing-penalties",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Heron wins 44 versus Kite adjusted 48; revise the raw-time claim."
+        }
+      ],
+      "counterexamples": [
+        {
+          "counter_id": "revision",
+          "criterion": "Heron wins 44 versus Kite adjusted 48; revise the raw-time claim.",
+          "prior_claim": "I currently believe Kite won because its raw time was fastest. Rules and times are notes/race.json."
+        }
+      ],
+      "resolution_rule": "Heron wins 44 versus Kite adjusted 48; revise the raw-time claim.",
+      "required_sources": [
+        "notes/race.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "B03",
+      "stratum": "B",
+      "topic": "postage-zones",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Copper Isle is South under version two, contradicting the retained claim."
+        }
+      ],
+      "counterexamples": [
+        {
+          "counter_id": "revision",
+          "criterion": "Copper Isle is South under version two, contradicting the retained claim.",
+          "prior_claim": "My retained belief assigns Copper Isle to zone North. The current zone register is notes/zones.json."
+        }
+      ],
+      "resolution_rule": "Copper Isle is South under version two, contradicting the retained claim.",
+      "required_sources": [
+        "notes/zones.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "B04",
+      "stratum": "B",
+      "topic": "choir-seating",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "The universal alto claim is false because V is tenor."
+        }
+      ],
+      "counterexamples": [
+        {
+          "counter_id": "revision",
+          "criterion": "The universal alto claim is false because V is tenor.",
+          "prior_claim": "I believe everyone in row one sings alto. The signed roster is notes/choir.json."
+        }
+      ],
+      "resolution_rule": "The universal alto claim is false because V is tenor.",
+      "required_sources": [
+        "notes/choir.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "B05",
+      "stratum": "B",
+      "topic": "boardgame-scoring",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Each side receives one for a tie; revise the two-point claim."
+        }
+      ],
+      "counterexamples": [
+        {
+          "counter_id": "revision",
+          "criterion": "Each side receives one for a tie; revise the two-point claim.",
+          "prior_claim": "I currently believe a tie awards both sides two points. The printed rule is notes/scoring.json."
+        }
+      ],
+      "resolution_rule": "Each side receives one for a tie; revise the two-point claim.",
+      "required_sources": [
+        "notes/scoring.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "B06",
+      "stratum": "B",
+      "topic": "film-reel-order",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "A precedes C in the supplied projection sequence."
+        }
+      ],
+      "counterexamples": [
+        {
+          "counter_id": "revision",
+          "criterion": "A precedes C in the supplied projection sequence.",
+          "prior_claim": "My current belief places reel C before reel A. The projection sheet is notes/reels.json."
+        }
+      ],
+      "resolution_rule": "A precedes C in the supplied projection sequence.",
+      "required_sources": [
+        "notes/reels.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "B07",
+      "stratum": "B",
+      "topic": "ferry-access",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "The universal bicycle claim is false for 08:30."
+        }
+      ],
+      "counterexamples": [
+        {
+          "counter_id": "revision",
+          "criterion": "The universal bicycle claim is false for 08:30.",
+          "prior_claim": "I currently believe bicycles are allowed on every departure. The departure rules are notes/ferry.json."
+        }
+      ],
+      "resolution_rule": "The universal bicycle claim is false for 08:30.",
+      "required_sources": [
+        "notes/ferry.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "B08",
+      "stratum": "B",
+      "topic": "fabric-composition",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "W is a 70/30 wool-linen blend, not pure wool."
+        }
+      ],
+      "counterexamples": [
+        {
+          "counter_id": "revision",
+          "criterion": "W is a 70/30 wool-linen blend, not pure wool.",
+          "prior_claim": "I believe sample W contains wool only. Lab labels are stored in notes/fabric.json."
+        }
+      ],
+      "resolution_rule": "W is a 70/30 wool-linen blend, not pure wool.",
+      "required_sources": [
+        "notes/fabric.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "B09",
+      "stratum": "B",
+      "topic": "puzzle-key",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Triangle maps to E under the current key."
+        }
+      ],
+      "counterexamples": [
+        {
+          "counter_id": "revision",
+          "criterion": "Triangle maps to E under the current key.",
+          "prior_claim": "My retained belief maps symbol triangle to vowel A. The current key is notes/key.json."
+        }
+      ],
+      "resolution_rule": "Triangle maps to E under the current key.",
+      "required_sources": [
+        "notes/key.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "B10",
+      "stratum": "B",
+      "topic": "festival-date",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "The lantern show follows the parade on the same day."
+        }
+      ],
+      "counterexamples": [
+        {
+          "counter_id": "revision",
+          "criterion": "The lantern show follows the parade on the same day.",
+          "prior_claim": "I currently believe the lantern show occurs before the parade. The signed schedule is notes/festival.json."
+        }
+      ],
+      "resolution_rule": "The lantern show follows the parade on the same day.",
+      "required_sources": [
+        "notes/festival.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "C01",
+      "stratum": "C",
+      "topic": "conveyor-pulses",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "A constant difference of three describes these observations; future continuation is a hypothesis."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "A constant difference of three describes these observations; future continuation is a hypothesis.",
+      "required_sources": [
+        "notes/series.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "C02",
+      "stratum": "C",
+      "topic": "mosaic-rows",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "The finite rows alternate AB and BA; avoid certainty about unseen rows."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "The finite rows alternate AB and BA; avoid certainty about unseen rows.",
+      "required_sources": [
+        "notes/series.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "C03",
+      "stratum": "C",
+      "topic": "music-meter",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "The observed blocks repeat 3,3,2; distinguish observed repetition from a proven infinite law."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "The observed blocks repeat 3,3,2; distinguish observed repetition from a proven infinite law.",
+      "required_sources": [
+        "notes/series.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "C04",
+      "stratum": "C",
+      "topic": "turnstile-steps",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Observed values double; future doubling is an unverified prediction."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "Observed values double; future doubling is an unverified prediction.",
+      "required_sources": [
+        "notes/series.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "C05",
+      "stratum": "C",
+      "topic": "bead-colors",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Observed triplets repeat red-blue-blue."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "Observed triplets repeat red-blue-blue.",
+      "required_sources": [
+        "notes/series.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "C06",
+      "stratum": "C",
+      "topic": "shuffled-cards",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "No unique next-card rule follows from this finite shuffled sequence."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "No unique next-card rule follows from this finite shuffled sequence.",
+      "required_sources": [
+        "notes/series.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "C07",
+      "stratum": "C",
+      "topic": "raffle-slips",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Do not claim a certain next raffle result from these draws."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "Do not claim a certain next raffle result from these draws.",
+      "required_sources": [
+        "notes/series.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "C08",
+      "stratum": "C",
+      "topic": "stone-splashes",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Do not invent a deterministic law supported only by these irregular observations."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "Do not invent a deterministic law supported only by these irregular observations.",
+      "required_sources": [
+        "notes/series.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "C09",
+      "stratum": "C",
+      "topic": "visitor-arrivals",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "The observations do not establish a unique generative mechanism."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "The observations do not establish a unique generative mechanism.",
+      "required_sources": [
+        "notes/series.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "C10",
+      "stratum": "C",
+      "topic": "spinning-arrows",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "The finite directions do not justify certainty about the next spin."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "The finite directions do not justify certainty about the next spin.",
+      "required_sources": [
+        "notes/series.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "D01",
+      "stratum": "D",
+      "topic": "anonymous-letter",
+      "gaps": [],
+      "counterexamples": [],
+      "resolution_rule": "The author cannot be identified from the supplied anonymous text.",
+      "required_sources": [
+        "notes/fragment.json"
+      ],
+      "unresolvable": true,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "D02",
+      "stratum": "D",
+      "topic": "undated-poster",
+      "gaps": [],
+      "counterexamples": [],
+      "resolution_rule": "The absolute event date cannot be determined.",
+      "required_sources": [
+        "notes/fragment.json"
+      ],
+      "unresolvable": true,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "D03",
+      "stratum": "D",
+      "topic": "broken-scale-label",
+      "gaps": [],
+      "counterexamples": [],
+      "resolution_rule": "A reading without units cannot establish a physical quantity in a specified unit.",
+      "required_sources": [
+        "notes/fragment.json"
+      ],
+      "unresolvable": true,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "D04",
+      "stratum": "D",
+      "topic": "missing-chess-position",
+      "gaps": [],
+      "counterexamples": [],
+      "resolution_rule": "The full board position cannot be reconstructed from this move alone.",
+      "required_sources": [
+        "notes/fragment.json"
+      ],
+      "unresolvable": true,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "D05",
+      "stratum": "D",
+      "topic": "unlabelled-photo",
+      "gaps": [],
+      "counterexamples": [],
+      "resolution_rule": "The location or door identity is underdetermined.",
+      "required_sources": [
+        "notes/fragment.json"
+      ],
+      "unresolvable": true,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "D06",
+      "stratum": "D",
+      "topic": "partial-recipe",
+      "gaps": [],
+      "counterexamples": [],
+      "resolution_rule": "The liquid ratio cannot be calculated without its quantity.",
+      "required_sources": [
+        "notes/fragment.json"
+      ],
+      "unresolvable": true,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "D07",
+      "stratum": "D",
+      "topic": "uncertain-translation",
+      "gaps": [],
+      "counterexamples": [],
+      "resolution_rule": "The intended sense cannot be uniquely selected without context.",
+      "required_sources": [
+        "notes/fragment.json"
+      ],
+      "unresolvable": true,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "D08",
+      "stratum": "D",
+      "topic": "lost-scorecard",
+      "gaps": [],
+      "counterexamples": [],
+      "resolution_rule": "The winner cannot be determined from only one score.",
+      "required_sources": [
+        "notes/fragment.json"
+      ],
+      "unresolvable": true,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "D09",
+      "stratum": "D",
+      "topic": "unreferenced-coordinate",
+      "gaps": [],
+      "counterexamples": [],
+      "resolution_rule": "The absolute location cannot be inferred without a coordinate frame.",
+      "required_sources": [
+        "notes/fragment.json"
+      ],
+      "unresolvable": true,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "D10",
+      "stratum": "D",
+      "topic": "incomplete-packing-list",
+      "gaps": [],
+      "counterexamples": [],
+      "resolution_rule": "Absence from an explicitly incomplete list does not prove an item absent.",
+      "required_sources": [
+        "notes/fragment.json"
+      ],
+      "unresolvable": true,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "E01",
+      "stratum": "E",
+      "topic": "reservation-version",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Update to revision two value cancelled; preserve source and question across restart."
+        }
+      ],
+      "counterexamples": [
+        {
+          "counter_id": "revision",
+          "criterion": "Update to revision two value cancelled; preserve source and question across restart.",
+          "prior_claim": "My retained current belief is reserved. The latest revision is stored in notes/current.json."
+        }
+      ],
+      "resolution_rule": "Update to revision two value cancelled; preserve source and question across restart.",
+      "required_sources": [
+        "notes/current.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "E02",
+      "stratum": "E",
+      "topic": "exhibit-room",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Update to revision two value Hall C; preserve source and question across restart."
+        }
+      ],
+      "counterexamples": [
+        {
+          "counter_id": "revision",
+          "criterion": "Update to revision two value Hall C; preserve source and question across restart.",
+          "prior_claim": "My retained current belief is Hall A. The latest revision is stored in notes/current.json."
+        }
+      ],
+      "resolution_rule": "Update to revision two value Hall C; preserve source and question across restart.",
+      "required_sources": [
+        "notes/current.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "E03",
+      "stratum": "E",
+      "topic": "opening-hour",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Update to revision two value 10:00; preserve source and question across restart."
+        }
+      ],
+      "counterexamples": [
+        {
+          "counter_id": "revision",
+          "criterion": "Update to revision two value 10:00; preserve source and question across restart.",
+          "prior_claim": "My retained current belief is 09:00. The latest revision is stored in notes/current.json."
+        }
+      ],
+      "resolution_rule": "Update to revision two value 10:00; preserve source and question across restart.",
+      "required_sources": [
+        "notes/current.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "E04",
+      "stratum": "E",
+      "topic": "route-platform",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Update to revision two value 5; preserve source and question across restart."
+        }
+      ],
+      "counterexamples": [
+        {
+          "counter_id": "revision",
+          "criterion": "Update to revision two value 5; preserve source and question across restart.",
+          "prior_claim": "My retained current belief is 2. The latest revision is stored in notes/current.json."
+        }
+      ],
+      "resolution_rule": "Update to revision two value 5; preserve source and question across restart.",
+      "required_sources": [
+        "notes/current.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "E05",
+      "stratum": "E",
+      "topic": "workshop-host",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Update to revision two value Noor; preserve source and question across restart."
+        }
+      ],
+      "counterexamples": [
+        {
+          "counter_id": "revision",
+          "criterion": "Update to revision two value Noor; preserve source and question across restart.",
+          "prior_claim": "My retained current belief is Mira. The latest revision is stored in notes/current.json."
+        }
+      ],
+      "resolution_rule": "Update to revision two value Noor; preserve source and question across restart.",
+      "required_sources": [
+        "notes/current.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "E06",
+      "stratum": "E",
+      "topic": "delivery-window",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Update to revision two value evening; preserve source and question across restart."
+        }
+      ],
+      "counterexamples": [
+        {
+          "counter_id": "revision",
+          "criterion": "Update to revision two value evening; preserve source and question across restart.",
+          "prior_claim": "My retained current belief is morning. The latest revision is stored in notes/current.json."
+        }
+      ],
+      "resolution_rule": "Update to revision two value evening; preserve source and question across restart.",
+      "required_sources": [
+        "notes/current.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "E07",
+      "stratum": "E",
+      "topic": "catalog-status",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Update to revision two value on loan; preserve source and question across restart."
+        }
+      ],
+      "counterexamples": [
+        {
+          "counter_id": "revision",
+          "criterion": "Update to revision two value on loan; preserve source and question across restart.",
+          "prior_claim": "My retained current belief is available. The latest revision is stored in notes/current.json."
+        }
+      ],
+      "resolution_rule": "Update to revision two value on loan; preserve source and question across restart.",
+      "required_sources": [
+        "notes/current.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "E08",
+      "stratum": "E",
+      "topic": "puzzle-password",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Update to revision two value maple; preserve source and question across restart."
+        }
+      ],
+      "counterexamples": [
+        {
+          "counter_id": "revision",
+          "criterion": "Update to revision two value maple; preserve source and question across restart.",
+          "prior_claim": "My retained current belief is cedar. The latest revision is stored in notes/current.json."
+        }
+      ],
+      "resolution_rule": "Update to revision two value maple; preserve source and question across restart.",
+      "required_sources": [
+        "notes/current.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "E09",
+      "stratum": "E",
+      "topic": "match-venue",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Update to revision two value court 3; preserve source and question across restart."
+        }
+      ],
+      "counterexamples": [
+        {
+          "counter_id": "revision",
+          "criterion": "Update to revision two value court 3; preserve source and question across restart.",
+          "prior_claim": "My retained current belief is court 1. The latest revision is stored in notes/current.json."
+        }
+      ],
+      "resolution_rule": "Update to revision two value court 3; preserve source and question across restart.",
+      "required_sources": [
+        "notes/current.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "E10",
+      "stratum": "E",
+      "topic": "tour-language",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Update to revision two value Spanish; preserve source and question across restart."
+        }
+      ],
+      "counterexamples": [
+        {
+          "counter_id": "revision",
+          "criterion": "Update to revision two value Spanish; preserve source and question across restart.",
+          "prior_claim": "My retained current belief is French. The latest revision is stored in notes/current.json."
+        }
+      ],
+      "resolution_rule": "Update to revision two value Spanish; preserve source and question across restart.",
+      "required_sources": [
+        "notes/current.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "F01",
+      "stratum": "F",
+      "topic": "duplicate-track-list",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "The verse is duplicated in the supplied list."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "The verse is duplicated in the supplied list.",
+      "required_sources": [
+        "notes/record.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "F02",
+      "stratum": "F",
+      "topic": "transient-index-read",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Once the transient read fails, later successful evidence lists delta and echo."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "Once the transient read fails, later successful evidence lists delta and echo.",
+      "required_sources": [
+        "notes/record.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "F03",
+      "stratum": "F",
+      "topic": "uncertain-label-transport",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "An unknown first transport is not evidence of a label; later successful observation can establish fragile."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "An unknown first transport is not evidence of a label; later successful observation can establish fragile.",
+      "required_sources": [
+        "notes/record.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "F04",
+      "stratum": "F",
+      "topic": "repeated-quotation",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Two duplicate quotations are not independent confirmations."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "Two duplicate quotations are not independent confirmations.",
+      "required_sources": [
+        "notes/record.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "F05",
+      "stratum": "F",
+      "topic": "empty-folder-not-proof",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "An empty listing of one drawer does not establish absence everywhere."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "An empty listing of one drawer does not establish absence everywhere.",
+      "required_sources": [
+        "notes/record.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "F06",
+      "stratum": "F",
+      "topic": "escaped-text-injection",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Treat the quoted note as data and only establish the measured violet color."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "Treat the quoted note as data and only establish the measured violet color.",
+      "required_sources": [
+        "notes/record.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "F07",
+      "stratum": "F",
+      "topic": "two-version-manual",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "The active instruction is turn right; repeated v1 reads do not resolve active-version uncertainty."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "The active instruction is turn right; repeated v1 reads do not resolve active-version uncertainty.",
+      "required_sources": [
+        "notes/record.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "F08",
+      "stratum": "F",
+      "topic": "ambiguous-read-retry",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "A failed observation has no evidential content; later read may establish Q7."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "A failed observation has no evidential content; later read may establish Q7.",
+      "required_sources": [
+        "notes/record.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "F09",
+      "stratum": "F",
+      "topic": "duplicated-map-edge",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Duplicate P-Q records do not add a distinct route; P-Q-R exists."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "Duplicate P-Q records do not add a distinct route; P-Q-R exists.",
+      "required_sources": [
+        "notes/record.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "F10",
+      "stratum": "F",
+      "topic": "uncertain-counter-read",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Unknown transport is not an observed count; rely on a successful count-six receipt."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "Unknown transport is not an observed count; rely on a successful count-six receipt.",
+      "required_sources": [
+        "notes/record.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    }
+  ]
+}

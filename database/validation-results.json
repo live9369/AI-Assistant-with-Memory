@@ -1,0 +1,29 @@
+{
+  "scope": "SQLite storage contracts and synthetic dataflows; not life-function validation",
+  "python": "3.9.6",
+  "sqlite": "3.51.0",
+  "tests_run": 21,
+  "failures": 0,
+  "errors": 0,
+  "successful": true,
+  "schemas": {
+    "runtime": {
+      "sql_sha256": "584aff4becf6ee8cb88f4e67e2a0e04922876d205ec8a6d7adc4be8df201e254",
+      "physical_tables_including_fts": 165,
+      "columns_including_fts": 1712,
+      "indexes": 699,
+      "triggers": 407,
+      "integrity_check": "ok",
+      "foreign_key_check": []
+    },
+    "supervisor": {
+      "sql_sha256": "55557d19a29fc2e8a2a3b009488f0bc3f3a9b237a5907d4eac9dac10c605082b",
+      "physical_tables_including_fts": 6,
+      "columns_including_fts": 48,
+      "indexes": 13,
+      "triggers": 0,
+      "integrity_check": "ok",
+      "foreign_key_check": []
+    }
+  }
+}

@@ -1,0 +1,1462 @@
+{
+  "plan_id": "TL-IMPLEMENTATION-PLAN-0.1",
+  "date": "2026-11-09",
+  "status": "in_progress",
+  "frozen_contract": "TL-LOOP-0.1",
+  "frozen_record": "docs/architecture/tool-observation-learning-freeze-v0.1.json",
+  "frozen_record_sha256": "770961cb52f9ce8af2534089c7d190781c51f5217d307d9fdae6ea4e771c2f09",
+  "implementation_authorized": true,
+  "runtime_tests_authorized": true,
+  "model_spending_authorized": false,
+  "formal_instance_operations_authorized": false,
+  "machine_runner_implemented": false,
+  "scope": "authorized implementation, isolated verification and evaluation material/review preparation; no real-model calls or formal-instance operations; real independent reviewer readiness is not established",
+  "tasks": [
+    {
+      "id": "IM01",
+      "title": "建立实现基线、追溯表和隔离夹具",
+      "status": "complete",
+      "modules": [
+        "协调器",
+        "M17",
+        "外部验收"
+      ],
+      "depends_on": [],
+      "deliverables": [
+        "冻结规范及来源摘要核对记录；19表/10操作/9状态轴到实现与检查的追溯表",
+        "新建隔离目录/身份规则、受锁定的2/3版本合成数据夹具、失败证据目录"
+      ],
+      "isolated_acceptance": [
+        "不读取当前实例数据；拒绝指向已有实例作为测试根目录",
+        "合成身份、记忆、权限、未来承诺与历史有固定预期；测试退出锁定/清理策略明确",
+        "设计变化先发修订，不能静默改冻结摘要；旧模块证据只作对应范围的历史覆盖"
+      ],
+      "work_kind": "implementation",
+      "authorization_gate": "isolated_implementation_authorization",
+      "contract_operations": [],
+      "storage_tables": [],
+      "evidence": "outputs/acceptance/tool-learning/im01.json",
+      "design": "docs/architecture/tool-learning-im01-design.md",
+      "status_reason": null,
+      "evidence_sha256": "7b5568ad5f94fd453181fdca520da323196e4de62bab894b6fc879166d727347",
+      "revalidation_refs": [
+        {
+          "path": "outputs/acceptance/tool-learning/im01-recheck-9cf0fe53ca4c48c78895d3b8b73b7c16.json",
+          "sha256": "62b82821730d1b3f0820e90981eb80df1cd3aba99649a5f62b2d19a0f9a9c370",
+          "scope": "additional ancestor-instance path protection; original evidence retained"
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-d8640a5625134b97b9b02678c769aec2.json",
+          "sha256": "32d8cc088b6d539cc03fa764b91fd5c5040734befb3e55a4d15b516ccdddc6cb",
+          "scope": "Final integrated isolated verification:1387 tests,438 mechanism obligations/1314 coverage references/107 decisions,1485 actual records; original task evidence retained. No scientific sample count, real-model quality, formal deployment or T13 long-run certification inferred."
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-5d6fedbc07ea46bebc635b9a24c4ddf6.json",
+          "sha256": "2924d914acacf872b80a113e63755ae54eef9f479bbcca0200d1e4a43f2f112b",
+          "scope": "Complete-packet performance optimization revalidation:1398 offline tests;347 public inputs stable;438 obligations/1314 coverage references/107 decisions remain valid; no real models/formal instance. Original task completion evidence unchanged."
+        },
+        {
+          "path": "outputs/acceptance/performance-round2/final-composed-regression-audit.json",
+          "sha256": "e70a54ac862ba3764eab804a590c3257d2b5ebc413d581877ee5fc272f5b3cd3",
+          "record_kind": "composed_related_revalidation",
+          "scope": "Round2 original full run:1639 tests,1 failure,1 error,0 skip,372 inputs stable; both corrected with related80 and unified287 pass. Not a new single full-suite PASS.438 obligations/1314 repeat references/107 decisions/1485 actual mechanism records retained unchanged. PF07 time19.050% below20%, continuous second call unresolved; final corrected source timing/growth not rerun. No real-model/formal-instance authorization."
+        }
+      ]
+    },
+    {
+      "id": "IM02",
+      "title": "实现精确类型与契约校验",
+      "status": "complete",
+      "modules": [
+        "领域契约",
+        "M03/M04/M14边界"
+      ],
+      "depends_on": [
+        "IM01"
+      ],
+      "deliverables": [
+        "Slot/Scope/EvidenceRef/Claim/Product/Decision/Representation/Recall及Envelope/Response校验器",
+        "封闭枚举、错误码、定位/指纹与版本规则"
+      ],
+      "isolated_acceptance": [
+        "缺必需键、重复JSON键、非法Unicode、NaN/Infinity、bool冒充整数均拒绝",
+        "0/false/已知null与unknown/未测/不适用不混淆；嵌套视图和Unicode码点定位正确",
+        "未知契约不按旧字符串兜底；actor/module自报不产生授权；不改变旧契约含义"
+      ],
+      "work_kind": "implementation",
+      "authorization_gate": "isolated_implementation_authorization",
+      "contract_operations": [],
+      "storage_tables": [],
+      "evidence": "outputs/acceptance/tool-learning/im02.json",
+      "design": "docs/architecture/tool-learning-im02-design.md",
+      "status_reason": null,
+      "evidence_sha256": "c04b19a560714a1f0b51014a02336904f2717579cb60d34ca741ecee723a0804",
+      "revalidation_refs": [
+        {
+          "path": "outputs/acceptance/tool-learning/im02-recheck-fecab8ecbfb1440f8822c9643451bd21.json",
+          "sha256": "d94b81ee7360c4c56851f6b1e7504242b4a88e969686bc2d0d59b5af21e0a359",
+          "scope": "Envelope and payload logical work/purpose consistency; original completion proof retained"
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-d8640a5625134b97b9b02678c769aec2.json",
+          "sha256": "32d8cc088b6d539cc03fa764b91fd5c5040734befb3e55a4d15b516ccdddc6cb",
+          "scope": "Final integrated isolated verification:1387 tests,438 mechanism obligations/1314 coverage references/107 decisions,1485 actual records; original task evidence retained. No scientific sample count, real-model quality, formal deployment or T13 long-run certification inferred."
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-5d6fedbc07ea46bebc635b9a24c4ddf6.json",
+          "sha256": "2924d914acacf872b80a113e63755ae54eef9f479bbcca0200d1e4a43f2f112b",
+          "scope": "Complete-packet performance optimization revalidation:1398 offline tests;347 public inputs stable;438 obligations/1314 coverage references/107 decisions remain valid; no real models/formal instance. Original task completion evidence unchanged."
+        },
+        {
+          "path": "outputs/acceptance/performance-round2/final-composed-regression-audit.json",
+          "sha256": "e70a54ac862ba3764eab804a590c3257d2b5ebc413d581877ee5fc272f5b3cd3",
+          "record_kind": "composed_related_revalidation",
+          "scope": "Round2 original full run:1639 tests,1 failure,1 error,0 skip,372 inputs stable; both corrected with related80 and unified287 pass. Not a new single full-suite PASS.438 obligations/1314 repeat references/107 decisions/1485 actual mechanism records retained unchanged. PF07 time19.050% below20%, continuous second call unresolved; final corrected source timing/growth not rerun. No real-model/formal-instance authorization."
+        }
+      ]
+    },
+    {
+      "id": "IM03",
+      "title": "展开完整建表SQL与约束设计",
+      "status": "complete",
+      "modules": [
+        "M17",
+        "schema资源"
+      ],
+      "depends_on": [
+        "IM02"
+      ],
+      "deliverables": [
+        "19张规划表的完整SQL、索引/FK/唯一约束及注册触发器说明",
+        "C0/C1/C2/F1事务参与表清单；评测库独立DDL草案"
+      ],
+      "isolated_acceptance": [
+        "只在新建空隔离库验证DDL，不迁移任何已有实例",
+        "实例隔离、同键异义、修订序号与head引用约束逐项通过",
+        "内容/表示版本注册不冲突；group、循环延迟FK及检索映射正确；SQL目标为版本4但不自动启用"
+      ],
+      "work_kind": "implementation",
+      "authorization_gate": "isolated_implementation_authorization",
+      "contract_operations": [],
+      "storage_tables": [
+        "tl_command",
+        "tl_work",
+        "tl_product",
+        "tl_content",
+        "tl_content_revision",
+        "tl_decision",
+        "tl_group",
+        "tl_handoff",
+        "tl_representation",
+        "tl_representation_head",
+        "tl_dependency",
+        "tl_source_epoch",
+        "tl_barrier",
+        "tl_change",
+        "tl_propagation",
+        "tl_erasure_target",
+        "tl_input_dependency",
+        "tl_effect",
+        "tl_recall_item"
+      ],
+      "evidence": "outputs/acceptance/tool-learning/im03-recheck-b6ddc6744886429db28343a65c5f4716.json",
+      "design": "docs/architecture/tool-learning-im03-design.md",
+      "status_reason": null,
+      "evidence_sha256": "c134a7fbe7e90f86b1e487a8029ca5c82e50dcd21d79ad5fb8388df52bb5a4c5",
+      "revalidation_refs": [
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-d8640a5625134b97b9b02678c769aec2.json",
+          "sha256": "32d8cc088b6d539cc03fa764b91fd5c5040734befb3e55a4d15b516ccdddc6cb",
+          "scope": "Final integrated isolated verification:1387 tests,438 mechanism obligations/1314 coverage references/107 decisions,1485 actual records; original task evidence retained. No scientific sample count, real-model quality, formal deployment or T13 long-run certification inferred."
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-5d6fedbc07ea46bebc635b9a24c4ddf6.json",
+          "sha256": "2924d914acacf872b80a113e63755ae54eef9f479bbcca0200d1e4a43f2f112b",
+          "scope": "Complete-packet performance optimization revalidation:1398 offline tests;347 public inputs stable;438 obligations/1314 coverage references/107 decisions remain valid; no real models/formal instance. Original task completion evidence unchanged."
+        },
+        {
+          "path": "outputs/acceptance/performance-round2/final-composed-regression-audit.json",
+          "sha256": "e70a54ac862ba3764eab804a590c3257d2b5ebc413d581877ee5fc272f5b3cd3",
+          "record_kind": "composed_related_revalidation",
+          "scope": "Round2 original full run:1639 tests,1 failure,1 error,0 skip,372 inputs stable; both corrected with related80 and unified287 pass. Not a new single full-suite PASS.438 obligations/1314 repeat references/107 decisions/1485 actual mechanism records retained unchanged. PF07 time19.050% below20%, continuous second call unresolved; final corrected source timing/growth not rerun. No real-model/formal-instance authorization."
+        }
+      ]
+    },
+    {
+      "id": "IM04",
+      "title": "实现受所有者约束的存储入口",
+      "status": "complete",
+      "modules": [
+        "M17",
+        "M03/M04/M14服务"
+      ],
+      "depends_on": [
+        "IM03"
+      ],
+      "deliverables": [
+        "新对象/版本注册、事务、制品校验、幂等命令和CAS读写适配层",
+        "物理存储权限与业务写权的边界检查"
+      ],
+      "isolated_acceptance": [
+        "业务对象类型/实例/版本错配拒绝；通用Store不能被当作业务批准",
+        "制品缺失/摘要不符时阻断，不报正常空结果",
+        "主库提交失败不出现半条决定或表示映射，未知提交可按原命令核对"
+      ],
+      "work_kind": "implementation",
+      "authorization_gate": "isolated_implementation_authorization",
+      "contract_operations": [],
+      "storage_tables": [
+        "tl_command"
+      ],
+      "evidence": "outputs/acceptance/tool-learning/im04.json",
+      "design": "docs/architecture/tool-learning-im04-design.md",
+      "status_reason": null,
+      "evidence_sha256": "fb93a2685281e995c53994dce7f0809dc0378263bd66c15a1c453b787b3c27a8",
+      "revalidation_refs": [
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-d8640a5625134b97b9b02678c769aec2.json",
+          "sha256": "32d8cc088b6d539cc03fa764b91fd5c5040734befb3e55a4d15b516ccdddc6cb",
+          "scope": "Final integrated isolated verification:1387 tests,438 mechanism obligations/1314 coverage references/107 decisions,1485 actual records; original task evidence retained. No scientific sample count, real-model quality, formal deployment or T13 long-run certification inferred."
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-5d6fedbc07ea46bebc635b9a24c4ddf6.json",
+          "sha256": "2924d914acacf872b80a113e63755ae54eef9f479bbcca0200d1e4a43f2f112b",
+          "scope": "Complete-packet performance optimization revalidation:1398 offline tests;347 public inputs stable;438 obligations/1314 coverage references/107 decisions remain valid; no real models/formal instance. Original task completion evidence unchanged."
+        },
+        {
+          "path": "outputs/acceptance/performance-round2/final-composed-regression-audit.json",
+          "sha256": "e70a54ac862ba3764eab804a590c3257d2b5ebc413d581877ee5fc272f5b3cd3",
+          "record_kind": "composed_related_revalidation",
+          "scope": "Round2 original full run:1639 tests,1 failure,1 error,0 skip,372 inputs stable; both corrected with related80 and unified287 pass. Not a new single full-suite PASS.438 obligations/1314 repeat references/107 decisions/1485 actual mechanism records retained unchanged. PF07 time19.050% below20%, continuous second call unresolved; final corrected source timing/growth not rerun. No real-model/formal-instance authorization."
+        }
+      ]
+    },
+    {
+      "id": "IM05",
+      "title": "实现C0工作、预算与协调状态",
+      "status": "complete",
+      "modules": [
+        "M14",
+        "协调器",
+        "M17"
+      ],
+      "depends_on": [
+        "IM04"
+      ],
+      "deliverables": [
+        "原观察准入前后的工作账本、独立学习活动/预算绑定",
+        "deadline、review_round、恢复条件、重试和实际用量共用规则"
+      ],
+      "isolated_acceptance": [
+        "C0活动/预算/work/命令结果同事务，触发生产者不冒充控制者话语",
+        "并发重复只产生一个逻辑工作；换请求不重置总预算或独立样本计数",
+        "停机/取消/超时/耗尽不自动继续；模型预留不冒充实际回调/消费"
+      ],
+      "work_kind": "implementation",
+      "authorization_gate": "isolated_implementation_authorization",
+      "contract_operations": [],
+      "storage_tables": [
+        "tl_work"
+      ],
+      "evidence": "outputs/acceptance/tool-learning/im05.json",
+      "design": "docs/architecture/tool-learning-im05-design.md",
+      "status_reason": null,
+      "evidence_sha256": "8cb8716b98493fdd14c0f6226f900da077574f826044ef9c88c76c220cc53058",
+      "revalidation_refs": [
+        {
+          "path": "outputs/acceptance/tool-learning/im11-recheck-f70a15d9e78747fca14b5ab1437d0407.json",
+          "sha256": "678f934aaaed36151f68751a6c2e8b0a441d58f94233534b8cdae6a6d2f34d0f",
+          "record_kind": "cross_task_regression",
+          "verified_task": "IM11",
+          "scope": "ordinary original-account eight-dimensional integration and child allocations; original proof retained"
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im13-recheck-b19a0e21c9bd423ab9f1772dba7f6cc5.json",
+          "sha256": "37a9f98f907183183ae553afd5b169fa2c8f1ce01cf2b71301b0326c51a7bd71",
+          "scope": "Stable 729-check shared continuation execution: IM13 recovery/evaluation local-read authority exceptions, C1/C2/F1 durable reconciliation, source/current outside exclusion, original maintenance plan continuation. Includes all 30 IM14 cases; full legacy regression remains for IM19. No original evidence replaced."
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-d8640a5625134b97b9b02678c769aec2.json",
+          "sha256": "32d8cc088b6d539cc03fa764b91fd5c5040734befb3e55a4d15b516ccdddc6cb",
+          "scope": "Final integrated isolated verification:1387 tests,438 mechanism obligations/1314 coverage references/107 decisions,1485 actual records; original task evidence retained. No scientific sample count, real-model quality, formal deployment or T13 long-run certification inferred."
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-5d6fedbc07ea46bebc635b9a24c4ddf6.json",
+          "sha256": "2924d914acacf872b80a113e63755ae54eef9f479bbcca0200d1e4a43f2f112b",
+          "scope": "Complete-packet performance optimization revalidation:1398 offline tests;347 public inputs stable;438 obligations/1314 coverage references/107 decisions remain valid; no real models/formal instance. Original task completion evidence unchanged."
+        },
+        {
+          "path": "outputs/acceptance/performance-round2/final-composed-regression-audit.json",
+          "sha256": "e70a54ac862ba3764eab804a590c3257d2b5ebc413d581877ee5fc272f5b3cd3",
+          "record_kind": "composed_related_revalidation",
+          "scope": "Round2 original full run:1639 tests,1 failure,1 error,0 skip,372 inputs stable; both corrected with related80 and unified287 pass. Not a new single full-suite PASS.438 obligations/1314 repeat references/107 decisions/1485 actual mechanism records retained unchanged. PF07 time19.050% below20%, continuous second call unresolved; final corrected source timing/growth not rerun. No real-model/formal-instance authorization."
+        }
+      ]
+    },
+    {
+      "id": "IM06",
+      "title": "先实现依赖登记、F1屏障和最终门禁基础",
+      "status": "complete",
+      "modules": [
+        "M12",
+        "M03/M04",
+        "M17",
+        "协调器"
+      ],
+      "depends_on": [
+        "IM04",
+        "IM05"
+      ],
+      "deliverables": [
+        "合法源变化、scope epoch、分原因屏障和持久传播义务",
+        "共享门禁/事务次序与当前资格检查入口"
+      ],
+      "isolated_acceptance": [
+        "F1与传播义务一起提交，通知丢失仍能拒绝失效使用",
+        "拒绝伪造变化、同键异义和旧epoch；多原因屏障不一并解除",
+        "G1真实回调互斥不放宽：预留不当派发，已在途不虚报新调用或即时停止"
+      ],
+      "work_kind": "implementation",
+      "authorization_gate": "isolated_implementation_authorization",
+      "contract_operations": [
+        "apply_invalidation"
+      ],
+      "storage_tables": [
+        "tl_dependency",
+        "tl_source_epoch",
+        "tl_barrier",
+        "tl_change",
+        "tl_propagation"
+      ],
+      "evidence": "outputs/acceptance/tool-learning/im06.json",
+      "design": "docs/architecture/tool-learning-im06-design.md",
+      "status_reason": null,
+      "evidence_sha256": "5a032f1d9cd1ecf39a193a382f1f8919c121d37ade9fcc5439eb5612742f1db6",
+      "revalidation_refs": [
+        {
+          "path": "outputs/acceptance/tool-learning/im06-recheck-a1850af937d14a2088883ceb83d0c3c1.json",
+          "sha256": "25c28400537ca80965900c63786ba8684e6e619b68e414eb2180b0bb54aacf99",
+          "scope": "F1 technical result slot and legitimate immutable static source revision zero; original completion evidence retained"
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im06-recheck-ba0799b65f6f4061bb968e812af0af8f.json",
+          "sha256": "77450dff9ba6f0952f46176caa2e03af0ac513b7ab419b3c8b0e09fa78d6c084",
+          "scope": "Per-revision native dependencies and F1/input propagation; independent new revision survives historical support invalidation; original evidence retained"
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im11-recheck-f70a15d9e78747fca14b5ab1437d0407.json",
+          "sha256": "678f934aaaed36151f68751a6c2e8b0a441d58f94233534b8cdae6a6d2f34d0f",
+          "record_kind": "cross_task_regression",
+          "verified_task": "IM11",
+          "scope": "current eligibility, real process ordering, actual-input manifest and snapshot/static source integration; original proof retained"
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im12.json",
+          "sha256": "f3abb66b4bd11a75e907c3981e3cda587929c41287e548200401b3a530a4c8ad",
+          "scope": "IM12 stable full gate: affected F1 protective budget authority, actual runtime featureoff protection, read/output boundaries; 1254 isolated offline checks plus web syntax/DOM. Original completion evidence retained."
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-d8640a5625134b97b9b02678c769aec2.json",
+          "sha256": "32d8cc088b6d539cc03fa764b91fd5c5040734befb3e55a4d15b516ccdddc6cb",
+          "scope": "Final integrated isolated verification:1387 tests,438 mechanism obligations/1314 coverage references/107 decisions,1485 actual records; original task evidence retained. No scientific sample count, real-model quality, formal deployment or T13 long-run certification inferred."
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-5d6fedbc07ea46bebc635b9a24c4ddf6.json",
+          "sha256": "2924d914acacf872b80a113e63755ae54eef9f479bbcca0200d1e4a43f2f112b",
+          "scope": "Complete-packet performance optimization revalidation:1398 offline tests;347 public inputs stable;438 obligations/1314 coverage references/107 decisions remain valid; no real models/formal instance. Original task completion evidence unchanged."
+        },
+        {
+          "path": "outputs/acceptance/performance-round2/final-composed-regression-audit.json",
+          "sha256": "e70a54ac862ba3764eab804a590c3257d2b5ebc413d581877ee5fc272f5b3cd3",
+          "record_kind": "composed_related_revalidation",
+          "scope": "Round2 original full run:1639 tests,1 failure,1 error,0 skip,372 inputs stable; both corrected with related80 and unified287 pass. Not a new single full-suite PASS.438 obligations/1314 repeat references/107 decisions/1485 actual mechanism records retained unchanged. PF07 time19.050% below20%, continuous second call unresolved; final corrected source timing/growth not rerun. No real-model/formal-instance authorization."
+        }
+      ]
+    },
+    {
+      "id": "IM07",
+      "title": "实现观察准入、提取与比较产物",
+      "status": "complete",
+      "modules": [
+        "M14",
+        "M03推理能力",
+        "M01/M13来源"
+      ],
+      "depends_on": [
+        "IM02",
+        "IM05",
+        "IM06"
+      ],
+      "deliverables": [
+        "分层去重、有限等待/拒绝/停止与四类学习产物生产入口",
+        "声明格式解析、版本绑定比较与支持/反证保留"
+      ],
+      "isolated_acceptance": [
+        "成功/失败/未知/矛盾/无变更均有正确终点，不强制造正收益",
+        "源S报告10不自动升级为现实确定10，旧认识不补成原观察",
+        "只有已授权有预算的必要推理才派发；原工具/未知副作用不为学习重做"
+      ],
+      "work_kind": "implementation",
+      "authorization_gate": "isolated_implementation_authorization",
+      "contract_operations": [
+        "admit_observation",
+        "assess_observation"
+      ],
+      "storage_tables": [
+        "tl_product"
+      ],
+      "evidence": "outputs/acceptance/tool-learning/im07.json",
+      "design": "docs/architecture/tool-learning-im07-design.md",
+      "status_reason": null,
+      "evidence_sha256": "f6c7ee72dcc23cc913ff4a85a82f3fe412d0b053f30127ecd2d3d5cb01802066",
+      "revalidation_refs": [
+        {
+          "path": "outputs/acceptance/tool-learning/im11-recheck-f70a15d9e78747fca14b5ab1437d0407.json",
+          "sha256": "678f934aaaed36151f68751a6c2e8b0a441d58f94233534b8cdae6a6d2f34d0f",
+          "record_kind": "cross_task_regression",
+          "verified_task": "IM11",
+          "scope": "canonical producer/payload lineage, actual provider failure measurements and whole-read metering takeover; original proof retained"
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-d8640a5625134b97b9b02678c769aec2.json",
+          "sha256": "32d8cc088b6d539cc03fa764b91fd5c5040734befb3e55a4d15b516ccdddc6cb",
+          "scope": "Final integrated isolated verification:1387 tests,438 mechanism obligations/1314 coverage references/107 decisions,1485 actual records; original task evidence retained. No scientific sample count, real-model quality, formal deployment or T13 long-run certification inferred."
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-5d6fedbc07ea46bebc635b9a24c4ddf6.json",
+          "sha256": "2924d914acacf872b80a113e63755ae54eef9f479bbcca0200d1e4a43f2f112b",
+          "scope": "Complete-packet performance optimization revalidation:1398 offline tests;347 public inputs stable;438 obligations/1314 coverage references/107 decisions remain valid; no real models/formal instance. Original task completion evidence unchanged."
+        },
+        {
+          "path": "outputs/acceptance/performance-round2/final-composed-regression-audit.json",
+          "sha256": "e70a54ac862ba3764eab804a590c3257d2b5ebc413d581877ee5fc272f5b3cd3",
+          "record_kind": "composed_related_revalidation",
+          "scope": "Round2 original full run:1639 tests,1 failure,1 error,0 skip,372 inputs stable; both corrected with related80 and unified287 pass. Not a new single full-suite PASS.438 obligations/1314 repeat references/107 decisions/1485 actual mechanism records retained unchanged. PF07 time19.050% below20%, continuous second call unresolved; final corrected source timing/growth not rerun. No real-model/formal-instance authorization."
+        }
+      ]
+    },
+    {
+      "id": "IM08",
+      "title": "实现M03独立接纳、内容版本与C1",
+      "status": "complete",
+      "modules": [
+        "M03",
+        "M12复核",
+        "M17"
+      ],
+      "depends_on": [
+        "IM07"
+      ],
+      "deliverables": [
+        "G01—G08、TL-ACCEPT-REVIEW-1与Decision入口",
+        "candidate/accept/defer/reject/conflict/reuse及互依赖组C1"
+      ],
+      "isolated_acceptance": [
+        "无政策/复核不能默认接受；批准也不能越过无支持/撤权/停止",
+        "同轮决定不可改，条件解除后新轮仍用原预算；同源副本不制造独立支持",
+        "决定/内容修订/head/表示义务整组提交，写点故障不产生半组当前认识"
+      ],
+      "work_kind": "implementation",
+      "authorization_gate": "isolated_implementation_authorization",
+      "contract_operations": [
+        "decide_proposal"
+      ],
+      "storage_tables": [
+        "tl_content",
+        "tl_content_revision",
+        "tl_decision",
+        "tl_group"
+      ],
+      "evidence": "outputs/acceptance/tool-learning/im08.json",
+      "follow_up_obligations": [
+        "IM07可提出指向既有cognition_beliefs/concepts的existing UpdateProposal；C1明确native tl_content桥接/候选策略，不能把旧cognition物理ID塞入tl_content FK，也不得静默把旧认识当新accepted内容。"
+      ],
+      "design": "docs/architecture/tool-learning-im08-design.md",
+      "status_reason": null,
+      "evidence_sha256": "b4dec80551bfa11c6dd50e5d01c351feceb009405a9f7f79a0f6d52f58c02a37",
+      "revalidation_refs": [
+        {
+          "path": "outputs/acceptance/tool-learning/im08-recheck-2737adc87fd242a1962bdc9e7e284bd7.json",
+          "sha256": "d2e6c4fb0fb93538a2babde33e4d8fa55208124d34194132566a9a1cb734f388",
+          "scope": "Closed bridge consumer/source/version projection and fresh deadline/stop after final owner callback; original 424-test evidence retained; 426-test stable revalidation"
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im11-recheck-f70a15d9e78747fca14b5ab1437d0407.json",
+          "sha256": "678f934aaaed36151f68751a6c2e8b0a441d58f94233534b8cdae6a6d2f34d0f",
+          "record_kind": "cross_task_regression",
+          "verified_task": "IM11",
+          "scope": "real controller review, exact content/source lineage and original-account read slices; original proof retained"
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im13-recheck-b19a0e21c9bd423ab9f1772dba7f6cc5.json",
+          "sha256": "37a9f98f907183183ae553afd5b169fa2c8f1ce01cf2b71301b0326c51a7bd71",
+          "scope": "Stable 729-check shared continuation execution: IM13 recovery/evaluation local-read authority exceptions, C1/C2/F1 durable reconciliation, source/current outside exclusion, original maintenance plan continuation. Includes all 30 IM14 cases; full legacy regression remains for IM19. No original evidence replaced."
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-d8640a5625134b97b9b02678c769aec2.json",
+          "sha256": "32d8cc088b6d539cc03fa764b91fd5c5040734befb3e55a4d15b516ccdddc6cb",
+          "scope": "Final integrated isolated verification:1387 tests,438 mechanism obligations/1314 coverage references/107 decisions,1485 actual records; original task evidence retained. No scientific sample count, real-model quality, formal deployment or T13 long-run certification inferred."
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-5d6fedbc07ea46bebc635b9a24c4ddf6.json",
+          "sha256": "2924d914acacf872b80a113e63755ae54eef9f479bbcca0200d1e4a43f2f112b",
+          "scope": "Complete-packet performance optimization revalidation:1398 offline tests;347 public inputs stable;438 obligations/1314 coverage references/107 decisions remain valid; no real models/formal instance. Original task completion evidence unchanged."
+        },
+        {
+          "path": "outputs/acceptance/performance-round2/final-composed-regression-audit.json",
+          "sha256": "e70a54ac862ba3764eab804a590c3257d2b5ebc413d581877ee5fc272f5b3cd3",
+          "record_kind": "composed_related_revalidation",
+          "scope": "Round2 original full run:1639 tests,1 failure,1 error,0 skip,372 inputs stable; both corrected with related80 and unified287 pass. Not a new single full-suite PASS.438 obligations/1314 repeat references/107 decisions/1485 actual mechanism records retained unchanged. PF07 time19.050% below20%, continuous second call unresolved; final corrected source timing/growth not rerun. No real-model/formal-instance authorization."
+        }
+      ]
+    },
+    {
+      "id": "IM09",
+      "title": "实现M04固定版本表示与C2",
+      "status": "complete",
+      "modules": [
+        "M04",
+        "协调器",
+        "M17"
+      ],
+      "depends_on": [
+        "IM08"
+      ],
+      "deliverables": [
+        "短租约领取、纯表示构造、固定版本发布及消费确认",
+        "表示系列/修订注册、head映射和整组ready"
+      ],
+      "isolated_acceptance": [
+        "C2前blob必须可用，表示不新增判断、接纳或gain",
+        "旧租约/晚到工作不能覆写新head；重复发布不多计",
+        "C1已成而C2失败明确未就绪；只恢复未完成阶段，不重放工具/模型"
+      ],
+      "work_kind": "implementation",
+      "authorization_gate": "isolated_implementation_authorization",
+      "contract_operations": [
+        "claim_representation",
+        "publish_representation"
+      ],
+      "storage_tables": [
+        "tl_handoff",
+        "tl_representation",
+        "tl_representation_head"
+      ],
+      "evidence": "outputs/acceptance/tool-learning/im09.json",
+      "follow_up_obligations": [
+        "修正M17 VersionToken解析：claim Response.current明确revision=handoff.row_revision、epoch=lease_generation，不能一律把VersionToken.revision当object_revision_registry不可变修订；按真实对象kind解析CAS revision与内容修订，Ref.revision仍严格，不伪造登记。"
+      ],
+      "design": "docs/architecture/tool-learning-im09-design.md",
+      "status_reason": null,
+      "evidence_sha256": "e8143ebedfd858ac328b83e9a0ae2cdd7be7ba831e79f1d8e086748f5cc05004",
+      "revalidation_refs": [
+        {
+          "path": "outputs/acceptance/tool-learning/im11-recheck-f70a15d9e78747fca14b5ab1437d0407.json",
+          "sha256": "678f934aaaed36151f68751a6c2e8b0a441d58f94233534b8cdae6a6d2f34d0f",
+          "record_kind": "cross_task_regression",
+          "verified_task": "IM11",
+          "scope": "native representation lease/C2 and actual read slices/control-token integration; original proof retained"
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im13-recheck-b19a0e21c9bd423ab9f1772dba7f6cc5.json",
+          "sha256": "37a9f98f907183183ae553afd5b169fa2c8f1ce01cf2b71301b0326c51a7bd71",
+          "scope": "Stable 729-check shared continuation execution: IM13 recovery/evaluation local-read authority exceptions, C1/C2/F1 durable reconciliation, source/current outside exclusion, original maintenance plan continuation. Includes all 30 IM14 cases; full legacy regression remains for IM19. No original evidence replaced."
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-d8640a5625134b97b9b02678c769aec2.json",
+          "sha256": "32d8cc088b6d539cc03fa764b91fd5c5040734befb3e55a4d15b516ccdddc6cb",
+          "scope": "Final integrated isolated verification:1387 tests,438 mechanism obligations/1314 coverage references/107 decisions,1485 actual records; original task evidence retained. No scientific sample count, real-model quality, formal deployment or T13 long-run certification inferred."
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-5d6fedbc07ea46bebc635b9a24c4ddf6.json",
+          "sha256": "2924d914acacf872b80a113e63755ae54eef9f479bbcca0200d1e4a43f2f112b",
+          "scope": "Complete-packet performance optimization revalidation:1398 offline tests;347 public inputs stable;438 obligations/1314 coverage references/107 decisions remain valid; no real models/formal instance. Original task completion evidence unchanged."
+        },
+        {
+          "path": "outputs/acceptance/performance-round2/final-composed-regression-audit.json",
+          "sha256": "e70a54ac862ba3764eab804a590c3257d2b5ebc413d581877ee5fc272f5b3cd3",
+          "record_kind": "composed_related_revalidation",
+          "scope": "Round2 original full run:1639 tests,1 failure,1 error,0 skip,372 inputs stable; both corrected with related80 and unified287 pass. Not a new single full-suite PASS.438 obligations/1314 repeat references/107 decisions/1485 actual mechanism records retained unchanged. PF07 time19.050% below20%, continuous second call unresolved; final corrected source timing/growth not rerun. No real-model/formal-instance authorization."
+        }
+      ]
+    },
+    {
+      "id": "IM10",
+      "title": "实现用途受限召回及新旧记录兼容",
+      "status": "complete",
+      "modules": [
+        "M04",
+        "M03输入组织"
+      ],
+      "depends_on": [
+        "IM09"
+      ],
+      "deliverables": [
+        "RecallRequest/Result/Item、用途矩阵、组就绪、索引/有界回退",
+        "tl_recall_item与旧文字检索结果的单一计数映射"
+      ],
+      "isolated_acceptance": [
+        "正文与来源/范围/未知一起返回，预算不足减整条并报partial",
+        "未接纳工具正文不暗中顶替经验，C2未成不认知临时直读",
+        "无匹配/未就绪/阻断/损坏不同；控制者audit不写访问/工作/索引，不启动推理",
+        "原文字召回不被废除，表示ID不硬塞旧memory_revision外键"
+      ],
+      "work_kind": "implementation",
+      "authorization_gate": "isolated_implementation_authorization",
+      "contract_operations": [
+        "recall"
+      ],
+      "storage_tables": [
+        "tl_recall_item"
+      ],
+      "evidence": "outputs/acceptance/tool-learning/im10.json",
+      "design": "docs/architecture/tool-learning-im10-design.md",
+      "status_reason": null,
+      "evidence_sha256": "8ef254665ee5fb9628096026e80296355c9409e91a9a8108de247137db710035",
+      "revalidation_refs": [
+        {
+          "path": "outputs/acceptance/tool-learning/im11-recheck-f70a15d9e78747fca14b5ab1437d0407.json",
+          "sha256": "678f934aaaed36151f68751a6c2e8b0a441d58f94233534b8cdae6a6d2f34d0f",
+          "record_kind": "cross_task_regression",
+          "verified_task": "IM11",
+          "scope": "original-account recall/input and current-recipient/whole-packet integration; original proof retained"
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-d8640a5625134b97b9b02678c769aec2.json",
+          "sha256": "32d8cc088b6d539cc03fa764b91fd5c5040734befb3e55a4d15b516ccdddc6cb",
+          "scope": "Final integrated isolated verification:1387 tests,438 mechanism obligations/1314 coverage references/107 decisions,1485 actual records; original task evidence retained. No scientific sample count, real-model quality, formal deployment or T13 long-run certification inferred."
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-5d6fedbc07ea46bebc635b9a24c4ddf6.json",
+          "sha256": "2924d914acacf872b80a113e63755ae54eef9f479bbcca0200d1e4a43f2f112b",
+          "scope": "Complete-packet performance optimization revalidation:1398 offline tests;347 public inputs stable;438 obligations/1314 coverage references/107 decisions remain valid; no real models/formal instance. Original task completion evidence unchanged."
+        },
+        {
+          "path": "outputs/acceptance/performance-round2/final-composed-regression-audit.json",
+          "sha256": "e70a54ac862ba3764eab804a590c3257d2b5ebc413d581877ee5fc272f5b3cd3",
+          "record_kind": "composed_related_revalidation",
+          "scope": "Round2 original full run:1639 tests,1 failure,1 error,0 skip,372 inputs stable; both corrected with related80 and unified287 pass. Not a new single full-suite PASS.438 obligations/1314 repeat references/107 decisions/1485 actual mechanism records retained unchanged. PF07 time19.050% below20%, continuous second call unresolved; final corrected source timing/growth not rerun. No real-model/formal-instance authorization."
+        }
+      ]
+    },
+    {
+      "id": "IM11",
+      "title": "贯通所有输入、响应和外部使用门禁",
+      "status": "complete",
+      "modules": [
+        "Engine协调器",
+        "M03/M04/M12",
+        "模型适配器"
+      ],
+      "depends_on": [
+        "IM06",
+        "IM10"
+      ],
+      "deliverables": [
+        "逐字段输入/输出/派生依赖清单与TL输入装配",
+        "准备、真实入口、接收保留、接纳、交付和动作的复检"
+      ],
+      "isolated_acceptance": [
+        "聊天、任务回执、探索共享内容及所有特征派生入口均登记，不能只检查selected_memories",
+        "每次思考仍独立调用；过时请求不能原地换正文复用身份",
+        "删除范围内晚到正文持久化前被阻断；允许的审计不重存秘密正文/hash",
+        "新功能默认关闭；普通运行入口不能通过只读audit获得模型或动作权限"
+      ],
+      "work_kind": "implementation",
+      "authorization_gate": "isolated_implementation_authorization",
+      "contract_operations": [],
+      "storage_tables": [
+        "tl_input_dependency"
+      ],
+      "evidence": "outputs/acceptance/tool-learning/im11-recheck-f70a15d9e78747fca14b5ab1437d0407.json",
+      "follow_up_obligations": [
+        "接入IM07 generate_fresh学习推理端口到实际配置的provider（不能复用硬编码action schema）；各provider严格结构输出/独立请求/真实用量和全部输入边界用隔离替身传输验证，真实模型调用仍需单独授权。",
+        "把IM07 observation.prepare/material事件、context_snapshots、typed baseline包、学习thought_requests/results及解释输出纳入逐字段派生/保留依赖清单；不只登记LLM所选memory。",
+        "真实Control policy/config等VersionToken需要按其实际记录/可信所有者核验，不能用memory version替代测试掩盖合法未版本化source或把已知0变unknown；区分Ref不可变修订与VersionToken当前控制/CAS修订。"
+      ],
+      "design": "docs/architecture/tool-learning-im11-design.md",
+      "status_reason": null,
+      "evidence_sha256": "678f934aaaed36151f68751a6c2e8b0a441d58f94233534b8cdae6a6d2f34d0f",
+      "revalidation_refs": [
+        {
+          "path": "outputs/acceptance/tool-learning/im11-web-supplement.json",
+          "sha256": "6a8e2aff986b27a3ec426319ca302f07e4174e5083be848f059b2a2e7bbae003",
+          "scope": "earlier independently stable actual-script DOM and request check; the final IM11 gate also covers web assets and repeats these checks; no browser layout claim"
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im11-active-pause-recheck-3c3436c45a4c42d7b0948120c25978ff.json",
+          "sha256": "709c0ddf2ed0a7c16b95fd28ff1f936d16901cca08151a5acc4860de507769f7",
+          "scope": "59 stable local tests: active/nested/exception elapsed exclusion, actual original work read/model ledger conservation and post-use ownership, stale measurement rejection, native flow/read takeover/IM07/architecture; prior 1183-test comprehensive record unchanged, IM12/19 final gates cover the resulting source again"
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im12.json",
+          "sha256": "f3abb66b4bd11a75e907c3981e3cda587929c41287e548200401b3a530a4c8ad",
+          "scope": "IM12 stable full gate: affected F1 protective budget authority, actual runtime featureoff protection, read/output boundaries; 1254 isolated offline checks plus web syntax/DOM. Original completion evidence retained."
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im13-recheck-b19a0e21c9bd423ab9f1772dba7f6cc5.json",
+          "sha256": "37a9f98f907183183ae553afd5b169fa2c8f1ce01cf2b71301b0326c51a7bd71",
+          "scope": "Stable 729-check shared continuation execution: IM13 recovery/evaluation local-read authority exceptions, C1/C2/F1 durable reconciliation, source/current outside exclusion, original maintenance plan continuation. Includes all 30 IM14 cases; full legacy regression remains for IM19. No original evidence replaced."
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im15-recheck-6bd2db4738b6452b846ca32aa8bc6ba5.json",
+          "sha256": "998fd8188bf2b08f61d540bd611ae151c07714b192eb308f0ad8d7350c1efffb",
+          "scope": "IM15 stable758 continuation checks including qualified plane with learning disabled, persisted protected materials on schema3, original budget/recipient/source gates and all IM13/14 special cases. Old full regression deferred to IM19; isolated runtime launches only."
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-d8640a5625134b97b9b02678c769aec2.json",
+          "sha256": "32d8cc088b6d539cc03fa764b91fd5c5040734befb3e55a4d15b516ccdddc6cb",
+          "scope": "Final integrated isolated verification:1387 tests,438 mechanism obligations/1314 coverage references/107 decisions,1485 actual records; original task evidence retained. No scientific sample count, real-model quality, formal deployment or T13 long-run certification inferred."
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-5d6fedbc07ea46bebc635b9a24c4ddf6.json",
+          "sha256": "2924d914acacf872b80a113e63755ae54eef9f479bbcca0200d1e4a43f2f112b",
+          "scope": "Complete-packet performance optimization revalidation:1398 offline tests;347 public inputs stable;438 obligations/1314 coverage references/107 decisions remain valid; no real models/formal instance. Original task completion evidence unchanged."
+        },
+        {
+          "path": "outputs/acceptance/performance-round2/final-composed-regression-audit.json",
+          "sha256": "e70a54ac862ba3764eab804a590c3257d2b5ebc413d581877ee5fc272f5b3cd3",
+          "record_kind": "composed_related_revalidation",
+          "scope": "Round2 original full run:1639 tests,1 failure,1 error,0 skip,372 inputs stable; both corrected with related80 and unified287 pass. Not a new single full-suite PASS.438 obligations/1314 repeat references/107 decisions/1485 actual mechanism records retained unchanged. PF07 time19.050% below20%, continuous second call unresolved; final corrected source timing/growth not rerun. No real-model/formal-instance authorization."
+        }
+      ]
+    },
+    {
+      "id": "IM12",
+      "title": "实现F2/F3传播与逐目标清理",
+      "status": "complete",
+      "modules": [
+        "M12",
+        "M03/M04/M14",
+        "M17",
+        "受管清理"
+      ],
+      "depends_on": [
+        "IM11"
+      ],
+      "deliverables": [
+        "分域传播确认、依赖闭包和多原因恢复条件",
+        "受管数据库/blob/索引/缓存/备份清理计划与验证"
+      ],
+      "isolated_acceptance": [
+        "缺边/环/超限显示覆盖不足并阻断相应域，不报全域完成",
+        "迟到响应/旧租约不能重建删除正文；权限恢复不复活旧内容",
+        "只在合成隔离材料中验证破坏性路径；未获物理清理许可的项目保持not_run",
+        "远端未知不当已删，已发生交付和世界效果不伪造回滚"
+      ],
+      "work_kind": "implementation",
+      "authorization_gate": "isolated_implementation_authorization",
+      "contract_operations": [
+        "acknowledge_propagation"
+      ],
+      "storage_tables": [
+        "tl_erasure_target"
+      ],
+      "evidence": "outputs/acceptance/tool-learning/im12.json",
+      "design": "docs/architecture/tool-learning-im12-design.md",
+      "status_reason": null,
+      "evidence_sha256": "f3abb66b4bd11a75e907c3981e3cda587929c41287e548200401b3a530a4c8ad",
+      "revalidation_refs": [
+        {
+          "path": "outputs/acceptance/tool-learning/im13-recheck-b19a0e21c9bd423ab9f1772dba7f6cc5.json",
+          "sha256": "37a9f98f907183183ae553afd5b169fa2c8f1ce01cf2b71301b0326c51a7bd71",
+          "scope": "Stable 729-check shared continuation execution: IM13 recovery/evaluation local-read authority exceptions, C1/C2/F1 durable reconciliation, source/current outside exclusion, original maintenance plan continuation. Includes all 30 IM14 cases; full legacy regression remains for IM19. No original evidence replaced."
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im15-recheck-6bd2db4738b6452b846ca32aa8bc6ba5.json",
+          "sha256": "998fd8188bf2b08f61d540bd611ae151c07714b192eb308f0ad8d7350c1efffb",
+          "scope": "IM15 stable758 continuation checks including qualified plane with learning disabled, persisted protected materials on schema3, original budget/recipient/source gates and all IM13/14 special cases. Old full regression deferred to IM19; isolated runtime launches only."
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-d8640a5625134b97b9b02678c769aec2.json",
+          "sha256": "32d8cc088b6d539cc03fa764b91fd5c5040734befb3e55a4d15b516ccdddc6cb",
+          "scope": "Final integrated isolated verification:1387 tests,438 mechanism obligations/1314 coverage references/107 decisions,1485 actual records; original task evidence retained. No scientific sample count, real-model quality, formal deployment or T13 long-run certification inferred."
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-5d6fedbc07ea46bebc635b9a24c4ddf6.json",
+          "sha256": "2924d914acacf872b80a113e63755ae54eef9f479bbcca0200d1e4a43f2f112b",
+          "scope": "Complete-packet performance optimization revalidation:1398 offline tests;347 public inputs stable;438 obligations/1314 coverage references/107 decisions remain valid; no real models/formal instance. Original task completion evidence unchanged."
+        },
+        {
+          "path": "outputs/acceptance/performance-round2/final-composed-regression-audit.json",
+          "sha256": "e70a54ac862ba3764eab804a590c3257d2b5ebc413d581877ee5fc272f5b3cd3",
+          "record_kind": "composed_related_revalidation",
+          "scope": "Round2 original full run:1639 tests,1 failure,1 error,0 skip,372 inputs stable; both corrected with related80 and unified287 pass. Not a new single full-suite PASS.438 obligations/1314 repeat references/107 decisions/1485 actual mechanism records retained unchanged. PF07 time19.050% below20%, continuous second call unresolved; final corrected source timing/growth not rerun. No real-model/formal-instance authorization."
+        }
+      ]
+    },
+    {
+      "id": "IM13",
+      "title": "实现断点恢复与同一工作有限续处理",
+      "status": "complete",
+      "modules": [
+        "Recovery",
+        "协调器",
+        "各业务所有者"
+      ],
+      "depends_on": [
+        "IM09",
+        "IM12"
+      ],
+      "deliverables": [
+        "提交不明的持久核对、failed/blocked工作恢复和租约代次重建",
+        "当前排除记录与备份恢复门禁"
+      ],
+      "isolated_acceptance": [
+        "C1/C2/F1各写点、重启、租约迟到及提交不明均有夹具",
+        "恢复保留work/内容/预算与屏障，不造新ID续命或重跑外部动作",
+        "停止与恢复锁优先；无法获得镜像外可信排除记录时保持RESTORE_BLOCKED"
+      ],
+      "work_kind": "implementation",
+      "authorization_gate": "isolated_implementation_authorization",
+      "contract_operations": [
+        "resume_work"
+      ],
+      "storage_tables": [],
+      "evidence": "outputs/acceptance/tool-learning/im13-recheck-b19a0e21c9bd423ab9f1772dba7f6cc5.json",
+      "design": "docs/architecture/tool-learning-im13-design.md",
+      "status_reason": null,
+      "evidence_sha256": "37a9f98f907183183ae553afd5b169fa2c8f1ce01cf2b71301b0326c51a7bd71",
+      "revalidation_refs": [
+        {
+          "path": "outputs/acceptance/tool-learning/im15-recheck-6bd2db4738b6452b846ca32aa8bc6ba5.json",
+          "sha256": "998fd8188bf2b08f61d540bd611ae151c07714b192eb308f0ad8d7350c1efffb",
+          "scope": "IM15 stable758 continuation checks including qualified plane with learning disabled, persisted protected materials on schema3, original budget/recipient/source gates and all IM13/14 special cases. Old full regression deferred to IM19; isolated runtime launches only."
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-d8640a5625134b97b9b02678c769aec2.json",
+          "sha256": "32d8cc088b6d539cc03fa764b91fd5c5040734befb3e55a4d15b516ccdddc6cb",
+          "scope": "Final integrated isolated verification:1387 tests,438 mechanism obligations/1314 coverage references/107 decisions,1485 actual records; original task evidence retained. No scientific sample count, real-model quality, formal deployment or T13 long-run certification inferred."
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-5d6fedbc07ea46bebc635b9a24c4ddf6.json",
+          "sha256": "2924d914acacf872b80a113e63755ae54eef9f479bbcca0200d1e4a43f2f112b",
+          "scope": "Complete-packet performance optimization revalidation:1398 offline tests;347 public inputs stable;438 obligations/1314 coverage references/107 decisions remain valid; no real models/formal instance. Original task completion evidence unchanged."
+        },
+        {
+          "path": "outputs/acceptance/performance-round2/final-composed-regression-audit.json",
+          "sha256": "e70a54ac862ba3764eab804a590c3257d2b5ebc413d581877ee5fc272f5b3cd3",
+          "record_kind": "composed_related_revalidation",
+          "scope": "Round2 original full run:1639 tests,1 failure,1 error,0 skip,372 inputs stable; both corrected with related80 and unified287 pass. Not a new single full-suite PASS.438 obligations/1314 repeat references/107 decisions/1485 actual mechanism records retained unchanged. PF07 time19.050% below20%, continuous second call unresolved; final corrected source timing/growth not rerun. No real-model/formal-instance authorization."
+        }
+      ]
+    },
+    {
+      "id": "IM14",
+      "title": "接通效果记录并保留shadow边界",
+      "status": "complete",
+      "modules": [
+        "M14",
+        "M03统计经验",
+        "ExperienceMeasurement"
+      ],
+      "depends_on": [
+        "IM07",
+        "IM08",
+        "IM12"
+      ],
+      "deliverables": [
+        "EffectAssessment/record_effect及原测量报告校验兼容",
+        "TL效果与旧分类gain/认知统计的关联说明"
+      ],
+      "isolated_acceptance": [
+        "测量未执行/不完整/失效与已知0或负值不同",
+        "新链内容忠实、检索、正确使用和收益不互相冒充",
+        "旧shadow和legacy不会静默迁移成世界事实或实际选择权"
+      ],
+      "work_kind": "implementation",
+      "authorization_gate": "isolated_implementation_authorization",
+      "contract_operations": [
+        "record_effect"
+      ],
+      "storage_tables": [
+        "tl_effect"
+      ],
+      "evidence": "outputs/acceptance/tool-learning/im14.json",
+      "follow_up_obligations": [
+        "将EffectAssessment.metric_definition解析到tl_effect.metric_contract的真实指标契约/版本映射；IM04默认拒绝端口不能当作已完成映射。"
+      ],
+      "design": "docs/architecture/tool-learning-im14-design.md",
+      "status_reason": null,
+      "evidence_sha256": "90bc10be55b253e7c29d35b7c28a54acade5907c18787401c6eb0f67f95de0b2",
+      "revalidation_refs": [
+        {
+          "path": "outputs/acceptance/tool-learning/im15-recheck-6bd2db4738b6452b846ca32aa8bc6ba5.json",
+          "sha256": "998fd8188bf2b08f61d540bd611ae151c07714b192eb308f0ad8d7350c1efffb",
+          "scope": "IM15 stable758 continuation checks including qualified plane with learning disabled, persisted protected materials on schema3, original budget/recipient/source gates and all IM13/14 special cases. Old full regression deferred to IM19; isolated runtime launches only."
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-d8640a5625134b97b9b02678c769aec2.json",
+          "sha256": "32d8cc088b6d539cc03fa764b91fd5c5040734befb3e55a4d15b516ccdddc6cb",
+          "scope": "Final integrated isolated verification:1387 tests,438 mechanism obligations/1314 coverage references/107 decisions,1485 actual records; original task evidence retained. No scientific sample count, real-model quality, formal deployment or T13 long-run certification inferred."
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-5d6fedbc07ea46bebc635b9a24c4ddf6.json",
+          "sha256": "2924d914acacf872b80a113e63755ae54eef9f479bbcca0200d1e4a43f2f112b",
+          "scope": "Complete-packet performance optimization revalidation:1398 offline tests;347 public inputs stable;438 obligations/1314 coverage references/107 decisions remain valid; no real models/formal instance. Original task completion evidence unchanged."
+        },
+        {
+          "path": "outputs/acceptance/performance-round2/final-composed-regression-audit.json",
+          "sha256": "e70a54ac862ba3764eab804a590c3257d2b5ebc413d581877ee5fc272f5b3cd3",
+          "record_kind": "composed_related_revalidation",
+          "scope": "Round2 original full run:1639 tests,1 failure,1 error,0 skip,372 inputs stable; both corrected with related80 and unified287 pass. Not a new single full-suite PASS.438 obligations/1314 repeat references/107 decisions/1485 actual mechanism records retained unchanged. PF07 time19.050% below20%, continuous second call unresolved; final corrected source timing/growth not rerun. No real-model/formal-instance authorization."
+        }
+      ]
+    },
+    {
+      "id": "IM15",
+      "title": "准备版本4兼容桥接与部署保护",
+      "status": "complete",
+      "modules": [
+        "Deployment/Releases",
+        "Runtime/Store",
+        "M12门禁"
+      ],
+      "depends_on": [
+        "IM11",
+        "IM12",
+        "IM13"
+      ],
+      "deliverables": [
+        "支持schema4且执行同一TL屏障的可信桥接基线设计/构建与隔离证据",
+        "版本/能力声明、默认关闭策略、失败停止及回退判定"
+      ],
+      "isolated_acceptance": [
+        "新旧schema范围和TL能力声明与实际加载版本一致",
+        "桥接禁用新学习时仍执行读取/输出屏障，不能启动无资格旧2/3版本",
+        "隔离准备/激活/运行/heartbeat失败与用户停止场景均核对；不安装后台服务"
+      ],
+      "work_kind": "implementation",
+      "authorization_gate": "isolated_implementation_authorization",
+      "contract_operations": [],
+      "storage_tables": [],
+      "evidence": "outputs/acceptance/tool-learning/im15-recheck-6bd2db4738b6452b846ca32aa8bc6ba5.json",
+      "design": "docs/architecture/tool-learning-im15-design.md",
+      "status_reason": null,
+      "evidence_sha256": "998fd8188bf2b08f61d540bd611ae151c07714b192eb308f0ad8d7350c1efffb",
+      "revalidation_refs": [
+        {
+          "path": "outputs/acceptance/tool-learning/im16.json",
+          "sha256": "ca6484c56320c074d5f390fbdd321e49b254362d45a1bdb3a4f445199f8cc024",
+          "scope": "IM16 stable773 continuation execution covers top-level capabilities exact mapping and authenticated historical-bridge projection, source/build compatibility plus all IM15 bridge cases. Original IM15 evidence unchanged; cross-historical different-build live rollback not certified."
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-d8640a5625134b97b9b02678c769aec2.json",
+          "sha256": "32d8cc088b6d539cc03fa764b91fd5c5040734befb3e55a4d15b516ccdddc6cb",
+          "scope": "Final integrated isolated verification:1387 tests,438 mechanism obligations/1314 coverage references/107 decisions,1485 actual records; original task evidence retained. No scientific sample count, real-model quality, formal deployment or T13 long-run certification inferred."
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-5d6fedbc07ea46bebc635b9a24c4ddf6.json",
+          "sha256": "2924d914acacf872b80a113e63755ae54eef9f479bbcca0200d1e4a43f2f112b",
+          "scope": "Complete-packet performance optimization revalidation:1398 offline tests;347 public inputs stable;438 obligations/1314 coverage references/107 decisions remain valid; no real models/formal instance. Original task completion evidence unchanged."
+        },
+        {
+          "path": "outputs/acceptance/performance-round2/final-composed-regression-audit.json",
+          "sha256": "e70a54ac862ba3764eab804a590c3257d2b5ebc413d581877ee5fc272f5b3cd3",
+          "record_kind": "composed_related_revalidation",
+          "scope": "Round2 original full run:1639 tests,1 failure,1 error,0 skip,372 inputs stable; both corrected with related80 and unified287 pass. Not a new single full-suite PASS.438 obligations/1314 repeat references/107 decisions/1485 actual mechanism records retained unchanged. PF07 time19.050% below20%, continuous second call unresolved; final corrected source timing/growth not rerun. No real-model/formal-instance authorization."
+        }
+      ]
+    },
+    {
+      "id": "IM16",
+      "title": "只在隔离副本验证迁移与回退",
+      "status": "complete",
+      "modules": [
+        "M17迁移",
+        "Deployment",
+        "身份/记忆模块"
+      ],
+      "depends_on": [
+        "IM03",
+        "IM15"
+      ],
+      "deliverables": [
+        "2→4、3→4迁移包/完整性检查与隔离迁移报告",
+        "备份、失败回滚、桥接回退、保留旧数据/不采纳旧shadow的证据"
+      ],
+      "isolated_acceptance": [
+        "不存在已验证兼容桥接版本时拒绝迁移",
+        "迁移写点失败不留半套主库；制品不在主库事务内须独立核对",
+        "合成身份、既有记忆/历史/有效承诺语义保留；代码回退不降库/抹新历史/解除屏障",
+        "本项不能接收当前实例目录作为目标，也不执行正式备份或迁移"
+      ],
+      "work_kind": "implementation",
+      "authorization_gate": "isolated_implementation_authorization",
+      "contract_operations": [],
+      "storage_tables": [],
+      "evidence": "outputs/acceptance/tool-learning/im16.json",
+      "design": "docs/architecture/tool-learning-im16-design.md",
+      "status_reason": null,
+      "evidence_sha256": "ca6484c56320c074d5f390fbdd321e49b254362d45a1bdb3a4f445199f8cc024",
+      "revalidation_refs": [
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-d8640a5625134b97b9b02678c769aec2.json",
+          "sha256": "32d8cc088b6d539cc03fa764b91fd5c5040734befb3e55a4d15b516ccdddc6cb",
+          "scope": "Final integrated isolated verification:1387 tests,438 mechanism obligations/1314 coverage references/107 decisions,1485 actual records; original task evidence retained. No scientific sample count, real-model quality, formal deployment or T13 long-run certification inferred."
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-5d6fedbc07ea46bebc635b9a24c4ddf6.json",
+          "sha256": "2924d914acacf872b80a113e63755ae54eef9f479bbcca0200d1e4a43f2f112b",
+          "scope": "Complete-packet performance optimization revalidation:1398 offline tests;347 public inputs stable;438 obligations/1314 coverage references/107 decisions remain valid; no real models/formal instance. Original task completion evidence unchanged."
+        },
+        {
+          "path": "outputs/acceptance/performance-round2/final-composed-regression-audit.json",
+          "sha256": "e70a54ac862ba3764eab804a590c3257d2b5ebc413d581877ee5fc272f5b3cd3",
+          "record_kind": "composed_related_revalidation",
+          "scope": "Round2 original full run:1639 tests,1 failure,1 error,0 skip,372 inputs stable; both corrected with related80 and unified287 pass. Not a new single full-suite PASS.438 obligations/1314 repeat references/107 decisions/1485 actual mechanism records retained unchanged. PF07 time19.050% below20%, continuous second call unresolved; final corrected source timing/growth not rerun. No real-model/formal-instance authorization."
+        }
+      ]
+    },
+    {
+      "id": "IM17",
+      "title": "制作DEV/MECH材料规范与完整覆盖清单",
+      "status": "complete",
+      "modules": [
+        "外部评测",
+        "独立材料管理"
+      ],
+      "depends_on": [
+        "IM01",
+        "IM02"
+      ],
+      "deliverables": [
+        "DEV24题、MECH逐裁决/题面覆盖及G1基线映射的材料制作计划",
+        "learning/query/truth/fault/blind/manifest分区、标签角色和文件权限规范"
+      ],
+      "isolated_acceptance": [
+        "库存示例/开发可见变体永久不进入正式集",
+        "机制24种线程分支及24种跨进程分支各三次；完整题面数量从封存清单计算",
+        "来源簇/模板家族、正确终点和重大错误例子明确；这不是正式独立标签已就位"
+      ],
+      "work_kind": "evaluation_preparation",
+      "authorization_gate": "evaluation_material_preparation_authorization",
+      "contract_operations": [],
+      "storage_tables": [],
+      "evidence": "outputs/acceptance/tool-learning/im17.json",
+      "design": "docs/architecture/tool-learning-im17-design.md",
+      "status_reason": null,
+      "evidence_sha256": "8d492ac8291ef82cabd9296d3300a62bdbbc2156610cab5e4d0badf2a6b8e505",
+      "revalidation_refs": [
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-d8640a5625134b97b9b02678c769aec2.json",
+          "sha256": "32d8cc088b6d539cc03fa764b91fd5c5040734befb3e55a4d15b516ccdddc6cb",
+          "scope": "Final integrated isolated verification:1387 tests,438 mechanism obligations/1314 coverage references/107 decisions,1485 actual records; original task evidence retained. No scientific sample count, real-model quality, formal deployment or T13 long-run certification inferred."
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-5d6fedbc07ea46bebc635b9a24c4ddf6.json",
+          "sha256": "2924d914acacf872b80a113e63755ae54eef9f479bbcca0200d1e4a43f2f112b",
+          "scope": "Complete-packet performance optimization revalidation:1398 offline tests;347 public inputs stable;438 obligations/1314 coverage references/107 decisions remain valid; no real models/formal instance. Original task completion evidence unchanged."
+        },
+        {
+          "path": "outputs/acceptance/performance-round2/final-composed-regression-audit.json",
+          "sha256": "e70a54ac862ba3764eab804a590c3257d2b5ebc413d581877ee5fc272f5b3cd3",
+          "record_kind": "composed_related_revalidation",
+          "scope": "Round2 original full run:1639 tests,1 failure,1 error,0 skip,372 inputs stable; both corrected with related80 and unified287 pass. Not a new single full-suite PASS.438 obligations/1314 repeat references/107 decisions/1485 actual mechanism records retained unchanged. PF07 time19.050% below20%, continuous second call unresolved; final corrected source timing/growth not rerun. No real-model/formal-instance authorization."
+        }
+      ]
+    },
+    {
+      "id": "IM18",
+      "title": "实现独立评测库、运行器与指标聚合",
+      "status": "complete",
+      "modules": [
+        "外部评测",
+        "M17隔离存储",
+        "预算管理"
+      ],
+      "depends_on": [
+        "IM02",
+        "IM17"
+      ],
+      "deliverables": [
+        "TL-EVAL-0.1十类记录、四分区/分组/三级预算与故障探针",
+        "TL01—16、缺失/删失/置信区间、种子与配对case聚合"
+      ],
+      "isolated_acceptance": [
+        "先用确定性替身验证分母、重复、缺失、失败和全UNKNOWN/全拒绝不能过门",
+        "10000次bootstrap、case等权/三repeat先均值和Wilson各有固定可复算夹具",
+        "logical_trial/batch/run原子预留；基础设施替代不扩分母/预算",
+        "无材料/模型/价格/货币额度/评审/明确运行许可时blocked_before_start；未派发的attempt不算真实消费"
+      ],
+      "work_kind": "evaluation_implementation",
+      "authorization_gate": "isolated_implementation_authorization",
+      "contract_operations": [],
+      "storage_tables": [],
+      "evidence": "outputs/acceptance/tool-learning/im18.json",
+      "design": "docs/architecture/tool-learning-im18-design.md",
+      "status_reason": null,
+      "evidence_sha256": "656a42dcb3cd3896696fe0346652d8e480daa7a79715c06656b527d99f5afd28",
+      "revalidation_refs": [
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-d8640a5625134b97b9b02678c769aec2.json",
+          "sha256": "32d8cc088b6d539cc03fa764b91fd5c5040734befb3e55a4d15b516ccdddc6cb",
+          "scope": "Final integrated isolated verification:1387 tests,438 mechanism obligations/1314 coverage references/107 decisions,1485 actual records; original task evidence retained. No scientific sample count, real-model quality, formal deployment or T13 long-run certification inferred."
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-5d6fedbc07ea46bebc635b9a24c4ddf6.json",
+          "sha256": "2924d914acacf872b80a113e63755ae54eef9f479bbcca0200d1e4a43f2f112b",
+          "scope": "Complete-packet performance optimization revalidation:1398 offline tests;347 public inputs stable;438 obligations/1314 coverage references/107 decisions remain valid; no real models/formal instance. Original task completion evidence unchanged."
+        },
+        {
+          "path": "outputs/acceptance/performance-round2/final-composed-regression-audit.json",
+          "sha256": "e70a54ac862ba3764eab804a590c3257d2b5ebc413d581877ee5fc272f5b3cd3",
+          "record_kind": "composed_related_revalidation",
+          "scope": "Round2 original full run:1639 tests,1 failure,1 error,0 skip,372 inputs stable; both corrected with related80 and unified287 pass. Not a new single full-suite PASS.438 obligations/1314 repeat references/107 decisions/1485 actual mechanism records retained unchanged. PF07 time19.050% below20%, continuous second call unresolved; final corrected source timing/growth not rerun. No real-model/formal-instance authorization."
+        }
+      ]
+    },
+    {
+      "id": "IM19",
+      "title": "完整机制矩阵与既有全量回归",
+      "status": "complete",
+      "modules": [
+        "全模块",
+        "独立验收"
+      ],
+      "depends_on": [
+        "IM14",
+        "IM16",
+        "IM18"
+      ],
+      "deliverables": [
+        "MECH逐项结果、全部必要分支三次及原G1复验",
+        "默认关闭/旧功能保持、端到端谱系与失败证据报告"
+      ],
+      "isolated_acceptance": [
+        "范围内机制题100%符合指定终点、硬违规零、必需证据零缺失",
+        "观察→提案→决定/版本→交接→表示→输入→结果双向追溯可核对",
+        "真实模型仅用替身；除合成临时目录外无副作用，不用替身宣称远端删除",
+        "失败保留并阻止后续真实模型启动，不以重复运行挑一次成功"
+      ],
+      "work_kind": "implementation",
+      "authorization_gate": "isolated_implementation_authorization",
+      "contract_operations": [],
+      "storage_tables": [],
+      "evidence": "outputs/acceptance/tool-learning/im19-recheck-d8640a5625134b97b9b02678c769aec2.json",
+      "follow_up_obligations": [
+        "外层监督受管故障/挂死夹具，验证超时终止与清理及失败封存；IM18同步回调仅验证返回后观察截止，不具备强杀能力。"
+      ],
+      "design": "docs/architecture/tool-learning-im19-design.md",
+      "status_reason": null,
+      "evidence_sha256": "32d8cc088b6d539cc03fa764b91fd5c5040734befb3e55a4d15b516ccdddc6cb",
+      "revalidation_refs": [
+        {
+          "path": "outputs/acceptance/tool-learning/im19-recheck-5d6fedbc07ea46bebc635b9a24c4ddf6.json",
+          "sha256": "2924d914acacf872b80a113e63755ae54eef9f479bbcca0200d1e4a43f2f112b",
+          "scope": "Complete-packet performance optimization revalidation:1398 offline tests;347 public inputs stable;438 obligations/1314 coverage references/107 decisions remain valid; no real models/formal instance. Original task completion evidence unchanged."
+        },
+        {
+          "path": "outputs/acceptance/performance-round2/final-composed-regression-audit.json",
+          "sha256": "e70a54ac862ba3764eab804a590c3257d2b5ebc413d581877ee5fc272f5b3cd3",
+          "record_kind": "composed_related_revalidation",
+          "scope": "Round2 original full run:1639 tests,1 failure,1 error,0 skip,372 inputs stable; both corrected with related80 and unified287 pass. Not a new single full-suite PASS.438 obligations/1314 repeat references/107 decisions/1485 actual mechanism records retained unchanged. PF07 time19.050% below20%, continuous second call unresolved; final corrected source timing/growth not rerun. No real-model/formal-instance authorization."
+        }
+      ]
+    },
+    {
+      "id": "IM20",
+      "title": "独立制作和封存正式材料及评审条件",
+      "status": "blocked",
+      "modules": [
+        "独立材料作者/复核者",
+        "外部评测"
+      ],
+      "depends_on": [
+        "IM17"
+      ],
+      "deliverables": [
+        "TARGET800/RETENTION2000 case、来源簇隔离/正确相关集合/k=5/盲评材料",
+        "标签及盲化权限、两名独立评审和分歧裁决角色、材料摘要与28批顺序"
+      ],
+      "isolated_acceptance": [
+        "与DEV、TARGET、RETENTION之间无不当来源/答案共享；模板家族相关性如实记录",
+        "同一agent/待测模型自评不能填成独立双盲；人员未就位则本项不完成",
+        "学习和接纳复核不接触隐藏查询/真值；正式材料不因实现失败被挑选替换",
+        "没有运行模型，材料与实际调用/费用授权分开"
+      ],
+      "work_kind": "independent_evaluation_preparation",
+      "authorization_gate": "independent_material_and_review_authorization",
+      "contract_operations": [],
+      "storage_tables": [],
+      "evidence": null,
+      "design": "docs/architecture/tool-learning-im20-design.md",
+      "status_reason": "准备工具及10项隔离检查已完成；真实独立TARGET800/RETENTION2000材料目前均为0，实际作者/独立评审/裁决角色、操作系统身份隔离和正式封存尚未就绪。",
+      "preparation_evidence": [
+        {
+          "path": "outputs/acceptance/tool-learning/im20-preparation.json",
+          "sha256": "c84ad4e1660c5cd97f171ea9fb932ac52ca3395a64148fab6cd5df7a9cabfeff",
+          "scope": "preparation-only checks; not task completion, sealed materials or independent reviewer readiness"
+        },
+        {
+          "path": "outputs/acceptance/tool-learning/im20-preparation-recheck-v2.json",
+          "sha256": "c95c22b484e3325bfbab0adff803a988c36134cc6536921a125885d273ecb8c5",
+          "scope": "preparation-only checks; not task completion, sealed materials or independent reviewer readiness"
+        }
+      ],
+      "execution_state": "blocked_before_start",
+      "workflow_annotation_scope": "Task scheduling/reporting only; no execution authorization inferred."
+    },
+    {
+      "id": "IM21",
+      "title": "获单独授权后进行DEV真实模型先导",
+      "status": "blocked",
+      "modules": [
+        "模型适配器",
+        "外部评测",
+        "全链模块"
+      ],
+      "depends_on": [
+        "IM19"
+      ],
+      "deliverables": [
+        "精确模型/路由/能力、核查价格/货币预算/账户限额与DEV授权登记",
+        "DEV E/N/O各24 case的一次运行、实际消费/污染/传输及评审流程报告"
+      ],
+      "isolated_acceptance": [
+        "只获DEV许可不能运行正式组；缺任一启动条件不派发",
+        "总72逻辑trial及阶段/总额/期限全部守约，真实费用未知不补0",
+        "原材料O组仅诊断，DEV不声称正式改善；实际模型输入独立且无标签/组间泄漏",
+        "预算或硬违规停止新派发并保存实际在途事实，不反复调提示挑结果"
+      ],
+      "work_kind": "real_model_evaluation",
+      "authorization_gate": "explicit_DEV_model_and_money_authorization",
+      "contract_operations": [],
+      "storage_tables": [],
+      "evidence": null,
+      "status_reason": "用户本轮明确禁止真实模型调用；实际模型路由能力、货币预算与DEV专门授权未就绪，保持blocked_before_start。",
+      "execution_state": "blocked_before_start",
+      "workflow_annotation_scope": "Task scheduling/reporting only; no execution authorization inferred."
+    },
+    {
+      "id": "IM22",
+      "title": "获正式授权后运行TARGET与RETENTION",
+      "status": "blocked",
+      "modules": [
+        "独立评测/评审",
+        "模型适配器"
+      ],
+      "depends_on": [
+        "IM19",
+        "IM20",
+        "IM21"
+      ],
+      "deliverables": [
+        "E/N两组、三重复、固定28批的完整原始证据及盲评",
+        "TARGET新问题TL13、RETENTION非劣TL14及全部质量/成本分层结果"
+      ],
+      "isolated_acceptance": [
+        "16800逻辑trial；尝试≤100800、token预留≤3303014400、工具≤67200，实际费用另有上限",
+        "机制/质量先过，TL13配对95%下限>0且TL14下限≥-0.02；其他子项显著不能替代主终点",
+        "硬违规全run停、缺证据/评审不通过、原分配失败不剔除、不能中途加样至显著",
+        "正式调用量很大，未有单独运行与货币授权一律blocked_before_start"
+      ],
+      "work_kind": "formal_model_evaluation",
+      "authorization_gate": "explicit_formal_model_and_money_authorization",
+      "contract_operations": [],
+      "storage_tables": [],
+      "evidence": null,
+      "status_reason": "依赖IM20/IM21未完成；用户本轮禁止真实模型，正式材料/评审及正式模型和费用授权未就绪，未启动任何正式trial。",
+      "execution_state": "blocked_before_start",
+      "workflow_annotation_scope": "Task scheduling/reporting only; no execution authorization inferred."
+    },
+    {
+      "id": "IM23",
+      "title": "综合评审与发布候选交接",
+      "status": "blocked",
+      "modules": [
+        "全模块维护者",
+        "独立验收"
+      ],
+      "depends_on": [
+        "IM19",
+        "IM22"
+      ],
+      "deliverables": [
+        "实现/规范/材料/代码版本对应表，兼容及回退证据包",
+        "通过/有条件通过/失败/未测分栏、已知限制及发布建议"
+      ],
+      "isolated_acceptance": [
+        "结果不满足门槛如实记fail/incomplete，不通过改标准或旧小样本包装",
+        "只有冻结范围内的机制/质量/改善/保持均满足才可建议相应发布",
+        "Q路线实现与T13长期生命验收分别说明，不能把一条路线完成替代另一条",
+        "此项只评审/交接，不执行迁移、部署、启动或唤醒"
+      ],
+      "work_kind": "implementation",
+      "authorization_gate": "isolated_implementation_authorization",
+      "contract_operations": [],
+      "storage_tables": [],
+      "evidence": null,
+      "status_reason": "依赖IM22的真实正式结果未完成，不能以替身机制验收代替质量/改善/保持评审或作正式发布通过结论。",
+      "execution_state": "blocked_before_start",
+      "workflow_annotation_scope": "Task scheduling/reporting only; no execution authorization inferred."
+    },
+    {
+      "id": "IM24",
+      "title": "另行授权后通过CLI迁移部署现有实例",
+      "status": "blocked",
+      "modules": [
+        "CLI/Deployment",
+        "M17",
+        "控制者"
+      ],
+      "depends_on": [
+        "IM16",
+        "IM23"
+      ],
+      "deliverables": [
+        "正式变更窗口、当前状态只读确认、备份/恢复演练与可用兼容桥接",
+        "CLI迁移/部署/停止与回退报告及唤醒前核验记录"
+      ],
+      "isolated_acceptance": [
+        "必须另获当前实例操作许可，计划批准或隔离通过不等于正式执行许可",
+        "先备份/核对身份记忆历史承诺，再按兼容矩阵迁移；回退不覆盖新数据或解除屏障",
+        "无兼容回退或状态不明时停止，不为“恢复生命”擅自启动",
+        "部署、启动、唤醒分别记录并服从用户指令，T13未完成须纳入独立发布判断"
+      ],
+      "work_kind": "formal_instance_operation",
+      "authorization_gate": "explicit_formal_instance_migration_deployment_and_wake_authorization",
+      "contract_operations": [],
+      "storage_tables": [],
+      "evidence": null,
+      "status_reason": "依赖IM23未完成，且用户明确禁止操作正式实例；未执行正式实例检查、备份、迁移、部署、启动或唤醒。",
+      "execution_state": "blocked_before_start",
+      "workflow_annotation_scope": "Task scheduling/reporting only; no execution authorization inferred."
+    }
+  ],
+  "material_preparation_authorized": true,
+  "authorization_basis": "2026-11-10 user: continue IM11 and complete remaining TODO, independent tasks may use parallel agents; explicitly no formal-instance operations or real-model calls. Reversible material preparation is authorized; no real reviewer identity or formal acceptance is inferred.",
+  "plan_inspector_implemented": true,
+  "evaluation_substitute_runner_implemented": true,
+  "batch_verifications": [
+    {
+      "path": "outputs/acceptance/tool-learning/batch-855291e48a834f2f8f114782e800fcf3.json",
+      "sha256": "749651e1d84847394b0e47455903bc5439b6e685f1819dbd35595cc7a41a4ba2",
+      "tests": 248,
+      "scope": "IM01-04 and IM17-18 batch checks only; not IM19 complete mechanism/G1 or full-system acceptance"
+    }
+  ],
+  "parallel_policy": {
+    "scope": "independent IM tasks only",
+    "require_all_dependencies_complete": true,
+    "early_dependent_design_or_implementation": false,
+    "one_implementation_agent_per_im": true,
+    "authorization_basis": "User clarification: parallelize only IM tasks without dependencies; never parallelize dependent tasks."
+  },
+  "notification_policy": {
+    "per_task_notifications": false,
+    "report_at_end": true,
+    "basis": "User requested all remaining TODO tasks in dependency order and one final notification."
+  },
+  "continuation_scope": {
+    "remaining_tasks": "all ready authorized implementation tasks in dependency order",
+    "continue_without_per_task_confirmation": true,
+    "notify_once_at_end": true,
+    "formal_instance_operations_authorized": false,
+    "real_model_spending_authorized": false,
+    "independent_formal_roles_confirmed": false,
+    "no_early_dependent_tasks": true,
+    "material_and_review_preparation_authorized": true
+  },
+  "specific_authorizations": {
+    "independent_material_and_review_authorization": true,
+    "explicit_DEV_model_and_money_authorization": false,
+    "explicit_formal_model_and_money_authorization": false,
+    "explicit_formal_instance_migration_deployment_and_wake_authorization": false
+  },
+  "latest_execution_summary": {
+    "engineering_complete": [
+      "IM01",
+      "IM02",
+      "IM03",
+      "IM04",
+      "IM05",
+      "IM06",
+      "IM07",
+      "IM08",
+      "IM09",
+      "IM10",
+      "IM11",
+      "IM12",
+      "IM13",
+      "IM14",
+      "IM15",
+      "IM16",
+      "IM17",
+      "IM18",
+      "IM19"
+    ],
+    "blocked": [
+      "IM20",
+      "IM21",
+      "IM22",
+      "IM23",
+      "IM24"
+    ],
+    "scope": "Authorized isolated engineering and deterministic mechanism acceptance only",
+    "formal_instance_accessed": false,
+    "real_models_called": false,
+    "formal_trials_executed": 0,
+    "T13_24h_run_executed": false,
+    "final_evidence": "outputs/acceptance/tool-learning/im19-recheck-d8640a5625134b97b9b02678c769aec2.json",
+    "final_evidence_sha256": "32d8cc088b6d539cc03fa764b91fd5c5040734befb3e55a4d15b516ccdddc6cb",
+    "no_completed_history_overwritten": true
+  },
+  "performance_revalidation": {
+    "status": "complete_isolated_only",
+    "design": "docs/architecture/digital-life-complete-packet-performance-design-v0.1.md",
+    "report": "docs/architecture/digital-life-complete-packet-performance-report-v0.1.md",
+    "evidence": "outputs/acceptance/tool-learning/im19-recheck-5d6fedbc07ea46bebc635b9a24c4ddf6.json",
+    "evidence_sha256": "2924d914acacf872b80a113e63755ae54eef9f479bbcca0200d1e4a43f2f112b",
+    "baseline_seconds": 419.808063708,
+    "optimized_seconds": 137.928338625,
+    "full_regression_same_case_seconds": 139.341,
+    "no_new_real_model_or_formal_instance_authorization": true
+  },
+  "performance_round2_revalidation": {
+    "status": "implementation_and_validation_execution_complete_acceptance_incomplete",
+    "overall_acceptance_passed": false,
+    "report": "docs/architecture/digital-life-complete-packet-round2-performance-report-v0.1.md",
+    "todo": "docs/plan/complete-packet-performance-round2-todo-v0.1.md",
+    "composed_revalidation": {
+      "path": "outputs/acceptance/performance-round2/final-composed-regression-audit.json",
+      "sha256": "e70a54ac862ba3764eab804a590c3257d2b5ebc413d581877ee5fc272f5b3cd3",
+      "record_kind": "composed_related_revalidation",
+      "scope": "Round2 original full run:1639 tests,1 failure,1 error,0 skip,372 inputs stable; both corrected with related80 and unified287 pass. Not a new single full-suite PASS.438 obligations/1314 repeat references/107 decisions/1485 actual mechanism records retained unchanged. PF07 time19.050% below20%, continuous second call unresolved; final corrected source timing/growth not rerun. No real-model/formal-instance authorization."
+    },
+    "original_full_evidence": "outputs/acceptance/tool-learning/im19-recheck-5acbe57b238b4b23a83e72677be66085.json",
+    "original_full_run_passed": false,
+    "original_full_tests": 1639,
+    "original_full_failures": 1,
+    "original_full_errors": 1,
+    "original_full_skipped": 0,
+    "original_inputs_stable": 372,
+    "related_revalidation_passed": true,
+    "final_unified_tests": 287,
+    "mechanism_obligations": 438,
+    "mechanism_repeat_references": 1314,
+    "decisions": 107,
+    "actual_execution_records": 1485,
+    "original_mechanism_hashes_unchanged": true,
+    "benchmark_scope": "Before final observer layer/fixture correction; final corrected source was not timed again",
+    "old_median_seconds": 145.216347875,
+    "measured_new_median_seconds": 117.552631625,
+    "time_reduction_fraction": 0.1905000136335374,
+    "time_gate_passed": false,
+    "actual_rows": 635178,
+    "row_reduction_fraction": 0.5707198058980762,
+    "row_gate_passed": true,
+    "input_and_actual_output_equal": true,
+    "continuous_second_call_passed": false,
+    "final_corrected_source_timing_revalidated": false,
+    "final_corrected_source_growth_revalidated": false,
+    "remaining": [
+      "Time20% threshold not met before final layer correction",
+      "Real continuous chat second call unresolved at original assembly scan slice",
+      "Final corrected source three timing repeats not rerun",
+      "0/50/100 growth only intermediate-source evidence; final source not rerun"
+    ],
+    "no_new_real_model_or_formal_instance_authorization": true,
+    "im20_to_im24_remain_blocked": true
+  }
+}

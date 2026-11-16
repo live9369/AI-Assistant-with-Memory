@@ -1,0 +1,64 @@
+{
+  "items": [
+    {
+      "id": "ollama.example.json",
+      "label": "本地 Ollama",
+      "configuration": {
+        "backend": "ollama",
+        "model": "qwen3:4b-instruct",
+        "base_url": "http://127.0.0.1:11434",
+        "timeout": 120,
+        "max_output_tokens": 2048,
+        "context_window": 8192,
+        "temperature": 0
+      }
+    },
+    {
+      "id": "llamacpp.example.json",
+      "label": "本地 llama.cpp",
+      "configuration": {
+        "backend": "llamacpp",
+        "model": "qwen3-0.6b-isolated",
+        "base_url": "http://127.0.0.1:18081",
+        "timeout": 120,
+        "max_output_tokens": 512,
+        "context_window": 8192,
+        "temperature": 0
+      }
+    },
+    {
+      "id": "remote-chat.example.json",
+      "label": "远程 JSON Schema",
+      "configuration": {
+        "backend": "remote_chat",
+        "enabled": false,
+        "model": "REPLACE_WITH_MODEL_ID",
+        "base_url": "https://llm.example.com/v1",
+        "api_key_env": "DIGITAL_LIFE_LLM_API_KEY",
+        "timeout": 120,
+        "max_output_tokens": 2048,
+        "context_window": 8192,
+        "temperature": 0,
+        "response_format": "json_schema",
+        "token_parameter": "max_tokens"
+      }
+    },
+    {
+      "id": "remote-json-object.example.json",
+      "label": "远程 JSON Object",
+      "configuration": {
+        "backend": "remote_chat",
+        "enabled": false,
+        "model": "REPLACE_WITH_MODEL_ID",
+        "base_url": "https://llm.example.com/v1",
+        "api_key_env": "DIGITAL_LIFE_LLM_API_KEY",
+        "timeout": 120,
+        "max_output_tokens": 2048,
+        "context_window": 8192,
+        "temperature": 0,
+        "response_format": "json_object",
+        "token_parameter": "max_tokens"
+      }
+    }
+  ]
+}

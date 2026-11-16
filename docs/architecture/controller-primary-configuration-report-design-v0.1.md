@@ -1,0 +1,46 @@
+# 控制器读取原始内部配置报告 V0.1
+
+状态：实现前设计，基于实际collector来源枚举；不增加写入协议、不迁移、不扩展任意事件白名单。
+
+## 实际定位
+
+在新合成StrictEngine实例开启八模块，真实执行_contexts与DomainReadCollector，不执行think或模型。discovery.json记录计算bundle实际引用了8种无tl_dependency的原始配置事件：behavior_policy.configured、goal_regulation.configured、personality_growth.configured、habit_learning.configured、people_relations.configured、memory_quality.configured、agenda.configured、maintenance.configured。均由原.configure产生，source=runtime、lane=control；原统一派生规则错误要求它们先有衍生依赖。
+
+证据目录：outputs/acceptance/performance-round2/controller-internal-events/。只列实际8种，不按configured后缀猜测。
+
+## 规则
+
+只在认证控制器history_audit且Scope.claim_target=source_report时，允许读取核验通过的8种本地原始配置报告。不是独立经验、世界事实、科学证据或审核accept授权。
+
+必须同时核对：
+
+1. 同实例真实runtime_events行与object_registry登记kind；入口给出的行不得代替实际读取。
+2. 精确event_type、source=runtime、lane=control、无activity/object/cause/authority绑定；原API生成的source_event_id为32位hex且correlation_id相同。
+3. 实例当前controller_ref、认证session和payload.actor相同，真实social_actors行存在。外部actor不能借配置tag读源。
+4. 同实例真实artifacts登记及完整身份；用原安全M17 reader新鲜读取、size/hash/location验证，payload_hash与规范payload摘要匹配，payload为JSON。
+5. 完整schema，不缺字段、不多额外字段；enabled为bool，固定模块version，行为参数工具／特征域与有限范围，磁盘下限非负整数，maintenance修复次数及开关符合原configure规则。
+6. 未知runtime_event、thought_request/result仍保持原producer依赖要求；authoringreview不获得此例外。Memory ACL、外部来源作者、撤回屏障、已知native版本映射继续原检查。
+
+纯读取静态判定，不调用会写入的.configure验证，不写审计记录、不唤醒。
+
+## 信任边界
+
+当前系统唯一配置持久化记录就是runtime_events及payload工件，没有独立签名receipt。此规则证明其为本地存储契约一致的系统配置报告，不能抵抗拥有任意数据库写权限者复制完全相同合法record；不伪称存在独立历史认证证据。仅伪造event_type、部分payload或actor不能通过完整判定。
+
+## 验证
+
+新增tests/test_tool_learning_controller_events.py。正例使用真实八模块.configure产生的记录、真实collector使用的_contexts来源及原ControllerMaterialReader材料读取；负例包括未知／伪造tag、namespace/lane/关联字段错误、payload缺失／额外／错误参数／version／actor、摘要或工件篡改、跨实例／缺真实行及artifact、review用途与world_claim拒绝。原controller native22项与必要旧读取验证保留；不运行完整think或统一PF06，等待其它并行优化后冻结。
+
+## 实施与定向结果
+
+状态：修复和独立定向验证完成；等待并行元数据查询优化后的统一冻结复验。只改runtime.py的ControllerSourceAuthority及新tests/test_tool_learning_controller_events.py。
+
+23项新增验证与原native22项、StrictActualUse5项及SourceSnapshot8项共58项全部通过，0失败、0错误、0跳过，22.065秒。之后仅扩充参数范围用例中的bias／coefficient超界及未知feature反例，单项复验通过，未重复其余已通过测试。真实_contexts引用的8个配置事件及其来源bundle能通过controller audit；真实ControllerMaterialReader.chat机械accepted回应挂8个真实.configure配置报告后成功返回且0数据库写入。没有执行完整think，也没有声称连续第二轮已验收。
+
+初轮23项2个注入夹具错误已保留：payload_object_id和payload_artifact_id受SQL互斥约束，调整为真实object-only损坏情形；registry不可变trigger实际名修正。产品未为通过夹具而放宽约束，旧native22项保留。
+
+证据目录outputs/acceptance/performance-round2/controller-internal-events/包含实际修复前discovery.json、首轮失败日志、58项targeted日志、参数增量日志及result.json。result仅记录交接时模块摘要，不冒称并行期间全项目冻结。后续统一PF06须纳入新增23项再做全部源码前后摘要。
+
+历史配置报告通过不授予accept、world_claim或未知runtime event任何新权限；当前存储契约没有独立签名producer receipt的限制继续明确保留。
+
+统一冻结结果：新23项与校验投影13项、原184项合并，targeted-frozen-10共220项通过，源码稳定；测试进程exit0后已放行shared05与continuous03，完整连续两轮结论以PF07实际结果为准。

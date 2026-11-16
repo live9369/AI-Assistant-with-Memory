@@ -1,0 +1,25 @@
+{
+  "status": "deferred-by-user-template-only",
+  "backend": "docker-oci",
+  "image": null,
+  "resources": {
+    "cpus": 1,
+    "memory_mib": 512,
+    "memory_plus_swap_mib": 512,
+    "pids_limit": 64,
+    "probe_tmpfs_mib": 64,
+    "output_bytes": 131072,
+    "artifact_bundle_bytes": 16777216
+  },
+  "user": "65532:65532",
+  "network": "none",
+  "read_only_root": true,
+  "read_only_candidate": true,
+  "host_writable_mounts": [],
+  "docker_socket_mount": false,
+  "drop_capabilities": "ALL",
+  "no_new_privileges": true,
+  "require_local_engine": true,
+  "fallback": "refuse",
+  "cleanup": "stop-and-delete-owned-container-by-id"
+}

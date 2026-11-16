@@ -1,0 +1,35 @@
+# 依赖metadata绑定事实的窄复用设计与验证计划
+
+2026-11-12，状态：已实施并冻结；必要范围223项通过，真实连续性能验收进行中。下文候选端口记录保留历史状态，不代表当前尚未实施。
+
+`_metadata`是结构与数据库绑定检查，不调用来源权限authority。成功结果包括完整dependency行与immutable JSON字段的对应、consumer/target Ref在当前实例的正registry身份、既定revision投影；不包括来源可用性、授权、epoch/barrier当前认定。现prepared key是完整行键值与artifact location/hash/size/media/identity。相同行与相同原件下，可以研究复用已核对的绑定数据；不能宣称每次仍执行两次validate_ref代码。
+
+允许的不变证明必须同时成立：
+
+1. 同一个有界PhaseReadSet；回调内、任意observer、未知validator/Store子类或替换方法时不用此路径。
+2. 仅在已知读取环境与稳定原validator条件下，首次成功完成原完整JSON/Ref/revision投影核对后才产生TL-DEPENDENCY-BINDING-1 prepared；只有固定完整row和原件identity精确匹配才能复用绑定。TL-DEPENDENCY-1仅为解析材料，不能升级为已核对绑定。每次先track_artifact，所有此前Ref验证读取的snapshot event/body也在原有tracking中。
+3. 普通只读阶段保留原完整DB/control/所有tracked file probes和同连接monitor同步；任何未知写/config/rollback/外部变化失效。跨写只能通过实际强固定input INSERT，两表新增不修改旧正registry、dependency、artifact、revision、snapshot event/body；负kind仍清，真实schema改变仍拒绝旧审批。
+4. 其他所有Ref用途及VersionToken/root/node身份、权限authority、epoch、barrier、logical budget照旧。独立Refmemo仍清，不建立通用Ref verdict缓存。prepared对象返回新JSON树，调用者不能改缓存。
+5. unknown SQLite hook/factory callback可能在读取期间引入额外外部变化；最终实现通过known_read_environment限制可信读取环境，未知环境回退原核验，不能仅用无写total_changes推断。
+
+读取依赖：object_registry正consumer/target；object_revision_registry的revision映射及selected/owner投影；若Ref为快照，额外runtime_events与其artifact文件。全都不在强input两表之外的写集中。registry只是正行可保留；任何必要缺失投影虽检查允许缺失，但其表object_revision_registry完全未写，所以仍不变。文件证据始终由真实track/probe覆盖。
+
+历史验证顺序是先仅在隔离测试端口patch候选函数，再在审定不变条件与反例后实施产品快路。端口比较同库deep8原保守模式与候选模式：完整业务、来源、权限/UUID/异常精确同；单列metadata Ref调用减少与所有其他Ref/authority调用不变；记录实际scan、bytes、CPU/墙钟与真strong命中。反例包括unknown validator仍执行；正registry kind或revision owner变更、snapshot原件变化、metadata row/hash改变、控制变化与foreign commit必须拒绝或重新核对；负→正及rollback不能复用；caller改返回JSON不污染；observer顺序不变。
+
+这是有限metadata绑定数据复用；不满足上列callback与文件条件时不启用。端口收益不能代替最终三次连续验收。
+
+## 实施审定收紧
+
+批准后使用独立TL-DEPENDENCY-BINDING-1命名空间：只有首次完整核验且实际_ACTIVE.phase_store、phase.reusable、同Managed phase、exact ToolLearningStore、稳定捕获的原validate_ref函数及当前__self__、真实Store绑定全部匹配，才生产或取用绑定材料。未知validator先产生的TL-DEPENDENCY-1解析prepared不能因随后恢复原validator而升级免核。
+
+创建与命中还要求monitor.known_read_environment()，这是无SQL的当前已知读取环境谓词，不要求独立事务或无pending receipt。未知factory/hook/progress/collation/extension/nativeadapter等维持原Ref/投影代码；不新增每metadata全文件probe。不同环境配置generation照旧清材料。observer/callback现有禁止复用不变。
+
+## 候选端口实测与最终实施
+
+测试候选未改产品时，同库deep8每组四模式严格业务差分通过。仅metadata consumer/target validate_ref重复代码调用15864→9502，其他Ref8196→8196不变（sysprofile无函数身份替换；计数阶段不作性能结论）。无profile观测CPU5.670→5.326秒；strong8字段wall1.21464→1.11081秒，scan3361/bytes767378完全相同，权限560、version945、登记回调35均同，strong计数8。以上均单次小端口，不能当最终提速达标。候选5个负例通过，初错是immutable registry触发器阻止夹具写，已保留。
+
+批准后产品加入独立BINDING命名空间与known_read_environment收紧，10个binding测试及原4个retention测试全部通过，4.325秒；原始12接入在收紧前已过10.336秒，仅作中间证据。最终完整named计数427、必要focused223，所有Python冻结后启动focused统一；最终结果另记，不把中间测试冒称最终统一。
+
+## 最终必要范围统一结果
+
+最终全部Python源码冻结后，focused223/223通过，0失败/错误/跳过，76.571977208秒，source_stable=true。包含基础58、新binding10、接入12、Native/Managed全上下文对照、来源/observer/rollback/graph/architecture必要回归。未调用真实模型或操作正式实例。证据continuation/faults-08-metadata-focused/result.json，SHA256 3c7951ba8fef6575bcc87b899a37f06f83a46f4acec91eea1d3e8d1f7199a1ca。此为focused，不是完整427通过；真实两轮、三次计时与增长测试仍由主任务继续。

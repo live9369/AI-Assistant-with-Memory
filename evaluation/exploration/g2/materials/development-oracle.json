@@ -1,0 +1,121 @@
+{
+  "dataset_id": "AE-G2-DEVELOPMENT-1.0",
+  "access": "reviewer-only; never actor-visible",
+  "cases": [
+    {
+      "case_id": "P01",
+      "stratum": "A",
+      "topic": "acoustic-grid",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Finite echoes are evenly spaced by two; future regularity is a hypothesis."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "Finite echoes are evenly spaced by two; future regularity is a hypothesis.",
+      "required_sources": [
+        "notes/grid.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "P02",
+      "stratum": "B",
+      "topic": "ticket-colors",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Revise the universal silver claim; the log includes gold."
+        }
+      ],
+      "counterexamples": [
+        {
+          "counter_id": "revision",
+          "criterion": "Revise the universal silver claim; the log includes gold.",
+          "prior_claim": "I currently believe all balcony tickets are silver. The current issue log is notes/tickets.json."
+        }
+      ],
+      "resolution_rule": "Revise the universal silver claim; the log includes gold.",
+      "required_sources": [
+        "notes/tickets.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "P03",
+      "stratum": "C",
+      "topic": "paint-dabs",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "Do not assert a unique deterministic next color from this finite irregular sample."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "Do not assert a unique deterministic next color from this finite irregular sample.",
+      "required_sources": [
+        "notes/dabs.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "P04",
+      "stratum": "D",
+      "topic": "unsigned-meeting-note",
+      "gaps": [],
+      "counterexamples": [],
+      "resolution_rule": "The absolute meeting date is unknown without the note date.",
+      "required_sources": [
+        "notes/note.json"
+      ],
+      "unresolvable": true,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "P05",
+      "stratum": "E",
+      "topic": "locker-reassignment",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "The active revision assigns locker N, and restart must preserve the observed correction."
+        }
+      ],
+      "counterexamples": [
+        {
+          "counter_id": "revision",
+          "criterion": "The active revision assigns locker N, and restart must preserve the observed correction.",
+          "prior_claim": "My current belief assigns the folder to locker L. The active record is notes/locker.json."
+        }
+      ],
+      "resolution_rule": "The active revision assigns locker N, and restart must preserve the observed correction.",
+      "required_sources": [
+        "notes/locker.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    },
+    {
+      "case_id": "P06",
+      "stratum": "F",
+      "topic": "transient-stage-read",
+      "gaps": [
+        {
+          "gap_id": "main",
+          "criterion": "After the transient failure, a successful read establishes harp left and drum right."
+        }
+      ],
+      "counterexamples": [],
+      "resolution_rule": "After the transient failure, a successful read establishes harp left and drum right.",
+      "required_sources": [
+        "notes/stage.json"
+      ],
+      "unresolvable": false,
+      "review_status": "author_gold_not_independently_validated"
+    }
+  ]
+}

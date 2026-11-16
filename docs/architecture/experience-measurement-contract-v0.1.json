@@ -1,0 +1,209 @@
+{
+  "contract_id": "EXPERIENCE-MEASUREMENT-0.1",
+  "status": "implemented; controlled classification comparison; no real-model effectiveness claim",
+  "document": "docs/architecture/experience-measurement-v0.1.md",
+  "cognition_contract": "COGNITIVE-EXPERIENCE-SHADOW-0.3",
+  "legacy_cognition_readable": [
+    "COGNITIVE-EXPERIENCE-SHADOW-0.2"
+  ],
+  "ownership": {
+    "observation": "existing result/evidence and memory",
+    "measurement": "Learning-side ExperienceMeasurement application use case",
+    "assessment_and_proposal": "Learning/M14",
+    "experience_version": "Cognition/M03",
+    "prediction_port": "domain protocol, infrastructure reasoner adapter",
+    "actual_selection": "unchanged, does not read measurement results"
+  },
+  "defaults": {
+    "measurement_enabled": false,
+    "actual_choice_updates": false,
+    "automatic_actor_measurement": false,
+    "model_fallback": false
+  },
+  "registration": {
+    "required": [
+      "opportunity_ref",
+      "cases",
+      "classes",
+      "label_commitment",
+      "actor"
+    ],
+    "optional": [
+      "common_context",
+      "training_case_ids",
+      "tokens_per_call",
+      "wall_seconds"
+    ],
+    "cases_range": [
+      2,
+      20
+    ],
+    "classes_range": [
+      2,
+      16
+    ],
+    "required_splits": [
+      "target",
+      "retention"
+    ],
+    "case_fields": [
+      "case_id",
+      "input",
+      "split"
+    ],
+    "label_fields_in_case": false,
+    "nonce_minimum_characters": 32,
+    "nonce_requirement": "private random nonce; minimum length does not prove entropy",
+    "same_model_both_arms": true,
+    "fresh_requests": true,
+    "training_overlap_rule": "reject equal declared case IDs; semantic independence needs audit",
+    "tokens_per_call_range": [
+      1,
+      32768
+    ],
+    "tokens_per_call_default": 512,
+    "budget_range_revision": "2026-11-08 Codex pilot: previous ceiling 4096 could not cover observed fixed provider input overhead; parent shared budget and overage stop unchanged."
+  },
+  "lifecycle": [
+    "register immutable inputs and label commitment",
+    "seal both prediction arms",
+    "reveal committed labels",
+    "evaluate immutable evidence",
+    "Learning assesses and proposes",
+    "Cognition validates and saves shadow revision"
+  ],
+  "scoring": {
+    "metric": "normalized multiclass Brier; binary equivalent to (p-y)^2",
+    "brier": "0.5*sum((p_k-y_k)^2)",
+    "range": [
+      0,
+      1
+    ],
+    "target_gain": "mean(before_brier-after_brier) on target",
+    "retention_regression": "max(0,max(after_brier-before_brier) on retention)",
+    "gain": "target_gain if no retention regression else min(target_gain,-retention_regression)",
+    "policy": "target-improvement-with-retention-veto-v1; project policy, not a scientific universal",
+    "statuses": [
+      "positive",
+      "negative",
+      "measured_zero",
+      "unknown"
+    ],
+    "unknown_gain": null,
+    "zero_is_not_unknown": true,
+    "independent_case_count": null,
+    "generalization_claim": false
+  },
+  "budget_and_stop": {
+    "parent_activity_shared_budget": true,
+    "budget_operation_kind": "thought_attempt; operation_ref is measurement dispatch event",
+    "maximum_calls": "2*case_count",
+    "preflight_remaining_pair_budget": true,
+    "reserve_each_call": true,
+    "lock_scope": "one synchronous prediction callback, not the whole batch",
+    "no_io_in_write_transaction": true,
+    "unknown_usage": "stop subsequent calls",
+    "observed_token_overage": "stop subsequent calls; not hard provider output limit",
+    "unreconciled_prior_dispatch": "no automatic retry",
+    "configuration_generation_guard": true,
+    "parent_exploration_generation_guard": true,
+    "parent_cancellation_guard": true,
+    "formal_instance_must_remain_locked": true
+  },
+  "evidence": {
+    "event_source": "experience-measurement",
+    "event_types": [
+      "learning.measurement_registered",
+      "learning.measurement_dispatch",
+      "learning.measurement_prediction",
+      "learning.measurement_labels",
+      "learning.measurement_report",
+      "learning.measurement_invalidated"
+    ],
+    "answer_authority": "controller-attested heldout labels; not independent truth certification",
+    "recheck": [
+      "case labels commitment",
+      "event chronology",
+      "input hashes",
+      "same model identity",
+      "budget reservation",
+      "computed scores",
+      "report validity"
+    ],
+    "report_dependency_in_experience": "measurement_ref",
+    "invalidated_report_contributes": false,
+    "live_fact_promotion": false
+  },
+  "interfaces": {
+    "ExperienceMeasurement": [
+      "configure",
+      "register",
+      "run_predictions",
+      "reveal_labels",
+      "evaluate",
+      "checked_report",
+      "invalidate",
+      "adopt_shadow",
+      "status"
+    ],
+    "Learning": [
+      "assess_measured_experience",
+      "validate_measured_experience",
+      "propose_experience"
+    ],
+    "Cognition": [
+      "save_experience",
+      "experience_snapshot"
+    ],
+    "PredictionPort": "name + predict(request)-> probabilities/null and actual_tokens/null"
+  },
+  "model_adapter": {
+    "class": "infrastructure.llm.experience_prediction.ExperiencePredictionPort",
+    "wire_schema": "existing V1 wait; explanation is probability JSON string",
+    "live_schema_changed": false,
+    "tools_executed": false,
+    "private_timeout_not_in_llm_input": true,
+    "explicit_model_config_required_in_CLI": true,
+    "real_provider_called_in_this_delivery": false
+  },
+  "metrics": [
+    {
+      "id": "EM01",
+      "name": "target prediction improvement",
+      "field": "target_gain"
+    },
+    {
+      "id": "EM02",
+      "name": "old-task regression",
+      "field": "retention_regression"
+    },
+    {
+      "id": "EM03",
+      "name": "policy-qualified scalar gain",
+      "field": "gain"
+    },
+    {
+      "id": "EM04",
+      "name": "measurable cases",
+      "derivation": "case_count - len(unknown_case_ids); not independent sample count"
+    },
+    {
+      "id": "EM05",
+      "name": "measurement port calls",
+      "field": "model_port_calls"
+    },
+    {
+      "id": "EM06",
+      "name": "actual tokens",
+      "field": "actual_tokens; null if unknown"
+    },
+    {
+      "id": "EM07",
+      "name": "callback elapsed time",
+      "derivation": "sum elapsed_seconds from sealed prediction records"
+    }
+  ],
+  "existing_M01_M16_modified": false,
+  "SQL_migration": false,
+  "schema_version_integer_reserved": false
+}

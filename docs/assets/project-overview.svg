@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+<title id="title">AI Assistant with Memory — Independent thoughts. Persistent life.</title>
+<desc id="desc">Concept diagram: experience and state feed a fresh model call; memory and feedback persist between calls. This is an architecture illustration, not a live interface screenshot.</desc>
+<rect width="1280" height="640" rx="28" fill="#f2f7f6"/>
+<path d="M940 0H1280V640H1110Z" fill="#d9ebe6"/>
+<g font-family="Arial, Helvetica, sans-serif">
+<text x="80" y="88" font-size="18" letter-spacing="4" fill="#35685d">AI ASSISTANT · RESEARCH PREVIEW</text>
+<text x="76" y="180" font-size="60" font-weight="700" fill="#142f2a">AI Assistant with Memory</text>
+<text x="80" y="230" font-size="28" fill="#35685d">Independent thoughts. Persistent identity.</text>
+<g fill="#ffffff" stroke="#b4cec6" stroke-width="2">
+<rect x="80" y="308" width="310" height="140" rx="18"/>
+<rect x="485" y="308" width="310" height="140" rx="18"/>
+<rect x="890" y="308" width="310" height="140" rx="18"/>
+</g>
+<g fill="#142f2a" font-size="25" font-weight="700">
+<text x="108" y="359">Experience + state</text><text x="513" y="359">Fresh model call</text><text x="918" y="359">Response + action</text>
+</g>
+<g fill="#526b64" font-size="19">
+<text x="108" y="402">Memory · cognition · context</text><text x="513" y="402">Explicit input, every time</text><text x="918" y="402">Permission-checked tools</text>
+</g>
+<g fill="none" stroke="#267a66" stroke-width="3">
+<path d="M400 378H469M456 368L470 378L456 388M805 378H874M861 368L875 378L861 388"/>
+<path d="M1045 465V500H235V465M225 478L235 464L245 478"/>
+</g>
+<text x="452" y="537" font-size="20" fill="#35685d">Persist memory, provenance and feedback</text>
+<text x="80" y="594" font-size="17" fill="#526b64">ENGINEERING PREVIEW · PYTHON + SQLITE · MIT</text>
+</g></svg>

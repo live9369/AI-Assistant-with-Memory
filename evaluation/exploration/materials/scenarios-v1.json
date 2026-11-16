@@ -1,0 +1,461 @@
+{
+  "scenario_set_id": "AE-G1-SCENARIOS-1.0",
+  "scenarios": [
+    {
+      "scenario_id": "default-lock",
+      "kind": "mechanism",
+      "operation": "default_disabled_lock",
+      "case_id": "B01",
+      "expected": "assertions",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "internal-source",
+      "kind": "mechanism",
+      "operation": "internal_source",
+      "case_id": "B01",
+      "expected": "assertions",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "forged-reference",
+      "kind": "mechanism",
+      "operation": "forged_reference",
+      "case_id": "B01",
+      "expected": "assertions",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "revoke-reference",
+      "kind": "mechanism",
+      "operation": "revoke_reference",
+      "case_id": "B01",
+      "expected": "assertions",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "revise-reference",
+      "kind": "mechanism",
+      "operation": "revise_reference",
+      "case_id": "B01",
+      "expected": "assertions",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "legacy-contract",
+      "kind": "mechanism",
+      "operation": "legacy_contract",
+      "case_id": "B01",
+      "expected": "assertions",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "exploration-contract",
+      "kind": "mechanism",
+      "operation": "exploration_contract",
+      "case_id": "B01",
+      "expected": "assertions",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "read-not-resolved",
+      "kind": "mechanism",
+      "operation": "read_not_resolved",
+      "case_id": "B01",
+      "expected": "assertions",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "round-budget",
+      "kind": "mechanism",
+      "operation": "round_budget",
+      "case_id": "B01",
+      "expected": "assertions",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "activity-budget",
+      "kind": "mechanism",
+      "operation": "activity_budget",
+      "case_id": "B01",
+      "expected": "assertions",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "question-dedup",
+      "kind": "mechanism",
+      "operation": "question_dedup",
+      "case_id": "B01",
+      "expected": "assertions",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "receipt-dedup",
+      "kind": "mechanism",
+      "operation": "receipt_dedup",
+      "case_id": "B01",
+      "expected": "assertions",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "reconfigure",
+      "kind": "mechanism",
+      "operation": "reconfigure",
+      "case_id": "B01",
+      "expected": "assertions",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "unknown-result",
+      "kind": "mechanism",
+      "operation": "unknown_result",
+      "case_id": "B01",
+      "expected": "assertions",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "failed-tool",
+      "kind": "mechanism",
+      "operation": "failed_tool",
+      "case_id": "B01",
+      "expected": "assertions",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "model-failure",
+      "kind": "mechanism",
+      "operation": "model_failure",
+      "case_id": "B01",
+      "expected": "assertions",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "committed-new-epoch",
+      "kind": "mechanism",
+      "operation": "committed_new_epoch",
+      "case_id": "B01",
+      "expected": "assertions",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "prepared-crash",
+      "kind": "mechanism",
+      "operation": "prepared_crash",
+      "case_id": "B01",
+      "expected": "assertions",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "receipt-crash",
+      "kind": "mechanism",
+      "operation": "receipt_crash",
+      "case_id": "B01",
+      "expected": "assertions",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "user-priority",
+      "kind": "mechanism",
+      "operation": "user_priority",
+      "case_id": "B01",
+      "expected": "assertions",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "text-boundary",
+      "kind": "mechanism",
+      "operation": "text_boundary",
+      "case_id": "B01",
+      "expected": "assertions",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "depth-boundary",
+      "kind": "mechanism",
+      "operation": "depth_boundary",
+      "case_id": "B01",
+      "expected": "assertions",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "capacity-boundary",
+      "kind": "mechanism",
+      "operation": "capacity_boundary",
+      "case_id": "B01",
+      "expected": "assertions",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "attempt-budget",
+      "kind": "mechanism",
+      "operation": "attempt_budget",
+      "case_id": "B01",
+      "expected": "assertions",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "tool-budget",
+      "kind": "mechanism",
+      "operation": "tool_budget",
+      "case_id": "B01",
+      "expected": "assertions",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "token-budget",
+      "kind": "mechanism",
+      "operation": "token_budget",
+      "case_id": "B01",
+      "expected": "assertions",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "single-acceptance",
+      "kind": "mechanism",
+      "operation": "single_acceptance",
+      "case_id": "B01",
+      "expected": "assertions",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "disable-before_prepare-model",
+      "kind": "stop_matrix",
+      "control": "disable",
+      "stage": "before_prepare",
+      "transport": "model",
+      "case_id": "B01",
+      "expected": "zero_post_stop_dispatches",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "disable-before_prepare-tool",
+      "kind": "stop_matrix",
+      "control": "disable",
+      "stage": "before_prepare",
+      "transport": "tool",
+      "case_id": "B01",
+      "expected": "zero_post_stop_dispatches",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "disable-authorized_before_dispatch-model",
+      "kind": "stop_matrix",
+      "control": "disable",
+      "stage": "authorized_before_dispatch",
+      "transport": "model",
+      "case_id": "B01",
+      "expected": "zero_post_stop_dispatches",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "disable-authorized_before_dispatch-tool",
+      "kind": "stop_matrix",
+      "control": "disable",
+      "stage": "authorized_before_dispatch",
+      "transport": "tool",
+      "case_id": "B01",
+      "expected": "zero_post_stop_dispatches",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "disable-in_flight-model",
+      "kind": "stop_matrix",
+      "control": "disable",
+      "stage": "in_flight",
+      "transport": "model",
+      "case_id": "B01",
+      "expected": "zero_post_stop_dispatches",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "disable-in_flight-tool",
+      "kind": "stop_matrix",
+      "control": "disable",
+      "stage": "in_flight",
+      "transport": "tool",
+      "case_id": "B01",
+      "expected": "zero_post_stop_dispatches",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "disable-after_commit-model",
+      "kind": "stop_matrix",
+      "control": "disable",
+      "stage": "after_commit",
+      "transport": "model",
+      "case_id": "B01",
+      "expected": "zero_post_stop_dispatches",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "disable-after_commit-tool",
+      "kind": "stop_matrix",
+      "control": "disable",
+      "stage": "after_commit",
+      "transport": "tool",
+      "case_id": "B01",
+      "expected": "zero_post_stop_dispatches",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "user_stop-before_prepare-model",
+      "kind": "stop_matrix",
+      "control": "user_stop",
+      "stage": "before_prepare",
+      "transport": "model",
+      "case_id": "B01",
+      "expected": "zero_post_stop_dispatches",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "user_stop-before_prepare-tool",
+      "kind": "stop_matrix",
+      "control": "user_stop",
+      "stage": "before_prepare",
+      "transport": "tool",
+      "case_id": "B01",
+      "expected": "zero_post_stop_dispatches",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "user_stop-authorized_before_dispatch-model",
+      "kind": "stop_matrix",
+      "control": "user_stop",
+      "stage": "authorized_before_dispatch",
+      "transport": "model",
+      "case_id": "B01",
+      "expected": "zero_post_stop_dispatches",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "user_stop-authorized_before_dispatch-tool",
+      "kind": "stop_matrix",
+      "control": "user_stop",
+      "stage": "authorized_before_dispatch",
+      "transport": "tool",
+      "case_id": "B01",
+      "expected": "zero_post_stop_dispatches",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "user_stop-in_flight-model",
+      "kind": "stop_matrix",
+      "control": "user_stop",
+      "stage": "in_flight",
+      "transport": "model",
+      "case_id": "B01",
+      "expected": "zero_post_stop_dispatches",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "user_stop-in_flight-tool",
+      "kind": "stop_matrix",
+      "control": "user_stop",
+      "stage": "in_flight",
+      "transport": "tool",
+      "case_id": "B01",
+      "expected": "zero_post_stop_dispatches",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "user_stop-after_commit-model",
+      "kind": "stop_matrix",
+      "control": "user_stop",
+      "stage": "after_commit",
+      "transport": "model",
+      "case_id": "B01",
+      "expected": "zero_post_stop_dispatches",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "user_stop-after_commit-tool",
+      "kind": "stop_matrix",
+      "control": "user_stop",
+      "stage": "after_commit",
+      "transport": "tool",
+      "case_id": "B01",
+      "expected": "zero_post_stop_dispatches",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "dispatch_competition-before_prepare-model",
+      "kind": "stop_matrix",
+      "control": "dispatch_competition",
+      "stage": "before_prepare",
+      "transport": "model",
+      "case_id": "B01",
+      "expected": "zero_post_stop_dispatches",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "dispatch_competition-before_prepare-tool",
+      "kind": "stop_matrix",
+      "control": "dispatch_competition",
+      "stage": "before_prepare",
+      "transport": "tool",
+      "case_id": "B01",
+      "expected": "zero_post_stop_dispatches",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "dispatch_competition-authorized_before_dispatch-model",
+      "kind": "stop_matrix",
+      "control": "dispatch_competition",
+      "stage": "authorized_before_dispatch",
+      "transport": "model",
+      "case_id": "B01",
+      "expected": "zero_post_stop_dispatches",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "dispatch_competition-authorized_before_dispatch-tool",
+      "kind": "stop_matrix",
+      "control": "dispatch_competition",
+      "stage": "authorized_before_dispatch",
+      "transport": "tool",
+      "case_id": "B01",
+      "expected": "zero_post_stop_dispatches",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "dispatch_competition-in_flight-model",
+      "kind": "stop_matrix",
+      "control": "dispatch_competition",
+      "stage": "in_flight",
+      "transport": "model",
+      "case_id": "B01",
+      "expected": "zero_post_stop_dispatches",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "dispatch_competition-in_flight-tool",
+      "kind": "stop_matrix",
+      "control": "dispatch_competition",
+      "stage": "in_flight",
+      "transport": "tool",
+      "case_id": "B01",
+      "expected": "zero_post_stop_dispatches",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "dispatch_competition-after_commit-model",
+      "kind": "stop_matrix",
+      "control": "dispatch_competition",
+      "stage": "after_commit",
+      "transport": "model",
+      "case_id": "B01",
+      "expected": "zero_post_stop_dispatches",
+      "scope": "workspace-read"
+    },
+    {
+      "scenario_id": "dispatch_competition-after_commit-tool",
+      "kind": "stop_matrix",
+      "control": "dispatch_competition",
+      "stage": "after_commit",
+      "transport": "tool",
+      "case_id": "B01",
+      "expected": "zero_post_stop_dispatches",
+      "scope": "workspace-read"
+    }
+  ]
+}

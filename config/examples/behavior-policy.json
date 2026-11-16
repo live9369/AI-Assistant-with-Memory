@@ -1,0 +1,26 @@
+{
+  "biases": {
+    "wait": 0.0,
+    "ask": 0.0
+  },
+  "weights": {
+    "read_file": {
+      "personality.openness": 0.3,
+      "value.exploration": 0.4,
+      "memory.coverage": -0.2
+    },
+    "write_note": {
+      "personality.conscientiousness": 0.3,
+      "value.continuity": 0.4,
+      "motivation.intensity": 0.3
+    },
+    "ask": {
+      "cognition.uncertainty": 0.8,
+      "relationship.reliability": 0.2,
+      "context.chat": 0.2
+    },
+    "wait": {
+      "state.load": 0.8
+    }
+  }
+}

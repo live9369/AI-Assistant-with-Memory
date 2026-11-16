@@ -1,0 +1,29 @@
+# 原件位置固定投影的重复读消除
+
+2026-11-12。状态：已实施exact材料与owner schema整数共享；最终必要范围结果另记，真实连续性能待验。
+
+case8强证明150次全部生效，assembly仍因scan耗尽而停，不能再把普通/强证明是否启用当根因。当前read_artifact无observer使用固定六列artifacts投影，每次命中已校验body缓存前仍直接查SQL；同一阶段track_artifact已有完全相同artifact_location事实，且artifacts不在固定input两表写集中。
+
+先在实际deep8同库Native/Managedlegacy/weak/strong四模式端口，用技术包装meter游标记录真实已收费SQL行，不安装SQLite trace/rowobserver，不改查询或预算。候选只把原六列SELECT接到现有facts('artifact_location')；未知/领域observer保持原全行SQL及回调序列，未知Store子类、无实际meter/phase、callback或未知read环境保守原SQL。fresh=True维持原SQL及完整原件读取。
+
+不省文件位置安全检查、真实文件tracking/probes、open/no-follow、大小/hash/media/JSON校验；既有body cache和fresh语义不变。任何同连接写/rollback/配置/foreign/control/file变化沿readset原失效。纯材料位置不是Ref、授权或版本认定，每次调用仍原后半处理。
+
+后续snapshot-event JOIN三列另按实际计量决定，不同时盲扩：它还依赖object_revision_registry和object_registry旧正行，必须仅保留正行、负行清除，并保留snapshot payload实际校验。
+
+## 同次候选的实际热点与schema整数
+
+原端口strong物理scan3361中，PRAGMA user_version1155（34.4%），artifact六列639，依赖540；artifact单项候选只省72行（scan3289）。schema整数由control→qualified_plane_required每用查询，完整gate逻辑必须每次执行，不能缓存判决。可以在实际Managed、已知读取环境、匹配meter与可复用phase内，把PRAGMA user_version原始一行作为固定事实；observer/unknown/native保持原PRAGMA。只读阶段monitor同步和原DB/control/allfile probes照旧；赋值/DDL/rollback/config/foreign变化清缓存。强input固定两表INSERT不改schema，允许该整数材料跨此唯一写保留。映射空表集合表示schema不依赖数据表，绝不表示忽略schema/config generation。
+
+snapshot reference event三列查询仍完整执行原Ref、snapshot payload/hash/owner校验，只复用同query的行。依赖runtime_events+object_registry，strong新增只保留已有正行，负行必须清。static/native verify_version可复用exact原投影revision事实，o.check与所有版本判断每用执行。先以相应真实快照/版本端口核计数，没收益不宣称收益。
+
+schema整数最终只在LocalRuntimeOwners.control既有_material_boundary之后的短私有ContextVar作用域启用，token绑定当前phase/generation/txgen。public qualified_plane_required无该token保持原PRAGMA；其签名及完整gate逻辑不变。不为每次hit增加新probe，也不使用仅total_changes判定schema。schema事实只在strong分支跨input保留，弱证明清除。
+
+## 实际端口与范围
+
+四模式deep8保持原业务、来源、权限560次、UUID27次、异常全部精确同，真strong8；原strong scan3361→2152（下降35.97%），bytes767378→726138（下降5.38%）。user_version物理行1155→18，artifact六列639→567；其余Ref、source gate与snapshot payload验证代码照旧。单次strong elapsed1119→1071ms仅观察，不能推断整包达标。端口最大201key、257161总bytes、reuse_disabled=false，不能据此声称case8大图未到4MiB/4096上限；旧case8未记录该高水位。证据exact-material-implemented-01。
+
+11新反例全部通过3.134秒，包含same-value header赋值且total_changes不变仍清事实、5→4往返、事务rollback、unsupported5、public无token原PRAGMA、observer原整数行、foreign旧snapshot、fresh原件/未知环境原SQL、snapshot三列8次→1次查询及负缓存强写清除。未知或任意observer原SQL保留，未提升材料/预算上限或改变文件优先保障。
+
+必要focused234实际233通过，仅旧Native/Managed物理scan相等断言失败：Native16454/43280，Managed15539/36187，业务差分仍0。该断言对本轮明确仅Managed的优化已过时，经主任务批准仅改为逐阶段Managed不高于Native且总量减少，原所有语义精确断言不变；初次结果完整保留，不声称初次234全通过，后续只做该test的同源delta。
+
+最终仅测试预期delta的Native/Managed全上下文复验通过：1项、0失败/错误/跳过、27.277153166秒，source_stable=true。证据faults-09-native-delta/result.json，SHA256 ed787a2d71f0db21cdb107ced27904a5f47529d42f1aebf4c3b141e6f28af1bd。产品源码与初次focused234的233通过部分未改变，仅合法物理优化的旧测试预期修正。全部Python重新冻结，真实case9由主任务继续；不把这称作重新完整234或完整438通过。

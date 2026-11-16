@@ -1,0 +1,1507 @@
+{
+  "dataset_id": "AE-G1-MATERIALS-1.0",
+  "purpose": "G1 authored mechanism fixtures; not a registered G2 test set",
+  "independent_quality_review": false,
+  "cases": [
+    {
+      "case_id": "A01",
+      "stratum": "A",
+      "topic": "greenhouse-temperature",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for greenhouse-temperature: value=7; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"greenhouse-temperature\", \"value\": 8, \"unit\": \"fixture-unit\", \"sequence\": [7, 8, 8]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 7,
+        "current_value": 8,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": true,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "A02",
+      "stratum": "A",
+      "topic": "water-tank-level",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for water-tank-level: value=14; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"water-tank-level\", \"value\": 15, \"unit\": \"fixture-unit\", \"sequence\": [14, 15, 15]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 14,
+        "current_value": 15,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": true,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "A03",
+      "stratum": "A",
+      "topic": "solar-panel-output",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for solar-panel-output: value=21; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"solar-panel-output\", \"value\": 22, \"unit\": \"fixture-unit\", \"sequence\": [21, 22, 22]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 21,
+        "current_value": 22,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": true,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "A04",
+      "stratum": "A",
+      "topic": "archive-file-count",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for archive-file-count: value=28; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"archive-file-count\", \"value\": 29, \"unit\": \"fixture-unit\", \"sequence\": [28, 29, 29]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 28,
+        "current_value": 29,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": true,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "A05",
+      "stratum": "A",
+      "topic": "workshop-humidity",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for workshop-humidity: value=35; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"workshop-humidity\", \"value\": 36, \"unit\": \"fixture-unit\", \"sequence\": [35, 36, 36]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 35,
+        "current_value": 36,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": true,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "A06",
+      "stratum": "A",
+      "topic": "battery-discharge",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for battery-discharge: value=42; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"battery-discharge\", \"value\": 43, \"unit\": \"fixture-unit\", \"sequence\": [42, 43, 43]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 42,
+        "current_value": 43,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": true,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "A07",
+      "stratum": "A",
+      "topic": "seedling-height",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for seedling-height: value=49; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"seedling-height\", \"value\": 50, \"unit\": \"fixture-unit\", \"sequence\": [49, 50, 50]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 49,
+        "current_value": 50,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": true,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "A08",
+      "stratum": "A",
+      "topic": "reservoir-flow",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for reservoir-flow: value=56; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"reservoir-flow\", \"value\": 57, \"unit\": \"fixture-unit\", \"sequence\": [56, 57, 57]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 56,
+        "current_value": 57,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": true,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "A09",
+      "stratum": "A",
+      "topic": "room-light-level",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for room-light-level: value=63; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"room-light-level\", \"value\": 64, \"unit\": \"fixture-unit\", \"sequence\": [63, 64, 64]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 63,
+        "current_value": 64,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": true,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "A10",
+      "stratum": "A",
+      "topic": "soil-acidity",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for soil-acidity: value=70; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"soil-acidity\", \"value\": 71, \"unit\": \"fixture-unit\", \"sequence\": [70, 71, 71]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 70,
+        "current_value": 71,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": true,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "B01",
+      "stratum": "B",
+      "topic": "inventory-balance",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for inventory-balance: value=7; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"inventory-balance\", \"value\": 10, \"unit\": \"fixture-unit\", \"sequence\": [7, 8, 10]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 7,
+        "current_value": 10,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": true,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "B02",
+      "stratum": "B",
+      "topic": "train-departure-board",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for train-departure-board: value=14; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"train-departure-board\", \"value\": 17, \"unit\": \"fixture-unit\", \"sequence\": [14, 15, 17]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 14,
+        "current_value": 17,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": true,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "B03",
+      "stratum": "B",
+      "topic": "sensor-unit-label",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for sensor-unit-label: value=21; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"sensor-unit-label\", \"value\": 24, \"unit\": \"fixture-unit\", \"sequence\": [21, 22, 24]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 21,
+        "current_value": 24,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": true,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "B04",
+      "stratum": "B",
+      "topic": "document-revision",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for document-revision: value=28; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"document-revision\", \"value\": 31, \"unit\": \"fixture-unit\", \"sequence\": [28, 29, 31]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 28,
+        "current_value": 31,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": true,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "B05",
+      "stratum": "B",
+      "topic": "oven-calibration",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for oven-calibration: value=35; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"oven-calibration\", \"value\": 38, \"unit\": \"fixture-unit\", \"sequence\": [35, 36, 38]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 35,
+        "current_value": 38,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": true,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "B06",
+      "stratum": "B",
+      "topic": "package-weight",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for package-weight: value=42; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"package-weight\", \"value\": 45, \"unit\": \"fixture-unit\", \"sequence\": [42, 43, 45]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 42,
+        "current_value": 45,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": true,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "B07",
+      "stratum": "B",
+      "topic": "rainfall-total",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for rainfall-total: value=49; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"rainfall-total\", \"value\": 52, \"unit\": \"fixture-unit\", \"sequence\": [49, 50, 52]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 49,
+        "current_value": 52,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": true,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "B08",
+      "stratum": "B",
+      "topic": "book-catalog-year",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for book-catalog-year: value=56; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"book-catalog-year\", \"value\": 59, \"unit\": \"fixture-unit\", \"sequence\": [56, 57, 59]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 56,
+        "current_value": 59,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": true,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "B09",
+      "stratum": "B",
+      "topic": "machine-cycle-count",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for machine-cycle-count: value=63; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"machine-cycle-count\", \"value\": 66, \"unit\": \"fixture-unit\", \"sequence\": [63, 64, 66]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 63,
+        "current_value": 66,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": true,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "B10",
+      "stratum": "B",
+      "topic": "warehouse-location",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for warehouse-location: value=70; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"warehouse-location\", \"value\": 73, \"unit\": \"fixture-unit\", \"sequence\": [70, 71, 73]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 70,
+        "current_value": 73,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": true,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "C01",
+      "stratum": "C",
+      "topic": "dice-stream",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for dice-stream: value=7; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"dice-stream\", \"value\": 8, \"unit\": \"fixture-unit\", \"sequence\": [3, 1, 8, 2, 9, 4]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 7,
+        "current_value": 8,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": false,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "C02",
+      "stratum": "C",
+      "topic": "network-jitter",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for network-jitter: value=14; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"network-jitter\", \"value\": 15, \"unit\": \"fixture-unit\", \"sequence\": [3, 1, 8, 2, 9, 4]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 14,
+        "current_value": 15,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": false,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "C03",
+      "stratum": "C",
+      "topic": "coin-sequence",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for coin-sequence: value=21; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"coin-sequence\", \"value\": 22, \"unit\": \"fixture-unit\", \"sequence\": [3, 1, 8, 2, 9, 4]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 21,
+        "current_value": 22,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": false,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "C04",
+      "stratum": "C",
+      "topic": "radio-noise",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for radio-noise: value=28; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"radio-noise\", \"value\": 29, \"unit\": \"fixture-unit\", \"sequence\": [3, 1, 8, 2, 9, 4]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 28,
+        "current_value": 29,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": false,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "C05",
+      "stratum": "C",
+      "topic": "queue-arrivals",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for queue-arrivals: value=35; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"queue-arrivals\", \"value\": 36, \"unit\": \"fixture-unit\", \"sequence\": [3, 1, 8, 2, 9, 4]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 35,
+        "current_value": 36,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": false,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "C06",
+      "stratum": "C",
+      "topic": "oscillator-period",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for oscillator-period: value=42; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"oscillator-period\", \"value\": 43, \"unit\": \"fixture-unit\", \"sequence\": [2, 4, 6, 8, 10, 12]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 42,
+        "current_value": 43,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": false,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "C07",
+      "stratum": "C",
+      "topic": "fan-speed",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for fan-speed: value=49; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"fan-speed\", \"value\": 50, \"unit\": \"fixture-unit\", \"sequence\": [2, 4, 6, 8, 10, 12]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 49,
+        "current_value": 50,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": false,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "C08",
+      "stratum": "C",
+      "topic": "pendulum-interval",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for pendulum-interval: value=56; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"pendulum-interval\", \"value\": 57, \"unit\": \"fixture-unit\", \"sequence\": [2, 4, 6, 8, 10, 12]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 56,
+        "current_value": 57,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": false,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "C09",
+      "stratum": "C",
+      "topic": "seasonal-daylight",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for seasonal-daylight: value=63; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"seasonal-daylight\", \"value\": 64, \"unit\": \"fixture-unit\", \"sequence\": [2, 4, 6, 8, 10, 12]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 63,
+        "current_value": 64,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": false,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "C10",
+      "stratum": "C",
+      "topic": "thermostat-cycle",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for thermostat-cycle: value=70; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"thermostat-cycle\", \"value\": 71, \"unit\": \"fixture-unit\", \"sequence\": [2, 4, 6, 8, 10, 12]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 70,
+        "current_value": 71,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": false,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "D01",
+      "stratum": "D",
+      "topic": "missing-observation",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for missing-observation: value=7; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"missing-observation\", \"value\": null, \"missing\": \"No independently sufficient observation supplied.\"}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": false,
+        "previous_value": 7,
+        "current_value": null,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": false,
+        "expected_fixture_disposition": "dormant"
+      },
+      "world_events": [],
+      "fixture_behavior": "dormant"
+    },
+    {
+      "case_id": "D02",
+      "stratum": "D",
+      "topic": "unreadable-source",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for unreadable-source: value=14; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"unreadable-source\", \"value\": null, \"missing\": \"No independently sufficient observation supplied.\"}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": false,
+        "previous_value": 14,
+        "current_value": null,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": false,
+        "expected_fixture_disposition": "dormant"
+      },
+      "world_events": [],
+      "fixture_behavior": "dormant"
+    },
+    {
+      "case_id": "D03",
+      "stratum": "D",
+      "topic": "expired-calibration",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for expired-calibration: value=21; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"expired-calibration\", \"value\": null, \"missing\": \"No independently sufficient observation supplied.\"}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": false,
+        "previous_value": 21,
+        "current_value": null,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": false,
+        "expected_fixture_disposition": "dormant"
+      },
+      "world_events": [],
+      "fixture_behavior": "dormant"
+    },
+    {
+      "case_id": "D04",
+      "stratum": "D",
+      "topic": "conflicting-dates",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for conflicting-dates: value=28; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"conflicting-dates\", \"value\": null, \"missing\": \"No independently sufficient observation supplied.\"}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": false,
+        "previous_value": 28,
+        "current_value": null,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": false,
+        "expected_fixture_disposition": "dormant"
+      },
+      "world_events": [],
+      "fixture_behavior": "dormant"
+    },
+    {
+      "case_id": "D05",
+      "stratum": "D",
+      "topic": "unknown-units",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for unknown-units: value=35; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"unknown-units\", \"value\": null, \"missing\": \"No independently sufficient observation supplied.\"}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": false,
+        "previous_value": 35,
+        "current_value": null,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": false,
+        "expected_fixture_disposition": "dormant"
+      },
+      "world_events": [],
+      "fixture_behavior": "dormant"
+    },
+    {
+      "case_id": "D06",
+      "stratum": "D",
+      "topic": "absent-reference",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for absent-reference: value=42; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"absent-reference\", \"value\": null, \"missing\": \"No independently sufficient observation supplied.\"}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": false,
+        "previous_value": 42,
+        "current_value": null,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": false,
+        "expected_fixture_disposition": "dormant"
+      },
+      "world_events": [],
+      "fixture_behavior": "dormant"
+    },
+    {
+      "case_id": "D07",
+      "stratum": "D",
+      "topic": "partial-transcript",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for partial-transcript: value=49; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"partial-transcript\", \"value\": null, \"missing\": \"No independently sufficient observation supplied.\"}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": false,
+        "previous_value": 49,
+        "current_value": null,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": false,
+        "expected_fixture_disposition": "dormant"
+      },
+      "world_events": [],
+      "fixture_behavior": "dormant"
+    },
+    {
+      "case_id": "D08",
+      "stratum": "D",
+      "topic": "unresolved-identity",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for unresolved-identity: value=56; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"unresolved-identity\", \"value\": null, \"missing\": \"No independently sufficient observation supplied.\"}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": false,
+        "previous_value": 56,
+        "current_value": null,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": false,
+        "expected_fixture_disposition": "dormant"
+      },
+      "world_events": [],
+      "fixture_behavior": "dormant"
+    },
+    {
+      "case_id": "D09",
+      "stratum": "D",
+      "topic": "unavailable-directory",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for unavailable-directory: value=63; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"unavailable-directory\", \"value\": null, \"missing\": \"No independently sufficient observation supplied.\"}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": false,
+        "previous_value": 63,
+        "current_value": null,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": false,
+        "expected_fixture_disposition": "dormant"
+      },
+      "world_events": [],
+      "fixture_behavior": "dormant"
+    },
+    {
+      "case_id": "D10",
+      "stratum": "D",
+      "topic": "incomplete-series",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for incomplete-series: value=70; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"incomplete-series\", \"value\": null, \"missing\": \"No independently sufficient observation supplied.\"}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": false,
+        "previous_value": 70,
+        "current_value": null,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": false,
+        "expected_fixture_disposition": "dormant"
+      },
+      "world_events": [],
+      "fixture_behavior": "dormant"
+    },
+    {
+      "case_id": "E01",
+      "stratum": "E",
+      "topic": "changed-water-level",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for changed-water-level: value=7; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"changed-water-level\", \"value\": 10, \"unit\": \"fixture-unit\", \"sequence\": [7, 8, 10]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 7,
+        "current_value": 10,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": true,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [
+        {
+          "when": "before_first_tool_dispatch",
+          "path": "notes/reading.json",
+          "replacement": "{\"topic\": \"changed-water-level\", \"value\": 15, \"unit\": \"fixture-unit\", \"sequence\": [7, 8, 10]}"
+        }
+      ],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "E02",
+      "stratum": "E",
+      "topic": "revised-timetable",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for revised-timetable: value=14; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"revised-timetable\", \"value\": 17, \"unit\": \"fixture-unit\", \"sequence\": [14, 15, 17]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 14,
+        "current_value": 17,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": true,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [
+        {
+          "when": "before_first_tool_dispatch",
+          "path": "notes/reading.json",
+          "replacement": "{\"topic\": \"revised-timetable\", \"value\": 22, \"unit\": \"fixture-unit\", \"sequence\": [14, 15, 17]}"
+        }
+      ],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "E03",
+      "stratum": "E",
+      "topic": "moving-shade",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for moving-shade: value=21; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"moving-shade\", \"value\": 24, \"unit\": \"fixture-unit\", \"sequence\": [21, 22, 24]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 21,
+        "current_value": 24,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": true,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [
+        {
+          "when": "before_first_tool_dispatch",
+          "path": "notes/reading.json",
+          "replacement": "{\"topic\": \"moving-shade\", \"value\": 29, \"unit\": \"fixture-unit\", \"sequence\": [21, 22, 24]}"
+        }
+      ],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "E04",
+      "stratum": "E",
+      "topic": "updated-stock",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for updated-stock: value=28; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"updated-stock\", \"value\": 31, \"unit\": \"fixture-unit\", \"sequence\": [28, 29, 31]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 28,
+        "current_value": 31,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": true,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [
+        {
+          "when": "before_first_tool_dispatch",
+          "path": "notes/reading.json",
+          "replacement": "{\"topic\": \"updated-stock\", \"value\": 36, \"unit\": \"fixture-unit\", \"sequence\": [28, 29, 31]}"
+        }
+      ],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "E05",
+      "stratum": "E",
+      "topic": "new-sensor-reading",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for new-sensor-reading: value=35; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"new-sensor-reading\", \"value\": 38, \"unit\": \"fixture-unit\", \"sequence\": [35, 36, 38]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 35,
+        "current_value": 38,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": true,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [
+        {
+          "when": "before_first_tool_dispatch",
+          "path": "notes/reading.json",
+          "replacement": "{\"topic\": \"new-sensor-reading\", \"value\": 43, \"unit\": \"fixture-unit\", \"sequence\": [35, 36, 38]}"
+        }
+      ],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "E06",
+      "stratum": "E",
+      "topic": "rescheduled-delivery",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for rescheduled-delivery: value=42; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"rescheduled-delivery\", \"value\": 45, \"unit\": \"fixture-unit\", \"sequence\": [42, 43, 45]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 42,
+        "current_value": 45,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": true,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [
+        {
+          "when": "before_first_tool_dispatch",
+          "path": "notes/reading.json",
+          "replacement": "{\"topic\": \"rescheduled-delivery\", \"value\": 50, \"unit\": \"fixture-unit\", \"sequence\": [42, 43, 45]}"
+        }
+      ],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "E07",
+      "stratum": "E",
+      "topic": "rolling-log",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for rolling-log: value=49; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"rolling-log\", \"value\": 52, \"unit\": \"fixture-unit\", \"sequence\": [49, 50, 52]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 49,
+        "current_value": 52,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": true,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [
+        {
+          "when": "before_first_tool_dispatch",
+          "path": "notes/reading.json",
+          "replacement": "{\"topic\": \"rolling-log\", \"value\": 57, \"unit\": \"fixture-unit\", \"sequence\": [49, 50, 52]}"
+        }
+      ],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "E08",
+      "stratum": "E",
+      "topic": "shifted-clock",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for shifted-clock: value=56; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"shifted-clock\", \"value\": 59, \"unit\": \"fixture-unit\", \"sequence\": [56, 57, 59]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 56,
+        "current_value": 59,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": true,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [
+        {
+          "when": "before_first_tool_dispatch",
+          "path": "notes/reading.json",
+          "replacement": "{\"topic\": \"shifted-clock\", \"value\": 64, \"unit\": \"fixture-unit\", \"sequence\": [56, 57, 59]}"
+        }
+      ],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "E09",
+      "stratum": "E",
+      "topic": "changed-file-tree",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for changed-file-tree: value=63; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"changed-file-tree\", \"value\": 66, \"unit\": \"fixture-unit\", \"sequence\": [63, 64, 66]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 63,
+        "current_value": 66,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": true,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [
+        {
+          "when": "before_first_tool_dispatch",
+          "path": "notes/reading.json",
+          "replacement": "{\"topic\": \"changed-file-tree\", \"value\": 71, \"unit\": \"fixture-unit\", \"sequence\": [63, 64, 66]}"
+        }
+      ],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "E10",
+      "stratum": "E",
+      "topic": "restarted-counter",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for restarted-counter: value=70; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"restarted-counter\", \"value\": 73, \"unit\": \"fixture-unit\", \"sequence\": [70, 71, 73]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 70,
+        "current_value": 73,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": true,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [
+        {
+          "when": "before_first_tool_dispatch",
+          "path": "notes/reading.json",
+          "replacement": "{\"topic\": \"restarted-counter\", \"value\": 78, \"unit\": \"fixture-unit\", \"sequence\": [70, 71, 73]}"
+        }
+      ],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "F01",
+      "stratum": "F",
+      "topic": "duplicate-reading",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for duplicate-reading: value=7; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"duplicate-reading\", \"value\": 8, \"unit\": \"fixture-unit\", \"sequence\": [7, 8, 8]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 7,
+        "current_value": 8,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": false,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "F02",
+      "stratum": "F",
+      "topic": "replayed-directory",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for replayed-directory: value=14; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"replayed-directory\", \"value\": 15, \"unit\": \"fixture-unit\", \"sequence\": [14, 15, 15]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 14,
+        "current_value": 15,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": false,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "F03",
+      "stratum": "F",
+      "topic": "timeout-receipt",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for timeout-receipt: value=21; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"timeout-receipt\", \"value\": 22, \"unit\": \"fixture-unit\", \"sequence\": [21, 22, 22]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 21,
+        "current_value": 22,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": false,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "F04",
+      "stratum": "F",
+      "topic": "failed-read",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for failed-read: value=28; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"failed-read\", \"value\": 29, \"unit\": \"fixture-unit\", \"sequence\": [28, 29, 29]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 28,
+        "current_value": 29,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": false,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "F05",
+      "stratum": "F",
+      "topic": "duplicate-question",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for duplicate-question: value=35; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"duplicate-question\", \"value\": 36, \"unit\": \"fixture-unit\", \"sequence\": [35, 36, 36]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 35,
+        "current_value": 36,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": false,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "F06",
+      "stratum": "F",
+      "topic": "stale-result",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for stale-result: value=42; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"stale-result\", \"value\": 43, \"unit\": \"fixture-unit\", \"sequence\": [42, 43, 43]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 42,
+        "current_value": 43,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": false,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "F07",
+      "stratum": "F",
+      "topic": "repeated-content",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for repeated-content: value=49; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"repeated-content\", \"value\": 50, \"unit\": \"fixture-unit\", \"sequence\": [49, 50, 50]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 49,
+        "current_value": 50,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": false,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "F08",
+      "stratum": "F",
+      "topic": "unconfirmed-transport",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for unconfirmed-transport: value=56; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"unconfirmed-transport\", \"value\": 57, \"unit\": \"fixture-unit\", \"sequence\": [56, 57, 57]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 56,
+        "current_value": 57,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": false,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "F09",
+      "stratum": "F",
+      "topic": "partial-tool-result",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for partial-tool-result: value=63; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"partial-tool-result\", \"value\": 64, \"unit\": \"fixture-unit\", \"sequence\": [63, 64, 64]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 63,
+        "current_value": 64,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": false,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    },
+    {
+      "case_id": "F10",
+      "stratum": "F",
+      "topic": "replayed-evidence",
+      "split": "g1-mechanism-fixture",
+      "public": {
+        "memory": "Recorded experience for replayed-evidence: value=70; the latest local record is notes/reading.json.",
+        "files": {
+          "notes/reading.json": "{\"topic\": \"replayed-evidence\", \"value\": 71, \"unit\": \"fixture-unit\", \"sequence\": [70, 71, 71]}"
+        },
+        "observation_path": "notes/reading.json"
+      },
+      "oracle": {
+        "quality_label_status": "not_independently_reviewed",
+        "solvable_fixture": true,
+        "previous_value": 70,
+        "current_value": 71,
+        "verification_rule": "For mechanism checks, receipt bytes must equal fixture file; no real-model quality label is awarded.",
+        "counterexample_opportunity": false,
+        "expected_fixture_disposition": "resolved"
+      },
+      "world_events": [],
+      "fixture_behavior": "resolve"
+    }
+  ]
+}

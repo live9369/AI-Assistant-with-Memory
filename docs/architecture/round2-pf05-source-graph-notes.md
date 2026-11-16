@@ -1,0 +1,65 @@
+# PF05 共享来源准备：实施与局部验证
+
+状态：实现与42项针对性检查、1项完整Engine中间版本检查通过，尚非最终全量验收。
+
+## 实现
+
+在同一PhaseReadSet内保存来源图准备资料，键包含实例、完整token、完整Scope以及max_nodes/max_rows。它只是来源材料，不是资格判定。_upstream入口／出口检查阶段新鲜度；没有共享阶段时仍走原上溯算法。键序列化前验证精确JSON类型，防止非字符串键、tuple、surrogate等与已有合法输入发生编码混淆。
+
+成功完整图以不可变JSON保存，读取重新解码并恢复每个条目及path的tuple形状，因此每个调用者得到独立对象。完整有序重复项、read/delete、多路径和循环处理不变；命中仍扣原调用者的实际逻辑行数。余额不足时回到原逐行遍历，保留原失败位置与类别。失败或部分图不缓存。
+
+图和SQL事实共同占用既有4MiB编码总量及4096键的内部优化上限，工件身份跟踪也计入同一字节量；业务cap不变。独立尺寸账使工件优先保留、图／SQL事实可逐项淘汰。clear、close、generation变化与overflow都清除图，不能通过图保留旧阶段材料。
+
+有序依赖／屏障行仅在读取数量严格小于原LIMIT时标记完整：完整行集可按新LIMIT取前缀；等于LIMIT的截断结果不能证明完整，不跨更大LIMIT复用。原逐消费者行预算照旧扣，不通过跨LIMIT复用绕过上限。
+
+## 动态映射修复
+
+依赖metadata缓存只证明纯JSON结构和完整dependency-row字段绑定。每次命中仍检查consumer／target当前Ref映射，以及所选修订与投影owner，不能把前一generation的动态数据库验证当作不可变资料。
+
+_check增加try/finally形式的check_depth，用于让明确本地只读owner在已有完整检查内部避免重复数据库／文件探测；直接调用owner端口仍需独立新鲜度检查。该depth不跨异常保留。
+
+## 已验证
+
+`tests.test_tool_learning_round2_graph`、`tests.test_tool_learning_readset`、`tests.test_tool_learning_readset_review`、`tests.test_tool_learning_performance`共42项通过，0失败／错误。
+
+新graph用例覆盖原算法同库完整图及预算差分、Scope／revision／limits分离、独立副本、图命中不减少authority调用、不同recipient分别核验、低预算原失败一致、部分失败不缓存、有界共用账与淘汰、完整／截断行集跨LIMIT、非法JSON防alias，以及同连接新增修订登记后phase内外metadata命中均重新核对动态投影。
+
+新增测试不重复导入其它TestCase作为发现目标；早期39项输出包含29个导入WorkTests的重复发现，已纠正，不当作39个新增测试。
+
+## 待最终整合
+
+完整Engine局部检查通过：148.555秒，scan/items各1,147,987，计量277,584,393字节，unknown预留0。该值未达到既定速度门槛；中间源码且仅单次，不作为最终提速声明。整合审查还要求facts.read在本连接total_changes变化时查缓存前失效；overflow下common meter已禁命中／保留，track_location无需反复清材料。主agent将在局部运行结束后统一修正并冻结复验。
+
+所有数据来自新建合成夹具，模型为替身；未操作正式实例或真实模型。
+
+## PF05整改设计：按共享节点准备，整图二次需求准入
+
+实测1625次整图查找没有命中，整图编码约482MB；因此不能把每个不同root都编码当作优化。整改首见只登记有界需求键，第二次相同需求成功后才编码，第三次开始命中。失败不准入，需求键与图、SQL事实、节点准备共同计入现4MiB／4096键。
+
+真正重复的是同阶段节点依赖metadata。节点准备键保留完整dependency row以及artifact完整身份（instance、id、hash、size、media_type、storage_ref）；阶段generation／连接写入或外部变化清准备表。纯JSON缓存也纳入完整artifact身份，杜绝修改artifact映射后拿旧JSON冒充新工件。准备内容只有当前登记／修订映射已核对的事实及从同一已核验JSON得到的Scope键，不包含任何授权结论。每个消费者的source、version、epoch、barrier、purpose、recipient、路径及预算检查继续执行。原始文件变化仍由追踪和阶段边界拒绝。
+
+同阶段节点准备命中可跳过相同映射事实的重复重建与Scope键重复计算；本连接写入、phase结束或外部变化后必须重建。phase外纯metadata缓存命中仍执行当前映射核对。只做局部针对性验证，后续统一PF06复验和PF07计时。
+
+整改局部结果：graph／readset／readset-review／上一轮performance共45项通过，0失败／错误（5.734秒）。新增断言确认首见root不调用整图编码保存、共享节点映射／Scope键只准备一次但本连接变化后重做、修改artifact hash/location后合法新内容重新解释且非法新内容拒绝。此次未运行完整Engine，最终耗时由后续PF06复验／PF07冻结对照确定。
+
+## 收集阶段补齐共享边界设计
+
+PF07首例121.982秒，较旧中位145.216秒改善约16%，未达到20%门槛；不能继续报为完成。诊断显示feature_read／snapshot_retention仍有大量检查未处于PhaseReadSet，节点准备只能反复重建。
+
+审查确认_features使用固定LocalRuntimeOwners／LocalSnapshots／LocalEligibility，仅执行本地资料选择、原权限核验、原始工件读取和合法快照捕获。快照authority端口固定为本地owner，不是外部模型／工具回调；本连接写入仍由原事务generation失效机制处理。_conversation仅conversation-discovery的查询段可共享，后续_recall位于该段之外，不能扩大边界。
+
+整改在现_read_operation进入原meter后，分别为features和conversation-discovery安装同一明确本地owner的verification_boundary。阶段退出先检查并清共享状态，再退出meter和结算；不新增跨模型／工具事务，不把actual-entry-and-retention或未知authority回调包入。未改特征选择、召回数量、字段、业务cap或逐消费者资格判断。测试直接调用真实StrictEngine收集入口，在新合成夹具验证阶段已安装、退出已清理，以及停止／中途变化仍拒绝；不调用think或真实模型。
+
+收集边界局部结果：新增4项真实StrictEngine收集端口测试，加既有graph／readset／review／performance共49项通过（6.590秒），0失败／错误。测试证明features和conversation_query实际资格检查时共享阶段存在，方法返回／失败后已关闭；fixed snapshot前本连接generation变更仍拒绝；选择资料中途control.stop仍拒绝并清理。只测试收集端口，不调用完整think或模型；产品仅上述两处with边界变更。仍需统一PF06复验与PF07完整计时，尚不宣称满足速度门槛。
+
+## 真实关系数据的typed Evidence来源映射修复设计
+
+PF07真实Memory+Relation负载暴露既有owner缺口：PeopleRelations.relate合法写入的social_relationship_changes.reason_ref通过外键指向evidence_items，但旧LocalSnapshots只按少数列名识别证据。不得删除关系特征或把任意reason_ref列当作可信来源。
+
+整改以PRAGMA foreign_key_list中的目标table=evidence_items、目标列id识别typed证据列，在selector过滤前保留实际来源；NULL表示无引用，可跳过。证据ID必须有同实例object_registry且kind准确为evidence_items，实际证据行与来源／工件映射必须存在、同实例且类型一致；origin_revision存在时校验其owner与origin一致。缺失、错kind、跨实例或映射矛盾均拒绝。
+
+Evidence只是包装：沿实际origin_object_id或artifact_id归入原来源owner的版本、权限、epoch、屏障与closure检查，不把包装增加成独立世界事实。原有固定SourceSnapshot、bounded closure及grant边界不扩大。测试通过真实PeopleRelations.register／relate和Memory.encode建立共用原话来源，直接执行StrictEngine._features端口，并检查关系快照原来源链；另外覆盖selector不含证据列、NULL、错kind、缺失、跨实例及证据revision映射不符。此修复不改benchmark、模型调用或业务cap。
+
+Typed Evidence局部结果：新增9项测试全部通过，并与原PeopleRelations回归合计45项通过（9.741秒）；此前8项新增与既有49项优化局部测试合计57项通过（10.760秒）。真实register／relate→_features入口保留关系变化记录，关系快照上游与Memory使用同一原话signal，Evidence包装未增加为独立source。selector省略reason_ref仍保留来源；NULL typed FK跳过；错kind、缺失、跨实例、缺实际证据行、错revision owner及artifact错kind均拒绝。
+
+revision-owner负例最初由原数据库guard直接阻断，随后仅在一次性损坏注入夹具中删除该guard再验证owner仍拒绝；产品guard未改。未运行完整think／完整Engine／真实模型。等待统一PF06和最终PF07重新计时。

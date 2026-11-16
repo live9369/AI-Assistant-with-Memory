@@ -1,0 +1,7 @@
+{
+  "question_id": "REPLACE_WITH_EXISTING_QUESTION_ID",
+  "topic": "计数核验",
+  "affinity": 0.8,
+  "path": "notes/count.txt",
+  "contains": "count=2"
+}

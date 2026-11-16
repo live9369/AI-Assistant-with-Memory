@@ -1,0 +1,22 @@
+name: Feature proposal / 功能建议
+description: Explain a concrete need and a small proposed change.
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: Use case / 使用场景
+      description: What would you like to do, and what currently prevents it?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior / 建议行为
+      description: Include a small example and a way to validate it.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope and alternatives / 范围与替代方案
+      description: Consider identity, source permissions, model cost and platform support.

@@ -1,0 +1,51 @@
+# 相同响应正文的结果发生与共享原件来源
+
+2026-11-12，状态：最小发生路径修复已实施，完整流程待验。以下保留设计与隔离复现历史。
+
+## 实际失败与身份区分
+
+actual15两轮均已进入原替身模型，第二轮正文真实返回后，在StrictEngine结果保留事务的来源登记发生UNIQUE冲突。Store.artifact按instance+hash+media_type复用artifact行；两次相同正文因此共享原件ID，但thought_results分别代表两次独立发生。现代码同时给新result与共享artifact登记完整输入，二者使用相同`field.path/index`。tl_dependency唯一键还含consumer/source/relation/purpose/epoch，但不含revision/scope；共享artifact的第二次相同位置会撞旧边，甚至不同revision也不能并存。
+
+内容相同不等于发生相同。最小正确模型保留：一个按内容去重的artifact、每次独立thought_result、每次结果自身完整输入来源，以及共享artifact上按结果发生区分的来源联合。禁止ignore冲突、删来源、改替身输出或降低校验来绕过问题。
+
+## 候选最小变更
+
+仅StrictEngine accepted output的来源挂接位置调整，不改通用_dependency，也不迁移SQL唯一键或artifact去重。
+
+- thought_result consumer继续原field.path/index，每次独立result自身没有跨发生冲突。
+- artifact consumer的来源路径加明确发生前缀，例如`/_strict_response_occurrences/v1/{实际resultID}{原field.path}/{dependencyIndex}`。resultID已由真实thought_results插入产生，同instance不可复用；由该行request_id关联实际request，不以正文/hash推测发生。
+- 依赖token、精确revision投影、scope、relation（含delete）、purpose、epoch及immutable metadata全部原样保留；只改变新artifact来源边的field_path。每个manifest依赖出现位置仍独立登记，不按同source去重。
+- 旧artifact旧路径和既有result来源全部保留，不回填臆测的历史发生、不重写身份/记忆/历史。
+
+不直接采用always-new artifact行：共享blob的删除/cohort与引用守卫需另审计，而本问题只需正确区分边的发生上下文，无须改变内容实体/物理文件关系。
+
+## 安全与边界
+
+shared artifact的来源仍是所有发生来源的保守联合；路径区分用于保存精确发生证据，不冒称现graph traversal已有按occurrence自动筛选的能力。单个result有其独立完整来源。源撤销/erase沿source_revision_id与全部边反向遍历，不因新路径跳过；共享artifact外部消费者与blob删除守卫不变。此最小修复可能保守阻断共享内容的多个发生，不能悄悄声称解决独立来源的最小污点传播问题。
+
+同一发生的同一位置若重复写入不同含义，原UNIQUE仍应拒绝并回滚事务；不添加ON CONFLICT IGNORE。两个不同发生即使同source同epoch不同revision，也通过发生路径分别保留精确revision，不能以UNIQUE未含revision为由改掉原revision含义。
+
+## 隔离验证门槛
+
+先用真实Store/原_dependency创建两条独立request/attempt/result、同一artifact，复现旧path第二次碰撞；再对照候选发生路径完整保存两result与共享artifact的read/delete来源。包含同source同epoch的revision1/revision2、不同scope、重复位置/重复含义拒绝、旧边保留、外键与integrity。原始失败/事务回滚证据保留。后续产品实现需跑真实无模型的输出保留端口，检查完整manifest来源数量及revision/scope metadata，且原共享artifact删除/cohort保护测试仍通过。正式实例与真实模型不触碰。
+
+
+## 最小产品实现与实际证据
+
+新增私有_retain_output_lineage只接收当前StrictEngine事务刚插入的实际resultID，读取该thought_results行，验证request_id、response_artifact_id、parsed_artifact_id与当前参数一致后再挂边。不存在/错配发生在第一条边之前拒绝。结果自有path不变；artifact path固定producer/version前缀`/_strict_response_occurrences/v1/{resultID}`加原input pointer与index后缀。这里path表示输入来源槽位，不是对output正文执行JSON定位；不修改Runtime packet/manifest/input path或任何输入特征。
+
+真实SQLite旧同body第二发生冲突及rollback，在同revision1和revision1→2同epoch均复现；候选保留所有read/delete、scope、revision projection与原旧边，FK/integrity通过。证据`work/result-occurrence-lineage-repro-02`。早期原型重复调用旧result自身边也触发UNIQUE的夹具失败保留，产品没有IGNORE或去掉唯一约束。
+
+主8例全部通过：同body不同request/attempt/result共享一artifact、不同revision/scope、原旧边保持、伪request/body/missing result拒绝、同一发生不一致重复仍UNIQUE、途中故障完整回滚、共享body自环依旧有界与原scan上限、manifest/budget原样。独立2例验证revision精确revoke/erase closure仍找到各result与共享artifact，不串另一revision；只有R1授权时artifact tombstone/blob unlink被实际cohort guard阻断，纳入R2后cohort判定才通过。该隔离测试是adapter guard验证，不冒称已完成public maintenance授权。
+
+_finish复核：其来源是本次独立result token，source_ref_id本就不同；创建对象与真实变化对象挂接不依赖output artifact path。未发现同一结果保留处同型唯一键碰撞，不扩大无关逻辑。共享artifact删除依然检查所有thought_result外键消费者，不按field_path绕过。
+
+新metadata因artifact发生路径不同会形成新的真实hash/metadata artifact与UUID，属于新增发生的技术来源记录；不能要求与旧失败事务产生相同ID。原body artifact/blob仍去重；旧内容、旧边、历史身份/记忆不重写。每发生完整边数量和scope/revision明细以新测试实际核对，不削减来源。
+
+## 冻结门槛与环境差分
+
+全部.py冻结后运行必要115例（新8+独立2、实际执行/读取、产品来源、rollback、原F1/propagation/cohort、architecture）。112例通过，3例原localhost HTTP保护测试因受限执行上下文bind返回EPERM，属于环境错误，原日志/result完整保留在`faults-16-result-occurrence-delta`，源码前后一致。没有修改或跳过保护测试。
+
+随后只重跑原result中记录的精确3个失败ID，在允许本机回环的隔离执行上下文全部通过，4.604110584秒；`source_stable`及`same_source_as_115`均为true。证据`faults-16-result-occurrence-http-delta-02`。第一次差分启动误将含4例的class当3例，在load断言即结束、没有执行测试；空旧目录保留，不覆盖失败。最终named full/focused loader509/305唯一例，本轮115是必要scope，不冒称全项目回归。
+
+115结果SHA256：`e3abcdb20bb073c4545e35c8d7870ff5defebc20b19d2deea976502be6673876`；同源3例差分：`4ca3a3604b1525cd4d734845e63625cf1f3fa423e127cedcf36368182688ed31`。CPU已移交actual16，若完整闭环成功即进入最终三次与增长/全量验收，不新增优化方案。最终完整IM19须使用允许隔离localhost的执行上下文，不能为环境改写安全保护。

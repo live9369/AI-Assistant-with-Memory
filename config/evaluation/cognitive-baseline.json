@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "cases": [
+    {
+      "id": "introduce",
+      "reference_request": "6cd45260018e4ff0be6f73ed734d333c",
+      "criterion": "concepts must appear; uncertainty/fiction wording requires human review; do not use exact reference prose as sole oracle",
+      "input": "这是明确标注的验收测试。虚构人物顾宁是一位植物学家。请简单确认已理解，不执行任何工具。",
+      "required_concepts": [
+        "顾宁",
+        "植物"
+      ]
+    },
+    {
+      "id": "pronoun",
+      "reference_request": "aad39f29d7004a1e97a4edc81f934b03",
+      "criterion": "concepts must appear; uncertainty/fiction wording requires human review; do not use exact reference prose as sole oracle",
+      "input": "接着刚才的验收设定，他从事什么研究？",
+      "required_concepts": [
+        "植物"
+      ]
+    },
+    {
+      "id": "correct",
+      "reference_request": "842713097e3544fd944500331de2077b",
+      "criterion": "concepts must appear; uncertainty/fiction wording requires human review; do not use exact reference prose as sole oracle",
+      "input": "更正验收设定：顾宁实际是一位地质学家，之前的植物学家信息作废。请确认更正。",
+      "required_concepts": [
+        "地质"
+      ]
+    },
+    {
+      "id": "correction_followup",
+      "reference_request": "0c014b84370b4c9d90dab77959499745",
+      "criterion": "concepts must appear; uncertainty/fiction wording requires human review; do not use exact reference prose as sole oracle",
+      "input": "他现在的职业是什么？请按更正后的设定回答。",
+      "required_concepts": [
+        "地质"
+      ]
+    },
+    {
+      "id": "shared_liwei",
+      "reference_request": "415049649ea4439490d4729985fa0381",
+      "criterion": "concepts must appear; uncertainty/fiction wording requires human review; do not use exact reference prose as sole oracle",
+      "input": "这是跨会话记忆验收。你还记得liwei是谁吗？请只根据过去实际记录回答，不要编造职业。",
+      "required_concepts": [
+        "liwei",
+        "父亲"
+      ]
+    },
+    {
+      "id": "uncertainty",
+      "reference_request": "840bba77812d4fbdbf130384ccbd2abc",
+      "criterion": "concepts must appear; uncertainty/fiction wording requires human review; do not use exact reference prose as sole oracle",
+      "input": "他具体是哪年哪月哪日出生的？如果没有记录，请直接说不知道。",
+      "required_concepts": [
+        "不知道"
+      ]
+    },
+    {
+      "id": "fiction_attribution",
+      "reference_request": "eb577248c4304b1898221b7cc85c00a7",
+      "criterion": "concepts must appear; uncertainty/fiction wording requires human review; do not use exact reference prose as sole oracle",
+      "input": "这是来源识别验收。顾宁是你真实认识的人，还是之前验收里的虚构设定？请根据记忆区分。",
+      "required_concepts": [
+        "虚构"
+      ]
+    },
+    {
+      "id": "do_not_overclaim",
+      "reference_request": "06457cddd1594dccbab3061ef1fafe15",
+      "criterion": "concepts must appear; uncertainty/fiction wording requires human review; do not use exact reference prose as sole oracle",
+      "input": "根据现有记录，你能确认liwei在现实中的职业是什么吗？不确定时不要猜测。",
+      "required_concepts": [
+        "无法确认"
+      ]
+    },
+    {
+      "id": "alias_definition",
+      "reference_request": "28305e0a9ae9436aa969739c33fdd8a7",
+      "criterion": "concepts must appear; uncertainty/fiction wording requires human review; do not use exact reference prose as sole oracle",
+      "input": "这是验收用的称呼约定，不是新的现实身份：在测试中，liwei也叫作李老师。请确认你理解了这个映射。",
+      "required_concepts": [
+        "liwei",
+        "李老师"
+      ]
+    },
+    {
+      "id": "alias_cross_session",
+      "reference_request": "ceafd20d6a054ab49120f1008b613877",
+      "criterion": "concepts must appear; uncertainty/fiction wording requires human review; do not use exact reference prose as sole oracle",
+      "input": "你还记得李老师是谁吗？请只根据已有记录回答。",
+      "required_concepts": [
+        "liwei"
+      ]
+    },
+    {
+      "id": "alias_unknown_fact",
+      "reference_request": "c348dffafdba45b083040dcf2465113b",
+      "criterion": "concepts must appear; uncertainty/fiction wording requires human review; do not use exact reference prose as sole oracle",
+      "input": "你能确定李老师在现实中就是一名教师吗？请区分测试称呼与真实职业。",
+      "required_concepts": [
+        "不能确定"
+      ]
+    }
+  ]
+}

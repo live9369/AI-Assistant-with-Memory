@@ -1,0 +1,52 @@
+{
+  "contract": "TL-EVAL-0.1",
+  "version": "im20-preparation-1",
+  "status": "blocked_before_start",
+  "artifact_class": "preparation_only_not_Run_or_materials_manifest",
+  "formal_launch_eligible": false,
+  "sealed": false,
+  "accepted": false,
+  "actual_independent_material_counts": {"TARGET": 0, "RETENTION": 0},
+  "actual_28_batch_order": null,
+  "reviewer_roster_ready": false,
+  "material_author": null,
+  "independent_material_reviewer": null,
+  "semantic_reviewers": [],
+  "adjudicator": null,
+  "acceptance_reviewer": null,
+  "role_requirements": {
+    "identity_evidence": "Actual identities and independent affiliations/relationships, not invented strings or agent self-evaluation",
+    "material_author_and_reviewer": "Independent of tested model and implementation; provenance, source rights and claim-level semantic validation signed",
+    "semantic_reviewers": "Two actual independent reviewers; retain both raw labels/reasons/locators, disagreement adjudication, agreement and kappa",
+    "acceptance_reviewer": "Learning-input and legal supporting evidence only; denied hidden query, truth, blind map and evaluation feedback",
+    "adjudicator": "Actual independent dispute resolution role; no self-generated substitute"
+  },
+  "permission_deployment_requirements": {
+    "learning": ["learning-input"],
+    "acceptance_review": ["learning-input", "legal-learning-support"],
+    "query_request": ["single-query-input"],
+    "controller": ["controller-truth", "blind-map"],
+    "semantic_review": ["anonymous-output", "necessary-evidence-with-source-nature"],
+    "auditor": ["run-manifest"],
+    "os_isolation_verified": false,
+    "required_proof": "Separate controller owner/runtime identities; actual runtime deny-read tests on truth/blind-map; 0700 directories and 0600 private files alone do not separate same-user processes"
+  },
+  "blind_review_protocol": {
+    "actual_items": 0,
+    "mapping": null,
+    "remove_fields": ["arm", "model", "executor", "trial_id", "instance_id"],
+    "retain": ["necessary-source-evidence", "source-nature", "scope", "unknown", "conflict"],
+    "leakage_risk_review_required": "Output wording and evidence can reveal arm; actual independent review must record these risks before formal judgment",
+    "feedback_to_learning_chain": false
+  },
+  "gaps": [
+    "2800 genuinely independently authored/reviewed cases and actual source/provenance/permissions/labels unavailable",
+    "DEV inventory and derivatives must be independently screened; intake exclusion parameters alone cannot prove semantic nonoverlap",
+    "Actual independent author/reviewer/two semantic reviewers/adjudicator/acceptance reviewer identities and conflict declarations missing",
+    "Runtime OS identity separation and actual deny-read evidence missing",
+    "Actual material digest, 28-batch assignments and independent signatures cannot be sealed until real materials exist"
+  ],
+  "execution_performed": false,
+  "model_calls": 0,
+  "instance_access": false
+}

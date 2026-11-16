@@ -1,0 +1,3700 @@
+{
+  "material_id": "TL-DEV-0.1",
+  "protocol": "TL-EVAL-0.1",
+  "contract": "TL-LOOP-0.1",
+  "status": "prepared_public_materials_not_executed",
+  "source": {
+    "path": "docs/architecture/tool-observation-learning-q11-decision-v0.1.md",
+    "line": 1,
+    "quote": "# Q11预登记：工具学习闭环隔离实验与材料协议",
+    "sha256": "cef0e2618648c47c0f03608ed8147105bb9948bb798de6a51bf735635234d074"
+  },
+  "label_policy": {
+    "classification": "DEV_PUBLIC_SYNTHETIC",
+    "formal_truth": false,
+    "independent_review": false,
+    "permanent_formal_exclusion": "all listed source clusters, template families, answers and derived paraphrases",
+    "runtime_projection": "learning_input and the selected query_input only; never developer_labels, other-arm outputs or future queries"
+  },
+  "groups": [
+    "E",
+    "N",
+    "O"
+  ],
+  "repeats": 1,
+  "trial_count_planned": 72,
+  "case_independence": "24 development cases; 8 explicitly shared synthetic template families; no formal independent-case claim",
+  "launch_state": "blocked_before_start",
+  "missing_launch_requirements": [
+    "IM18 runner and fixture implementations",
+    "IM19 complete MECH/G1 evidence",
+    "exact model version/route and verified limits",
+    "verified price, monetary budget and account cap",
+    "explicit DEV model/money authorization"
+  ],
+  "cases": [
+    {
+      "case_id": "DEV-01-01",
+      "partition": "DEV",
+      "category": "direct_report",
+      "public_synthetic": true,
+      "source_cluster": "DEV-FAMILY-direct_report",
+      "template_family": "TL-DEV-direct_report-v1",
+      "permanent_formal_exclusion": true,
+      "learning_input": {
+        "source_id": "S-DEV-01-01",
+        "observation": "S-DEV-01-01在2026-01-02T08:00:00Z报告：库存箱-direct_report-1读数为10件。",
+        "baseline": [],
+        "scope": {
+          "object": "库存箱-direct_report-1",
+          "attribute": "reading",
+          "time": "2026-01-02T08:00:00Z",
+          "unit": "件",
+          "conditions": "仅该来源报告，未独立核实现实"
+        },
+        "source_permissions": {
+          "reader": "isolated-dev-agent",
+          "recipient": "isolated-dev-model",
+          "purposes": [
+            "learn",
+            "evaluate",
+            "verify_source",
+            "recall_experience",
+            "recall_episode"
+          ],
+          "external_actions_allowed": false
+        },
+        "tool_version": "synthetic-readonly-v1",
+        "events": [],
+        "content_policy": "source_report"
+      },
+      "query_input": [
+        {
+          "query_id": "DEV-01-01:same",
+          "kind": "same_observation",
+          "text": "这次材料实际记录了什么？",
+          "purpose": "verify_source",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-01-01:new",
+          "kind": "new_question",
+          "text": "S-DEV-01-01最新记录中的库存箱-direct_report-1读数及记录时间是什么？",
+          "purpose": "recall_experience",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-01-01:boundary",
+          "kind": "boundary_unknown",
+          "text": "库存箱-direct_report-1在2026-01-03现实此刻一定为10件吗？",
+          "purpose": "evaluate",
+          "k": 5
+        }
+      ],
+      "developer_labels": {
+        "visibility": "public_development_only",
+        "author": "development_agent",
+        "independent_review": false,
+        "correct_endpoint": "accepted_scoped_report",
+        "answers": {
+          "DEV-01-01:same": "S-DEV-01-01在2026-01-02T08:00:00Z报告10件",
+          "DEV-01-01:new": "S-DEV-01-01在2026-01-02T08:00:00Z报告10件",
+          "DEV-01-01:boundary": "未知；仅有指定时点来源报告，不推出此刻现实值。"
+        },
+        "eligible_relevant_sets": {
+          "DEV-01-01:same": [
+            "S-DEV-01-01"
+          ],
+          "DEV-01-01:new": [
+            "DEV-01-01:content:1"
+          ],
+          "DEV-01-01:boundary": [
+            "DEV-01-01:content:1"
+          ]
+        },
+        "claim_support_rule": "仅支持给定来源、时间、对象及条件，不推出现实已核实或普遍规律。",
+        "major_errors": [
+          "把S-DEV-01-01的有限报告改写为此刻现实必然为真",
+          "丢掉时间、单位、未知或来源性质后断言确定值"
+        ],
+        "required_limitations": [
+          "仅该来源报告，未独立核实现实",
+          "保持来源与历史/当前资格区分"
+        ]
+      },
+      "metric_ids": [
+        "TL01",
+        "TL02",
+        "TL03",
+        "TL04",
+        "TL05",
+        "TL06",
+        "TL07",
+        "TL15",
+        "TL16"
+      ],
+      "fixture_status": "planned",
+      "run_status": "not_run",
+      "actual_trace": null,
+      "actual_result": null,
+      "expected_reference_catalog": [
+        {
+          "ref_id": "DEV-01-01:content:1",
+          "role": "expected_eligible_content_or_text_memory",
+          "source_id": "S-DEV-01-01",
+          "scope": {
+            "object": "库存箱-direct_report-1",
+            "attribute": "reading",
+            "time": "2026-01-02T08:00:00Z",
+            "unit": "件",
+            "conditions": "仅该来源报告，未独立核实现实"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        },
+        {
+          "ref_id": "S-DEV-01-01",
+          "role": "original_source",
+          "source_id": "S-DEV-01-01",
+          "scope": {
+            "object": "库存箱-direct_report-1",
+            "attribute": "reading",
+            "time": "2026-01-02T08:00:00Z",
+            "unit": "件",
+            "conditions": "仅该来源报告，未独立核实现实"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        }
+      ],
+      "source_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-q11-decision-v0.1.md",
+          "section": "分区、样本量和问题单位"
+        },
+        {
+          "path": "docs/architecture/tool-observation-learning-q08-decision-v0.1.md",
+          "section": "库存案例及反例"
+        }
+      ]
+    },
+    {
+      "case_id": "DEV-01-02",
+      "partition": "DEV",
+      "category": "direct_report",
+      "public_synthetic": true,
+      "source_cluster": "DEV-FAMILY-direct_report",
+      "template_family": "TL-DEV-direct_report-v1",
+      "permanent_formal_exclusion": true,
+      "learning_input": {
+        "source_id": "S-DEV-01-02",
+        "observation": "S-DEV-01-02在2026-01-02T08:00:00Z报告：水槽-direct_report-2读数为12升。",
+        "baseline": [],
+        "scope": {
+          "object": "水槽-direct_report-2",
+          "attribute": "reading",
+          "time": "2026-01-02T08:00:00Z",
+          "unit": "升",
+          "conditions": "仅该来源报告，未独立核实现实"
+        },
+        "source_permissions": {
+          "reader": "isolated-dev-agent",
+          "recipient": "isolated-dev-model",
+          "purposes": [
+            "learn",
+            "evaluate",
+            "verify_source",
+            "recall_experience",
+            "recall_episode"
+          ],
+          "external_actions_allowed": false
+        },
+        "tool_version": "synthetic-readonly-v1",
+        "events": [],
+        "content_policy": "source_report"
+      },
+      "query_input": [
+        {
+          "query_id": "DEV-01-02:same",
+          "kind": "same_observation",
+          "text": "这次材料实际记录了什么？",
+          "purpose": "verify_source",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-01-02:new",
+          "kind": "new_question",
+          "text": "S-DEV-01-02最新记录中的水槽-direct_report-2读数及记录时间是什么？",
+          "purpose": "recall_experience",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-01-02:boundary",
+          "kind": "boundary_unknown",
+          "text": "水槽-direct_report-2在2026-01-03现实此刻一定为12升吗？",
+          "purpose": "evaluate",
+          "k": 5
+        }
+      ],
+      "developer_labels": {
+        "visibility": "public_development_only",
+        "author": "development_agent",
+        "independent_review": false,
+        "correct_endpoint": "accepted_scoped_report",
+        "answers": {
+          "DEV-01-02:same": "S-DEV-01-02在2026-01-02T08:00:00Z报告12升",
+          "DEV-01-02:new": "S-DEV-01-02在2026-01-02T08:00:00Z报告12升",
+          "DEV-01-02:boundary": "未知；仅有指定时点来源报告，不推出此刻现实值。"
+        },
+        "eligible_relevant_sets": {
+          "DEV-01-02:same": [
+            "S-DEV-01-02"
+          ],
+          "DEV-01-02:new": [
+            "DEV-01-02:content:1"
+          ],
+          "DEV-01-02:boundary": [
+            "DEV-01-02:content:1"
+          ]
+        },
+        "claim_support_rule": "仅支持给定来源、时间、对象及条件，不推出现实已核实或普遍规律。",
+        "major_errors": [
+          "把S-DEV-01-02的有限报告改写为此刻现实必然为真",
+          "丢掉时间、单位、未知或来源性质后断言确定值"
+        ],
+        "required_limitations": [
+          "仅该来源报告，未独立核实现实",
+          "保持来源与历史/当前资格区分"
+        ]
+      },
+      "metric_ids": [
+        "TL01",
+        "TL02",
+        "TL03",
+        "TL04",
+        "TL05",
+        "TL06",
+        "TL07",
+        "TL15",
+        "TL16"
+      ],
+      "fixture_status": "planned",
+      "run_status": "not_run",
+      "actual_trace": null,
+      "actual_result": null,
+      "expected_reference_catalog": [
+        {
+          "ref_id": "DEV-01-02:content:1",
+          "role": "expected_eligible_content_or_text_memory",
+          "source_id": "S-DEV-01-02",
+          "scope": {
+            "object": "水槽-direct_report-2",
+            "attribute": "reading",
+            "time": "2026-01-02T08:00:00Z",
+            "unit": "升",
+            "conditions": "仅该来源报告，未独立核实现实"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        },
+        {
+          "ref_id": "S-DEV-01-02",
+          "role": "original_source",
+          "source_id": "S-DEV-01-02",
+          "scope": {
+            "object": "水槽-direct_report-2",
+            "attribute": "reading",
+            "time": "2026-01-02T08:00:00Z",
+            "unit": "升",
+            "conditions": "仅该来源报告，未独立核实现实"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        }
+      ],
+      "source_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-q11-decision-v0.1.md",
+          "section": "分区、样本量和问题单位"
+        },
+        {
+          "path": "docs/architecture/tool-observation-learning-q08-decision-v0.1.md",
+          "section": "库存案例及反例"
+        }
+      ]
+    },
+    {
+      "case_id": "DEV-01-03",
+      "partition": "DEV",
+      "category": "direct_report",
+      "public_synthetic": true,
+      "source_cluster": "DEV-FAMILY-direct_report",
+      "template_family": "TL-DEV-direct_report-v1",
+      "permanent_formal_exclusion": true,
+      "learning_input": {
+        "source_id": "S-DEV-01-03",
+        "observation": "S-DEV-01-03在2026-01-02T08:00:00Z报告：温室-direct_report-3读数为15摄氏度。",
+        "baseline": [],
+        "scope": {
+          "object": "温室-direct_report-3",
+          "attribute": "reading",
+          "time": "2026-01-02T08:00:00Z",
+          "unit": "摄氏度",
+          "conditions": "仅该来源报告，未独立核实现实"
+        },
+        "source_permissions": {
+          "reader": "isolated-dev-agent",
+          "recipient": "isolated-dev-model",
+          "purposes": [
+            "learn",
+            "evaluate",
+            "verify_source",
+            "recall_experience",
+            "recall_episode"
+          ],
+          "external_actions_allowed": false
+        },
+        "tool_version": "synthetic-readonly-v1",
+        "events": [],
+        "content_policy": "source_report"
+      },
+      "query_input": [
+        {
+          "query_id": "DEV-01-03:same",
+          "kind": "same_observation",
+          "text": "这次材料实际记录了什么？",
+          "purpose": "verify_source",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-01-03:new",
+          "kind": "new_question",
+          "text": "S-DEV-01-03最新记录中的温室-direct_report-3读数及记录时间是什么？",
+          "purpose": "recall_experience",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-01-03:boundary",
+          "kind": "boundary_unknown",
+          "text": "温室-direct_report-3在2026-01-03现实此刻一定为15摄氏度吗？",
+          "purpose": "evaluate",
+          "k": 5
+        }
+      ],
+      "developer_labels": {
+        "visibility": "public_development_only",
+        "author": "development_agent",
+        "independent_review": false,
+        "correct_endpoint": "accepted_scoped_report",
+        "answers": {
+          "DEV-01-03:same": "S-DEV-01-03在2026-01-02T08:00:00Z报告15摄氏度",
+          "DEV-01-03:new": "S-DEV-01-03在2026-01-02T08:00:00Z报告15摄氏度",
+          "DEV-01-03:boundary": "未知；仅有指定时点来源报告，不推出此刻现实值。"
+        },
+        "eligible_relevant_sets": {
+          "DEV-01-03:same": [
+            "S-DEV-01-03"
+          ],
+          "DEV-01-03:new": [
+            "DEV-01-03:content:1"
+          ],
+          "DEV-01-03:boundary": [
+            "DEV-01-03:content:1"
+          ]
+        },
+        "claim_support_rule": "仅支持给定来源、时间、对象及条件，不推出现实已核实或普遍规律。",
+        "major_errors": [
+          "把S-DEV-01-03的有限报告改写为此刻现实必然为真",
+          "丢掉时间、单位、未知或来源性质后断言确定值"
+        ],
+        "required_limitations": [
+          "仅该来源报告，未独立核实现实",
+          "保持来源与历史/当前资格区分"
+        ]
+      },
+      "metric_ids": [
+        "TL01",
+        "TL02",
+        "TL03",
+        "TL04",
+        "TL05",
+        "TL06",
+        "TL07",
+        "TL15",
+        "TL16"
+      ],
+      "fixture_status": "planned",
+      "run_status": "not_run",
+      "actual_trace": null,
+      "actual_result": null,
+      "expected_reference_catalog": [
+        {
+          "ref_id": "DEV-01-03:content:1",
+          "role": "expected_eligible_content_or_text_memory",
+          "source_id": "S-DEV-01-03",
+          "scope": {
+            "object": "温室-direct_report-3",
+            "attribute": "reading",
+            "time": "2026-01-02T08:00:00Z",
+            "unit": "摄氏度",
+            "conditions": "仅该来源报告，未独立核实现实"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        },
+        {
+          "ref_id": "S-DEV-01-03",
+          "role": "original_source",
+          "source_id": "S-DEV-01-03",
+          "scope": {
+            "object": "温室-direct_report-3",
+            "attribute": "reading",
+            "time": "2026-01-02T08:00:00Z",
+            "unit": "摄氏度",
+            "conditions": "仅该来源报告，未独立核实现实"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        }
+      ],
+      "source_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-q11-decision-v0.1.md",
+          "section": "分区、样本量和问题单位"
+        },
+        {
+          "path": "docs/architecture/tool-observation-learning-q08-decision-v0.1.md",
+          "section": "库存案例及反例"
+        }
+      ]
+    },
+    {
+      "case_id": "DEV-02-01",
+      "partition": "DEV",
+      "category": "scope_unit_conversion",
+      "public_synthetic": true,
+      "source_cluster": "DEV-FAMILY-scope_unit_conversion",
+      "template_family": "TL-DEV-scope_unit_conversion-v1",
+      "permanent_formal_exclusion": true,
+      "learning_input": {
+        "source_id": "S-DEV-02-01",
+        "observation": "S-DEV-02-01在2026-01-02T08:00:00Z报告：库存箱-scope_unit_conversion-1样品质量1000克；1千克=1000克。",
+        "baseline": [],
+        "scope": {
+          "object": "库存箱-scope_unit_conversion-1",
+          "attribute": "mass",
+          "time": "2026-01-02T08:00:00Z",
+          "unit": "克",
+          "conditions": "同一具体样品；确定性单位转换"
+        },
+        "source_permissions": {
+          "reader": "isolated-dev-agent",
+          "recipient": "isolated-dev-model",
+          "purposes": [
+            "learn",
+            "evaluate",
+            "verify_source",
+            "recall_experience",
+            "recall_episode"
+          ],
+          "external_actions_allowed": false
+        },
+        "tool_version": "synthetic-readonly-v1",
+        "events": [],
+        "content_policy": "source_report"
+      },
+      "query_input": [
+        {
+          "query_id": "DEV-02-01:same",
+          "kind": "same_observation",
+          "text": "这次材料实际记录了什么？",
+          "purpose": "verify_source",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-02-01:new",
+          "kind": "new_question",
+          "text": "该条报告的质量换成千克是多少？",
+          "purpose": "recall_experience",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-02-01:boundary",
+          "kind": "boundary_unknown",
+          "text": "能推出所有同类样品此刻质量相同吗？",
+          "purpose": "evaluate",
+          "k": 5
+        }
+      ],
+      "developer_labels": {
+        "visibility": "public_development_only",
+        "author": "development_agent",
+        "independent_review": false,
+        "correct_endpoint": "accepted_scoped_report",
+        "answers": {
+          "DEV-02-01:same": "1000克，依据S-DEV-02-01在2026-01-02T08:00:00Z的报告",
+          "DEV-02-01:new": "1千克；仅为同一来源值的单位转换。",
+          "DEV-02-01:boundary": "不能；单个样品、指定时点报告不支持普遍结论。"
+        },
+        "eligible_relevant_sets": {
+          "DEV-02-01:same": [
+            "S-DEV-02-01"
+          ],
+          "DEV-02-01:new": [
+            "DEV-02-01:content:1"
+          ],
+          "DEV-02-01:boundary": [
+            "DEV-02-01:content:1"
+          ]
+        },
+        "claim_support_rule": "仅支持给定来源、时间、对象及条件，不推出现实已核实或普遍规律。",
+        "major_errors": [
+          "把S-DEV-02-01的有限报告改写为此刻现实必然为真",
+          "可以；单个样品、指定时点报告不支持普遍结论。"
+        ],
+        "required_limitations": [
+          "同一具体样品；确定性单位转换",
+          "保持来源与历史/当前资格区分"
+        ]
+      },
+      "metric_ids": [
+        "TL01",
+        "TL02",
+        "TL03",
+        "TL04",
+        "TL05",
+        "TL06",
+        "TL07",
+        "TL15",
+        "TL16"
+      ],
+      "fixture_status": "planned",
+      "run_status": "not_run",
+      "actual_trace": null,
+      "actual_result": null,
+      "expected_reference_catalog": [
+        {
+          "ref_id": "DEV-02-01:content:1",
+          "role": "expected_eligible_content_or_text_memory",
+          "source_id": "S-DEV-02-01",
+          "scope": {
+            "object": "库存箱-scope_unit_conversion-1",
+            "attribute": "mass",
+            "time": "2026-01-02T08:00:00Z",
+            "unit": "克",
+            "conditions": "同一具体样品；确定性单位转换"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        },
+        {
+          "ref_id": "S-DEV-02-01",
+          "role": "original_source",
+          "source_id": "S-DEV-02-01",
+          "scope": {
+            "object": "库存箱-scope_unit_conversion-1",
+            "attribute": "mass",
+            "time": "2026-01-02T08:00:00Z",
+            "unit": "克",
+            "conditions": "同一具体样品；确定性单位转换"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        }
+      ],
+      "source_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-q11-decision-v0.1.md",
+          "section": "分区、样本量和问题单位"
+        },
+        {
+          "path": "docs/architecture/tool-observation-learning-q08-decision-v0.1.md",
+          "section": "未来验收题面"
+        }
+      ]
+    },
+    {
+      "case_id": "DEV-02-02",
+      "partition": "DEV",
+      "category": "scope_unit_conversion",
+      "public_synthetic": true,
+      "source_cluster": "DEV-FAMILY-scope_unit_conversion",
+      "template_family": "TL-DEV-scope_unit_conversion-v1",
+      "permanent_formal_exclusion": true,
+      "learning_input": {
+        "source_id": "S-DEV-02-02",
+        "observation": "S-DEV-02-02在2026-01-02T08:00:00Z报告：水槽-scope_unit_conversion-2样品质量2500克；1千克=1000克。",
+        "baseline": [],
+        "scope": {
+          "object": "水槽-scope_unit_conversion-2",
+          "attribute": "mass",
+          "time": "2026-01-02T08:00:00Z",
+          "unit": "克",
+          "conditions": "同一具体样品；确定性单位转换"
+        },
+        "source_permissions": {
+          "reader": "isolated-dev-agent",
+          "recipient": "isolated-dev-model",
+          "purposes": [
+            "learn",
+            "evaluate",
+            "verify_source",
+            "recall_experience",
+            "recall_episode"
+          ],
+          "external_actions_allowed": false
+        },
+        "tool_version": "synthetic-readonly-v1",
+        "events": [],
+        "content_policy": "source_report"
+      },
+      "query_input": [
+        {
+          "query_id": "DEV-02-02:same",
+          "kind": "same_observation",
+          "text": "这次材料实际记录了什么？",
+          "purpose": "verify_source",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-02-02:new",
+          "kind": "new_question",
+          "text": "该条报告的质量换成千克是多少？",
+          "purpose": "recall_experience",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-02-02:boundary",
+          "kind": "boundary_unknown",
+          "text": "能推出所有同类样品此刻质量相同吗？",
+          "purpose": "evaluate",
+          "k": 5
+        }
+      ],
+      "developer_labels": {
+        "visibility": "public_development_only",
+        "author": "development_agent",
+        "independent_review": false,
+        "correct_endpoint": "accepted_scoped_report",
+        "answers": {
+          "DEV-02-02:same": "2500克，依据S-DEV-02-02在2026-01-02T08:00:00Z的报告",
+          "DEV-02-02:new": "2.5千克；仅为同一来源值的单位转换。",
+          "DEV-02-02:boundary": "不能；单个样品、指定时点报告不支持普遍结论。"
+        },
+        "eligible_relevant_sets": {
+          "DEV-02-02:same": [
+            "S-DEV-02-02"
+          ],
+          "DEV-02-02:new": [
+            "DEV-02-02:content:1"
+          ],
+          "DEV-02-02:boundary": [
+            "DEV-02-02:content:1"
+          ]
+        },
+        "claim_support_rule": "仅支持给定来源、时间、对象及条件，不推出现实已核实或普遍规律。",
+        "major_errors": [
+          "把S-DEV-02-02的有限报告改写为此刻现实必然为真",
+          "可以；单个样品、指定时点报告不支持普遍结论。"
+        ],
+        "required_limitations": [
+          "同一具体样品；确定性单位转换",
+          "保持来源与历史/当前资格区分"
+        ]
+      },
+      "metric_ids": [
+        "TL01",
+        "TL02",
+        "TL03",
+        "TL04",
+        "TL05",
+        "TL06",
+        "TL07",
+        "TL15",
+        "TL16"
+      ],
+      "fixture_status": "planned",
+      "run_status": "not_run",
+      "actual_trace": null,
+      "actual_result": null,
+      "expected_reference_catalog": [
+        {
+          "ref_id": "DEV-02-02:content:1",
+          "role": "expected_eligible_content_or_text_memory",
+          "source_id": "S-DEV-02-02",
+          "scope": {
+            "object": "水槽-scope_unit_conversion-2",
+            "attribute": "mass",
+            "time": "2026-01-02T08:00:00Z",
+            "unit": "克",
+            "conditions": "同一具体样品；确定性单位转换"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        },
+        {
+          "ref_id": "S-DEV-02-02",
+          "role": "original_source",
+          "source_id": "S-DEV-02-02",
+          "scope": {
+            "object": "水槽-scope_unit_conversion-2",
+            "attribute": "mass",
+            "time": "2026-01-02T08:00:00Z",
+            "unit": "克",
+            "conditions": "同一具体样品；确定性单位转换"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        }
+      ],
+      "source_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-q11-decision-v0.1.md",
+          "section": "分区、样本量和问题单位"
+        },
+        {
+          "path": "docs/architecture/tool-observation-learning-q08-decision-v0.1.md",
+          "section": "未来验收题面"
+        }
+      ]
+    },
+    {
+      "case_id": "DEV-02-03",
+      "partition": "DEV",
+      "category": "scope_unit_conversion",
+      "public_synthetic": true,
+      "source_cluster": "DEV-FAMILY-scope_unit_conversion",
+      "template_family": "TL-DEV-scope_unit_conversion-v1",
+      "permanent_formal_exclusion": true,
+      "learning_input": {
+        "source_id": "S-DEV-02-03",
+        "observation": "S-DEV-02-03在2026-01-02T08:00:00Z报告：温室-scope_unit_conversion-3样品质量4000克；1千克=1000克。",
+        "baseline": [],
+        "scope": {
+          "object": "温室-scope_unit_conversion-3",
+          "attribute": "mass",
+          "time": "2026-01-02T08:00:00Z",
+          "unit": "克",
+          "conditions": "同一具体样品；确定性单位转换"
+        },
+        "source_permissions": {
+          "reader": "isolated-dev-agent",
+          "recipient": "isolated-dev-model",
+          "purposes": [
+            "learn",
+            "evaluate",
+            "verify_source",
+            "recall_experience",
+            "recall_episode"
+          ],
+          "external_actions_allowed": false
+        },
+        "tool_version": "synthetic-readonly-v1",
+        "events": [],
+        "content_policy": "source_report"
+      },
+      "query_input": [
+        {
+          "query_id": "DEV-02-03:same",
+          "kind": "same_observation",
+          "text": "这次材料实际记录了什么？",
+          "purpose": "verify_source",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-02-03:new",
+          "kind": "new_question",
+          "text": "该条报告的质量换成千克是多少？",
+          "purpose": "recall_experience",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-02-03:boundary",
+          "kind": "boundary_unknown",
+          "text": "能推出所有同类样品此刻质量相同吗？",
+          "purpose": "evaluate",
+          "k": 5
+        }
+      ],
+      "developer_labels": {
+        "visibility": "public_development_only",
+        "author": "development_agent",
+        "independent_review": false,
+        "correct_endpoint": "accepted_scoped_report",
+        "answers": {
+          "DEV-02-03:same": "4000克，依据S-DEV-02-03在2026-01-02T08:00:00Z的报告",
+          "DEV-02-03:new": "4千克；仅为同一来源值的单位转换。",
+          "DEV-02-03:boundary": "不能；单个样品、指定时点报告不支持普遍结论。"
+        },
+        "eligible_relevant_sets": {
+          "DEV-02-03:same": [
+            "S-DEV-02-03"
+          ],
+          "DEV-02-03:new": [
+            "DEV-02-03:content:1"
+          ],
+          "DEV-02-03:boundary": [
+            "DEV-02-03:content:1"
+          ]
+        },
+        "claim_support_rule": "仅支持给定来源、时间、对象及条件，不推出现实已核实或普遍规律。",
+        "major_errors": [
+          "把S-DEV-02-03的有限报告改写为此刻现实必然为真",
+          "可以；单个样品、指定时点报告不支持普遍结论。"
+        ],
+        "required_limitations": [
+          "同一具体样品；确定性单位转换",
+          "保持来源与历史/当前资格区分"
+        ]
+      },
+      "metric_ids": [
+        "TL01",
+        "TL02",
+        "TL03",
+        "TL04",
+        "TL05",
+        "TL06",
+        "TL07",
+        "TL15",
+        "TL16"
+      ],
+      "fixture_status": "planned",
+      "run_status": "not_run",
+      "actual_trace": null,
+      "actual_result": null,
+      "expected_reference_catalog": [
+        {
+          "ref_id": "DEV-02-03:content:1",
+          "role": "expected_eligible_content_or_text_memory",
+          "source_id": "S-DEV-02-03",
+          "scope": {
+            "object": "温室-scope_unit_conversion-3",
+            "attribute": "mass",
+            "time": "2026-01-02T08:00:00Z",
+            "unit": "克",
+            "conditions": "同一具体样品；确定性单位转换"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        },
+        {
+          "ref_id": "S-DEV-02-03",
+          "role": "original_source",
+          "source_id": "S-DEV-02-03",
+          "scope": {
+            "object": "温室-scope_unit_conversion-3",
+            "attribute": "mass",
+            "time": "2026-01-02T08:00:00Z",
+            "unit": "克",
+            "conditions": "同一具体样品；确定性单位转换"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        }
+      ],
+      "source_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-q11-decision-v0.1.md",
+          "section": "分区、样本量和问题单位"
+        },
+        {
+          "path": "docs/architecture/tool-observation-learning-q08-decision-v0.1.md",
+          "section": "未来验收题面"
+        }
+      ]
+    },
+    {
+      "case_id": "DEV-03-01",
+      "partition": "DEV",
+      "category": "method_experience",
+      "public_synthetic": true,
+      "source_cluster": "DEV-FAMILY-method_experience",
+      "template_family": "TL-DEV-method_experience-v1",
+      "permanent_formal_exclusion": true,
+      "learning_input": {
+        "source_id": "S-DEV-03-01",
+        "observation": "S-DEV-03-01方法说明：仅在工具版本v1、环境E1，先校验UTF-8，再读取JSON的value；缺value应报告未知。本说明不提供实测可靠率。",
+        "baseline": [],
+        "scope": {
+          "object": "库存箱-method_experience-1",
+          "attribute": "parsing_method",
+          "time": "2026-01-02T08:00:00Z",
+          "unit": "not_applicable",
+          "conditions": "tool=v1; environment=E1"
+        },
+        "source_permissions": {
+          "reader": "isolated-dev-agent",
+          "recipient": "isolated-dev-model",
+          "purposes": [
+            "learn",
+            "evaluate",
+            "verify_source",
+            "recall_experience",
+            "recall_episode"
+          ],
+          "external_actions_allowed": false
+        },
+        "tool_version": "synthetic-readonly-v1",
+        "events": [],
+        "content_policy": "source_report_of_method_description"
+      },
+      "query_input": [
+        {
+          "query_id": "DEV-03-01:same",
+          "kind": "same_observation",
+          "text": "这次材料实际记录了什么？",
+          "purpose": "verify_source",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-03-01:new",
+          "kind": "new_question",
+          "text": "在工具v1和E1读取JSON没有value时，按已学方法应怎么办？",
+          "purpose": "recall_experience",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-03-01:boundary",
+          "kind": "boundary_unknown",
+          "text": "此方法对工具v2或所有环境都已证实有效吗？",
+          "purpose": "evaluate",
+          "k": 5
+        }
+      ],
+      "developer_labels": {
+        "visibility": "public_development_only",
+        "author": "development_agent",
+        "independent_review": false,
+        "correct_endpoint": "accepted_scoped_method_description_not_validated_reliability",
+        "answers": {
+          "DEV-03-01:same": "工具v1/E1先校验UTF-8再读value，缺字段未知",
+          "DEV-03-01:new": "报告缺少value、量值未知；不补0。",
+          "DEV-03-01:boundary": "未证实；适用范围限原版本/环境，且无实测可靠率。"
+        },
+        "eligible_relevant_sets": {
+          "DEV-03-01:same": [
+            "S-DEV-03-01"
+          ],
+          "DEV-03-01:new": [
+            "DEV-03-01:content:1"
+          ],
+          "DEV-03-01:boundary": [
+            "DEV-03-01:content:1"
+          ]
+        },
+        "claim_support_rule": "仅支持给定来源、时间、对象及条件，不推出现实已核实或普遍规律。",
+        "major_errors": [
+          "把S-DEV-03-01的有限报告改写为此刻现实必然为真",
+          "丢掉时间、单位、未知或来源性质后断言确定值"
+        ],
+        "required_limitations": [
+          "tool=v1; environment=E1",
+          "保持来源与历史/当前资格区分"
+        ]
+      },
+      "metric_ids": [
+        "TL01",
+        "TL02",
+        "TL03",
+        "TL04",
+        "TL05",
+        "TL06",
+        "TL07",
+        "TL15",
+        "TL16"
+      ],
+      "fixture_status": "planned",
+      "run_status": "not_run",
+      "actual_trace": null,
+      "actual_result": null,
+      "expected_reference_catalog": [
+        {
+          "ref_id": "DEV-03-01:content:1",
+          "role": "expected_eligible_content_or_text_memory",
+          "source_id": "S-DEV-03-01",
+          "scope": {
+            "object": "库存箱-method_experience-1",
+            "attribute": "parsing_method",
+            "time": "2026-01-02T08:00:00Z",
+            "unit": "not_applicable",
+            "conditions": "tool=v1; environment=E1"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        },
+        {
+          "ref_id": "S-DEV-03-01",
+          "role": "original_source",
+          "source_id": "S-DEV-03-01",
+          "scope": {
+            "object": "库存箱-method_experience-1",
+            "attribute": "parsing_method",
+            "time": "2026-01-02T08:00:00Z",
+            "unit": "not_applicable",
+            "conditions": "tool=v1; environment=E1"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        }
+      ],
+      "source_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-q11-decision-v0.1.md",
+          "section": "分区、样本量和问题单位"
+        },
+        {
+          "path": "docs/architecture/tool-observation-learning-q08-decision-v0.1.md",
+          "section": "未来验收题面"
+        }
+      ]
+    },
+    {
+      "case_id": "DEV-03-02",
+      "partition": "DEV",
+      "category": "method_experience",
+      "public_synthetic": true,
+      "source_cluster": "DEV-FAMILY-method_experience",
+      "template_family": "TL-DEV-method_experience-v1",
+      "permanent_formal_exclusion": true,
+      "learning_input": {
+        "source_id": "S-DEV-03-02",
+        "observation": "S-DEV-03-02方法说明：仅在工具版本v2、环境E2，先校验UTF-8，再读取JSON的value；缺value应报告未知。本说明不提供实测可靠率。",
+        "baseline": [],
+        "scope": {
+          "object": "水槽-method_experience-2",
+          "attribute": "parsing_method",
+          "time": "2026-01-02T08:00:00Z",
+          "unit": "not_applicable",
+          "conditions": "tool=v2; environment=E2"
+        },
+        "source_permissions": {
+          "reader": "isolated-dev-agent",
+          "recipient": "isolated-dev-model",
+          "purposes": [
+            "learn",
+            "evaluate",
+            "verify_source",
+            "recall_experience",
+            "recall_episode"
+          ],
+          "external_actions_allowed": false
+        },
+        "tool_version": "synthetic-readonly-v1",
+        "events": [],
+        "content_policy": "source_report_of_method_description"
+      },
+      "query_input": [
+        {
+          "query_id": "DEV-03-02:same",
+          "kind": "same_observation",
+          "text": "这次材料实际记录了什么？",
+          "purpose": "verify_source",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-03-02:new",
+          "kind": "new_question",
+          "text": "在工具v2和E2读取JSON没有value时，按已学方法应怎么办？",
+          "purpose": "recall_experience",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-03-02:boundary",
+          "kind": "boundary_unknown",
+          "text": "此方法对工具v3或所有环境都已证实有效吗？",
+          "purpose": "evaluate",
+          "k": 5
+        }
+      ],
+      "developer_labels": {
+        "visibility": "public_development_only",
+        "author": "development_agent",
+        "independent_review": false,
+        "correct_endpoint": "accepted_scoped_method_description_not_validated_reliability",
+        "answers": {
+          "DEV-03-02:same": "工具v2/E2先校验UTF-8再读value，缺字段未知",
+          "DEV-03-02:new": "报告缺少value、量值未知；不补0。",
+          "DEV-03-02:boundary": "未证实；适用范围限原版本/环境，且无实测可靠率。"
+        },
+        "eligible_relevant_sets": {
+          "DEV-03-02:same": [
+            "S-DEV-03-02"
+          ],
+          "DEV-03-02:new": [
+            "DEV-03-02:content:1"
+          ],
+          "DEV-03-02:boundary": [
+            "DEV-03-02:content:1"
+          ]
+        },
+        "claim_support_rule": "仅支持给定来源、时间、对象及条件，不推出现实已核实或普遍规律。",
+        "major_errors": [
+          "把S-DEV-03-02的有限报告改写为此刻现实必然为真",
+          "丢掉时间、单位、未知或来源性质后断言确定值"
+        ],
+        "required_limitations": [
+          "tool=v2; environment=E2",
+          "保持来源与历史/当前资格区分"
+        ]
+      },
+      "metric_ids": [
+        "TL01",
+        "TL02",
+        "TL03",
+        "TL04",
+        "TL05",
+        "TL06",
+        "TL07",
+        "TL15",
+        "TL16"
+      ],
+      "fixture_status": "planned",
+      "run_status": "not_run",
+      "actual_trace": null,
+      "actual_result": null,
+      "expected_reference_catalog": [
+        {
+          "ref_id": "DEV-03-02:content:1",
+          "role": "expected_eligible_content_or_text_memory",
+          "source_id": "S-DEV-03-02",
+          "scope": {
+            "object": "水槽-method_experience-2",
+            "attribute": "parsing_method",
+            "time": "2026-01-02T08:00:00Z",
+            "unit": "not_applicable",
+            "conditions": "tool=v2; environment=E2"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        },
+        {
+          "ref_id": "S-DEV-03-02",
+          "role": "original_source",
+          "source_id": "S-DEV-03-02",
+          "scope": {
+            "object": "水槽-method_experience-2",
+            "attribute": "parsing_method",
+            "time": "2026-01-02T08:00:00Z",
+            "unit": "not_applicable",
+            "conditions": "tool=v2; environment=E2"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        }
+      ],
+      "source_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-q11-decision-v0.1.md",
+          "section": "分区、样本量和问题单位"
+        },
+        {
+          "path": "docs/architecture/tool-observation-learning-q08-decision-v0.1.md",
+          "section": "未来验收题面"
+        }
+      ]
+    },
+    {
+      "case_id": "DEV-03-03",
+      "partition": "DEV",
+      "category": "method_experience",
+      "public_synthetic": true,
+      "source_cluster": "DEV-FAMILY-method_experience",
+      "template_family": "TL-DEV-method_experience-v1",
+      "permanent_formal_exclusion": true,
+      "learning_input": {
+        "source_id": "S-DEV-03-03",
+        "observation": "S-DEV-03-03方法说明：仅在工具版本v3、环境E3，先校验UTF-8，再读取JSON的value；缺value应报告未知。本说明不提供实测可靠率。",
+        "baseline": [],
+        "scope": {
+          "object": "温室-method_experience-3",
+          "attribute": "parsing_method",
+          "time": "2026-01-02T08:00:00Z",
+          "unit": "not_applicable",
+          "conditions": "tool=v3; environment=E3"
+        },
+        "source_permissions": {
+          "reader": "isolated-dev-agent",
+          "recipient": "isolated-dev-model",
+          "purposes": [
+            "learn",
+            "evaluate",
+            "verify_source",
+            "recall_experience",
+            "recall_episode"
+          ],
+          "external_actions_allowed": false
+        },
+        "tool_version": "synthetic-readonly-v1",
+        "events": [],
+        "content_policy": "source_report_of_method_description"
+      },
+      "query_input": [
+        {
+          "query_id": "DEV-03-03:same",
+          "kind": "same_observation",
+          "text": "这次材料实际记录了什么？",
+          "purpose": "verify_source",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-03-03:new",
+          "kind": "new_question",
+          "text": "在工具v3和E3读取JSON没有value时，按已学方法应怎么办？",
+          "purpose": "recall_experience",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-03-03:boundary",
+          "kind": "boundary_unknown",
+          "text": "此方法对工具v4或所有环境都已证实有效吗？",
+          "purpose": "evaluate",
+          "k": 5
+        }
+      ],
+      "developer_labels": {
+        "visibility": "public_development_only",
+        "author": "development_agent",
+        "independent_review": false,
+        "correct_endpoint": "accepted_scoped_method_description_not_validated_reliability",
+        "answers": {
+          "DEV-03-03:same": "工具v3/E3先校验UTF-8再读value，缺字段未知",
+          "DEV-03-03:new": "报告缺少value、量值未知；不补0。",
+          "DEV-03-03:boundary": "未证实；适用范围限原版本/环境，且无实测可靠率。"
+        },
+        "eligible_relevant_sets": {
+          "DEV-03-03:same": [
+            "S-DEV-03-03"
+          ],
+          "DEV-03-03:new": [
+            "DEV-03-03:content:1"
+          ],
+          "DEV-03-03:boundary": [
+            "DEV-03-03:content:1"
+          ]
+        },
+        "claim_support_rule": "仅支持给定来源、时间、对象及条件，不推出现实已核实或普遍规律。",
+        "major_errors": [
+          "把S-DEV-03-03的有限报告改写为此刻现实必然为真",
+          "丢掉时间、单位、未知或来源性质后断言确定值"
+        ],
+        "required_limitations": [
+          "tool=v3; environment=E3",
+          "保持来源与历史/当前资格区分"
+        ]
+      },
+      "metric_ids": [
+        "TL01",
+        "TL02",
+        "TL03",
+        "TL04",
+        "TL05",
+        "TL06",
+        "TL07",
+        "TL15",
+        "TL16"
+      ],
+      "fixture_status": "planned",
+      "run_status": "not_run",
+      "actual_trace": null,
+      "actual_result": null,
+      "expected_reference_catalog": [
+        {
+          "ref_id": "DEV-03-03:content:1",
+          "role": "expected_eligible_content_or_text_memory",
+          "source_id": "S-DEV-03-03",
+          "scope": {
+            "object": "温室-method_experience-3",
+            "attribute": "parsing_method",
+            "time": "2026-01-02T08:00:00Z",
+            "unit": "not_applicable",
+            "conditions": "tool=v3; environment=E3"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        },
+        {
+          "ref_id": "S-DEV-03-03",
+          "role": "original_source",
+          "source_id": "S-DEV-03-03",
+          "scope": {
+            "object": "温室-method_experience-3",
+            "attribute": "parsing_method",
+            "time": "2026-01-02T08:00:00Z",
+            "unit": "not_applicable",
+            "conditions": "tool=v3; environment=E3"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        }
+      ],
+      "source_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-q11-decision-v0.1.md",
+          "section": "分区、样本量和问题单位"
+        },
+        {
+          "path": "docs/architecture/tool-observation-learning-q08-decision-v0.1.md",
+          "section": "未来验收题面"
+        }
+      ]
+    },
+    {
+      "case_id": "DEV-04-01",
+      "partition": "DEV",
+      "category": "temporal_correction",
+      "public_synthetic": true,
+      "source_cluster": "DEV-FAMILY-temporal_correction",
+      "template_family": "TL-DEV-temporal_correction-v1",
+      "permanent_formal_exclusion": true,
+      "learning_input": {
+        "source_id": "S-DEV-04-01",
+        "observation": "S-DEV-04-01在2026-01-02T08:00:00Z报告库存箱-temporal_correction-1为10件，不同于t0的7件；没有证明t0记录错误。",
+        "baseline": [
+          {
+            "source": "S-DEV-04-01",
+            "reported_at": "2026-01-01T08:00:00Z",
+            "text": "库存箱-temporal_correction-1在t0报告7件",
+            "version": "content:1"
+          }
+        ],
+        "scope": {
+          "object": "库存箱-temporal_correction-1",
+          "attribute": "reading",
+          "time": [
+            "2026-01-01T08:00:00Z",
+            "2026-01-02T08:00:00Z"
+          ],
+          "unit": "件",
+          "conditions": "仅该来源报告，未独立核实现实"
+        },
+        "source_permissions": {
+          "reader": "isolated-dev-agent",
+          "recipient": "isolated-dev-model",
+          "purposes": [
+            "learn",
+            "evaluate",
+            "verify_source",
+            "recall_experience",
+            "recall_episode"
+          ],
+          "external_actions_allowed": false
+        },
+        "tool_version": "synthetic-readonly-v1",
+        "events": [],
+        "content_policy": "source_report"
+      },
+      "query_input": [
+        {
+          "query_id": "DEV-04-01:same",
+          "kind": "same_observation",
+          "text": "这次材料实际记录了什么？",
+          "purpose": "verify_source",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-04-01:new",
+          "kind": "new_question",
+          "text": "比较两个时点，库存箱-temporal_correction-1记录发生怎样的变化？",
+          "purpose": "recall_experience",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-04-01:boundary",
+          "kind": "boundary_unknown",
+          "text": "旧时刻的7是否因此被证明记录错误？",
+          "purpose": "evaluate",
+          "k": 5
+        }
+      ],
+      "developer_labels": {
+        "visibility": "public_development_only",
+        "author": "development_agent",
+        "independent_review": false,
+        "correct_endpoint": "accepted_temporal_addition",
+        "answers": {
+          "DEV-04-01:same": "t1报告10件，保留t0报告7件",
+          "DEV-04-01:new": "t0报告7件，t1报告10件；时序补充，不撤销t0历史。",
+          "DEV-04-01:boundary": "没有；不同时点不直接构成错误更正。"
+        },
+        "eligible_relevant_sets": {
+          "DEV-04-01:same": [
+            "S-DEV-04-01"
+          ],
+          "DEV-04-01:new": [
+            "DEV-04-01:content:1",
+            "DEV-04-01:content:2"
+          ],
+          "DEV-04-01:boundary": [
+            "DEV-04-01:content:1",
+            "DEV-04-01:content:2"
+          ]
+        },
+        "claim_support_rule": "仅支持给定来源、时间、对象及条件，不推出现实已核实或普遍规律。",
+        "major_errors": [
+          "把S-DEV-04-01的有限报告改写为此刻现实必然为真",
+          "丢掉时间、单位、未知或来源性质后断言确定值"
+        ],
+        "required_limitations": [
+          "仅该来源报告，未独立核实现实",
+          "保持来源与历史/当前资格区分"
+        ]
+      },
+      "metric_ids": [
+        "TL01",
+        "TL02",
+        "TL03",
+        "TL04",
+        "TL05",
+        "TL06",
+        "TL07",
+        "TL15",
+        "TL16"
+      ],
+      "fixture_status": "planned",
+      "run_status": "not_run",
+      "actual_trace": null,
+      "actual_result": null,
+      "expected_reference_catalog": [
+        {
+          "ref_id": "DEV-04-01:content:1",
+          "role": "expected_eligible_content_or_text_memory",
+          "source_id": "S-DEV-04-01",
+          "scope": {
+            "object": "库存箱-temporal_correction-1",
+            "attribute": "reading",
+            "time": [
+              "2026-01-01T08:00:00Z",
+              "2026-01-02T08:00:00Z"
+            ],
+            "unit": "件",
+            "conditions": "仅该来源报告，未独立核实现实"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        },
+        {
+          "ref_id": "DEV-04-01:content:2",
+          "role": "expected_eligible_content_or_text_memory",
+          "source_id": "S-DEV-04-01",
+          "scope": {
+            "object": "库存箱-temporal_correction-1",
+            "attribute": "reading",
+            "time": [
+              "2026-01-01T08:00:00Z",
+              "2026-01-02T08:00:00Z"
+            ],
+            "unit": "件",
+            "conditions": "仅该来源报告，未独立核实现实"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        },
+        {
+          "ref_id": "S-DEV-04-01",
+          "role": "original_source",
+          "source_id": "S-DEV-04-01",
+          "scope": {
+            "object": "库存箱-temporal_correction-1",
+            "attribute": "reading",
+            "time": [
+              "2026-01-01T08:00:00Z",
+              "2026-01-02T08:00:00Z"
+            ],
+            "unit": "件",
+            "conditions": "仅该来源报告，未独立核实现实"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        }
+      ],
+      "source_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-q11-decision-v0.1.md",
+          "section": "分区、样本量和问题单位"
+        },
+        {
+          "path": "docs/architecture/tool-observation-learning-q08-decision-v0.1.md",
+          "section": "库存案例及反例"
+        }
+      ]
+    },
+    {
+      "case_id": "DEV-04-02",
+      "partition": "DEV",
+      "category": "temporal_correction",
+      "public_synthetic": true,
+      "source_cluster": "DEV-FAMILY-temporal_correction",
+      "template_family": "TL-DEV-temporal_correction-v1",
+      "permanent_formal_exclusion": true,
+      "learning_input": {
+        "source_id": "S-DEV-04-02",
+        "observation": "S-DEV-04-02在2026-01-02T08:00:00Z报告水槽-temporal_correction-2为12升，不同于t0的7升；没有证明t0记录错误。",
+        "baseline": [
+          {
+            "source": "S-DEV-04-02",
+            "reported_at": "2026-01-01T08:00:00Z",
+            "text": "水槽-temporal_correction-2在t0报告7升",
+            "version": "content:1"
+          }
+        ],
+        "scope": {
+          "object": "水槽-temporal_correction-2",
+          "attribute": "reading",
+          "time": [
+            "2026-01-01T08:00:00Z",
+            "2026-01-02T08:00:00Z"
+          ],
+          "unit": "升",
+          "conditions": "仅该来源报告，未独立核实现实"
+        },
+        "source_permissions": {
+          "reader": "isolated-dev-agent",
+          "recipient": "isolated-dev-model",
+          "purposes": [
+            "learn",
+            "evaluate",
+            "verify_source",
+            "recall_experience",
+            "recall_episode"
+          ],
+          "external_actions_allowed": false
+        },
+        "tool_version": "synthetic-readonly-v1",
+        "events": [],
+        "content_policy": "source_report"
+      },
+      "query_input": [
+        {
+          "query_id": "DEV-04-02:same",
+          "kind": "same_observation",
+          "text": "这次材料实际记录了什么？",
+          "purpose": "verify_source",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-04-02:new",
+          "kind": "new_question",
+          "text": "比较两个时点，水槽-temporal_correction-2记录发生怎样的变化？",
+          "purpose": "recall_experience",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-04-02:boundary",
+          "kind": "boundary_unknown",
+          "text": "旧时刻的7是否因此被证明记录错误？",
+          "purpose": "evaluate",
+          "k": 5
+        }
+      ],
+      "developer_labels": {
+        "visibility": "public_development_only",
+        "author": "development_agent",
+        "independent_review": false,
+        "correct_endpoint": "accepted_temporal_addition",
+        "answers": {
+          "DEV-04-02:same": "t1报告12升，保留t0报告7升",
+          "DEV-04-02:new": "t0报告7升，t1报告12升；时序补充，不撤销t0历史。",
+          "DEV-04-02:boundary": "没有；不同时点不直接构成错误更正。"
+        },
+        "eligible_relevant_sets": {
+          "DEV-04-02:same": [
+            "S-DEV-04-02"
+          ],
+          "DEV-04-02:new": [
+            "DEV-04-02:content:1",
+            "DEV-04-02:content:2"
+          ],
+          "DEV-04-02:boundary": [
+            "DEV-04-02:content:1",
+            "DEV-04-02:content:2"
+          ]
+        },
+        "claim_support_rule": "仅支持给定来源、时间、对象及条件，不推出现实已核实或普遍规律。",
+        "major_errors": [
+          "把S-DEV-04-02的有限报告改写为此刻现实必然为真",
+          "丢掉时间、单位、未知或来源性质后断言确定值"
+        ],
+        "required_limitations": [
+          "仅该来源报告，未独立核实现实",
+          "保持来源与历史/当前资格区分"
+        ]
+      },
+      "metric_ids": [
+        "TL01",
+        "TL02",
+        "TL03",
+        "TL04",
+        "TL05",
+        "TL06",
+        "TL07",
+        "TL15",
+        "TL16"
+      ],
+      "fixture_status": "planned",
+      "run_status": "not_run",
+      "actual_trace": null,
+      "actual_result": null,
+      "expected_reference_catalog": [
+        {
+          "ref_id": "DEV-04-02:content:1",
+          "role": "expected_eligible_content_or_text_memory",
+          "source_id": "S-DEV-04-02",
+          "scope": {
+            "object": "水槽-temporal_correction-2",
+            "attribute": "reading",
+            "time": [
+              "2026-01-01T08:00:00Z",
+              "2026-01-02T08:00:00Z"
+            ],
+            "unit": "升",
+            "conditions": "仅该来源报告，未独立核实现实"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        },
+        {
+          "ref_id": "DEV-04-02:content:2",
+          "role": "expected_eligible_content_or_text_memory",
+          "source_id": "S-DEV-04-02",
+          "scope": {
+            "object": "水槽-temporal_correction-2",
+            "attribute": "reading",
+            "time": [
+              "2026-01-01T08:00:00Z",
+              "2026-01-02T08:00:00Z"
+            ],
+            "unit": "升",
+            "conditions": "仅该来源报告，未独立核实现实"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        },
+        {
+          "ref_id": "S-DEV-04-02",
+          "role": "original_source",
+          "source_id": "S-DEV-04-02",
+          "scope": {
+            "object": "水槽-temporal_correction-2",
+            "attribute": "reading",
+            "time": [
+              "2026-01-01T08:00:00Z",
+              "2026-01-02T08:00:00Z"
+            ],
+            "unit": "升",
+            "conditions": "仅该来源报告，未独立核实现实"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        }
+      ],
+      "source_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-q11-decision-v0.1.md",
+          "section": "分区、样本量和问题单位"
+        },
+        {
+          "path": "docs/architecture/tool-observation-learning-q08-decision-v0.1.md",
+          "section": "库存案例及反例"
+        }
+      ]
+    },
+    {
+      "case_id": "DEV-04-03",
+      "partition": "DEV",
+      "category": "temporal_correction",
+      "public_synthetic": true,
+      "source_cluster": "DEV-FAMILY-temporal_correction",
+      "template_family": "TL-DEV-temporal_correction-v1",
+      "permanent_formal_exclusion": true,
+      "learning_input": {
+        "source_id": "S-DEV-04-03",
+        "observation": "S-DEV-04-03在2026-01-02T08:00:00Z报告温室-temporal_correction-3为15摄氏度，不同于t0的7摄氏度；没有证明t0记录错误。",
+        "baseline": [
+          {
+            "source": "S-DEV-04-03",
+            "reported_at": "2026-01-01T08:00:00Z",
+            "text": "温室-temporal_correction-3在t0报告7摄氏度",
+            "version": "content:1"
+          }
+        ],
+        "scope": {
+          "object": "温室-temporal_correction-3",
+          "attribute": "reading",
+          "time": [
+            "2026-01-01T08:00:00Z",
+            "2026-01-02T08:00:00Z"
+          ],
+          "unit": "摄氏度",
+          "conditions": "仅该来源报告，未独立核实现实"
+        },
+        "source_permissions": {
+          "reader": "isolated-dev-agent",
+          "recipient": "isolated-dev-model",
+          "purposes": [
+            "learn",
+            "evaluate",
+            "verify_source",
+            "recall_experience",
+            "recall_episode"
+          ],
+          "external_actions_allowed": false
+        },
+        "tool_version": "synthetic-readonly-v1",
+        "events": [],
+        "content_policy": "source_report"
+      },
+      "query_input": [
+        {
+          "query_id": "DEV-04-03:same",
+          "kind": "same_observation",
+          "text": "这次材料实际记录了什么？",
+          "purpose": "verify_source",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-04-03:new",
+          "kind": "new_question",
+          "text": "比较两个时点，温室-temporal_correction-3记录发生怎样的变化？",
+          "purpose": "recall_experience",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-04-03:boundary",
+          "kind": "boundary_unknown",
+          "text": "旧时刻的7是否因此被证明记录错误？",
+          "purpose": "evaluate",
+          "k": 5
+        }
+      ],
+      "developer_labels": {
+        "visibility": "public_development_only",
+        "author": "development_agent",
+        "independent_review": false,
+        "correct_endpoint": "accepted_temporal_addition",
+        "answers": {
+          "DEV-04-03:same": "t1报告15摄氏度，保留t0报告7摄氏度",
+          "DEV-04-03:new": "t0报告7摄氏度，t1报告15摄氏度；时序补充，不撤销t0历史。",
+          "DEV-04-03:boundary": "没有；不同时点不直接构成错误更正。"
+        },
+        "eligible_relevant_sets": {
+          "DEV-04-03:same": [
+            "S-DEV-04-03"
+          ],
+          "DEV-04-03:new": [
+            "DEV-04-03:content:1",
+            "DEV-04-03:content:2"
+          ],
+          "DEV-04-03:boundary": [
+            "DEV-04-03:content:1",
+            "DEV-04-03:content:2"
+          ]
+        },
+        "claim_support_rule": "仅支持给定来源、时间、对象及条件，不推出现实已核实或普遍规律。",
+        "major_errors": [
+          "把S-DEV-04-03的有限报告改写为此刻现实必然为真",
+          "丢掉时间、单位、未知或来源性质后断言确定值"
+        ],
+        "required_limitations": [
+          "仅该来源报告，未独立核实现实",
+          "保持来源与历史/当前资格区分"
+        ]
+      },
+      "metric_ids": [
+        "TL01",
+        "TL02",
+        "TL03",
+        "TL04",
+        "TL05",
+        "TL06",
+        "TL07",
+        "TL15",
+        "TL16"
+      ],
+      "fixture_status": "planned",
+      "run_status": "not_run",
+      "actual_trace": null,
+      "actual_result": null,
+      "expected_reference_catalog": [
+        {
+          "ref_id": "DEV-04-03:content:1",
+          "role": "expected_eligible_content_or_text_memory",
+          "source_id": "S-DEV-04-03",
+          "scope": {
+            "object": "温室-temporal_correction-3",
+            "attribute": "reading",
+            "time": [
+              "2026-01-01T08:00:00Z",
+              "2026-01-02T08:00:00Z"
+            ],
+            "unit": "摄氏度",
+            "conditions": "仅该来源报告，未独立核实现实"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        },
+        {
+          "ref_id": "DEV-04-03:content:2",
+          "role": "expected_eligible_content_or_text_memory",
+          "source_id": "S-DEV-04-03",
+          "scope": {
+            "object": "温室-temporal_correction-3",
+            "attribute": "reading",
+            "time": [
+              "2026-01-01T08:00:00Z",
+              "2026-01-02T08:00:00Z"
+            ],
+            "unit": "摄氏度",
+            "conditions": "仅该来源报告，未独立核实现实"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        },
+        {
+          "ref_id": "S-DEV-04-03",
+          "role": "original_source",
+          "source_id": "S-DEV-04-03",
+          "scope": {
+            "object": "温室-temporal_correction-3",
+            "attribute": "reading",
+            "time": [
+              "2026-01-01T08:00:00Z",
+              "2026-01-02T08:00:00Z"
+            ],
+            "unit": "摄氏度",
+            "conditions": "仅该来源报告，未独立核实现实"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        }
+      ],
+      "source_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-q11-decision-v0.1.md",
+          "section": "分区、样本量和问题单位"
+        },
+        {
+          "path": "docs/architecture/tool-observation-learning-q08-decision-v0.1.md",
+          "section": "库存案例及反例"
+        }
+      ]
+    },
+    {
+      "case_id": "DEV-05-01",
+      "partition": "DEV",
+      "category": "conflict",
+      "public_synthetic": true,
+      "source_cluster": "DEV-FAMILY-conflict",
+      "template_family": "TL-DEV-conflict-v1",
+      "permanent_formal_exclusion": true,
+      "learning_input": {
+        "source_id": "S-DEV-05-01",
+        "observation": "S-DEV-05-01-A和S-DEV-05-01-B在同一时刻2026-01-02T08:00:00Z、同对象库存箱-conflict-1分别报告7件与10件；无独立裁决依据。",
+        "baseline": [],
+        "scope": {
+          "object": "库存箱-conflict-1",
+          "attribute": "reading",
+          "time": "2026-01-02T08:00:00Z",
+          "unit": "件",
+          "conditions": "同范围冲突，禁止无依据合并"
+        },
+        "source_permissions": {
+          "reader": "isolated-dev-agent",
+          "recipient": "isolated-dev-model",
+          "purposes": [
+            "learn",
+            "evaluate",
+            "verify_source",
+            "recall_experience",
+            "recall_episode"
+          ],
+          "external_actions_allowed": false
+        },
+        "tool_version": "synthetic-readonly-v1",
+        "events": [],
+        "content_policy": "source_report"
+      },
+      "query_input": [
+        {
+          "query_id": "DEV-05-01:same",
+          "kind": "same_observation",
+          "text": "这次材料实际记录了什么？",
+          "purpose": "verify_source",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-05-01:new",
+          "kind": "new_question",
+          "text": "两来源对库存箱-conflict-1有一致的现实读数吗？",
+          "purpose": "recall_experience",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-05-01:boundary",
+          "kind": "boundary_unknown",
+          "text": "可以取平均或按最新/多数认定唯一真实值吗？",
+          "purpose": "evaluate",
+          "k": 5
+        }
+      ],
+      "developer_labels": {
+        "visibility": "public_development_only",
+        "author": "development_agent",
+        "independent_review": false,
+        "correct_endpoint": "conflict_restricted",
+        "answers": {
+          "DEV-05-01:same": "A报告7件，B报告10件，现实量值未决冲突",
+          "DEV-05-01:new": "没有；7与10件冲突，两条来源报告并存，现实值未决。",
+          "DEV-05-01:boundary": "不能；没有支持这种裁决的证据。"
+        },
+        "eligible_relevant_sets": {
+          "DEV-05-01:same": [
+            "S-DEV-05-01"
+          ],
+          "DEV-05-01:new": [
+            "DEV-05-01:content:A",
+            "DEV-05-01:content:B"
+          ],
+          "DEV-05-01:boundary": [
+            "DEV-05-01:content:A",
+            "DEV-05-01:content:B"
+          ]
+        },
+        "claim_support_rule": "仅支持给定来源、时间、对象及条件，不推出现实已核实或普遍规律。",
+        "major_errors": [
+          "把S-DEV-05-01的有限报告改写为此刻现实必然为真",
+          "可以；没有支持这种裁决的证据。"
+        ],
+        "required_limitations": [
+          "同范围冲突，禁止无依据合并",
+          "保持来源与历史/当前资格区分"
+        ]
+      },
+      "metric_ids": [
+        "TL01",
+        "TL02",
+        "TL03",
+        "TL04",
+        "TL05",
+        "TL06",
+        "TL07",
+        "TL15",
+        "TL16"
+      ],
+      "fixture_status": "planned",
+      "run_status": "not_run",
+      "actual_trace": null,
+      "actual_result": null,
+      "expected_reference_catalog": [
+        {
+          "ref_id": "DEV-05-01:content:A",
+          "role": "expected_eligible_content_or_text_memory",
+          "source_id": "S-DEV-05-01",
+          "scope": {
+            "object": "库存箱-conflict-1",
+            "attribute": "reading",
+            "time": "2026-01-02T08:00:00Z",
+            "unit": "件",
+            "conditions": "同范围冲突，禁止无依据合并"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        },
+        {
+          "ref_id": "DEV-05-01:content:B",
+          "role": "expected_eligible_content_or_text_memory",
+          "source_id": "S-DEV-05-01",
+          "scope": {
+            "object": "库存箱-conflict-1",
+            "attribute": "reading",
+            "time": "2026-01-02T08:00:00Z",
+            "unit": "件",
+            "conditions": "同范围冲突，禁止无依据合并"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        },
+        {
+          "ref_id": "S-DEV-05-01",
+          "role": "original_source",
+          "source_id": "S-DEV-05-01",
+          "scope": {
+            "object": "库存箱-conflict-1",
+            "attribute": "reading",
+            "time": "2026-01-02T08:00:00Z",
+            "unit": "件",
+            "conditions": "同范围冲突，禁止无依据合并"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        }
+      ],
+      "source_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-q11-decision-v0.1.md",
+          "section": "分区、样本量和问题单位"
+        },
+        {
+          "path": "docs/architecture/tool-observation-learning-q08-decision-v0.1.md",
+          "section": "未来验收题面"
+        }
+      ]
+    },
+    {
+      "case_id": "DEV-05-02",
+      "partition": "DEV",
+      "category": "conflict",
+      "public_synthetic": true,
+      "source_cluster": "DEV-FAMILY-conflict",
+      "template_family": "TL-DEV-conflict-v1",
+      "permanent_formal_exclusion": true,
+      "learning_input": {
+        "source_id": "S-DEV-05-02",
+        "observation": "S-DEV-05-02-A和S-DEV-05-02-B在同一时刻2026-01-02T08:00:00Z、同对象水槽-conflict-2分别报告7升与12升；无独立裁决依据。",
+        "baseline": [],
+        "scope": {
+          "object": "水槽-conflict-2",
+          "attribute": "reading",
+          "time": "2026-01-02T08:00:00Z",
+          "unit": "升",
+          "conditions": "同范围冲突，禁止无依据合并"
+        },
+        "source_permissions": {
+          "reader": "isolated-dev-agent",
+          "recipient": "isolated-dev-model",
+          "purposes": [
+            "learn",
+            "evaluate",
+            "verify_source",
+            "recall_experience",
+            "recall_episode"
+          ],
+          "external_actions_allowed": false
+        },
+        "tool_version": "synthetic-readonly-v1",
+        "events": [],
+        "content_policy": "source_report"
+      },
+      "query_input": [
+        {
+          "query_id": "DEV-05-02:same",
+          "kind": "same_observation",
+          "text": "这次材料实际记录了什么？",
+          "purpose": "verify_source",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-05-02:new",
+          "kind": "new_question",
+          "text": "两来源对水槽-conflict-2有一致的现实读数吗？",
+          "purpose": "recall_experience",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-05-02:boundary",
+          "kind": "boundary_unknown",
+          "text": "可以取平均或按最新/多数认定唯一真实值吗？",
+          "purpose": "evaluate",
+          "k": 5
+        }
+      ],
+      "developer_labels": {
+        "visibility": "public_development_only",
+        "author": "development_agent",
+        "independent_review": false,
+        "correct_endpoint": "conflict_restricted",
+        "answers": {
+          "DEV-05-02:same": "A报告7升，B报告12升，现实量值未决冲突",
+          "DEV-05-02:new": "没有；7与12升冲突，两条来源报告并存，现实值未决。",
+          "DEV-05-02:boundary": "不能；没有支持这种裁决的证据。"
+        },
+        "eligible_relevant_sets": {
+          "DEV-05-02:same": [
+            "S-DEV-05-02"
+          ],
+          "DEV-05-02:new": [
+            "DEV-05-02:content:A",
+            "DEV-05-02:content:B"
+          ],
+          "DEV-05-02:boundary": [
+            "DEV-05-02:content:A",
+            "DEV-05-02:content:B"
+          ]
+        },
+        "claim_support_rule": "仅支持给定来源、时间、对象及条件，不推出现实已核实或普遍规律。",
+        "major_errors": [
+          "把S-DEV-05-02的有限报告改写为此刻现实必然为真",
+          "可以；没有支持这种裁决的证据。"
+        ],
+        "required_limitations": [
+          "同范围冲突，禁止无依据合并",
+          "保持来源与历史/当前资格区分"
+        ]
+      },
+      "metric_ids": [
+        "TL01",
+        "TL02",
+        "TL03",
+        "TL04",
+        "TL05",
+        "TL06",
+        "TL07",
+        "TL15",
+        "TL16"
+      ],
+      "fixture_status": "planned",
+      "run_status": "not_run",
+      "actual_trace": null,
+      "actual_result": null,
+      "expected_reference_catalog": [
+        {
+          "ref_id": "DEV-05-02:content:A",
+          "role": "expected_eligible_content_or_text_memory",
+          "source_id": "S-DEV-05-02",
+          "scope": {
+            "object": "水槽-conflict-2",
+            "attribute": "reading",
+            "time": "2026-01-02T08:00:00Z",
+            "unit": "升",
+            "conditions": "同范围冲突，禁止无依据合并"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        },
+        {
+          "ref_id": "DEV-05-02:content:B",
+          "role": "expected_eligible_content_or_text_memory",
+          "source_id": "S-DEV-05-02",
+          "scope": {
+            "object": "水槽-conflict-2",
+            "attribute": "reading",
+            "time": "2026-01-02T08:00:00Z",
+            "unit": "升",
+            "conditions": "同范围冲突，禁止无依据合并"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        },
+        {
+          "ref_id": "S-DEV-05-02",
+          "role": "original_source",
+          "source_id": "S-DEV-05-02",
+          "scope": {
+            "object": "水槽-conflict-2",
+            "attribute": "reading",
+            "time": "2026-01-02T08:00:00Z",
+            "unit": "升",
+            "conditions": "同范围冲突，禁止无依据合并"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        }
+      ],
+      "source_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-q11-decision-v0.1.md",
+          "section": "分区、样本量和问题单位"
+        },
+        {
+          "path": "docs/architecture/tool-observation-learning-q08-decision-v0.1.md",
+          "section": "未来验收题面"
+        }
+      ]
+    },
+    {
+      "case_id": "DEV-05-03",
+      "partition": "DEV",
+      "category": "conflict",
+      "public_synthetic": true,
+      "source_cluster": "DEV-FAMILY-conflict",
+      "template_family": "TL-DEV-conflict-v1",
+      "permanent_formal_exclusion": true,
+      "learning_input": {
+        "source_id": "S-DEV-05-03",
+        "observation": "S-DEV-05-03-A和S-DEV-05-03-B在同一时刻2026-01-02T08:00:00Z、同对象温室-conflict-3分别报告7摄氏度与15摄氏度；无独立裁决依据。",
+        "baseline": [],
+        "scope": {
+          "object": "温室-conflict-3",
+          "attribute": "reading",
+          "time": "2026-01-02T08:00:00Z",
+          "unit": "摄氏度",
+          "conditions": "同范围冲突，禁止无依据合并"
+        },
+        "source_permissions": {
+          "reader": "isolated-dev-agent",
+          "recipient": "isolated-dev-model",
+          "purposes": [
+            "learn",
+            "evaluate",
+            "verify_source",
+            "recall_experience",
+            "recall_episode"
+          ],
+          "external_actions_allowed": false
+        },
+        "tool_version": "synthetic-readonly-v1",
+        "events": [],
+        "content_policy": "source_report"
+      },
+      "query_input": [
+        {
+          "query_id": "DEV-05-03:same",
+          "kind": "same_observation",
+          "text": "这次材料实际记录了什么？",
+          "purpose": "verify_source",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-05-03:new",
+          "kind": "new_question",
+          "text": "两来源对温室-conflict-3有一致的现实读数吗？",
+          "purpose": "recall_experience",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-05-03:boundary",
+          "kind": "boundary_unknown",
+          "text": "可以取平均或按最新/多数认定唯一真实值吗？",
+          "purpose": "evaluate",
+          "k": 5
+        }
+      ],
+      "developer_labels": {
+        "visibility": "public_development_only",
+        "author": "development_agent",
+        "independent_review": false,
+        "correct_endpoint": "conflict_restricted",
+        "answers": {
+          "DEV-05-03:same": "A报告7摄氏度，B报告15摄氏度，现实量值未决冲突",
+          "DEV-05-03:new": "没有；7与15摄氏度冲突，两条来源报告并存，现实值未决。",
+          "DEV-05-03:boundary": "不能；没有支持这种裁决的证据。"
+        },
+        "eligible_relevant_sets": {
+          "DEV-05-03:same": [
+            "S-DEV-05-03"
+          ],
+          "DEV-05-03:new": [
+            "DEV-05-03:content:A",
+            "DEV-05-03:content:B"
+          ],
+          "DEV-05-03:boundary": [
+            "DEV-05-03:content:A",
+            "DEV-05-03:content:B"
+          ]
+        },
+        "claim_support_rule": "仅支持给定来源、时间、对象及条件，不推出现实已核实或普遍规律。",
+        "major_errors": [
+          "把S-DEV-05-03的有限报告改写为此刻现实必然为真",
+          "可以；没有支持这种裁决的证据。"
+        ],
+        "required_limitations": [
+          "同范围冲突，禁止无依据合并",
+          "保持来源与历史/当前资格区分"
+        ]
+      },
+      "metric_ids": [
+        "TL01",
+        "TL02",
+        "TL03",
+        "TL04",
+        "TL05",
+        "TL06",
+        "TL07",
+        "TL15",
+        "TL16"
+      ],
+      "fixture_status": "planned",
+      "run_status": "not_run",
+      "actual_trace": null,
+      "actual_result": null,
+      "expected_reference_catalog": [
+        {
+          "ref_id": "DEV-05-03:content:A",
+          "role": "expected_eligible_content_or_text_memory",
+          "source_id": "S-DEV-05-03",
+          "scope": {
+            "object": "温室-conflict-3",
+            "attribute": "reading",
+            "time": "2026-01-02T08:00:00Z",
+            "unit": "摄氏度",
+            "conditions": "同范围冲突，禁止无依据合并"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        },
+        {
+          "ref_id": "DEV-05-03:content:B",
+          "role": "expected_eligible_content_or_text_memory",
+          "source_id": "S-DEV-05-03",
+          "scope": {
+            "object": "温室-conflict-3",
+            "attribute": "reading",
+            "time": "2026-01-02T08:00:00Z",
+            "unit": "摄氏度",
+            "conditions": "同范围冲突，禁止无依据合并"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        },
+        {
+          "ref_id": "S-DEV-05-03",
+          "role": "original_source",
+          "source_id": "S-DEV-05-03",
+          "scope": {
+            "object": "温室-conflict-3",
+            "attribute": "reading",
+            "time": "2026-01-02T08:00:00Z",
+            "unit": "摄氏度",
+            "conditions": "同范围冲突，禁止无依据合并"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        }
+      ],
+      "source_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-q11-decision-v0.1.md",
+          "section": "分区、样本量和问题单位"
+        },
+        {
+          "path": "docs/architecture/tool-observation-learning-q08-decision-v0.1.md",
+          "section": "未来验收题面"
+        }
+      ]
+    },
+    {
+      "case_id": "DEV-06-01",
+      "partition": "DEV",
+      "category": "unknown_insufficient",
+      "public_synthetic": true,
+      "source_cluster": "DEV-FAMILY-unknown_insufficient",
+      "template_family": "TL-DEV-unknown_insufficient-v1",
+      "permanent_formal_exclusion": true,
+      "learning_input": {
+        "source_id": "S-DEV-06-01",
+        "observation": "S-DEV-06-01返回：value字段缺失，工具仅回报status=ok。",
+        "baseline": [],
+        "scope": {
+          "object": "库存箱-unknown_insufficient-1",
+          "attribute": "reading",
+          "time": "unknown",
+          "unit": "unknown",
+          "conditions": "not_collected"
+        },
+        "source_permissions": {
+          "reader": "isolated-dev-agent",
+          "recipient": "isolated-dev-model",
+          "purposes": [
+            "learn",
+            "evaluate",
+            "verify_source",
+            "recall_experience",
+            "recall_episode"
+          ],
+          "external_actions_allowed": false
+        },
+        "tool_version": "synthetic-readonly-v1",
+        "events": [],
+        "content_policy": "source_report"
+      },
+      "query_input": [
+        {
+          "query_id": "DEV-06-01:same",
+          "kind": "same_observation",
+          "text": "这次材料实际记录了什么？",
+          "purpose": "verify_source",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-06-01:new",
+          "kind": "new_question",
+          "text": "现在能给库存箱-unknown_insufficient-1一个确定、带单位和时间的实际量值吗？",
+          "purpose": "recall_experience",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-06-01:boundary",
+          "kind": "boundary_unknown",
+          "text": "可以把缺测、null或约数补成known 0或确定10吗？",
+          "purpose": "evaluate",
+          "k": 5
+        }
+      ],
+      "developer_labels": {
+        "visibility": "public_development_only",
+        "author": "development_agent",
+        "independent_review": false,
+        "correct_endpoint": "insufficient_no_invented_value",
+        "answers": {
+          "DEV-06-01:same": "没有value，量值未知；成功状态不提供读数。",
+          "DEV-06-01:new": "没有value，量值未知；成功状态不提供读数。",
+          "DEV-06-01:boundary": "不能；保留原字段状态、近似及缺项。"
+        },
+        "eligible_relevant_sets": {
+          "DEV-06-01:same": [
+            "S-DEV-06-01"
+          ],
+          "DEV-06-01:new": [
+            "DEV-06-01:content:1"
+          ],
+          "DEV-06-01:boundary": [
+            "DEV-06-01:content:1"
+          ]
+        },
+        "claim_support_rule": "仅支持给定来源、时间、对象及条件，不推出现实已核实或普遍规律。",
+        "major_errors": [
+          "把S-DEV-06-01的有限报告改写为此刻现实必然为真",
+          "可以；保留原字段状态、近似及缺项。"
+        ],
+        "required_limitations": [
+          "not_collected",
+          "保持来源与历史/当前资格区分"
+        ]
+      },
+      "metric_ids": [
+        "TL01",
+        "TL02",
+        "TL03",
+        "TL04",
+        "TL05",
+        "TL06",
+        "TL07",
+        "TL15",
+        "TL16"
+      ],
+      "fixture_status": "planned",
+      "run_status": "not_run",
+      "actual_trace": null,
+      "actual_result": null,
+      "expected_reference_catalog": [
+        {
+          "ref_id": "DEV-06-01:content:1",
+          "role": "expected_eligible_content_or_text_memory",
+          "source_id": "S-DEV-06-01",
+          "scope": {
+            "object": "库存箱-unknown_insufficient-1",
+            "attribute": "reading",
+            "time": "unknown",
+            "unit": "unknown",
+            "conditions": "not_collected"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        },
+        {
+          "ref_id": "S-DEV-06-01",
+          "role": "original_source",
+          "source_id": "S-DEV-06-01",
+          "scope": {
+            "object": "库存箱-unknown_insufficient-1",
+            "attribute": "reading",
+            "time": "unknown",
+            "unit": "unknown",
+            "conditions": "not_collected"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        }
+      ],
+      "source_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-q11-decision-v0.1.md",
+          "section": "分区、样本量和问题单位"
+        },
+        {
+          "path": "docs/architecture/tool-observation-learning-q08-decision-v0.1.md",
+          "section": "未来验收题面"
+        }
+      ]
+    },
+    {
+      "case_id": "DEV-06-02",
+      "partition": "DEV",
+      "category": "unknown_insufficient",
+      "public_synthetic": true,
+      "source_cluster": "DEV-FAMILY-unknown_insufficient",
+      "template_family": "TL-DEV-unknown_insufficient-v1",
+      "permanent_formal_exclusion": true,
+      "learning_input": {
+        "source_id": "S-DEV-06-02",
+        "observation": "S-DEV-06-02返回：value=null，文档说明表示传感器未采集。",
+        "baseline": [],
+        "scope": {
+          "object": "水槽-unknown_insufficient-2",
+          "attribute": "reading",
+          "time": "unknown",
+          "unit": "unknown",
+          "conditions": "not_collected"
+        },
+        "source_permissions": {
+          "reader": "isolated-dev-agent",
+          "recipient": "isolated-dev-model",
+          "purposes": [
+            "learn",
+            "evaluate",
+            "verify_source",
+            "recall_experience",
+            "recall_episode"
+          ],
+          "external_actions_allowed": false
+        },
+        "tool_version": "synthetic-readonly-v1",
+        "events": [],
+        "content_policy": "source_report"
+      },
+      "query_input": [
+        {
+          "query_id": "DEV-06-02:same",
+          "kind": "same_observation",
+          "text": "这次材料实际记录了什么？",
+          "purpose": "verify_source",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-06-02:new",
+          "kind": "new_question",
+          "text": "现在能给水槽-unknown_insufficient-2一个确定、带单位和时间的实际量值吗？",
+          "purpose": "recall_experience",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-06-02:boundary",
+          "kind": "boundary_unknown",
+          "text": "可以把缺测、null或约数补成known 0或确定10吗？",
+          "purpose": "evaluate",
+          "k": 5
+        }
+      ],
+      "developer_labels": {
+        "visibility": "public_development_only",
+        "author": "development_agent",
+        "independent_review": false,
+        "correct_endpoint": "insufficient_no_invented_value",
+        "answers": {
+          "DEV-06-02:same": "来源明确null表示未采集，量值未知；不解释成现实为0。",
+          "DEV-06-02:new": "来源明确null表示未采集，量值未知；不解释成现实为0。",
+          "DEV-06-02:boundary": "不能；保留原字段状态、近似及缺项。"
+        },
+        "eligible_relevant_sets": {
+          "DEV-06-02:same": [
+            "S-DEV-06-02"
+          ],
+          "DEV-06-02:new": [
+            "DEV-06-02:content:1"
+          ],
+          "DEV-06-02:boundary": [
+            "DEV-06-02:content:1"
+          ]
+        },
+        "claim_support_rule": "仅支持给定来源、时间、对象及条件，不推出现实已核实或普遍规律。",
+        "major_errors": [
+          "把S-DEV-06-02的有限报告改写为此刻现实必然为真",
+          "可以；保留原字段状态、近似及缺项。"
+        ],
+        "required_limitations": [
+          "not_collected",
+          "保持来源与历史/当前资格区分"
+        ]
+      },
+      "metric_ids": [
+        "TL01",
+        "TL02",
+        "TL03",
+        "TL04",
+        "TL05",
+        "TL06",
+        "TL07",
+        "TL15",
+        "TL16"
+      ],
+      "fixture_status": "planned",
+      "run_status": "not_run",
+      "actual_trace": null,
+      "actual_result": null,
+      "expected_reference_catalog": [
+        {
+          "ref_id": "DEV-06-02:content:1",
+          "role": "expected_eligible_content_or_text_memory",
+          "source_id": "S-DEV-06-02",
+          "scope": {
+            "object": "水槽-unknown_insufficient-2",
+            "attribute": "reading",
+            "time": "unknown",
+            "unit": "unknown",
+            "conditions": "not_collected"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        },
+        {
+          "ref_id": "S-DEV-06-02",
+          "role": "original_source",
+          "source_id": "S-DEV-06-02",
+          "scope": {
+            "object": "水槽-unknown_insufficient-2",
+            "attribute": "reading",
+            "time": "unknown",
+            "unit": "unknown",
+            "conditions": "not_collected"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        }
+      ],
+      "source_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-q11-decision-v0.1.md",
+          "section": "分区、样本量和问题单位"
+        },
+        {
+          "path": "docs/architecture/tool-observation-learning-q08-decision-v0.1.md",
+          "section": "未来验收题面"
+        }
+      ]
+    },
+    {
+      "case_id": "DEV-06-03",
+      "partition": "DEV",
+      "category": "unknown_insufficient",
+      "public_synthetic": true,
+      "source_cluster": "DEV-FAMILY-unknown_insufficient",
+      "template_family": "TL-DEV-unknown_insufficient-v1",
+      "permanent_formal_exclusion": true,
+      "learning_input": {
+        "source_id": "S-DEV-06-03",
+        "observation": "S-DEV-06-03返回：value约10，单位和观测时刻都未提供。",
+        "baseline": [],
+        "scope": {
+          "object": "温室-unknown_insufficient-3",
+          "attribute": "reading",
+          "time": "unknown",
+          "unit": "unknown",
+          "conditions": "unknown"
+        },
+        "source_permissions": {
+          "reader": "isolated-dev-agent",
+          "recipient": "isolated-dev-model",
+          "purposes": [
+            "learn",
+            "evaluate",
+            "verify_source",
+            "recall_experience",
+            "recall_episode"
+          ],
+          "external_actions_allowed": false
+        },
+        "tool_version": "synthetic-readonly-v1",
+        "events": [],
+        "content_policy": "source_report"
+      },
+      "query_input": [
+        {
+          "query_id": "DEV-06-03:same",
+          "kind": "same_observation",
+          "text": "这次材料实际记录了什么？",
+          "purpose": "verify_source",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-06-03:new",
+          "kind": "new_question",
+          "text": "现在能给温室-unknown_insufficient-3一个确定、带单位和时间的实际量值吗？",
+          "purpose": "recall_experience",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-06-03:boundary",
+          "kind": "boundary_unknown",
+          "text": "可以把缺测、null或约数补成known 0或确定10吗？",
+          "purpose": "evaluate",
+          "k": 5
+        }
+      ],
+      "developer_labels": {
+        "visibility": "public_development_only",
+        "author": "development_agent",
+        "independent_review": false,
+        "correct_endpoint": "insufficient_no_invented_value",
+        "answers": {
+          "DEV-06-03:same": "来源只说约10；单位和时刻未知，不能作为确定当前值。",
+          "DEV-06-03:new": "来源只说约10；单位和时刻未知，不能作为确定当前值。",
+          "DEV-06-03:boundary": "不能；保留原字段状态、近似及缺项。"
+        },
+        "eligible_relevant_sets": {
+          "DEV-06-03:same": [
+            "S-DEV-06-03"
+          ],
+          "DEV-06-03:new": [
+            "DEV-06-03:content:1"
+          ],
+          "DEV-06-03:boundary": [
+            "DEV-06-03:content:1"
+          ]
+        },
+        "claim_support_rule": "仅支持给定来源、时间、对象及条件，不推出现实已核实或普遍规律。",
+        "major_errors": [
+          "把S-DEV-06-03的有限报告改写为此刻现实必然为真",
+          "可以；保留原字段状态、近似及缺项。"
+        ],
+        "required_limitations": [
+          "unknown",
+          "保持来源与历史/当前资格区分"
+        ]
+      },
+      "metric_ids": [
+        "TL01",
+        "TL02",
+        "TL03",
+        "TL04",
+        "TL05",
+        "TL06",
+        "TL07",
+        "TL15",
+        "TL16"
+      ],
+      "fixture_status": "planned",
+      "run_status": "not_run",
+      "actual_trace": null,
+      "actual_result": null,
+      "expected_reference_catalog": [
+        {
+          "ref_id": "DEV-06-03:content:1",
+          "role": "expected_eligible_content_or_text_memory",
+          "source_id": "S-DEV-06-03",
+          "scope": {
+            "object": "温室-unknown_insufficient-3",
+            "attribute": "reading",
+            "time": "unknown",
+            "unit": "unknown",
+            "conditions": "unknown"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        },
+        {
+          "ref_id": "S-DEV-06-03",
+          "role": "original_source",
+          "source_id": "S-DEV-06-03",
+          "scope": {
+            "object": "温室-unknown_insufficient-3",
+            "attribute": "reading",
+            "time": "unknown",
+            "unit": "unknown",
+            "conditions": "unknown"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        }
+      ],
+      "source_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-q11-decision-v0.1.md",
+          "section": "分区、样本量和问题单位"
+        },
+        {
+          "path": "docs/architecture/tool-observation-learning-q08-decision-v0.1.md",
+          "section": "未来验收题面"
+        }
+      ]
+    },
+    {
+      "case_id": "DEV-07-01",
+      "partition": "DEV",
+      "category": "history_text_episode",
+      "public_synthetic": true,
+      "source_cluster": "DEV-FAMILY-history_text_episode",
+      "template_family": "TL-DEV-history_text_episode-v1",
+      "permanent_formal_exclusion": true,
+      "learning_input": {
+        "source_id": "S-DEV-07-01",
+        "observation": "用户在2026-01-01T08:00:00Z说“库存箱-history_text_episode-1我叫它小青”；在2026-01-02T08:00:00Z显式更正为“现在称小蓝”。这是用户命名文字，不是工具读数。",
+        "baseline": [],
+        "scope": {
+          "object": "库存箱-history_text_episode-1",
+          "attribute": "user_name",
+          "time": [
+            "2026-01-01T08:00:00Z",
+            "2026-01-02T08:00:00Z"
+          ],
+          "unit": "not_applicable",
+          "conditions": "原文字与显式修订"
+        },
+        "source_permissions": {
+          "reader": "isolated-dev-agent",
+          "recipient": "isolated-dev-model",
+          "purposes": [
+            "learn",
+            "evaluate",
+            "verify_source",
+            "recall_experience",
+            "recall_episode"
+          ],
+          "external_actions_allowed": false
+        },
+        "tool_version": "synthetic-readonly-v1",
+        "events": [],
+        "content_policy": "text_revision"
+      },
+      "query_input": [
+        {
+          "query_id": "DEV-07-01:same",
+          "kind": "same_observation",
+          "text": "这次材料实际记录了什么？",
+          "purpose": "verify_source",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-07-01:new",
+          "kind": "new_question",
+          "text": "按用户目前文字修订，库存箱-history_text_episode-1叫什么，早先叫什么？",
+          "purpose": "recall_episode",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-07-01:boundary",
+          "kind": "boundary_unknown",
+          "text": "能把这段文字当作外部实物颜色已核实改变的证据吗？",
+          "purpose": "evaluate",
+          "k": 5
+        }
+      ],
+      "developer_labels": {
+        "visibility": "public_development_only",
+        "author": "development_agent",
+        "independent_review": false,
+        "correct_endpoint": "m04_text_revision_with_history",
+        "answers": {
+          "DEV-07-01:same": "保留原话小青与后续更正小蓝，各带时间和来源",
+          "DEV-07-01:new": "目前称小蓝，早先称小青；明确是用户的命名陈述及修订。",
+          "DEV-07-01:boundary": "不能；命名不证明颜色或外部状态变化。"
+        },
+        "eligible_relevant_sets": {
+          "DEV-07-01:same": [
+            "S-DEV-07-01"
+          ],
+          "DEV-07-01:new": [
+            "DEV-07-01:memory:old",
+            "DEV-07-01:memory:current"
+          ],
+          "DEV-07-01:boundary": [
+            "DEV-07-01:memory:old",
+            "DEV-07-01:memory:current"
+          ]
+        },
+        "claim_support_rule": "仅支持给定来源、时间、对象及条件，不推出现实已核实或普遍规律。",
+        "major_errors": [
+          "把S-DEV-07-01的有限报告改写为此刻现实必然为真",
+          "可以；命名不证明颜色或外部状态变化。"
+        ],
+        "required_limitations": [
+          "原文字与显式修订",
+          "保持来源与历史/当前资格区分"
+        ]
+      },
+      "metric_ids": [
+        "TL01",
+        "TL02",
+        "TL03",
+        "TL04",
+        "TL05",
+        "TL06",
+        "TL07",
+        "TL15",
+        "TL16"
+      ],
+      "fixture_status": "planned",
+      "run_status": "not_run",
+      "actual_trace": null,
+      "actual_result": null,
+      "expected_reference_catalog": [
+        {
+          "ref_id": "DEV-07-01:memory:current",
+          "role": "expected_eligible_content_or_text_memory",
+          "source_id": "S-DEV-07-01",
+          "scope": {
+            "object": "库存箱-history_text_episode-1",
+            "attribute": "user_name",
+            "time": [
+              "2026-01-01T08:00:00Z",
+              "2026-01-02T08:00:00Z"
+            ],
+            "unit": "not_applicable",
+            "conditions": "原文字与显式修订"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        },
+        {
+          "ref_id": "DEV-07-01:memory:old",
+          "role": "expected_eligible_content_or_text_memory",
+          "source_id": "S-DEV-07-01",
+          "scope": {
+            "object": "库存箱-history_text_episode-1",
+            "attribute": "user_name",
+            "time": [
+              "2026-01-01T08:00:00Z",
+              "2026-01-02T08:00:00Z"
+            ],
+            "unit": "not_applicable",
+            "conditions": "原文字与显式修订"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        },
+        {
+          "ref_id": "S-DEV-07-01",
+          "role": "original_source",
+          "source_id": "S-DEV-07-01",
+          "scope": {
+            "object": "库存箱-history_text_episode-1",
+            "attribute": "user_name",
+            "time": [
+              "2026-01-01T08:00:00Z",
+              "2026-01-02T08:00:00Z"
+            ],
+            "unit": "not_applicable",
+            "conditions": "原文字与显式修订"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        }
+      ],
+      "source_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-q11-decision-v0.1.md",
+          "section": "分区、样本量和问题单位"
+        },
+        {
+          "path": "docs/architecture/tool-observation-learning-q08-decision-v0.1.md",
+          "section": "未来验收题面"
+        }
+      ]
+    },
+    {
+      "case_id": "DEV-07-02",
+      "partition": "DEV",
+      "category": "history_text_episode",
+      "public_synthetic": true,
+      "source_cluster": "DEV-FAMILY-history_text_episode",
+      "template_family": "TL-DEV-history_text_episode-v1",
+      "permanent_formal_exclusion": true,
+      "learning_input": {
+        "source_id": "S-DEV-07-02",
+        "observation": "用户在2026-01-01T08:00:00Z说“水槽-history_text_episode-2我叫它小青”；在2026-01-02T08:00:00Z显式更正为“现在称小蓝”。这是用户命名文字，不是工具读数。",
+        "baseline": [],
+        "scope": {
+          "object": "水槽-history_text_episode-2",
+          "attribute": "user_name",
+          "time": [
+            "2026-01-01T08:00:00Z",
+            "2026-01-02T08:00:00Z"
+          ],
+          "unit": "not_applicable",
+          "conditions": "原文字与显式修订"
+        },
+        "source_permissions": {
+          "reader": "isolated-dev-agent",
+          "recipient": "isolated-dev-model",
+          "purposes": [
+            "learn",
+            "evaluate",
+            "verify_source",
+            "recall_experience",
+            "recall_episode"
+          ],
+          "external_actions_allowed": false
+        },
+        "tool_version": "synthetic-readonly-v1",
+        "events": [],
+        "content_policy": "text_revision"
+      },
+      "query_input": [
+        {
+          "query_id": "DEV-07-02:same",
+          "kind": "same_observation",
+          "text": "这次材料实际记录了什么？",
+          "purpose": "verify_source",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-07-02:new",
+          "kind": "new_question",
+          "text": "按用户目前文字修订，水槽-history_text_episode-2叫什么，早先叫什么？",
+          "purpose": "recall_episode",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-07-02:boundary",
+          "kind": "boundary_unknown",
+          "text": "能把这段文字当作外部实物颜色已核实改变的证据吗？",
+          "purpose": "evaluate",
+          "k": 5
+        }
+      ],
+      "developer_labels": {
+        "visibility": "public_development_only",
+        "author": "development_agent",
+        "independent_review": false,
+        "correct_endpoint": "m04_text_revision_with_history",
+        "answers": {
+          "DEV-07-02:same": "保留原话小青与后续更正小蓝，各带时间和来源",
+          "DEV-07-02:new": "目前称小蓝，早先称小青；明确是用户的命名陈述及修订。",
+          "DEV-07-02:boundary": "不能；命名不证明颜色或外部状态变化。"
+        },
+        "eligible_relevant_sets": {
+          "DEV-07-02:same": [
+            "S-DEV-07-02"
+          ],
+          "DEV-07-02:new": [
+            "DEV-07-02:memory:old",
+            "DEV-07-02:memory:current"
+          ],
+          "DEV-07-02:boundary": [
+            "DEV-07-02:memory:old",
+            "DEV-07-02:memory:current"
+          ]
+        },
+        "claim_support_rule": "仅支持给定来源、时间、对象及条件，不推出现实已核实或普遍规律。",
+        "major_errors": [
+          "把S-DEV-07-02的有限报告改写为此刻现实必然为真",
+          "可以；命名不证明颜色或外部状态变化。"
+        ],
+        "required_limitations": [
+          "原文字与显式修订",
+          "保持来源与历史/当前资格区分"
+        ]
+      },
+      "metric_ids": [
+        "TL01",
+        "TL02",
+        "TL03",
+        "TL04",
+        "TL05",
+        "TL06",
+        "TL07",
+        "TL15",
+        "TL16"
+      ],
+      "fixture_status": "planned",
+      "run_status": "not_run",
+      "actual_trace": null,
+      "actual_result": null,
+      "expected_reference_catalog": [
+        {
+          "ref_id": "DEV-07-02:memory:current",
+          "role": "expected_eligible_content_or_text_memory",
+          "source_id": "S-DEV-07-02",
+          "scope": {
+            "object": "水槽-history_text_episode-2",
+            "attribute": "user_name",
+            "time": [
+              "2026-01-01T08:00:00Z",
+              "2026-01-02T08:00:00Z"
+            ],
+            "unit": "not_applicable",
+            "conditions": "原文字与显式修订"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        },
+        {
+          "ref_id": "DEV-07-02:memory:old",
+          "role": "expected_eligible_content_or_text_memory",
+          "source_id": "S-DEV-07-02",
+          "scope": {
+            "object": "水槽-history_text_episode-2",
+            "attribute": "user_name",
+            "time": [
+              "2026-01-01T08:00:00Z",
+              "2026-01-02T08:00:00Z"
+            ],
+            "unit": "not_applicable",
+            "conditions": "原文字与显式修订"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        },
+        {
+          "ref_id": "S-DEV-07-02",
+          "role": "original_source",
+          "source_id": "S-DEV-07-02",
+          "scope": {
+            "object": "水槽-history_text_episode-2",
+            "attribute": "user_name",
+            "time": [
+              "2026-01-01T08:00:00Z",
+              "2026-01-02T08:00:00Z"
+            ],
+            "unit": "not_applicable",
+            "conditions": "原文字与显式修订"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        }
+      ],
+      "source_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-q11-decision-v0.1.md",
+          "section": "分区、样本量和问题单位"
+        },
+        {
+          "path": "docs/architecture/tool-observation-learning-q08-decision-v0.1.md",
+          "section": "未来验收题面"
+        }
+      ]
+    },
+    {
+      "case_id": "DEV-07-03",
+      "partition": "DEV",
+      "category": "history_text_episode",
+      "public_synthetic": true,
+      "source_cluster": "DEV-FAMILY-history_text_episode",
+      "template_family": "TL-DEV-history_text_episode-v1",
+      "permanent_formal_exclusion": true,
+      "learning_input": {
+        "source_id": "S-DEV-07-03",
+        "observation": "用户在2026-01-01T08:00:00Z说“温室-history_text_episode-3我叫它小青”；在2026-01-02T08:00:00Z显式更正为“现在称小蓝”。这是用户命名文字，不是工具读数。",
+        "baseline": [],
+        "scope": {
+          "object": "温室-history_text_episode-3",
+          "attribute": "user_name",
+          "time": [
+            "2026-01-01T08:00:00Z",
+            "2026-01-02T08:00:00Z"
+          ],
+          "unit": "not_applicable",
+          "conditions": "原文字与显式修订"
+        },
+        "source_permissions": {
+          "reader": "isolated-dev-agent",
+          "recipient": "isolated-dev-model",
+          "purposes": [
+            "learn",
+            "evaluate",
+            "verify_source",
+            "recall_experience",
+            "recall_episode"
+          ],
+          "external_actions_allowed": false
+        },
+        "tool_version": "synthetic-readonly-v1",
+        "events": [],
+        "content_policy": "text_revision"
+      },
+      "query_input": [
+        {
+          "query_id": "DEV-07-03:same",
+          "kind": "same_observation",
+          "text": "这次材料实际记录了什么？",
+          "purpose": "verify_source",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-07-03:new",
+          "kind": "new_question",
+          "text": "按用户目前文字修订，温室-history_text_episode-3叫什么，早先叫什么？",
+          "purpose": "recall_episode",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-07-03:boundary",
+          "kind": "boundary_unknown",
+          "text": "能把这段文字当作外部实物颜色已核实改变的证据吗？",
+          "purpose": "evaluate",
+          "k": 5
+        }
+      ],
+      "developer_labels": {
+        "visibility": "public_development_only",
+        "author": "development_agent",
+        "independent_review": false,
+        "correct_endpoint": "m04_text_revision_with_history",
+        "answers": {
+          "DEV-07-03:same": "保留原话小青与后续更正小蓝，各带时间和来源",
+          "DEV-07-03:new": "目前称小蓝，早先称小青；明确是用户的命名陈述及修订。",
+          "DEV-07-03:boundary": "不能；命名不证明颜色或外部状态变化。"
+        },
+        "eligible_relevant_sets": {
+          "DEV-07-03:same": [
+            "S-DEV-07-03"
+          ],
+          "DEV-07-03:new": [
+            "DEV-07-03:memory:old",
+            "DEV-07-03:memory:current"
+          ],
+          "DEV-07-03:boundary": [
+            "DEV-07-03:memory:old",
+            "DEV-07-03:memory:current"
+          ]
+        },
+        "claim_support_rule": "仅支持给定来源、时间、对象及条件，不推出现实已核实或普遍规律。",
+        "major_errors": [
+          "把S-DEV-07-03的有限报告改写为此刻现实必然为真",
+          "可以；命名不证明颜色或外部状态变化。"
+        ],
+        "required_limitations": [
+          "原文字与显式修订",
+          "保持来源与历史/当前资格区分"
+        ]
+      },
+      "metric_ids": [
+        "TL01",
+        "TL02",
+        "TL03",
+        "TL04",
+        "TL05",
+        "TL06",
+        "TL07",
+        "TL15",
+        "TL16"
+      ],
+      "fixture_status": "planned",
+      "run_status": "not_run",
+      "actual_trace": null,
+      "actual_result": null,
+      "expected_reference_catalog": [
+        {
+          "ref_id": "DEV-07-03:memory:current",
+          "role": "expected_eligible_content_or_text_memory",
+          "source_id": "S-DEV-07-03",
+          "scope": {
+            "object": "温室-history_text_episode-3",
+            "attribute": "user_name",
+            "time": [
+              "2026-01-01T08:00:00Z",
+              "2026-01-02T08:00:00Z"
+            ],
+            "unit": "not_applicable",
+            "conditions": "原文字与显式修订"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        },
+        {
+          "ref_id": "DEV-07-03:memory:old",
+          "role": "expected_eligible_content_or_text_memory",
+          "source_id": "S-DEV-07-03",
+          "scope": {
+            "object": "温室-history_text_episode-3",
+            "attribute": "user_name",
+            "time": [
+              "2026-01-01T08:00:00Z",
+              "2026-01-02T08:00:00Z"
+            ],
+            "unit": "not_applicable",
+            "conditions": "原文字与显式修订"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        },
+        {
+          "ref_id": "S-DEV-07-03",
+          "role": "original_source",
+          "source_id": "S-DEV-07-03",
+          "scope": {
+            "object": "温室-history_text_episode-3",
+            "attribute": "user_name",
+            "time": [
+              "2026-01-01T08:00:00Z",
+              "2026-01-02T08:00:00Z"
+            ],
+            "unit": "not_applicable",
+            "conditions": "原文字与显式修订"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        }
+      ],
+      "source_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-q11-decision-v0.1.md",
+          "section": "分区、样本量和问题单位"
+        },
+        {
+          "path": "docs/architecture/tool-observation-learning-q08-decision-v0.1.md",
+          "section": "未来验收题面"
+        }
+      ]
+    },
+    {
+      "case_id": "DEV-08-01",
+      "partition": "DEV",
+      "category": "irrelevant_retrieval",
+      "public_synthetic": true,
+      "source_cluster": "DEV-FAMILY-irrelevant_retrieval",
+      "template_family": "TL-DEV-irrelevant_retrieval-v1",
+      "permanent_formal_exclusion": true,
+      "learning_input": {
+        "source_id": "S-DEV-08-01",
+        "observation": "S-DEV-08-01在2026-01-02T08:00:00Z报告库存箱-irrelevant_retrieval-1读数10件；无任何关于北站月票价格的记录。",
+        "baseline": [],
+        "scope": {
+          "object": "库存箱-irrelevant_retrieval-1",
+          "attribute": "reading",
+          "time": "2026-01-02T08:00:00Z",
+          "unit": "件",
+          "conditions": "与价格查询无关"
+        },
+        "source_permissions": {
+          "reader": "isolated-dev-agent",
+          "recipient": "isolated-dev-model",
+          "purposes": [
+            "learn",
+            "evaluate",
+            "verify_source",
+            "recall_experience",
+            "recall_episode"
+          ],
+          "external_actions_allowed": false
+        },
+        "tool_version": "synthetic-readonly-v1",
+        "events": [],
+        "content_policy": "source_report"
+      },
+      "query_input": [
+        {
+          "query_id": "DEV-08-01:same",
+          "kind": "same_observation",
+          "text": "这次材料实际记录了什么？",
+          "purpose": "verify_source",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-08-01:new",
+          "kind": "new_question",
+          "text": "北站1号月票价格是多少？",
+          "purpose": "recall_experience",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-08-01:boundary",
+          "kind": "boundary_unknown",
+          "text": "可因这条读数最近保存而把它当作月票价格吗？",
+          "purpose": "evaluate",
+          "k": 5
+        }
+      ],
+      "developer_labels": {
+        "visibility": "public_development_only",
+        "author": "development_agent",
+        "independent_review": false,
+        "correct_endpoint": "empty_relevant_set_unknown",
+        "answers": {
+          "DEV-08-01:same": "S-DEV-08-01报告的库存箱-irrelevant_retrieval-1读数是10件",
+          "DEV-08-01:new": "没有合格相关记忆，价格未知；不返回库存/水槽/温室读数填答案。",
+          "DEV-08-01:boundary": "不能；近期不等于相关，事实检索可返回空。"
+        },
+        "eligible_relevant_sets": {
+          "DEV-08-01:same": [
+            "S-DEV-08-01"
+          ],
+          "DEV-08-01:new": [],
+          "DEV-08-01:boundary": []
+        },
+        "claim_support_rule": "仅支持给定来源、时间、对象及条件，不推出现实已核实或普遍规律。",
+        "major_errors": [
+          "把S-DEV-08-01的有限报告改写为此刻现实必然为真",
+          "可以；近期不等于相关，事实检索可返回空。"
+        ],
+        "required_limitations": [
+          "与价格查询无关",
+          "保持来源与历史/当前资格区分"
+        ]
+      },
+      "metric_ids": [
+        "TL01",
+        "TL02",
+        "TL03",
+        "TL04",
+        "TL05",
+        "TL06",
+        "TL07",
+        "TL15",
+        "TL16"
+      ],
+      "fixture_status": "planned",
+      "run_status": "not_run",
+      "actual_trace": null,
+      "actual_result": null,
+      "expected_reference_catalog": [
+        {
+          "ref_id": "S-DEV-08-01",
+          "role": "original_source",
+          "source_id": "S-DEV-08-01",
+          "scope": {
+            "object": "库存箱-irrelevant_retrieval-1",
+            "attribute": "reading",
+            "time": "2026-01-02T08:00:00Z",
+            "unit": "件",
+            "conditions": "与价格查询无关"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        }
+      ],
+      "source_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-q11-decision-v0.1.md",
+          "section": "分区、样本量和问题单位"
+        },
+        {
+          "path": "docs/architecture/tool-observation-learning-q08-decision-v0.1.md",
+          "section": "未来验收题面"
+        }
+      ]
+    },
+    {
+      "case_id": "DEV-08-02",
+      "partition": "DEV",
+      "category": "irrelevant_retrieval",
+      "public_synthetic": true,
+      "source_cluster": "DEV-FAMILY-irrelevant_retrieval",
+      "template_family": "TL-DEV-irrelevant_retrieval-v1",
+      "permanent_formal_exclusion": true,
+      "learning_input": {
+        "source_id": "S-DEV-08-02",
+        "observation": "S-DEV-08-02在2026-01-02T08:00:00Z报告水槽-irrelevant_retrieval-2读数12升；无任何关于北站月票价格的记录。",
+        "baseline": [],
+        "scope": {
+          "object": "水槽-irrelevant_retrieval-2",
+          "attribute": "reading",
+          "time": "2026-01-02T08:00:00Z",
+          "unit": "升",
+          "conditions": "与价格查询无关"
+        },
+        "source_permissions": {
+          "reader": "isolated-dev-agent",
+          "recipient": "isolated-dev-model",
+          "purposes": [
+            "learn",
+            "evaluate",
+            "verify_source",
+            "recall_experience",
+            "recall_episode"
+          ],
+          "external_actions_allowed": false
+        },
+        "tool_version": "synthetic-readonly-v1",
+        "events": [],
+        "content_policy": "source_report"
+      },
+      "query_input": [
+        {
+          "query_id": "DEV-08-02:same",
+          "kind": "same_observation",
+          "text": "这次材料实际记录了什么？",
+          "purpose": "verify_source",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-08-02:new",
+          "kind": "new_question",
+          "text": "北站2号月票价格是多少？",
+          "purpose": "recall_experience",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-08-02:boundary",
+          "kind": "boundary_unknown",
+          "text": "可因这条读数最近保存而把它当作月票价格吗？",
+          "purpose": "evaluate",
+          "k": 5
+        }
+      ],
+      "developer_labels": {
+        "visibility": "public_development_only",
+        "author": "development_agent",
+        "independent_review": false,
+        "correct_endpoint": "empty_relevant_set_unknown",
+        "answers": {
+          "DEV-08-02:same": "S-DEV-08-02报告的水槽-irrelevant_retrieval-2读数是12升",
+          "DEV-08-02:new": "没有合格相关记忆，价格未知；不返回库存/水槽/温室读数填答案。",
+          "DEV-08-02:boundary": "不能；近期不等于相关，事实检索可返回空。"
+        },
+        "eligible_relevant_sets": {
+          "DEV-08-02:same": [
+            "S-DEV-08-02"
+          ],
+          "DEV-08-02:new": [],
+          "DEV-08-02:boundary": []
+        },
+        "claim_support_rule": "仅支持给定来源、时间、对象及条件，不推出现实已核实或普遍规律。",
+        "major_errors": [
+          "把S-DEV-08-02的有限报告改写为此刻现实必然为真",
+          "可以；近期不等于相关，事实检索可返回空。"
+        ],
+        "required_limitations": [
+          "与价格查询无关",
+          "保持来源与历史/当前资格区分"
+        ]
+      },
+      "metric_ids": [
+        "TL01",
+        "TL02",
+        "TL03",
+        "TL04",
+        "TL05",
+        "TL06",
+        "TL07",
+        "TL15",
+        "TL16"
+      ],
+      "fixture_status": "planned",
+      "run_status": "not_run",
+      "actual_trace": null,
+      "actual_result": null,
+      "expected_reference_catalog": [
+        {
+          "ref_id": "S-DEV-08-02",
+          "role": "original_source",
+          "source_id": "S-DEV-08-02",
+          "scope": {
+            "object": "水槽-irrelevant_retrieval-2",
+            "attribute": "reading",
+            "time": "2026-01-02T08:00:00Z",
+            "unit": "升",
+            "conditions": "与价格查询无关"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        }
+      ],
+      "source_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-q11-decision-v0.1.md",
+          "section": "分区、样本量和问题单位"
+        },
+        {
+          "path": "docs/architecture/tool-observation-learning-q08-decision-v0.1.md",
+          "section": "未来验收题面"
+        }
+      ]
+    },
+    {
+      "case_id": "DEV-08-03",
+      "partition": "DEV",
+      "category": "irrelevant_retrieval",
+      "public_synthetic": true,
+      "source_cluster": "DEV-FAMILY-irrelevant_retrieval",
+      "template_family": "TL-DEV-irrelevant_retrieval-v1",
+      "permanent_formal_exclusion": true,
+      "learning_input": {
+        "source_id": "S-DEV-08-03",
+        "observation": "S-DEV-08-03在2026-01-02T08:00:00Z报告温室-irrelevant_retrieval-3读数15摄氏度；无任何关于北站月票价格的记录。",
+        "baseline": [],
+        "scope": {
+          "object": "温室-irrelevant_retrieval-3",
+          "attribute": "reading",
+          "time": "2026-01-02T08:00:00Z",
+          "unit": "摄氏度",
+          "conditions": "与价格查询无关"
+        },
+        "source_permissions": {
+          "reader": "isolated-dev-agent",
+          "recipient": "isolated-dev-model",
+          "purposes": [
+            "learn",
+            "evaluate",
+            "verify_source",
+            "recall_experience",
+            "recall_episode"
+          ],
+          "external_actions_allowed": false
+        },
+        "tool_version": "synthetic-readonly-v1",
+        "events": [],
+        "content_policy": "source_report"
+      },
+      "query_input": [
+        {
+          "query_id": "DEV-08-03:same",
+          "kind": "same_observation",
+          "text": "这次材料实际记录了什么？",
+          "purpose": "verify_source",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-08-03:new",
+          "kind": "new_question",
+          "text": "北站3号月票价格是多少？",
+          "purpose": "recall_experience",
+          "k": 5
+        },
+        {
+          "query_id": "DEV-08-03:boundary",
+          "kind": "boundary_unknown",
+          "text": "可因这条读数最近保存而把它当作月票价格吗？",
+          "purpose": "evaluate",
+          "k": 5
+        }
+      ],
+      "developer_labels": {
+        "visibility": "public_development_only",
+        "author": "development_agent",
+        "independent_review": false,
+        "correct_endpoint": "empty_relevant_set_unknown",
+        "answers": {
+          "DEV-08-03:same": "S-DEV-08-03报告的温室-irrelevant_retrieval-3读数是15摄氏度",
+          "DEV-08-03:new": "没有合格相关记忆，价格未知；不返回库存/水槽/温室读数填答案。",
+          "DEV-08-03:boundary": "不能；近期不等于相关，事实检索可返回空。"
+        },
+        "eligible_relevant_sets": {
+          "DEV-08-03:same": [
+            "S-DEV-08-03"
+          ],
+          "DEV-08-03:new": [],
+          "DEV-08-03:boundary": []
+        },
+        "claim_support_rule": "仅支持给定来源、时间、对象及条件，不推出现实已核实或普遍规律。",
+        "major_errors": [
+          "把S-DEV-08-03的有限报告改写为此刻现实必然为真",
+          "可以；近期不等于相关，事实检索可返回空。"
+        ],
+        "required_limitations": [
+          "与价格查询无关",
+          "保持来源与历史/当前资格区分"
+        ]
+      },
+      "metric_ids": [
+        "TL01",
+        "TL02",
+        "TL03",
+        "TL04",
+        "TL05",
+        "TL06",
+        "TL07",
+        "TL15",
+        "TL16"
+      ],
+      "fixture_status": "planned",
+      "run_status": "not_run",
+      "actual_trace": null,
+      "actual_result": null,
+      "expected_reference_catalog": [
+        {
+          "ref_id": "S-DEV-08-03",
+          "role": "original_source",
+          "source_id": "S-DEV-08-03",
+          "scope": {
+            "object": "温室-irrelevant_retrieval-3",
+            "attribute": "reading",
+            "time": "2026-01-02T08:00:00Z",
+            "unit": "摄氏度",
+            "conditions": "与价格查询无关"
+          },
+          "fixture_status": "planned",
+          "not_actual_db_object": true
+        }
+      ],
+      "source_refs": [
+        {
+          "path": "docs/architecture/tool-observation-learning-q11-decision-v0.1.md",
+          "section": "分区、样本量和问题单位"
+        },
+        {
+          "path": "docs/architecture/tool-observation-learning-q08-decision-v0.1.md",
+          "section": "未来验收题面"
+        }
+      ]
+    }
+  ]
+}

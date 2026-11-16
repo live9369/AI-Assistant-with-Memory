@@ -1,0 +1,11 @@
+# Observer信任边界分层修复
+
+最小范围：精确DomainReadCollector类型、原on_row方法、当前meter和busy=True四重认证移入application.tool_learning_contexts；infrastructure meter不再引用应用模块，只通过私有ContextVar作用域保存应用已经核验的身份。无动态import绕过，无任意class注册表。
+
+应用入口保持原拒绝条件：未知collector、子类、伪造method属性、替换callback或meter不能获得shortcut。下层私有入口再次核对当前meter、callback身份和busy状态；每次logical_observer_required仍核对相同身份及closed状态。异常、嵌套和复制context关闭规则保留。
+
+私有Python入口属于受信内部组合协议，不是对外可调用的授权API，也不声明抵抗具有任意Python执行权限者篡改模块。任何用户数据、外部collector标签或public register函数都不能发放状态；原逐消费者资格、ACL、版本、scope和callback检查不变。
+
+诊断测试仅修夹具：真实TemporaryDirectory、Store.prepare和shared_read_boundary；先预热真实source_kind行，再安装观察器，在有效phase内消费iterator。原命中、图保留、超限拒绝、计数与峰值全部保留，并增加真实Row kind与无第二次物理SELECT断言。
+
+原1639项验收的1架构FAIL和1夹具ERROR封存为失败；117.55秒等计时标记为修复前源码实测，不冒称本次最终源码计时。先相关模块与PF06及源码／机制影响审计，不无因重跑完整长套。

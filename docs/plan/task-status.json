@@ -1,0 +1,151 @@
+{
+  "version": 1,
+  "scope": "design then implement then isolated verification; no deployment",
+  "tasks": [
+    {
+      "id": "T01",
+      "status": "complete",
+      "depends_on": [],
+      "design": "docs/architecture/development-t01-t04-design.md",
+      "evidence": "outputs/acceptance/development-t01.json",
+      "completion_scope": "冻结源码与部署基线、11项回归题面和任务门控",
+      "evidence_sha256": "6f010b34f93a57dc22882c43cb3c7877dcd85351af280d164e33e45d820947e6"
+    },
+    {
+      "id": "T02",
+      "status": "complete",
+      "depends_on": [
+        "T01"
+      ],
+      "design": "docs/architecture/development-t01-t04-design.md",
+      "evidence": "outputs/acceptance/development-t02.json",
+      "completion_scope": "显式有限文件目标、多轮独立请求、真实受限工具和等待继续",
+      "evidence_sha256": "3efee180542369fd55455644edd2d9a72f9b1560957ae629f151b588c05d257e"
+    },
+    {
+      "id": "T03",
+      "status": "complete",
+      "depends_on": [
+        "T02"
+      ],
+      "design": "docs/architecture/development-t01-t04-design.md",
+      "evidence": "outputs/acceptance/development-t03.json",
+      "completion_scope": "V3结构化认知候选、证据核验、修订及控制者确认",
+      "evidence_sha256": "d10e44b4eb9da5e28a7e9ea629295463a1caef3da03f05acd4754bee19ecb91c"
+    },
+    {
+      "id": "T04",
+      "status": "complete",
+      "depends_on": [
+        "T03"
+      ],
+      "design": "docs/architecture/development-t01-t04-design.md",
+      "evidence": "outputs/acceptance/development-t04.json",
+      "completion_scope": "控制者记忆反馈、隔离检索对照、审批采用、CAS及补偿回退",
+      "evidence_sha256": "fff7659d46356edb5cb42004fa9e45cc11f645a5e45a1dac2f4ffc19796623df"
+    },
+    {
+      "id": "T05",
+      "status": "complete",
+      "depends_on": [
+        "T04"
+      ],
+      "design": "docs/architecture/development-t05-design.md",
+      "evidence": "outputs/acceptance/development-t05.json",
+      "completion_scope": "显式目标竞争、资源与预算联动动机、停止门控、独立思考快照；V1工程策略",
+      "evidence_sha256": "33b91e7a3bfa60824e0f58cdb772c1d6dd6036ebcb7eeb009300b15509a562e6"
+    },
+    {
+      "id": "T06",
+      "status": "complete",
+      "depends_on": [
+        "T05"
+      ],
+      "design": "docs/architecture/development-t06-design.md",
+      "evidence": "outputs/acceptance/development-t06.json",
+      "completion_scope": "多特征行为评分、合法候选 softmax 与真实采样、完整审计及隔离验证；V1工程策略",
+      "evidence_sha256": "270e275888e5a15aa6e5d58f71462b1979ce3f604c6b6ee1e5e6871d7ebcdf41"
+    },
+    {
+      "id": "T07",
+      "status": "complete",
+      "depends_on": [
+        "T06"
+      ],
+      "design": "docs/architecture/development-t07-design.md",
+      "evidence": "outputs/acceptance/development-t07.json",
+      "completion_scope": "真实行为来源与控制者标注、跨情境小幅人格提案、留出评估、限速采用与补偿回退；V1工程策略",
+      "evidence_sha256": "15261a189be4bbda4ad43b85e1afbd476d1acb452729b8242a0552ea43142a4e"
+    },
+    {
+      "id": "T08",
+      "status": "complete",
+      "depends_on": [
+        "T07"
+      ],
+      "design": "docs/architecture/development-t08-design.md",
+      "evidence": "outputs/acceptance/development-t08.json",
+      "completion_scope": "情境习惯登记、核验行为与受控反馈、形成及抑制消退、真实概率联动与补偿回退；V1工程策略",
+      "evidence_sha256": "69335b14ce523a61ee080e305c0daf0a20d7b4ef0e005cc516748d0a3b41d962"
+    },
+    {
+      "id": "T09",
+      "status": "complete",
+      "depends_on": [
+        "T08"
+      ],
+      "design": "docs/architecture/development-t09-design.md",
+      "evidence": "outputs/acceptance/development-t09.json",
+      "completion_scope": "受控人物及别名消歧、条件信任与有证据修复、真实认知和概率接入；V1工程策略",
+      "evidence_sha256": "3dd83e410b94fe9ce4f0ed4f6f278e17c8ca8f723214ef420d4560dc25c7a94c"
+    },
+    {
+      "id": "T10",
+      "status": "complete",
+      "depends_on": [
+        "T09"
+      ],
+      "design": "docs/architecture/development-t10-design.md",
+      "evidence": "outputs/acceptance/development-t10.json",
+      "completion_scope": "来源约束摘录巩固、矛盾与留存、动态依赖权限、增量索引及万条检索质量和受管理擦除；V1工程策略",
+      "evidence_sha256": "4527d0f9e333625458e8e4e327c90d1e8a565f35f6f775ea60ebc81eb0ec33c7"
+    },
+    {
+      "id": "T11",
+      "status": "complete",
+      "depends_on": [
+        "T10"
+      ],
+      "design": "docs/architecture/development-t11-design.md",
+      "evidence": "outputs/acceptance/development-t11.json",
+      "completion_scope": "有限文件承诺提前执行与独立履约核验、声明兴趣排序、真实事实覆盖收益及既有休眠交接；V1工程策略",
+      "evidence_sha256": "e5314ee26d228ad756d23a66526d036c36e1ab8f4b4c857638933f7259f5e8cf"
+    },
+    {
+      "id": "T12",
+      "status": "complete",
+      "depends_on": [
+        "T11"
+      ],
+      "design": "docs/architecture/development-t12-design.md",
+      "evidence": "outputs/acceptance/development-t12.json",
+      "completion_scope": "分维度健康诊断、有预算的有限修复、带来源源码提案、独立候选验证和兼容回退；V1工程策略",
+      "evidence_sha256": "c8e872cc7f91aa007c944ac98f7c61049e19243620cbd725c7638204eb218f80"
+    },
+    {
+      "id": "T13",
+      "status": "validating",
+      "depends_on": [
+        "T12"
+      ],
+      "design": "docs/architecture/development-t13-design.md",
+      "evidence": "outputs/acceptance/development-t13.json",
+      "completion_scope": null,
+      "evidence_sha256": "9f1143aac7db6660812e9a9ea07118cd9f2b2d8cb2249e6a01a8c402cddf201a",
+      "verified_scope": "五项判据受控环境联合验收；短时验证与长期门槛分开，不冒称真实LLM或意识证明",
+      "remaining": [
+        "24-hour controlled run; real-model/open-environment evidence remains unverified"
+      ]
+    }
+  ]
+}

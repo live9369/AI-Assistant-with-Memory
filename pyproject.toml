@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=58", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-assistant-with-memory"
+dynamic = ["version"]
+description = "Experimental digital life with persistent identity, memory and independent LLM calls"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.9"
+dependencies = []
+
+[project.scripts]
+primordial00 = "primordial00.__main__:main"
+digital-life = "digital_life.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["primordial00*", "digital_life*"]
+
+[tool.setuptools.dynamic]
+version = {attr = "digital_life.__version__"}
+
+[tool.setuptools.package-data]
+digital_life = ["resources/*.sql", "resources/*.json", "web/*.html", "web/*.css", "web/*.js"]
+primordial00 = ["resources/*.sql"]

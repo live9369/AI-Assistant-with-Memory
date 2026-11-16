@@ -1,0 +1,1 @@
+{"schema_min":2,"schema_max":4,"engineering_version":"0.5.0","tool_learning_bridge":{"contract":"TL-SCHEMA4-BRIDGE-1","barrier_contract":"TL-LOOP-0.1","qualified_plane":"schema4-always","new_learning_default":false,"rollback":"same-current-database"},"capabilities":["TL-LOOP-0.1"]}

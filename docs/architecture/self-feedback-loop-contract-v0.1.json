@@ -1,0 +1,617 @@
+{
+  "contract_id": "AE-SELF-FEEDBACK-DRAFT-0.1",
+  "status": "design_only_not_implemented_not_calibrated",
+  "date": "2026-11-08",
+  "author": "Codex /root; no delegation",
+  "document": "docs/architecture/self-feedback-loop-design-v0.1.md",
+  "runtime_baseline_changed": false,
+  "execution_authorized_by_this_file": false,
+  "formal_instance_must_remain_locked": true,
+  "ownership": {
+    "intention": "Goals",
+    "personality_bias": "Personality via Goals only",
+    "observations": "Exploration and original tool receipts",
+    "measured_gain": "Learning",
+    "interest_projection_writer": "Learning",
+    "interest_projection_reader": "Goals",
+    "fact_acceptance": "existing owner gates unchanged"
+  },
+  "identity": {
+    "intent_id": "root goal_items.id",
+    "activity_goal": "subgoal via goal_relations plus binding event",
+    "question_id": "existing canonical ID plus resource_revision",
+    "terminal_intent_reopen": "new successor root; existing terminal not mutated",
+    "late_question_rebind": "new versioned relation; old learning attribution unchanged"
+  },
+  "records": {
+    "IndividualSnapshot": {
+      "required": [
+        "instance_id",
+        "snapshot_id",
+        "personality_revision",
+        "value_revision",
+        "need_refs",
+        "cognition_revision_refs",
+        "readable_source_refs",
+        "interest_revision",
+        "policy_epoch",
+        "configuration_generation",
+        "feature_extractor_version",
+        "missing_fields"
+      ],
+      "owner": "Goals",
+      "immutable": true
+    },
+    "IntentProposal": {
+      "required": [
+        "intent_id",
+        "origin",
+        "source_refs",
+        "intent_family",
+        "observation_method",
+        "context_bucket",
+        "features",
+        "success_rule",
+        "stop_rule",
+        "state"
+      ],
+      "owner": "Goals",
+      "immutable_revisions": true,
+      "origin": [
+        "self_directed",
+        "maintenance",
+        "external_task",
+        "commitment"
+      ],
+      "note": "External work and commitments keep their precedence; not sampled away by exploration."
+    },
+    "ChoiceDecision": {
+      "required": [
+        "decision_id",
+        "decision_key",
+        "snapshot_ref",
+        "candidate_ids",
+        "eligibility",
+        "score_components",
+        "probabilities",
+        "temperature",
+        "epsilon",
+        "random_seed",
+        "random_counter",
+        "selected_id",
+        "input_hash",
+        "interest_revision"
+      ],
+      "owner": "Goals+Decisions",
+      "immutable": true
+    },
+    "Expectation": {
+      "required": [
+        "expectation_id",
+        "intent_ref",
+        "question_ref",
+        "question_revision",
+        "activity_ref",
+        "prediction_distribution",
+        "verification_rule",
+        "baseline_revision",
+        "estimated_cost",
+        "measurer_version",
+        "source_refs",
+        "prepared_before_dispatch",
+        "measurability"
+      ],
+      "owner": "Cognition",
+      "immutable": true,
+      "nullable": [
+        "prediction_distribution"
+      ],
+      "measurability": [
+        "eligible_for_measurement",
+        "unknown"
+      ]
+    },
+    "LearningOpportunity": {
+      "required": [
+        "opportunity_id",
+        "expectation_ref",
+        "attempt_group_ref",
+        "original_result_refs",
+        "original_evidence_refs",
+        "resource_revision",
+        "exposure_key",
+        "state"
+      ],
+      "owner": "Learning",
+      "states": [
+        "pending",
+        "measured",
+        "unmeasurable"
+      ]
+    },
+    "LearningAssessment": {
+      "required": [
+        "assessment_id",
+        "assessment_revision",
+        "opportunity_ref",
+        "measurer_version",
+        "baseline_predictions_ref",
+        "candidate_predictions_ref",
+        "independent_labels_ref",
+        "measurement_conditions_ref",
+        "gain",
+        "gain_status",
+        "goal_progress",
+        "actual_cost",
+        "evidence_refs",
+        "update_target",
+        "eligibility",
+        "supersedes"
+      ],
+      "owner": "Learning",
+      "nullable": [
+        "gain",
+        "baseline_predictions_ref",
+        "candidate_predictions_ref",
+        "independent_labels_ref",
+        "supersedes"
+      ],
+      "gain_status": [
+        "positive",
+        "measured_zero",
+        "negative",
+        "unknown"
+      ],
+      "eligibility": [
+        "eligible",
+        "rejected",
+        "pending",
+        "invalidated",
+        "superseded"
+      ],
+      "gain_range": [
+        -1,
+        1
+      ]
+    },
+    "InterestCommit": {
+      "required": [
+        "commit_id",
+        "assessment_ref",
+        "cell",
+        "exposure_key",
+        "expected_revision",
+        "new_revision",
+        "contribution_weight",
+        "gain",
+        "source_dependency_refs",
+        "policy_generation",
+        "state"
+      ],
+      "owner": "Learning",
+      "states": [
+        "committed",
+        "invalidated"
+      ],
+      "note": "Only current valid contribution per cell/exposure; corrections replace, never add both."
+    }
+  },
+  "interfaces": [
+    {
+      "proposed_method": "Personality.intent_bias",
+      "existing_owner_path": "digital_life/application/services/personality.py",
+      "inputs": [
+        "profile_revision",
+        "context_features",
+        "candidate_features",
+        "mapping_version"
+      ],
+      "output": "BiasResult",
+      "implemented": false
+    },
+    {
+      "proposed_method": "Goals.propose_intents",
+      "existing_owner_path": "digital_life/application/services/goals.py",
+      "inputs": [
+        "snapshot",
+        "readable_sources",
+        "capabilities",
+        "unfinished_intents"
+      ],
+      "output": "IntentProposal[]",
+      "implemented": false
+    },
+    {
+      "proposed_method": "Goals.select_intent",
+      "existing_owner_path": "digital_life/application/services/goals.py",
+      "inputs": [
+        "candidates",
+        "hard_constraints",
+        "interest_revision",
+        "selection_policy",
+        "decision_key"
+      ],
+      "output": "ChoiceDecision",
+      "implemented": false
+    },
+    {
+      "proposed_method": "Cognition.prepare_expectation",
+      "existing_owner_path": "digital_life/application/services/cognition.py",
+      "inputs": [
+        "intent_ref",
+        "question_ref",
+        "prediction",
+        "verification_rule",
+        "baseline_revision"
+      ],
+      "output": "Expectation",
+      "implemented": false
+    },
+    {
+      "proposed_method": "Exploration.bind_intent",
+      "existing_owner_path": "digital_life/application/exploration.py",
+      "inputs": [
+        "intent_ref",
+        "activity_ref",
+        "question_ref",
+        "decision_ref"
+      ],
+      "output": "Binding",
+      "implemented": false
+    },
+    {
+      "proposed_method": "Learning.observe",
+      "existing_owner_path": "digital_life/application/services/learning.py",
+      "inputs": [
+        "expectation_ref",
+        "result_refs",
+        "exposure_key"
+      ],
+      "output": "LearningOpportunity",
+      "implemented": false
+    },
+    {
+      "proposed_method": "Learning.assess",
+      "existing_owner_path": "digital_life/application/services/learning.py",
+      "inputs": [
+        "opportunity",
+        "candidate_update",
+        "independent_measurement",
+        "measurer_version"
+      ],
+      "output": "LearningAssessment",
+      "implemented": false
+    },
+    {
+      "proposed_method": "Learning.commit_interest",
+      "existing_owner_path": "digital_life/application/services/learning.py",
+      "inputs": [
+        "assessment_ref",
+        "expected_interest_revision",
+        "policy_generation"
+      ],
+      "output": "InterestCommit",
+      "implemented": false
+    },
+    {
+      "proposed_method": "Learning.invalidate",
+      "existing_owner_path": "digital_life/application/services/learning.py",
+      "inputs": [
+        "assessment_or_source_ref",
+        "reason",
+        "expected_revision"
+      ],
+      "output": "InvalidationResult",
+      "implemented": false
+    },
+    {
+      "proposed_method": "Decisions.sample_once",
+      "existing_owner_path": "digital_life/application/services/decisions.py",
+      "inputs": [
+        "decision_key",
+        "distribution",
+        "seed",
+        "snapshot_hash"
+      ],
+      "output": "Selection",
+      "implemented": false
+    }
+  ],
+  "choice": {
+    "maximum_intent_candidates": 4,
+    "rest_option": true,
+    "rest_score": 0,
+    "trait_range": [
+      -1,
+      1
+    ],
+    "context_relevance_range": [
+      0,
+      1
+    ],
+    "missing_relevance": "no confident individual bias; missing marker retained",
+    "personality_projection": "clip(dot(W*(traits elementwise relevance),intent_features),-1,1)",
+    "mapping_W": "versioned, explicitly configured, fixed in V0.1; not empirical science constants",
+    "feature_channels": [
+      "new_information",
+      "verification",
+      "relationships",
+      "persistence"
+    ],
+    "score": "common_prior + personality_bias + value_alignment + current_need + learned_gain - expected_cost",
+    "signed_component_range": [
+      -1,
+      1
+    ],
+    "need_and_cost_range": [
+      0,
+      1
+    ],
+    "probability": "(1-epsilon)*softmax(score/temperature)+epsilon*uniform_eligible",
+    "temperature_domain": "finite > 0",
+    "epsilon_range": [
+      0,
+      0.1
+    ],
+    "hard_ineligible_probability": 0,
+    "no_eligible_behavior": "rest=1; create no model job",
+    "active_intent": "persistent until explicit transition, no redraw each thought",
+    "llm_expected_gain": "diagnostic_only"
+  },
+  "learning": {
+    "v0_1_scope": "knowledge/prediction gain plus bounded interest statistics; no automatic long-term trait or base-weight updates",
+    "first_measurer": "prediction_brier_v1",
+    "binary_brier": "(p-y)^2",
+    "categorical_brier": "0.5*sum((p_k-y_k)^2)",
+    "gain": "Brier_before - Brier_after",
+    "gain_range": [
+      -1,
+      1
+    ],
+    "unknown_gain": null,
+    "unknown_contributes": false,
+    "measured_zero_contributes": true,
+    "failed_tool_is_negative_gain": false,
+    "labels_independent_of_tested_output": true,
+    "labels_hidden_until_both_prediction_artifacts_sealed": true,
+    "measurement_model_calls_count_against_parent_budget": true,
+    "cell": [
+      "intent_family",
+      "observation_method",
+      "context_bucket",
+      "measurer_version"
+    ],
+    "classify_cell_before_outcome": true,
+    "Q": "(kappa*prior_mean + sum(w*gain))/(kappa+sum(w))",
+    "illustrative_prior_mean": 0,
+    "illustrative_kappa": 2,
+    "prior_status": "engineering starting assumption, not calibrated",
+    "qualified_weight": 1,
+    "unqualified_contributes": false,
+    "Q_is_success_probability": false,
+    "exposure_basis": [
+      "original_result_evidence",
+      "resource_revision",
+      "canonical_question",
+      "measurer_version",
+      "genuinely_distinct_check_batch"
+    ],
+    "later_revision": "replace active contribution, never accumulate superseded contribution",
+    "facts_and_memory_updates": "existing acceptance gates; interest commit does not accept facts"
+  },
+  "storage": {
+    "mechanism": "immutable runtime_events and artifacts, projection replay",
+    "new_sql_in_design_turn": false,
+    "event_source": "self-feedback",
+    "event_types": [
+      "self_feedback.context",
+      "self_feedback.intent_proposed",
+      "self_feedback.choice",
+      "self_feedback.expectation",
+      "self_feedback.opportunity",
+      "self_feedback.assessment",
+      "self_feedback.interest_committed",
+      "self_feedback.interest_invalidated"
+    ],
+    "event_key": "phase + stable decision/opportunity ID + revision",
+    "same_key_different_payload": "reject",
+    "interest_commit": "CAS expected revision inside coordinated transaction",
+    "lock_order": "dispatch gate before database transaction",
+    "io_in_write_transaction": false
+  },
+  "configuration": {
+    "self_feedback.enabled": false,
+    "auto_interest_updates": false,
+    "narrow_auto_authority": "future controller-granted temporary-instance scope: approved measurer, bounds, budget, generation; not implemented",
+    "long_term_personality_values_memory_authority": "unchanged",
+    "stop": "blocks new model/tool dispatch and interest commits; leaves pending audit data",
+    "formal_instance_execution": "forbidden by task; remains locked"
+  },
+  "model_route": {
+    "new_named_contract": "AE-SELF-FEEDBACK-DRAFT-0.1",
+    "response_wrapper": [
+      "contract_id",
+      "exploration_output",
+      "expectation_proposal"
+    ],
+    "exploration_output": "existing V2 validation",
+    "expectation_proposal": "separate strict source and distribution validation",
+    "old_routes": "explicit V1/V2/V3 and TaskLoop unchanged",
+    "new_integer_schema_reserved": false,
+    "unsupported_model": "reject new-mode negotiation, no silent legacy fallback"
+  },
+  "worked_example": {
+    "status": "arithmetic_only_not_behavior_data",
+    "temperature": 1,
+    "epsilon": 0,
+    "kappa": 2,
+    "prior_mean": 0,
+    "scores_before": {
+      "A": 0.4,
+      "B": 0.2,
+      "rest": 0
+    },
+    "measured_gain_A": -0.9,
+    "qualified_weight": 1,
+    "Q_A_after": -0.3,
+    "scores_after": {
+      "A": 0.1,
+      "B": 0.2,
+      "rest": 0
+    },
+    "personality_changes": false
+  },
+  "evaluation": {
+    "scenarios": [
+      {
+        "id": "SF01",
+        "name": "different personality",
+        "expected": "same context and history, different declared personality path changes distributions without changing evidence",
+        "status": "not_run"
+      },
+      {
+        "id": "SF02",
+        "name": "feedback changes next choice",
+        "expected": "same personality, measured feedback changes interest revision and distribution",
+        "status": "not_run"
+      },
+      {
+        "id": "SF03",
+        "name": "unknown",
+        "expected": "missing labels leave gain null and no numeric contribution",
+        "status": "not_run"
+      },
+      {
+        "id": "SF04",
+        "name": "zero",
+        "expected": "measured zero differs from unknown and updates sample count",
+        "status": "not_run"
+      },
+      {
+        "id": "SF05",
+        "name": "negative",
+        "expected": "verified degradation lowers only the appropriate cell estimate; rejected belief update may still yield method feedback",
+        "status": "not_run"
+      },
+      {
+        "id": "SF06",
+        "name": "duplicate",
+        "expected": "same original evidence rephrased or reused cannot add a contribution",
+        "status": "not_run"
+      },
+      {
+        "id": "SF07",
+        "name": "noise",
+        "expected": "large surprise without verified prediction improvement earns no progress",
+        "status": "not_run"
+      },
+      {
+        "id": "SF08",
+        "name": "delay",
+        "expected": "later labels create assessment revision with correct opportunity lineage",
+        "status": "not_run"
+      },
+      {
+        "id": "SF09",
+        "name": "supersede",
+        "expected": "new assessment replaces the previous active contribution",
+        "status": "not_run"
+      },
+      {
+        "id": "SF10",
+        "name": "revoke",
+        "expected": "withdraw source invalidates dependent contributions and rebuilds projection",
+        "status": "not_run"
+      },
+      {
+        "id": "SF11",
+        "name": "rollback",
+        "expected": "rebuild equals fold of remaining contributions",
+        "status": "not_run"
+      },
+      {
+        "id": "SF12",
+        "name": "restart",
+        "expected": "same decision key reuses selection and does not redraw or relearn",
+        "status": "not_run"
+      },
+      {
+        "id": "SF13",
+        "name": "CAS",
+        "expected": "concurrent interest commits do not lose updates",
+        "status": "not_run"
+      },
+      {
+        "id": "SF14",
+        "name": "stop",
+        "expected": "no new dispatch or interest commit after stop boundary",
+        "status": "not_run"
+      },
+      {
+        "id": "SF15",
+        "name": "budget",
+        "expected": "discovery and both measurement branches share total budget",
+        "status": "not_run"
+      },
+      {
+        "id": "SF16",
+        "name": "label leakage",
+        "expected": "both prediction artifacts sealed before labels become visible",
+        "status": "not_run"
+      },
+      {
+        "id": "SF17",
+        "name": "new resource",
+        "expected": "genuine source revision permits re-observation without conflating old exposure",
+        "status": "not_run"
+      },
+      {
+        "id": "SF18",
+        "name": "remove personality",
+        "expected": "ablation removes declared personality contribution only",
+        "status": "not_run"
+      },
+      {
+        "id": "SF19",
+        "name": "remove learning feedback",
+        "expected": "ablation stops experience-driven choice changes while leaving personality fixed",
+        "status": "not_run"
+      },
+      {
+        "id": "SF20",
+        "name": "held-out retention",
+        "expected": "improved new behavior must report old-task regressions",
+        "status": "not_run"
+      },
+      {
+        "id": "SF21",
+        "name": "rest",
+        "expected": "no eligible intent gives rest=1 and no model job",
+        "status": "not_run"
+      },
+      {
+        "id": "SF22",
+        "name": "legacy route",
+        "expected": "V1/V2/V3 and TaskLoop remain on their declared routes",
+        "status": "not_run"
+      }
+    ],
+    "existing_M01_M16_changed": false,
+    "behavior_thresholds": "must be preregistered before behavior runs; not supplied by this file",
+    "zero_tolerance_design_properties": [
+      "hard-ineligible selection",
+      "duplicate contribution",
+      "stop-after-dispatch",
+      "stop-after-interest-commit",
+      "stale CAS overwrite",
+      "label leakage",
+      "unrecorded redraw"
+    ]
+  },
+  "implementation_order": [
+    "shadow records and read projections",
+    "temporary-instance selection and observation linkage",
+    "independent measurement plus narrow interest update/reversal and new G1",
+    "frozen real pilot and personality/learning ablations"
+  ]
+}

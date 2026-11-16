@@ -1,0 +1,10 @@
+{
+  "action": {
+    "tool": "read_file",
+    "arguments": {"path": "source.txt"}
+  },
+  "cue": {
+    "source": "user",
+    "task_contains": "review"
+  }
+}

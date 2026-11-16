@@ -1,0 +1,7 @@
+{
+  "base_deployment": "REPLACE_WITH_CURRENT_DEPLOYMENT_ID",
+  "reason": "为隔离核验添加独立版本标记；仅示例，不代表功能修复",
+  "changes": {
+    "digital_life/maintenance_example.py": "VERSION_MARKER = 't12-example'\n"
+  }
+}

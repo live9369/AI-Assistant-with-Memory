@@ -1,0 +1,13 @@
+# query_only 与登记写证明的生命周期
+
+2026-11-11。先在隔离Store复现，再修连接监视器分类；不变更登记SQL、权限次数、caps、事务顺序或审批schema摘要。
+
+真实第一次登记得到issued/accepted/committed各1。query_only ON/OFF使实际SQLite schema_version与完整schema摘要不变，但旧monitor将schema_epoch从9增至11，固定审批因此永久终止；下一登记fallback，bind_insert实际抛出schema approval ended。更关键的是普通execution recall无条件读取PRAGMA query_only，旧分类同样使schema_epoch从9增至10，真实recall后第二登记也fallback。原始证据保存在continuation/query-only-lifetime-01。
+
+应将明确的query_only纯读视作无配置或schema变化；连接只读开关设置仍使配置generation、当前写窗口和材料缓存强失效，但不声称schema变更。真正DDL、未知及schema敏感PRAGMA继续结束旧schema审批，不重新审批或忽略实际变化。基础组件由独立agent修改。
+
+接入增加两个真实小端口：原Store第一次登记、ON/只读事务/OFF、第二次登记；以及ControllerMaterialReader.chat真实读取与engine._recall真实执行召回、第二次登记。均禁止模型，保留实际权限及原事务，要求第二次真正issued/accepted/committed而非fallback。ControllerMaterialReader内部audit仅提供qualify，不把其未支持的直接recall调用假称真实审计成功。
+
+## 修后结果
+
+基础43项通过后，接入12项全通过，0失败/错误/跳过，8.506696125秒，实际源码hash前后稳定。原同库端口前后JSON均保留，两类流程第二次均真实issued/accepted/committed，fallback为0。没有放宽schema审批或重新绑定失效schema。证据after-integration-result.json SHA256 d29e0b88f2320f7bcc4579d1afaf7b6b75feb9acf4a8e118536400d9b832a19d。新增测试计数使后续完整命名范围394、focused174；这里只实际复验接入12与独立基础43，不能宣称新完整394已通过。
