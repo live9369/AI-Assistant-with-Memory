@@ -25,6 +25,13 @@ class GoalRegulationTests(unittest.TestCase):
         self.tmp = tempfile.TemporaryDirectory(); self.addCleanup(self.tmp.cleanup)
         self.root = Path(self.tmp.name)/'isolated'
         self.s = Store.prepare(self.root); self.addCleanup(self.s.close)
+        # These cases exercise finite-resource regulation, not the new default
+        # unlimited chat mode. Select bounded operation explicitly.
+        from digital_life.application.lifecycle.control_plane import Control
+        from digital_life.application.monitoring.instance_settings import InstanceSettings
+        control=Control(self.root,self.s.instance_id);control.close()
+        settings=InstanceSettings(self.s);section=next(x for x in settings.read()['sections'] if x['id']=='budget')
+        settings.save('budget',dict(values=dict(section['values'],budget_enabled=True),expected_revision=section['revision'],reason='bounded regulation fixture',confirmed=True))
         self.engine = Engine(self.s); self.g = GoalRegulation(self.s); self.actor = self.s.config()['controller']
 
     def unlock(self):

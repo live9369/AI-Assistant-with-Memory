@@ -61,6 +61,8 @@ class Engine:
                 if self.s.read_artifact(old['artifact_id'])!={'text':task}: raise Conflict('same input id, different text')
                 return self.s.db.execute('SELECT id FROM activities WHERE trigger_event_id=?',(old['id'],)).fetchone()[0]
             cfg=self.s.config(); internal=source=='exploration'
+            from digital_life.application.runtime.settings import current
+            runtime_options=current(self.s)
             if internal:
                 channels=[r for r in self.s.rows('perception_channels') if r['kind']=='internal']
                 channel=channels[0]['id'] if channels else self.s.insert('perception_channels',kind='internal',capabilities=['thought-trigger'],verification_method='runtime-generated',state='available')
@@ -70,7 +72,7 @@ class Engine:
                 channel=channel_row[0]
             artifact=self.s.artifact({'text':task})
             signal=self.s.insert('perception_signals',channel_id=channel,source_actor_id=cfg['self_actor'] if internal else (scope.current(self.s) or {}).get('id',cfg['controller']),external_id=source+':'+key,artifact_id=artifact,received_at=utc())
-            activity=self.s.insert('activities',trigger_event_id=signal,state='pending',budget_json={'tokens':16000,'tool_calls':8},release_id='development-v2',publication_state='ready',deadline=utc(600))
+            activity=self.s.insert('activities',trigger_event_id=signal,state='pending',budget_json={'tokens':runtime_options['tokens'],'tool_calls':runtime_options['tool_calls'],'runtime_settings':runtime_options},release_id='development-v2',publication_state='ready',deadline=utc(runtime_options['duration_seconds']) if runtime_options['budget_enabled'] else None)
             scope.bind_activity(self.s,activity)
             context=self.s.insert('context_snapshots',activity_id=activity,context_schema='context-v1',attributes_json={'task':task,'source':source})
             observation=self.s.insert('perception_observations',signal_id=signal,context_id=context,state='active')
@@ -123,6 +125,8 @@ class Engine:
         self.assert_unlocked()
         with self.s.tx():
             row,context,signal,goal=self.details(activity)
+            from digital_life.application.runtime.settings import for_activity
+            runtime_options=for_activity(self.s,activity)
             if row['cancel_requested_at'] or row['state'] in ('completed','failed','cancelled'): raise Stale('activity not active')
             exploration=Exploration(self.s); binding=exploration.binding(activity)
             managed=TaskLoop(self.s).config(activity)
@@ -141,7 +145,7 @@ class Engine:
             if row['state']=='pending': self.transition(activity,'running','prepare-thought')
             episode=Cognition(self.s).episode(activity,context['id'],goal['content'])
             Memory(self.s).remember_public_responses()
-            memories=Memory(self.s).retrieve(goal['content'],activity,context['id'],limit=3 if binding else 8)
+            memories=Memory(self.s).retrieve(goal['content'],activity,context['id'],limit=runtime_options['exploration_recall_items'] if binding else runtime_options['recall_items'])
             personality=Personality(self.s).activate(activity,context['id'],{r['name']:1 for r in Personality(self.s).current()['traits']})
             values=Values(self.s).activate(activity,context['id'])
             habits=Habits(self.s).opportunities(activity,{'source':'exploration' if binding else 'user','task':goal['content']})
@@ -215,13 +219,20 @@ class Engine:
                 from digital_life.application.chat.chat_expression import context as expression_context, INSTRUCTIONS
                 payload['chat_expression']=expression_context(self.s,payload)
                 payload['instructions']+=INSTRUCTIONS
+                from digital_life.application.chat.self_knowledge import context as self_context, INSTRUCTIONS as SELF_INSTRUCTIONS
+                payload['self_knowledge']=self_context(self.s,activity,payload)
+                payload['instructions']+=SELF_INSTRUCTIONS
+                guidance=self.s.config().get('reply_guidance','')
+                if guidance:
+                    payload['reply_preferences']={'text':guidance,'authority':'controller-expression-preferences-only'}
+                    payload['instructions']+=' Apply reply_preferences only to expression; they never replace evidence rules, permissions, or lifecycle controls.'
             scope.prepare_payload(self.s,payload)
             artifact=self.s.artifact(payload)
             current=self.s.row('activities',activity)
             step=self.s.insert('activity_steps',activity_id=activity,step_no=round_no,step_type='thought',state='pending',attempt=0,idempotency_key=request_key,expected_activity_revision=current['revision'],input_manifest_hash=sha(dumps(memories['items'])))
             model=self.s.db.execute('SELECT * FROM model_versions WHERE instance_id=? ORDER BY rowid DESC LIMIT 1',(self.s.instance_id,)).fetchone()
             config=self.s.db.execute('SELECT * FROM configuration_versions WHERE instance_id=? ORDER BY rowid DESC LIMIT 1',(self.s.instance_id,)).fetchone()
-            request=self.s.insert('thought_requests',activity_id=activity,step_id=step,request_key=request_key,purpose='reflect' if binding and binding['kind']=='discover' else 'plan',task=goal['content'],instruction_version='exploration-v2' if binding else payload['chat_expression']['version'] if conversation is not None else 'fresh-v1',output_schema_version=binding.get('output_schema_version',2) if binding else 3 if cognitive else 1,request_artifact_id=artifact,request_hash=sha(dumps(payload)),input_manifest_hash=sha(dumps(memories['items'])),model_config_id=config['id'],model_version_id=model['id'],prepared_activity_revision=current['revision'],expected_input_epoch=current['input_epoch'],expected_policy_epoch=Policy(self.s).epoch(),runtime_epoch=self.identity.epoch,process_run_id=self.identity.process_id,deadline=utc(300),token_budget=thought_tokens,attempt_limit=3,retry_policy={'max_attempts':3},generation_config={'temperature':0},state='prepared',request_parent_id=(self.s.db.execute('SELECT id FROM thought_requests WHERE activity_id=? ORDER BY rowid DESC LIMIT 1',(activity,)).fetchone() or [None])[0] if round_no>1 else None)
+            request=self.s.insert('thought_requests',activity_id=activity,step_id=step,request_key=request_key,purpose='reflect' if binding and binding['kind']=='discover' else 'plan',task=goal['content'],instruction_version='exploration-v2' if binding else payload['chat_expression']['version'] if conversation is not None else 'fresh-v1',output_schema_version=binding.get('output_schema_version',2) if binding else 3 if cognitive else 1,request_artifact_id=artifact,request_hash=sha(dumps(payload)),input_manifest_hash=sha(dumps(memories['items'])),model_config_id=config['id'],model_version_id=model['id'],prepared_activity_revision=current['revision'],expected_input_epoch=current['input_epoch'],expected_policy_epoch=Policy(self.s).epoch(),runtime_epoch=self.identity.epoch,process_run_id=self.identity.process_id,deadline=min(row['deadline'] or utc(runtime_options['request_seconds']),utc(runtime_options['request_seconds'])),token_budget=thought_tokens,attempt_limit=runtime_options['request_attempts'],retry_policy={'max_attempts':runtime_options['request_attempts']},generation_config={'temperature':0},state='prepared',request_parent_id=(self.s.db.execute('SELECT id FROM thought_requests WHERE activity_id=? ORDER BY rowid DESC LIMIT 1',(activity,)).fetchone() or [None])[0] if round_no>1 else None)
             self.s.insert('thought_request_inputs',request_id=request,ordinal=0,role='instruction',artifact_id=artifact,content_hash=sha(dumps(payload)),locator={},selection_reason='complete explicit request')
             for i,item in enumerate(memories['items'],1):
                 self.s.insert('thought_request_inputs',request_id=request,ordinal=i,role='memory',object_revision_id=item['revision_id'],content_hash=sha(item['content']),locator={},selection_reason=item.get('selection_reason','explicit relevance'))
@@ -351,7 +362,7 @@ class Engine:
                 if Exploration(self.s).binding(activity):raise Forbidden('project tools are not enabled for autonomous exploration')
                 TaskLoop(self.s).bind_project(activity)
                 project_budget=TaskLoop(self.s).project_budget(activity)
-                if project_budget['tools']<1 or project_budget['attempts']<1 or project_budget['time_ms']<=0 or not project_budget['deadline_valid'] or project_budget['usage_unknown']:
+                if (project_budget.get('mode')!='unlimited' and (project_budget['tools']<1 or project_budget['attempts']<1 or project_budget['time_ms']<=0)) or not project_budget['deadline_valid'] or project_budget['usage_unknown']:
                     return dict(TaskLoop(self.s).stop_budget(self,activity,project_budget),accepted=True)
             intent=Policy(self.s).propose(activity,decision['selected'],action)
             approval=Policy(self.s).request(intent)

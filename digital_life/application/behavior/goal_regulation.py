@@ -100,11 +100,14 @@ class GoalRegulation:
             actual=ActivityResourceBudget(self.s).check_activity(activity)
             tokens=actual['remaining']['tokens'];attempts=actual['remaining']['attempts']
             reasons.extend(reason for reason in actual['block_reasons'] if reason!='attempts_exhausted')
-        if account:
+        from digital_life.application.runtime.scheduling import Budget
+        unlimited=Budget(self.s).unlimited(activity) if account else False
+        if account and not unlimited:
             elapsed = (datetime.fromisoformat(utc().replace('Z', '+00:00')) - datetime.fromisoformat(row['recorded_at'].replace('Z', '+00:00'))).total_seconds()*1000
             if elapsed >= account['time_limit_ms']: reasons.append('time_budget_exhausted')
-        if not account or tokens < required_tokens or attempts < required_attempts: reasons.append('budget_exhausted')
+        if not account or (not unlimited and (tokens < required_tokens or attempts < required_attempts)): reasons.append('budget_exhausted')
         budget_fraction = max(0, min(tokens / max(1, account['token_limit']), attempts / max(1, account['attempt_limit']))) if account else 0
+        if unlimited:tokens=None;attempts=None;budget_fraction=1.0
         profile = max(self.s.rows('value_profiles'), key=lambda r: r['version'])
         weights = [dict(r) for r in self.s.db.execute('SELECT id,dimension_id,weight FROM value_weights WHERE profile_id=?', (profile['id'],))]
         alignment = sum(w['weight'] * f['alignment'].get(w['dimension_id'], .5) for w in weights)
@@ -114,7 +117,7 @@ class GoalRegulation:
         return {'strategy': 'goal-regulation-v1', 'configuration': cfg['event_id'], 'activity': activity, 'goal': goal['id'] if goal else None, 'eligible': not reasons, 'reasons': reasons,
                 'features': f, 'feature_source': features['event_id'] if features else 'engineering-defaults-v1', 'states': {n: states.get(n) for n in required},
                 'value_profile': profile['id'], 'value_weights': weights, 'factors': factors, 'score': score,
-                'budget': {'remaining_reserved_tokens': tokens, 'remaining_attempts': attempts, 'fraction': budget_fraction},
+                'budget': {'mode':'unlimited' if unlimited else 'limited','remaining_reserved_tokens': tokens, 'remaining_attempts': attempts, 'fraction': budget_fraction},
                 'intensity': score*budget_fraction if not reasons else 0, 'persistence': budget_fraction, 'satiation': 0}
 
     def refresh(self, force=False):
@@ -131,7 +134,7 @@ class GoalRegulation:
         if stage in ('claim','context') and required_tokens==4096:
             from digital_life.application.autonomy.task_loop import TaskLoop
             budget=TaskLoop(self.s).project_budget(activity)
-            if budget is not None:required_tokens=max(1024,min(4096,budget['tokens']))
+            if budget is not None and budget.get('mode')!='unlimited':required_tokens=max(1024,min(4096,budget['tokens']))
         probe=CurrentHealthProbe(self.s,activity,{'kind':'activities','id':activity},completion_freshness=True)
         result=self.assess(activity,required_tokens=required_tokens,required_attempts=required_attempts,current_health=probe)
         with self.s.tx():

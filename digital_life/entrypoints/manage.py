@@ -6,6 +6,7 @@ import shutil
 import subprocess
 import sys
 import uuid
+from digital_life.domain.contracts import ContractError
 
 PROJECT=Path(__file__).resolve().parents[2]
 DEFAULT_DATA=PROJECT/'work/primordial00-first-wake'
@@ -97,6 +98,7 @@ def main(argv=None):
     p=sub.add_parser('wake');p.add_argument('--confirm',help='明确确认短语：WAKE 实例目录名')
     p=sub.add_parser('update',help='从已有源码提案检查、更新并监督既有实例；失败恢复旧版')
     p.add_argument('--proposal',required=True);p.add_argument('--confirm',help='明确确认短语：UPDATE 实例目录名')
+    p=sub.add_parser('instance',help='与面板共用的后台进程控制');p.add_argument('action',choices=['status','start','stop','restart']);p.add_argument('--confirm',action='store_true')
     p=sub.add_parser('panel');p.add_argument('--port',type=int,default=8765)
     p=sub.add_parser('start',help='部署并唤醒既有实例，同时运行管理面板；保持终端打开')
     p.add_argument('--port',type=int,default=8765)
@@ -138,6 +140,15 @@ def main(argv=None):
         elif op=='check':run(data,'check');run(data,'model-probe')
         elif op=='stage':run(data,'stage-release',PROJECT)
         elif op=='submit':run(data,'submit',args.text,'--key',args.key or 'cli-'+uuid.uuid4().hex)
+        elif op=='instance':
+            from digital_life.application.lifecycle.panel_control import PanelControl
+            from digital_life.infrastructure.persistence.sqlite_store import Store
+            store=Store(data)
+            try:
+                service=PanelControl(store)
+                result=service.status() if args.action=='status' else service.submit(args.action,{'confirmed':args.confirm})
+                print(json.dumps(result,ensure_ascii=False,indent=2))
+            finally:store.close()
         elif op=='panel':run(data,'serve','--port',args.port)
         elif op=='exploration-status':run(data,'exploration','status')
         elif op in ('stop','lock'):
@@ -149,6 +160,6 @@ def main(argv=None):
                 print('已记录停止并加禁止唤醒锁；运行进程收到停止后退出。')
         return 0
     except KeyboardInterrupt:print('\n操作已中断。');return 130
-    except (ValueError,OSError) as error:print('未完成：'+str(error),file=sys.stderr);return 1
+    except (ValueError,OSError,ContractError) as error:print('未完成：'+str(error),file=sys.stderr);return 1
 
 if __name__=='__main__':raise SystemExit(main())

@@ -1,4 +1,5 @@
 """Opt-in, event-sourced finite task loops with independent workspace verification."""
+import json
 from digital_life.domain.contracts import ContractError,Conflict,Forbidden,utc,text
 from digital_life.application.runtime.scheduling import Queue
 from digital_life.infrastructure.tools.workspace import safe_path
@@ -34,13 +35,27 @@ class TaskLoop:
   from digital_life.application.runtime.scheduling import Budget
   return Budget(self.s).remaining(activity)
  def thought_tokens(self,activity):
+  from digital_life.application.runtime.settings import for_activity
+  limit=for_activity(self.s,activity)['thought_tokens']
   budget=self.project_budget(activity)
-  if budget is None:return 4096
-  if budget['tokens']<1024 or budget['attempts']<1 or budget['time_ms']<=0 or not budget['deadline_valid'] or budget['usage_unknown']:raise Forbidden('project task budget cannot support another thought')
-  return min(4096,budget['tokens'])
+  if budget is None:return limit
+  if (budget.get('mode')!='unlimited' and (budget['tokens']<1024 or budget['attempts']<1 or budget['time_ms']<=0)) or not budget['deadline_valid'] or budget['usage_unknown']:raise Forbidden('project task budget cannot support another thought')
+  return limit if budget.get('mode')=='unlimited' else min(limit,budget['tokens'])
  def stop_budget(self,engine,activity,budget):
   message='本任务预算不足，已暂停。已完成的工具结果和文件修改均保留；没有继续调用模型或执行新动作。'
-  self.s.event('task_loop.budget_stopped',payload={'remaining':budget,'message':message,'round':self.round(activity)},activity=activity,lane='control')
+  observations=self.events(activity,'task_loop.observed')
+  completed=sum(o['state']=='succeeded' for o in observations)
+  last=self.s.db.execute("SELECT r.response_artifact_id FROM thought_results r JOIN thought_requests q ON q.id=r.request_id WHERE q.activity_id=? AND r.acceptance='accepted' ORDER BY r.rowid DESC LIMIT 1",(activity,)).fetchone()
+  latest=self.s.read_artifact(last[0]).get('explanation','') if last else ''
+  tools=[]
+  for item in observations[-20:]:
+   if item['state']!='succeeded':continue
+   entry=self.s.db.execute('SELECT t.name,i.arguments_json FROM action_results r JOIN action_attempts a ON a.id=r.attempt_id JOIN action_intents i ON i.id=a.intent_id JOIN tool_definitions t ON t.id=i.tool_id WHERE r.id=? AND r.instance_id=?',(item['result'],self.s.instance_id)).fetchone()
+   if entry:
+    args=json.loads(entry['arguments_json']);tools.append({'tool':entry['name'],'path':args.get('path'),'state':'succeeded'})
+  summary={'completed_steps':completed,'completed_tools':tools,'last_public_update':latest,'remaining':'本次任务尚未形成最终结论；已有结果已保存，不会自动重做。'}
+  message+=f' 已完成{completed}次工具操作，任务尚未完成。'
+  self.s.event('task_loop.budget_stopped',payload={'remaining':budget,'message':message,'partial_summary':summary,'round':self.round(activity)},activity=activity,lane='control')
   if self.s.row('activities',activity)['state']=='running':engine.transition(activity,'paused','project-budget-limit')
   return {'continued':False,'reason':'project-budget-limit','message':message,'remaining':budget}
  def finish_project(self,engine,activity):
@@ -84,8 +99,8 @@ class TaskLoop:
   if row['cancel_requested_at']:raise Forbidden('activity cancelled')
   budget=self.project_budget(activity)
   if budget is not None:
-   if budget['tokens']<1024 or budget['attempts']<1 or budget['time_ms']<=0 or not budget['deadline_valid'] or budget['usage_unknown']:return self.stop_budget(engine,activity,budget)
-  if (budget is None and self.round(activity)>=cfg['max_rounds']) or row['deadline']<=utc():
+   if (budget.get('mode')!='unlimited' and (budget['tokens']<1024 or budget['attempts']<1 or budget['time_ms']<=0)) or not budget['deadline_valid'] or budget['usage_unknown']:return self.stop_budget(engine,activity,budget)
+  if (budget is None and self.round(activity)>=cfg['max_rounds']) or (row['deadline'] and row['deadline']<=utc()):
    if row['state']=='running':engine.transition(activity,'paused','task-loop-limit')
    return {'continued':False,'reason':'round or deadline limit'}
   self.s.event('task_loop.advanced',payload={'round':self.round(activity)+1,'reason':reason},activity=activity)
@@ -116,7 +131,7 @@ class TaskLoop:
   engine.assert_unlocked();row=self.s.row('activities',activity)
   if not self.config(activity) or row['state'] not in ('waiting_input','paused'):raise Conflict('loop not waiting')
   if self.project_budget(activity) is None and self.round(activity)>=self.config(activity)['max_rounds']:raise Conflict('round limit exhausted')
-  if row['cancel_requested_at'] or row['deadline']<=utc():raise Forbidden('activity cancelled or expired')
+  if row['cancel_requested_at'] or (row['deadline'] and row['deadline']<=utc()):raise Forbidden('activity cancelled or expired')
   # Approval waits belong to permission flow, not human-input continuation.
   from digital_life.application.monitoring.management import Management
   if Management(self.s).approvals({'activity_id':activity,'status':'pending','limit':1})['items']:raise Conflict('approval still pending')

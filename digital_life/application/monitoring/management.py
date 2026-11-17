@@ -255,7 +255,8 @@ class Management:
         pending=self.s.db.execute("SELECT count(*) FROM ("+base+") WHERE status='pending'",args).fetchone()[0]
         control=self.control(); locked=(self.s.root/'WAKE_DISABLED').exists(); restore=(self.s.root/'RESTORE_RECONCILIATION_REQUIRED').exists()
         model=self.model(); health=self.health()
-        return {'instance_id':self.s.instance_id,'name':self.s.config().get('name','原初00'),'wake_disabled':locked,'restore_reconciliation_required':restore,
+        from digital_life.application.chat.self_knowledge import Names
+        return {'instance_id':self.s.instance_id,'name':Names(self.s).current()['name'],'wake_disabled':locked,'restore_reconciliation_required':restore,
           'runtime_status':'locked' if locked or restore else 'stopped' if control['user_stopped'] else 'registered' if control['active_process_run_id'] else 'idle',
           'control':control,'activity_counts':counts,'active_activities':sum(v for k,v in counts.items() if k not in ('completed','failed','cancelled')),
           'pending_approvals':pending,'model':model,'health':{'state':health['state'],'stale':health['stale'],'checked_at':health['checked_at']},

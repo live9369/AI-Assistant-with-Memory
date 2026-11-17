@@ -103,7 +103,7 @@ def main():
         story.append(Paragraph(inline(' '.join(paragraph)),styles['compact_body' if section==33 else 'body']))
     def page_number(canvas,doc):
         canvas.saveState();canvas.setFont('BookCJK',8);canvas.setFillColor(colors.HexColor('#61736a'))
-        canvas.drawString(50,28,'有记忆的 AI 助手  中文教材 V0.1');canvas.drawRightString(A4[0]-50,28,str(doc.page));canvas.restoreState()
+        canvas.drawString(50,28,'有记忆的 AI 助手  中文教材 V0.2');canvas.drawRightString(A4[0]-50,28,str(doc.page));canvas.restoreState()
     args.output.parent.mkdir(parents=True,exist_ok=True)
     doc=Book(str(args.output),pagesize=A4,rightMargin=50,leftMargin=50,topMargin=48,bottomMargin=46,title='从零理解有记忆的 AI 助手',author='AI Assistant with Memory contributors')
     doc.build(story,onFirstPage=page_number,onLaterPages=page_number)

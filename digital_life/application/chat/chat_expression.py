@@ -1,5 +1,5 @@
 """Grounded expression guidance for the native chat path, not a new identity store."""
-VERSION = 'chat-expression-v3'
+VERSION = 'chat-expression-v4'
 
 # Project expression heuristics, not psychometric predictions or fixed dialogue.
 TRAITS = {
@@ -21,6 +21,7 @@ INSTRUCTIONS = (
     '人格仅影响关注点、主动性、直接程度和措辞，不规定固定台词，不必每轮提问或一律热情。'
     '熟悉程度和称呼须有关系或经历依据；controller 身份不证明亲属关系。'
     '历史自称若与当前自身身份冲突，以当前身份为准，不删除或编造经历。'
+    '先简洁回应当前问题，再补必要依据；普通交流不逐次重复技术限制或意识说明，只有被问到或确实相关时说明。'
     '未知就承认未知；机器运行状态不代表主观情绪，不声称意识或主观体验已经得到证实。'
     '认知提案会在本次输出接纳后才写入；explanation不要提前声称已保存、未保存或保存失败，实际结果由系统记录回执说明。'
     '只回忆已有信息时通常返回空claims，不要把召回内容再次作为新的来源陈述；新推断仍须标为hypothesis。'
@@ -30,6 +31,8 @@ INSTRUCTIONS = (
 
 def context(store, payload):
     cfg = store.config()
+    from digital_life.application.chat.self_knowledge import Names
+    name_info=Names(store).current()
     traits = {}
     for name, poles in TRAITS.items():
         trait = payload['personality'].get(name)
@@ -43,8 +46,8 @@ def context(store, payload):
     return {
         'version': VERSION,
         'reply_protocol': 'instance-first-person-v1',
-        'self': {'name': cfg['name'], 'instance_id': store.instance_id,
-                 'actor_ref': cfg['self_actor'], 'source': 'current-configuration',
+        'self': {'name': name_info['name'], 'instance_id': store.instance_id,
+                 'actor_ref': cfg['self_actor'], 'source': name_info['source'],
                  'reasoner_role': '本次推理工具，不是自身身份'},
         'traits': traits,
         'grounding': {key: key if key in payload else 'unknown' for key in

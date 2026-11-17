@@ -33,8 +33,16 @@ class Queue:
 
 class Budget:
     def __init__(self,store): self.s=store
-    def create(self,activity,tokens=16000,calls=8,attempts=8):
-        return self.s.insert('activity_budget_accounts',activity_id=activity,token_limit=tokens,tool_call_limit=calls,attempt_limit=attempts,time_limit_ms=600000)
+    def create(self,activity,tokens=None,calls=None,attempts=None):
+        from digital_life.application.runtime.settings import for_activity
+        options=for_activity(self.s,activity)
+        return self.s.insert('activity_budget_accounts',activity_id=activity,token_limit=options['tokens'] if tokens is None else tokens,tool_call_limit=options['tool_calls'] if calls is None else calls,attempt_limit=options['attempts'] if attempts is None else attempts,time_limit_ms=options['duration_seconds']*1000)
+    def unlimited(self,activity):
+        document=json.loads(self.s.row('activities',activity)['budget_json'])
+        # Never relax a protected/shared learning resource contract.
+        return (document.get('runtime_settings',{}).get('budget_enabled') is False
+                and document.get('contract') not in ('TL-WORK-BUDGET-1','TL-ACTIVITY-BUDGET-1')
+                and 'tl_work_allocations' not in document)
     def remaining(self,activity):
         from datetime import datetime
         row=self.s.row('activities',activity)
@@ -48,6 +56,10 @@ class Budget:
             allocated=allocation_occupancy(document)
         reservations=self.s.db.execute("SELECT * FROM budget_reservations WHERE activity_id=? AND state<>'released'",(activity,)).fetchall()
         elapsed=(datetime.fromisoformat(utc().replace('Z','+00:00'))-datetime.fromisoformat(row['recorded_at'].replace('Z','+00:00'))).total_seconds()*1000
+        if self.unlimited(activity):
+            return {'mode':'unlimited','tokens':None,'tools':None,'attempts':None,'time_ms':None,
+                    'deadline_valid':not row['deadline'] or row['deadline']>utc(),
+                    'usage_unknown':any(r['state']=='usage_unknown' for r in reservations)}
         return {'tokens':max(0,account['token_limit']-allocated['tokens']-sum(r['reserved_tokens'] for r in reservations)),
                 'tools':max(0,account['tool_call_limit']-allocated['tools']-sum(r['reserved_tool_calls'] for r in reservations)),
                 'attempts':max(0,account['attempt_limit']-allocated['attempts']-len(reservations)),
@@ -69,7 +81,7 @@ class Budget:
             if isinstance(budget_document,dict) and 'tl_work_allocations' in budget_document and any(r['state']=='usage_unknown' for r in rows):
                 raise ContractError('shared learning parent has unknown consumption; reconcile before new reservations')
             tools=int(kind=='tool_attempt')
-            if sum(r['reserved_tokens'] for r in rows)+allocated['tokens']+tokens>account['token_limit'] or len(rows)+allocated['attempts']+1>account['attempt_limit'] or sum(r['reserved_tool_calls'] for r in rows)+allocated['tools']+tools>account['tool_call_limit']:
+            if not self.unlimited(activity) and (sum(r['reserved_tokens'] for r in rows)+allocated['tokens']+tokens>account['token_limit'] or len(rows)+allocated['attempts']+1>account['attempt_limit'] or sum(r['reserved_tool_calls'] for r in rows)+allocated['tools']+tools>account['tool_call_limit']):
                 raise ContractError('budget exhausted')
             ref=self.s.insert('budget_reservations',activity_id=activity,operation_ref=operation,operation_kind=kind,reservation_key=operation,reserved_tokens=tokens,reserved_tool_calls=tools,reserved_attempts=1,state='reserved',reserved_at=utc())
             self.s.db.execute('UPDATE activity_budget_accounts SET revision=revision+1 WHERE id=?',(account['id'],)); return ref

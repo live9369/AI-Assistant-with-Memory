@@ -142,6 +142,21 @@ class Application:
             chat_match=re.fullmatch(r'/v1/chats/([A-Za-z0-9_-]{1,64})(/messages)?',route)
             if chat_match and method=='GET' and not chat_match[2]: return 200,Chat(store).detail(chat_match[1])
             if chat_match and method=='POST' and chat_match[2]: return 202,Chat(store).send(chat_match[1],body)
+            if route=='/v1/instance/lifecycle' and method=='GET':
+                from digital_life.application.lifecycle.panel_control import PanelControl
+                return 200,PanelControl(store).status()
+            lifecycle=re.fullmatch(r'/v1/instance/lifecycle/(start|stop|restart)',route)
+            apply_settings=re.fullmatch(r'/v1/instance/settings/([a-z_]+)/apply',route)
+            if method=='POST' and (lifecycle or apply_settings):
+                from digital_life.application.lifecycle.panel_control import PanelControl
+                return 202,PanelControl(store).submit('apply' if apply_settings else lifecycle[1],body,apply_settings[1] if apply_settings else None)
+            if route=='/v1/instance/settings' and method=='GET':
+                from digital_life.application.monitoring.instance_settings import InstanceSettings
+                return 200,InstanceSettings(store).read()
+            setting_match=re.fullmatch(r'/v1/instance/settings/([a-z_]+)',route)
+            if setting_match and method=='POST':
+                from digital_life.application.monitoring.instance_settings import InstanceSettings
+                return 200,InstanceSettings(store).save(setting_match[1],body)
             if method=='GET' and route=='/v1/overview': return 200,management.overview()
             if method=='GET' and route=='/v1/activities': return 200,management.activities(query)
             match=re.fullmatch(r'/v1/activities/([A-Za-z0-9_-]{1,128})',route)

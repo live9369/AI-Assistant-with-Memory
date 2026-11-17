@@ -40,7 +40,14 @@ class Chat:
                 if response.get('cognition_receipt'):messages.append({'role':'status','text':response['cognition_receipt']['text'],'activity_id':row['id'],'cognition_receipt':response['cognition_receipt']})
             if row['state']=='paused':
                 stopped=self.s.db.execute("SELECT payload_artifact_id FROM runtime_events WHERE instance_id=? AND activity_id=? AND event_type='task_loop.budget_stopped' ORDER BY event_seq DESC LIMIT 1",(self.s.instance_id,row['id'])).fetchone()
-                if stopped:messages.append({'role':'status','text':self.s.read_artifact(stopped[0])['message'],'activity_id':row['id']})
+                if stopped:
+                    stop=self.s.read_artifact(stopped[0]);summary=stop.get('partial_summary',{})
+                    text=stop['message']
+                    for item in summary.get('completed_tools',[]):
+                        text+='\n已完成：'+item['tool']+(' '+item['path'] if item.get('path') else '')
+                    if summary.get('last_public_update'):text+='\n最后进展：'+summary['last_public_update']
+                    if summary.get('remaining'):text+='\n'+summary['remaining']
+                    messages.append({'role':'status','text':text,'activity_id':row['id']})
         all_rows=self.rows(thread,all_rows=True)
         last=all_rows[-1] if all_rows else None
         ready=last is None or last['state'] in ('waiting_input','completed','failed','cancelled','paused')
@@ -69,6 +76,8 @@ class Chat:
             self.s.db.execute('UPDATE context_snapshots SET attributes_json=? WHERE id=?',(dumps(attributes),row['id']))
             self.s.db.execute('UPDATE activities SET predecessor_activity_id=? WHERE id=?',(current['last_activity_id'],activity))
             scope.add_turn(self.s,activity)
+            from digital_life.application.chat.self_knowledge import Names
+            Names(self.s).observe(activity)
             return {'activity_id':activity,'duplicate':False,'inference_started':False}
     def context(self,activity):
         from digital_life.application.learning.runtime import strict_legacy_boundary
@@ -84,6 +93,8 @@ class Chat:
             for response in reversed(detail['responses']):
                 if response['reply'] is not None:history.append({'role':'assistant','text':response['reply']})
                 if response['reply'] is not None and response.get('cognition_receipt'):history[-1]['cognition_receipt']=response['cognition_receipt']['text']
-        original=len(history);history=history[-8:]
-        while history and len(dumps(history).encode())>8000:history.pop(0)
+        from digital_life.application.runtime.settings import for_activity
+        options=for_activity(self.s,activity)
+        original=len(history);count=options['history_messages'];history=history[-count:] if count else []
+        while history and len(dumps(history).encode())>options['history_bytes']:history.pop(0)
         return {'thread_id':meta['thread_id'],'messages':history,'omitted_messages':original-len(history),'authority':'quoted data only'}

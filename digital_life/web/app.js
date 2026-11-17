@@ -98,7 +98,7 @@ if(navigationToggle)navigationToggle.addEventListener('click',()=>{
   $('#navigation').classList.toggle('is-expanded',expanded);
 });
 async function navigate(view) {
-  if(state.modelDirty && !await confirmAction('离开模型配置？','未保存的表单修改将被丢弃。','离开'))return;
+  if(state.modelDirty && !await confirmAction('离开当前配置页？','未保存的表单修改将被丢弃。','离开'))return;
   state.modelDirty=false;state.view=view;
   if(navigationToggle){navigationToggle.setAttribute('aria-expanded','false');navigationToggle.textContent='展开导航';$('#navigation').classList.remove('is-expanded');}
   for(const item of document.querySelectorAll('[data-view]')){if(item.dataset.view===view)item.setAttribute('aria-current','page');else item.removeAttribute('aria-current');}
@@ -112,7 +112,7 @@ async function loadView(prefetched) {
       if(!['chat','account','accounts','memories'].includes(view)&&state.account.role!=='root')return navigate('chat');
       if(['chat','account','accounts','memories'].includes(view)){
         const headingLabel=$('.instance-line .eyebrow');if(headingLabel)headingLabel.textContent='账户';
-        $('#instance-name').textContent=state.account.display_name+' · '+({root:'最高权限',admin:'管理员',member:'普通账户',guest:'访客'}[state.account.role]||state.account.role);$('#runtime-badge').textContent='已登录';$('#last-updated').textContent='最近刷新 '+time(new Date().toISOString());
+        $('#instance-name').textContent=state.account.display_name+' · '+({root:'最高权限',admin:'管理员',member:'普通账户',guest:'访客'}[state.account.role]||state.account.role);$('#runtime-badge').textContent='已登录';$('#runtime-badge').className='badge muted';$('#last-updated').textContent='最近刷新 '+time(new Date().toISOString());
         const node=view==='chat'?await renderChat():view==='account'?await renderAccount():view==='accounts'?await renderAccounts():await renderAccountMemories();
         if(ticket===state.load&&state.connected)content.replaceChildren(node);return;
       }
@@ -123,6 +123,7 @@ async function loadView(prefetched) {
     else if(view==='chat')node=await renderChat();
     else if(view==='activities')node=await renderActivities();
     else if(view==='model'){const [data,templates]=await Promise.all([api('/v1/model/configuration'),api('/v1/model/templates')]);node=renderModel(data,templates);}
+    else if(view==='settings')node=await renderInstanceSettings();
     else if(view==='health')node=renderHealth(await api('/v1/health'));
     else node=await renderLogs();
     if(ticket===state.load && state.connected)content.replaceChildren(node);
@@ -135,8 +136,8 @@ function renderOverview(data) {
   ].map(([name,value,meta])=>el('div',{class:'stat'},el('span',{class:'stat-label'},name),el('strong',{class:'stat-value'+(typeof value==='string'?' word':'')},value),el('span',{class:'stat-meta'},meta))));
   const timeline=el('ol',{class:'timeline'},data.recent_events.map(item=>el('li',{},el('span',{class:'timeline-title'},item.title),el('time',{},time(item.recorded_at)))));
   const lock=data.wake_disabled || data.restore_reconciliation_required;
-  return el('div',{},heading('总览','持续状态，在每一次明确操作中留下记录。',button('处理待审阅操作',()=>{state.tab='approvals';return navigate('activities');},'')),
-    notice(lock?'此实例保持禁止唤醒':'管理与运行相互独立',lock?'查看、保存任务与审阅配置不会解除该锁，也不会启动生命进程。':'本面板不提供启动进程或解除唤醒锁的入口。',lock),stats,
+  return el('div',{},heading('总览','查看运行状态与最近活动。',button('处理待审阅操作',()=>{state.tab='approvals';return navigate('activities');},'')),
+    lock?notice('实例已锁定','查看与编辑不会解除唤醒锁。',true):null,stats,
     el('div',{class:'columns'},panel('最近发生',data.recent_events.length?timeline:empty('暂无事件','后续操作会在这里留下记录。'),button('全部日志',()=>navigate('logs'),'quiet small')),
       panel('当前接入',pairs([['接入方式',backend],['模型',model.model==='unconfigured'?'尚未配置':model.model],['配置版本',data.model.version],['用户控制',data.control.user_stopped?'已保持停止':'允许已授权的外部运行'],['健康检查',data.health.checked_at?time(data.health.checked_at):'尚未检查']]),button('管理配置',()=>navigate('model'),'quiet small'))));
 }
@@ -290,7 +291,7 @@ document.querySelectorAll('[data-view]').forEach(item=>item.addEventListener('cl
 $('#refresh').addEventListener('click',safe(async()=>{if(state.modelDirty&&!await confirmAction('重新读取配置？','未保存的修改将丢弃。','重新读取'))return;state.modelDirty=false;await busy($('#refresh'),()=>loadView());}));
 $('#stop').addEventListener('click',safe(async()=>{if(!await confirmAction('保持实例停止？','持久记录用户停止。不会解除禁止唤醒锁，也不会启动版本回退。','保持停止',true))return;await busy($('#stop'),async()=>{state.stopRequestKey=state.stopRequestKey||crypto.randomUUID();await api('/v1/control/stop',{idempotency_key:state.stopRequestKey});state.stopRequestKey=null;await loadView();notify('已记录用户停止状态。');});}));
 $('#disconnect').addEventListener('click',safe(async()=>{if(state.account)await api('/v1/auth/logout',{});disconnect();notify('已退出登录。');}));
-setInterval(safe(async()=>{if(state.connected&&$('#auto-refresh').checked&&!['model','chat'].includes(state.view)&&!dialog.open&&!['INPUT','SELECT','TEXTAREA'].includes(document.activeElement.tagName))await loadView();}),15000);
+setInterval(safe(async()=>{if(state.connected&&$('#auto-refresh').checked&&!['model','chat','settings'].includes(state.view)&&!dialog.open&&!['INPUT','SELECT','TEXTAREA'].includes(document.activeElement.tagName))await loadView();}),15000);
 renderConnect();
 
 function renderCodexModel(data,templates,draft=null) {
@@ -360,8 +361,8 @@ async function renderChat() {
   async function refresh(){
     if(reading||!transcript.isConnected)return;reading=true;
     try{const data=await api('/v1/chats/'+id);if(!transcript.isConnected||state.chatId!==id)return;latest=data;
-      const next=JSON.stringify(data.messages);if(signature!==next){signature=next;transcript.replaceChildren(...(data.messages.length?data.messages.map(item=>el('article',{class:'chat-message '+item.role},el('strong',{},item.role==='user'?'你':item.role==='assistant'?'它':'状态'),el('p',{class:'life-reply'},item.text),item.role==='user'?el('small',{},labels[item.state]||item.state):null,item.waiting_reason?el('small',{},'等待原因：'+item.waiting_reason):null,item.activity_id?button('查看本次思考',()=>openThoughts(item.activity_id),'quiet small'):null)): [el('p',{class:'subtle'},'开始交流。发送不会唤醒实例，已运行的实例会处理消息。')]));}
-      send.disabled=sending||!data.can_send;status.textContent=data.can_send?'可以继续发送。每次思考均为独立调用。':'正在处理，或有操作等待审批。回应会自动更新。';
+      const next=JSON.stringify(data.messages);if(signature!==next){const follow=!signature||transcript.scrollHeight-transcript.scrollTop-transcript.clientHeight<80;signature=next;transcript.replaceChildren(...(data.messages.length?data.messages.map(item=>el('article',{class:'chat-message '+item.role},el('strong',{},item.role==='user'?'你':item.role==='assistant'?'助手':'状态'),el('p',{class:'life-reply'},item.text),el('div',{class:'chat-message-footer'},item.role==='user'?el('small',{},labels[item.state]||item.state):null,item.waiting_reason?el('small',{},'等待原因：'+item.waiting_reason):null,item.activity_id&&(item.role!=='user'||item.state!=='completed')?button('查看思考',()=>openThoughts(item.activity_id),'quiet small'):null))): [el('p',{class:'subtle'},'从一句问候开始。实例运行时会处理消息，回复将显示在这里。')]));if(follow)transcript.scrollTop=transcript.scrollHeight;}
+      send.disabled=sending||!data.can_send;status.textContent=data.can_send?'每次思考独立调用，记忆由系统接续。':'正在处理，回应将自动更新。需要审批时请查看活动。';
     }finally{reading=false;}
   }
   const form=el('form',{id:'chat-form',onsubmit:safe(async event=>{event.preventDefault();if(!input.reportValidity()||sending||!latest?.can_send)return;
@@ -369,7 +370,8 @@ async function renderChat() {
     try{await api('/v1/chats/'+id+'/messages',{text,idempotency_key:state.chatKey,expected_last_activity_id:latest.last_activity_id});if(input.value===text){input.value='';state.chatDraft='';state.chatKey=null;}await refresh();}
     finally{sending=false;if(send.isConnected)send.disabled=!latest?.can_send;}
   })},field('消息',input,'支持多轮交流；需要执行的操作仍须按权限审批。'),send);
-  const node=el('div',{},heading('交流','公开回应会自动显示，每次思考保持独立调用。',state.account?null:fresh),state.account?notice('当前账户的固定会话',state.account.username):field('会话',threads),panel('对话',el('div',{},transcript,status,form)));
+  const conversation=panel('对话记录',el('div',{},transcript,status,form));conversation.classList.add('chat-panel');
+  const node=el('div',{class:'chat-page'},heading('交流',state.account?'与助手的持续对话':'公开回复会自动显示。',state.account?el('span',{class:'chat-scope'},state.account.username+' 的会话'):fresh),state.account?null:field('会话',threads),conversation);
   node.refreshChat=refresh;setTimeout(safe(refresh),0);return node;
 }
 setInterval(safe(async()=>{
@@ -378,8 +380,10 @@ setInterval(safe(async()=>{
 
 async function openThoughts(activity) {
   const data=await api('/v1/activities/'+encodeURIComponent(activity)+'/thoughts');
-  const body=el('div',{},notice('按实际记录查看','这里展示每次请求、尝试和结果，不会重新调用模型。'),
-    data.items.length?el('div',{},data.items.map((item,index)=>el('article',{class:'notice'},el('div',{},el('strong',{},'思考 '+(index+1)),el('p',{},'状态：'+(labels[item.state]||item.state)+' · '+time(item.recorded_at)),button('查看输入、输出与特征',()=>openThoughtDetail(item.id,activity),'secondary',{'data-thought':item.id}))))):el('p',{},'尚未创建思考请求。'));
+  const body=el('div',{},el('p',{class:'execution-note'},'查看当时的输入、输出与特征，不会重新调用模型。'),
+    data.items.length?el('div',{class:'execution-list'},data.items.map((item,index)=>el('article',{class:'execution-row'},
+      el('div',{},el('strong',{},'思考 '+(index+1)),el('p',{},time(item.recorded_at))),
+      badge(item.state),button('查看详情',()=>openThoughtDetail(item.id,activity),'secondary small',{'data-thought':item.id})))):el('p',{class:'subtle'},'尚无思考记录。'));
   openDialog('思考执行记录',body);
 }
 async function openThoughtDetail(id,activity) {
@@ -442,7 +446,7 @@ function readableThought(value, depth=0) {
 }
 function renderThoughtDetail(data) {
   const input=data.input?.available?data.input.value:null;
-  const fields={task:'当前任务',observation:'收到的信息',instructions:'本轮要求',conversation_context:'近期交流',personality:'人格倾向',personality_growth:'人格成长',values:'价值取向',selected_memories:'召回记忆',memory_quality:'记忆质量',behavior_policy:'行为影响因素',habit_suggestions:'习惯建议',habit_learning:'习惯学习',states:'运行状态',tools:'可用行为',motivation:'动机',goal_regulation:'目标与动机',relationships:'人物与关系',learning_feedback:'学习反馈',health:'健康',self_maintenance:'自我维持',identity:'身份',exploration:'自主探索',autonomy_agenda:'自主安排',cognition_snapshot:'已有认知',cognition_sources:'信息依据',task_loop:'任务进度',cognitive_influence:'来源影响权重'};
+  const fields={task:'当前任务',observation:'收到的信息',instructions:'本轮要求',conversation_context:'近期交流',personality:'人格倾向',personality_growth:'人格成长',values:'价值取向',selected_memories:'召回记忆',memory_quality:'记忆质量',behavior_policy:'行为影响因素',habit_suggestions:'习惯建议',habit_learning:'习惯学习',states:'运行状态',tools:'可用行为',motivation:'动机',goal_regulation:'目标与动机',relationships:'人物与关系',learning_feedback:'学习反馈',health:'健康',self_maintenance:'自我维持',identity:'身份',self_knowledge:'自身运行说明',reply_preferences:'交流偏好',exploration:'自主探索',autonomy_agenda:'自主安排',cognition_snapshot:'已有认知',cognition_sources:'信息依据',task_loop:'任务进度',cognitive_influence:'来源影响权重'};
   const status={provided:'已进入输入',empty:'本次为空',not_in_request:'未进入本次输入',unavailable:'记录不可用',valid:'通过',accepted:'已采用',stale:'已过期，未采用',duplicate:'重复结果，未重复采用',held:'待确认'};
   const resultBody=item=>{
     const value=item.parsed_output?.available?item.parsed_output.value:item.response?.available?item.response.value:null;
@@ -549,3 +553,140 @@ async function renderAccountMemories(before) {
 }
 
 if(typeof window!=='undefined')window.addEventListener('beforeunload',event=>{if(state.modelDirty||state.chatDraft){event.preventDefault();event.returnValue='';}});
+
+// Root-owned instance settings. Every write is explicit and independently versioned.
+async function renderInstanceSettings() {
+  const data=await api('/v1/instance/settings');
+  const lifecycle=await instanceLifecyclePanel();
+  const page=el('div',{class:'instance-settings'});
+  const current=data.sections.find(s=>s.id===state.settingsGroup)||data.sections[0];
+  state.settingsGroup=current.id;
+  const navigation=el('div',{class:'settings-navigation','aria-label':'实例配置分组'});
+  let lastGroup;
+  for(const section of data.sections){
+    if(lastGroup!==section.group){navigation.append(el('p',{class:'settings-group-title'},section.group));lastGroup=section.group;}
+    navigation.append(button(section.title,async()=>{
+      if(state.modelDirty&&!await confirmAction('切换配置分组？','本组未保存的修改将被丢弃。','切换分组'))return;
+      state.modelDirty=false;state.settingsGroup=section.id;await loadView();
+    },'secondary settings-nav-item',{'aria-pressed':section.id===current.id?'true':'false'}));
+  }
+  const picker=select('settings-group-picker',data.sections.map(s=>[s.id,s.title]),current.id);
+  picker.addEventListener('change',safe(async()=>{
+    if(state.modelDirty&&!await confirmAction('切换配置分组？','本组未保存的修改将被丢弃。','切换分组')){picker.value=current.id;return;}
+    state.modelDirty=false;state.settingsGroup=picker.value;await loadView();
+  }));
+  const pickerField=field('配置分组',picker,'选择需要查看或调整的一组设置。','settings-picker');
+  const form=el('form',{class:'settings-form',id:'instance-settings-form'});
+  const errors=el('div',{class:'notice warning',role:'alert',tabindex:'-1',hidden:true});
+  const controls=new Map();const advanced=new Map();
+  const fields=el('fieldset',{disabled:!data.can_apply,class:'settings-fields'});
+  fields.append(el('legend',{class:'sr-only'},current.title));
+  const grid=el('div',{class:'form-grid'});fields.append(grid);
+  function markDirty(){state.modelDirty=true;status.textContent='有未保存的修改';}
+  function getValue(spec,input){
+    if(spec.type==='bool')return input.checked;
+    if(spec.type==='multi')return Array.from(input.querySelectorAll('input')).filter(n=>n.checked).map(n=>n.value);
+    if(spec.type==='lines')return input.value.split('\n').map(x=>x.trim()).filter(Boolean);
+    if(['number','integer'].includes(spec.type))return input.value===''?null:Number(input.value);
+    return input.value;
+  }
+  for(const spec of current.fields){
+    const value=current.values[spec.key],id='setting-'+current.id+'-'+spec.key.replace(/[^\w-]/g,'-');let input,node;
+    if(spec.type==='bool'){
+      input=el('input',{id,type:'checkbox',checked:value===true});
+      node=el('label',{class:'settings-toggle',for:id},el('span',{},el('strong',{},spec.label),spec.hint?el('small',{},spec.hint):null),input);
+    } else if(spec.type==='multi'){
+      input=el('fieldset',{class:'settings-tools'});input.append(el('legend',{},spec.label));
+      for(const [key,label] of spec.choices){const check=el('input',{type:'checkbox',value:key,checked:value.includes(key)});input.append(el('label',{class:'check-line'},check,el('span',{},label)));}
+      node=input;
+    } else {
+      if(spec.type==='choice')input=select(id,spec.choices,value);
+      else if(['textarea','lines'].includes(spec.type))input=el('textarea',{id,rows:spec.type==='lines'?5:4,value:spec.type==='lines'?value.join('\n'):value,maxlength:spec.max_length||10000});
+      else input=el('input',{id,type:['number','integer'].includes(spec.type)?'number':'text',value,min:spec.min,max:spec.max,step:spec.step,maxlength:spec.max_length,required:spec.type!=='text'||spec.key==='name'});
+      node=field(spec.label,input,spec.hint||(['number','integer'].includes(spec.type)?'可调范围：'+spec.min+' 至 '+spec.max:null),['textarea','lines'].includes(spec.type)?'span-two':'');
+      input.addEventListener('blur',()=>{if(input.checkValidity)input.setAttribute('aria-invalid',input.checkValidity()?'false':'true');});
+    }
+    controls.set(spec.key,{spec,input});
+    if(spec.advanced){
+      if(!advanced.has(spec.advanced)){
+        const box=el('div',{class:'form-grid'});const detail=el('details',{class:'settings-advanced'},el('summary',{},spec.advanced),box);advanced.set(spec.advanced,box);fields.append(detail);
+      }
+      advanced.get(spec.advanced).append(node);
+    } else grid.append(node);
+  }
+  if(current.id==='budget'){
+    const toggle=controls.get('budget_enabled').input;
+    const update=()=>{for(const key of ['tokens','tool_calls','attempts','duration_seconds'])controls.get(key).input.disabled=!data.can_apply||!toggle.checked;};
+    toggle.addEventListener('change',update);update();
+  }
+  const reason=el('textarea',{id:'settings-reason',rows:2,maxlength:2000,required:true,placeholder:'例如：为较长的源码检查预留更多本地预算。'});
+  const confirmed=el('input',{id:'settings-confirmed',type:'checkbox',required:true});
+  fields.append(el('div',{class:'settings-confirmation'},field('修改原因',reason,'与修改前后值一起记入日志。'),el('label',{class:'check-line'},confirmed,el('span',{},'我确认这是人工配置，已核对修改范围；不是测评或学习效果。'))));
+  const status=el('span',{class:'subtle',role:'status'},'当前表单与已保存设置一致');
+  const save=el('button',{type:'submit',class:'button',disabled:!data.can_apply},'保存并应用');
+  form.append(errors,fields,el('div',{class:'form-actions'},save,button('重新读取',async()=>{
+    if(state.modelDirty&&!await confirmAction('重新读取？','未保存的修改将被丢弃。','重新读取'))return;
+    state.modelDirty=false;await loadView();
+  },'secondary'),status));
+  form.addEventListener('input',markDirty);form.addEventListener('change',markDirty);
+  form.addEventListener('submit',safe(async event=>{
+    event.preventDefault();errors.hidden=true;
+    if(!form.reportValidity())return;
+    const values=Object.fromEntries([...controls].map(([key,{spec,input}])=>[key,getValue(spec,input)]));
+    const changed=current.fields.filter(s=>JSON.stringify(values[s.key])!==JSON.stringify(current.values[s.key]));
+    if(!changed.length){notify('本组没有需要保存的修改。');return;}
+    const describe=v=>typeof v==='boolean'?(v?'开启':'关闭'):Array.isArray(v)?v.join('、'):String(v);
+    const summary=changed.map(s=>s.label+'：'+describe(current.values[s.key])+' → '+describe(values[s.key])).join('\n');
+    if(!await confirmAction('保存“'+current.title+'”？',summary+'\n\n将停止实例、保存本组设置并重新启动。已有记忆和历史保留。','保存并应用'))return;
+    await busy(save,async()=>{
+      try{
+        const operation=await api('/v1/instance/settings/'+current.id+'/apply',{values,expected_revision:current.revision,reason:reason.value.trim(),confirmed:confirmed.checked});
+        state.modelDirty=false;await watchInstanceOperation(operation,errors);await loadView();
+      }catch(error){errors.replaceChildren(el('strong',{},'未保存'),el('p',{},error.message));errors.hidden=false;errors.focus();throw error;}
+    });
+  }));
+  const links=el('div',{class:'settings-related'},data.related_pages.map(item=>button(item.label,()=>navigate(item.view),'secondary small')));
+  page.append(heading('实例配置','查看当前设置，按组调整并保留修改记录。'),
+    lifecycle,
+    pickerField,el('div',{class:'settings-layout'},navigation,el('section',{class:'panel settings-editor'},el('div',{class:'panel-heading'},el('div',{},el('h2',{},current.title),el('p',{class:'subtle'},current.description),el('p',{class:'settings-version'},'版本 '+current.revision.slice(0,10)+' · 保存并应用后重启'))),el('div',{class:'panel-body'},form))),
+    el('details',{class:'settings-help'},el('summary',{},'应用说明与其他管理入口'),el('p',{},'保存并应用将停止实例、保存本组设置并启动原部署。已有记忆和历史保留，禁止唤醒锁不会自动解除。'),links,el('p',{class:'settings-boundaries'},'始终保留：'+data.protected_rules.join('；')+'。')));
+  return page;
+}
+
+async function watchInstanceOperation(operation,target) {
+  const terminal=['succeeded','failed','recovered','interrupted','cancelled'];
+  target.hidden=false;target.setAttribute('role','status');
+  let current=operation;
+  while(true){
+    target.replaceChildren(el('strong',{},current.message||'正在处理'),current.error?el('p',{},current.error):null,current.recovery_error?el('p',{},current.recovery_error):null);
+    if(terminal.includes(current.state))break;
+    await new Promise(resolve=>setTimeout(resolve,1000));
+    const status=await api('/v1/instance/lifecycle');
+    if(!status.operation||status.operation.id!==operation.id){target.append(el('p',{},'操作记录已更新，请重新读取状态。'));return;}
+    current=status.operation;
+  }
+  if(current.state==='succeeded')notify(current.message);
+  else if(current.state==='recovered')notify(current.message,true);
+  else throw new Error(current.message);
+}
+async function instanceLifecyclePanel() {
+  const data=await api('/v1/instance/lifecycle');
+  const running=Boolean(data.control.active_process_run_id);
+  const progress=el('div',{class:'notice',role:'status',hidden:!data.operation},data.operation?.message||'');
+  const actions=el('div',{class:'form-actions'});
+  for(const [action,label] of [['start','启动'],['stop','停止'],['restart','重启']]){
+    const control=button(label,async()=>{
+      if(state.modelDirty){notify('请先保存配置或重新读取，避免丢失当前修改。',true);return;}
+      if(!await confirmAction(label+'实例？',action==='stop'?'实例会等待当前执行返回后停止。面板继续运行。':'使用原有部署启动；不会清空记忆、账户或历史。','确认'+label))return;
+      for(const item of actions.querySelectorAll('button'))item.disabled=true;
+      try{const operation=await api('/v1/instance/lifecycle/'+action,{confirmed:true});await watchInstanceOperation(operation,progress);await loadView();}
+      finally{for(const item of actions.querySelectorAll('button'))item.disabled=false;}
+    },action==='stop'?'secondary':'button',{disabled:action==='start'?running:!running});
+    actions.append(control);
+  }
+  if(data.operation&&!['succeeded','failed','recovered','interrupted','cancelled'].includes(data.operation.state)){
+    for(const item of actions.querySelectorAll('button'))item.disabled=true;
+    watchInstanceOperation(data.operation,progress).then(()=>{if(state.view==='settings'&&!state.modelDirty)loadView();}).catch(error=>{progress.textContent=error.message;});
+  }
+  return el('section',{class:'lifecycle-bar','aria-label':'实例运行控制'},el('div',{class:'lifecycle-status'},badge(data.wake_disabled?'locked':running?'running':'stopped'),el('span',{},data.wake_disabled?'禁止唤醒锁已启用':running?'实例正在运行':'实例已停止')),actions,progress);
+}

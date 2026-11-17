@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="color-scheme" content="light">
-  <meta name="theme-color" content="#f5f7f9">
-  <title>原初00 · 管理面板</title>
+  <meta name="theme-color" content="#f6f7f8">
+  <title>有记忆的 AI 助手</title>
   <link rel="stylesheet" href="/assets/styles.css">
   <script type="module" src="/assets/app.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#content">跳到主要内容</a>
   <aside class="sidebar" aria-label="管理导航">
-    <div class="brand"><span class="brand-mark" aria-hidden="true">〇</span><div><strong>原初00</strong><span>数字生命 · 管理面板</span></div></div>
+    <div class="brand"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 6h14v10H9l-4 3V6Z"/><path d="M9 10h6M9 13h4"/></svg></span><div><strong>有记忆的 AI 助手</strong><span>本地工作台</span></div></div>
     <button id="navigation-toggle" class="button secondary navigation-toggle" aria-expanded="false" aria-controls="navigation">展开导航</button>
     <nav id="navigation" aria-label="页面导航">
       <div class="nav-group"><p class="nav-group-title">日常</p>
@@ -20,6 +20,7 @@
       <button data-view="chat" class="nav-item"><svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v12H9l-5 4z"/></svg>交流</button>
       <button data-view="activities" class="nav-item"><svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 5h12v16H4V5h4 M8 3h8v4H8z M8 12h8 M8 16h5"/></svg>活动与审批<span id="approval-badge" class="nav-count" hidden>0</span></button>
       </div><div class="nav-group"><p class="nav-group-title">系统</p>
+      <button data-view="settings" class="nav-item"><svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16M8 3v6M16 9v6M10 15v6"/></svg>实例配置</button>
       <button data-view="model" class="nav-item"><svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v6H4z M4 14h16v6H4z M8 7h1 M8 17h1"/></svg>模型配置</button>
       <button data-view="health" class="nav-item"><svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg>健康</button>
       <button data-view="logs" class="nav-item"><svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h14v18H5z M8 7h8 M8 12h8 M8 17h5"/></svg>日志</button>
@@ -29,7 +30,7 @@
       <button data-view="memories" class="nav-item"><svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5c0-4 16-4 16 0s-16 4-16 0v14c0 4 16 4 16 0V5 M4 12c0 4 16 4 16 0"/></svg>记忆域</button>
       </div>
     </nav>
-    <div class="sidebar-note"><span class="status-dot"></span><div>管理与运行相互独立<small>此面板不启动生命进程</small></div></div>
+    <div class="sidebar-note"><span class="status-dot"></span><div>独立管理面板<small>进程控制需确认</small></div></div>
   </aside>
   <div class="workspace">
     <header class="topbar">
@@ -37,7 +38,7 @@
       <div class="top-actions"><label class="auto-refresh"><input type="checkbox" id="auto-refresh">自动刷新</label><button id="refresh" class="button secondary" disabled>刷新</button><button id="stop" class="button danger-outline" disabled>保持停止</button><button id="disconnect" class="button quiet" hidden>退出登录</button></div>
     </header>
     <main id="content" tabindex="-1" aria-live="polite"></main>
-    <footer class="footer"><span>原初00 · 本机管理</span><span id="last-updated">等待连接</span></footer>
+    <footer class="footer"><span>AI 助手 · 本机管理</span><span id="last-updated">等待连接</span></footer>
   </div>
   <dialog id="dialog" aria-labelledby="dialog-title"></dialog>
   <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>

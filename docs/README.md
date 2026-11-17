@@ -5,6 +5,7 @@
 | 主题 | 入口 |
 | --- | --- |
 | 教材与项目命名 | [整理及校验记录](maintenance/book-and-project-name-2026-11-15.md) |
+| 实例配置面板 | [可调参数、使用流程与生效条件](operations/instance-settings.md) |
 | 从零学习教材 | [32 章教材与离线实验](book/README.md) |
 | 新用户首次运行 | [独立实例与面板](operations/public-first-run.md) |
 | 首版发布说明 | [00 Engineering Preview 草稿](releases/00-engineering-preview.md) |
